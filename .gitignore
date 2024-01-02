@@ -30,6 +30,7 @@
 
 # [dir]
 eko.sim
+eko.runs
 *.cache
 .metadata
 *.data
