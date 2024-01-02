@@ -26,28 +26,38 @@ module tb_i2s_recv ();
   parameter CLK_PERIOD = 20;
 
   // reg define
-  reg clk;
-  reg rst_n;
+  reg  clk;
+  reg  rst_n;
+  reg  i2s_din;
+
+  // wire define
+  wire i2s_bclk;
 
   // clock generator
   always #(CLK_PERIOD / 2) clk = ~clk;
 
   // initial
   initial begin
-    clk   = 0;
+    clk = 0;
+    i2s_din = 1;
     rst_n = 0;
     #100 rst_n = 1;
     #100 rst_n = 0;
     #100 rst_n = 1;
   end
 
+  // i2s_din
+  always @(negedge i2s_bclk) begin
+    i2s_din <= ~i2s_din;
+  end
+
   // i2s_recv
   i2s_recv i2s_recv_0 (
       .clk(clk),
       .rst_n(rst_n),
-      .i2s_din(1'b1),
+      .i2s_din(i2s_din),
       .i2s_lrclk(),
-      .i2s_bclk(),
+      .i2s_bclk(i2s_bclk),
       .i2s_ready(),
       .i2s_data()
   );

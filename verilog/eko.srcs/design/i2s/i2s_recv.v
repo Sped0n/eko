@@ -154,8 +154,7 @@ module i2s_recv (
           if (cnt < 6'd16) begin
             i2s_data[15:0] <= {i2s_data[14:0], i2s_din};
             cnt <= cnt + 1;
-          end
-          if (cnt == 6'd15) begin
+          end else begin
             i2s_ready <= 1;
           end
         end
