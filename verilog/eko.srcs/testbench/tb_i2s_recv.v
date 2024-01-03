@@ -22,33 +22,32 @@
 
 module tb_i2s_recv ();
 
-  // parameter define
-  parameter CLK_PERIOD = 20;
+  // *** parameter define
+  parameter PERIOD = 20;
 
   // reg define
-  reg  clk;
-  reg  rst_n;
-  reg  i2s_din;
+  reg  clk = 0;
+  reg  rst_n = 0;
+  reg  i2s_din = 0;
 
   // wire define
   wire i2s_bclk;
 
-  // clock generator
-  always #(CLK_PERIOD / 2) clk = ~clk;
-
-  // initial
+  // *** clock generator ***
   initial begin
-    clk = 0;
-    i2s_din = 1;
-    rst_n = 0;
-    #100 rst_n = 1;
-    #100 rst_n = 0;
-    #100 rst_n = 1;
+    forever #(PERIOD / 2) clk = ~clk;
   end
+
+  // *** reset ***
+  initial begin
+    #(PERIOD * 2) rst_n = 1;
+  end
+
+  // *** main code ***
 
   // i2s_din
   always @(negedge i2s_bclk) begin
-    i2s_din <= ~i2s_din;
+    i2s_din <= {$random} % 2;
   end
 
   // i2s_recv
@@ -61,5 +60,11 @@ module tb_i2s_recv ();
       .i2s_ready(),
       .i2s_data()
   );
+
+  // *** initial block ***
+  initial begin
+
+    $finish;
+  end
 
 endmodule
