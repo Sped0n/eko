@@ -184,6 +184,7 @@
         <Option Name="PamPseudoTop" Val="pseudo_tb"/>
         <Option Name="SrcSet" Val="sources_1"/>
         <Option Name="XSimWcfgFile" Val="$PSRCDIR/waveform/tb_xfft_0_behav.wcfg"/>
+        <Option Name="XSimWcfgFile" Val="$PSRCDIR/waveform/tb_xfft_0_behav.wcfg"/>
       </Config>
     </FileSet>
     <FileSet Name="clk_wiz_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_0" RelGenDir="$PGENDIR/clk_wiz_0">
