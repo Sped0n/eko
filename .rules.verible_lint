@@ -1,0 +1,4 @@
+parameter-name-style=localparam_style:ALL_CAPS
+-no-trailing-spaces
+-unpacked-dimensions-range-ordering
+-explicit-parameter-storage-type
