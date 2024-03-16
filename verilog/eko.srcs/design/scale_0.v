@@ -26,7 +26,7 @@ module scale_0 (
     input [111:0] s_axis_tdata,
     input s_axis_tvalid,
     output s_axis_tready,
-    output [48:0] m_axis_tdata,
+    output [47:0] m_axis_tdata,
     output m_axis_tvalid,
     input m_axis_tready
 );
@@ -51,9 +51,9 @@ module scale_0 (
           .s_axis_tdata(axis_shift_0_tdata[i]),
           .s_axis_tvalid(axis_shift_0_tvalid[i]),
           .s_axis_tready(axis_shift_0_tready[i]),
-          .m_axis_tdata(m_axis_tdata[i*16+15:i*16]),
-          .m_axis_tvalid(m_axis_tvalid),
-          .m_axis_tready(m_axis_tready)
+          .m_axis_tdata(axis_shift_0_tdata[i+1]),
+          .m_axis_tvalid(axis_shift_0_tvalid[i+1]),
+          .m_axis_tready(axis_shift_0_tready[i+1])
       );
     end
   endgenerate
