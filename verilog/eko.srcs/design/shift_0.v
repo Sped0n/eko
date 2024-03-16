@@ -44,8 +44,8 @@ module shift_0 (
     // NOTE: Value of shift[i][j] is determined by examining the two most significant bits of data[i][j*2] 
     //       and data[i][j*2+1]. If both of these data blocks have their two most significant bits as either 
     //       00 or 11, then shift[i][j] is assigned a value of 1 (true), indicating that these two data 
-    //        blocks need to be right-shifted at the current stage; otherwise, shift[i][j] is assigned a value 
-    //        of 0 (false), indicating no right shift operation is needed.
+    //        blocks need to be left-shifted at the current stage; otherwise, shift[i][j] is assigned a value 
+    //        of 0 (false), indicating no left shift operation is needed.
     for (i = 0; i < N; i = i + 1) begin
       for (j = 0; j < 1; j = j + 1) begin
         assign shift[i][j] = (
