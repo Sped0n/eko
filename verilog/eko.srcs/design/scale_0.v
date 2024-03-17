@@ -21,21 +21,21 @@
 
 
 module scale_0 (
-    input aclk,
-    input aresetn,
-    input [111:0] s_axis_tdata,
-    input s_axis_tvalid,
-    output s_axis_tready,
-    output [47:0] m_axis_tdata,
-    output m_axis_tvalid,
-    input m_axis_tready
+    input          aclk,
+    input          aresetn,
+    input  [111:0] s_axis_tdata,
+    input          s_axis_tvalid,
+    output         s_axis_tready,
+    output [ 47:0] m_axis_tdata,
+    output         m_axis_tvalid,
+    input          m_axis_tready
 );
 
   parameter N = 6;
 
-  wire [111:0] axis_shift_0_tdata[N:0];
-  wire axis_shift_0_tvalid[N:0];
-  wire axis_shift_0_tready[N:0];
+  wire [111:0] axis_shift_0_tdata [N:0];
+  wire         axis_shift_0_tvalid[N:0];
+  wire         axis_shift_0_tready[N:0];
 
   assign axis_shift_0_tdata[0] = s_axis_tdata;
   assign axis_shift_0_tvalid[0] = s_axis_tvalid;
@@ -46,12 +46,12 @@ module scale_0 (
   generate
     for (i = 0; i < N; i = i + 1) begin
       shift_0 shift_0_inst0 (
-          .aclk(aclk),
-          .aresetn(aresetn),
-          .s_axis_tdata(axis_shift_0_tdata[i]),
+          .aclk         (aclk),
+          .aresetn      (aresetn),
+          .s_axis_tdata (axis_shift_0_tdata[i]),
           .s_axis_tvalid(axis_shift_0_tvalid[i]),
           .s_axis_tready(axis_shift_0_tready[i]),
-          .m_axis_tdata(axis_shift_0_tdata[i+1]),
+          .m_axis_tdata (axis_shift_0_tdata[i+1]),
           .m_axis_tvalid(axis_shift_0_tvalid[i+1]),
           .m_axis_tready(axis_shift_0_tready[i+1])
       );

@@ -21,14 +21,14 @@
 
 
 module shift_0 (
-    input aclk,
-    input aresetn,
-    input [111:0] s_axis_tdata,
-    input s_axis_tvalid,
-    output s_axis_tready,
+    input          aclk,
+    input          aresetn,
+    input  [111:0] s_axis_tdata,
+    input          s_axis_tvalid,
+    output         s_axis_tready,
     output [111:0] m_axis_tdata,
-    output m_axis_tvalid,
-    input m_axis_tready
+    output         m_axis_tvalid,
+    input          m_axis_tready
 );
   parameter N = 8;
 
@@ -60,12 +60,12 @@ module shift_0 (
   endgenerate
 
   slice_0 slice_0 (
-      .aclk(aclk),
-      .aresetn(aresetn),
-      .s_axis_tdata({data[N][1], data[N][0]}),
+      .aclk         (aclk),
+      .aresetn      (aresetn),
+      .s_axis_tdata ({data[N][1], data[N][0]}),
       .s_axis_tvalid(s_axis_tvalid),
       .s_axis_tready(s_axis_tready),
-      .m_axis_tdata(m_axis_tdata),
+      .m_axis_tdata (m_axis_tdata),
       .m_axis_tvalid(m_axis_tvalid),
       .m_axis_tready(m_axis_tready)
   );
