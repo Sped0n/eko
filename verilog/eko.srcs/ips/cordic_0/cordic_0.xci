@@ -26,9 +26,9 @@
         "phase_has_tuser": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "phase_tuser_width": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "phase_has_tlast": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "flow_control": [ { "value": "NonBlocking", "resolve_type": "user", "usage": "all" } ],
+        "flow_control": [ { "value": "Blocking", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "optimize_goal": [ { "value": "Performance", "resolve_type": "user", "usage": "all" } ],
-        "out_tready": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "out_tready": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "out_tlast_behv": [ { "value": "Null", "resolve_type": "user", "usage": "all" } ],
         "ACLKEN": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ARESETN": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ]
@@ -52,7 +52,7 @@
         "C_PRECISION": [ { "value": "44", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_ROUND_MODE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_SCALE_COMP": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_THROTTLE_SCHEME": [ { "value": "3", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_THROTTLE_SCHEME": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_TLAST_RESOLUTION": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_S_AXIS_PHASE_TUSER": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_S_AXIS_PHASE_TLAST": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -96,8 +96,10 @@
         "aclk": [ { "direction": "in", "driver_value": "0x1" } ],
         "aresetn": [ { "direction": "in", "driver_value": "0x1" } ],
         "s_axis_cartesian_tvalid": [ { "direction": "in", "driver_value": "0x0" } ],
+        "s_axis_cartesian_tready": [ { "direction": "out", "driver_value": "0x0" } ],
         "s_axis_cartesian_tdata": [ { "direction": "in", "size_left": "47", "size_right": "0", "driver_value": "0" } ],
         "m_axis_dout_tvalid": [ { "direction": "out", "driver_value": "0x0" } ],
+        "m_axis_dout_tready": [ { "direction": "in", "driver_value": "0x0" } ],
         "m_axis_dout_tdata": [ { "direction": "out", "size_left": "15", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
@@ -110,7 +112,7 @@
             "TDEST_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TID_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TUSER_WIDTH": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "HAS_TREADY": [ { "value": "0", "value_src": "auto", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_TREADY": [ { "value": "1", "value_src": "auto", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TSTRB": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TKEEP": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TLAST": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
@@ -122,6 +124,7 @@
           },
           "port_maps": {
             "TDATA": [ { "physical_name": "s_axis_cartesian_tdata" } ],
+            "TREADY": [ { "physical_name": "s_axis_cartesian_tready" } ],
             "TVALID": [ { "physical_name": "s_axis_cartesian_tvalid" } ]
           }
         },
@@ -173,7 +176,7 @@
             "TDEST_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TID_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "TUSER_WIDTH": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "HAS_TREADY": [ { "value": "0", "value_src": "auto", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_TREADY": [ { "value": "1", "value_src": "auto", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TSTRB": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TKEEP": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "HAS_TLAST": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
@@ -185,6 +188,7 @@
           },
           "port_maps": {
             "TDATA": [ { "physical_name": "m_axis_dout_tdata" } ],
+            "TREADY": [ { "physical_name": "m_axis_dout_tready" } ],
             "TVALID": [ { "physical_name": "m_axis_dout_tvalid" } ]
           }
         }

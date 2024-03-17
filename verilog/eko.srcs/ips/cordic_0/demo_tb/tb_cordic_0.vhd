@@ -101,10 +101,16 @@ architecture tb of tb_cordic_0 is
   signal s_axis_phase_tvalid    : std_logic := '0';  -- TVALID for channel S_AXIS_PHASE
   signal s_axis_phase_tdata     : std_logic_vector(23 downto 0) := (others => 'X');  -- TDATA for channel S_AXIS_PHASE
 
+  -- Master channel M_AXIS_DOUT inputs
+  signal m_axis_dout_tready : std_logic := '0';  -- TREADY for channel M_AXIS_DOUT
+
   -----------------------------------------------------------------------
   -- DUT output signals
   -----------------------------------------------------------------------
 
+  -- Slave channels outputs
+  signal s_axis_cartesian_tready  : std_logic := '0';  -- TREADY for channel S_AXIS_CARTESIAN
+  signal s_axis_phase_tready      : std_logic := '0';  -- TREADY for channel S_AXIS_PHASE
   -- Master channel DOUT outputs
   signal m_axis_dout_tvalid : std_logic := '0';  -- TVALID for channel M_AXIS_DOUT
   signal m_axis_dout_tdata  : std_logic_vector(15 downto 0) := (others => '0');  -- TDATA for channel M_AXIS_DOUT
@@ -210,8 +216,10 @@ begin
       aclk                => aclk,
       aresetn             => aresetn,
       s_axis_cartesian_tvalid     => s_axis_cartesian_tvalid,
+      s_axis_cartesian_tready     => s_axis_cartesian_tready,
       s_axis_cartesian_tdata      => s_axis_cartesian_tdata,
       m_axis_dout_tvalid  => m_axis_dout_tvalid,
+      m_axis_dout_tready  => m_axis_dout_tready,
       m_axis_dout_tdata   => m_axis_dout_tdata
       );
 
@@ -265,9 +273,13 @@ begin
     variable ip_phase_index       : integer   := 0;
     variable cartesian_tvalid_nxt : std_logic := '0';
     variable phase_tvalid_nxt     : std_logic := '0';
+    variable dout_tready_nxt      : std_logic := '0';
     variable phase2_cycles        : integer := 1;
     variable phase2_count         : integer := 0;
     constant PHASE2_LIMIT         : integer := 30;
+    variable phase3_cycles        : integer := 1;
+    variable phase3_count         : integer := 0;
+    constant PHASE3_LIMIT         : integer := 30;
   begin
 
     -- Test is stopped in clock_gen process, use endless loop here
@@ -277,36 +289,45 @@ begin
       wait until rising_edge(aclk) and aresetn = '1';
       wait for T_HOLD;
 
-      -- Drive AXI TVALID signals to demonstrate different types of operation
+      -- Drive AXI handshake signals to demonstrate different types of operation
       case cycles is  -- do different types of operation at different phases of the test
         when 0 to PHASE_CYCLES * 1 - 1 =>
-          -- Phase 1: inputs always valid, no missing input data
+          -- Phase 1: full throughput, no backpressure
           cartesian_tvalid_nxt    := '1';
           phase_tvalid_nxt    := '1';
+          dout_tready_nxt := '1';
         when PHASE_CYCLES * 1 to PHASE_CYCLES * 2 - 1 =>
-          -- Phase 2: deprive channel S_AXIS_CARTESIAN of valid transactions at an increasing rate
+          -- Phase 2: apply increasing amounts of backpressure
+          cartesian_tvalid_nxt    := '1';
           phase_tvalid_nxt    := '1';
           if phase2_count < phase2_cycles then
-            cartesian_tvalid_nxt := '0';
+            dout_tready_nxt := '0';
           else
-            cartesian_tvalid_nxt := '1';
+            dout_tready_nxt := '1';
           end if;
           phase2_count := phase2_count + 1;
-          if phase2_count >= PHASE2_LIMIT then
+          if phase2_count = PHASE2_LIMIT then
             phase2_count  := 0;
             phase2_cycles := phase2_cycles + 1;
           end if;
         when PHASE_CYCLES * 2 to PHASE_CYCLES * 3 - 1 =>
-          -- Phase 3: deprive channel S_AXIS_CARTESIAN of 1 out of 2 transactions, and channel S_AXIS_PHASE of 1 out of 3 transactions
-          if cycles mod 2 = 0 then
-            cartesian_tvalid_nxt := '0';
+          -- Phase 3: deprive channel S_AXIS_CARTESIAN of valid transactions at an increasing rate
+          phase_tvalid_nxt    := '1';
+          dout_tready_nxt := '1';
+          if phase3_count < phase3_cycles then
+            -- AXI protocol forbids changing TVALID from high to low if TREADY is low
+            if s_axis_cartesian_tvalid = '0' or s_axis_cartesian_tready = '1' then
+              cartesian_tvalid_nxt := '0';
+            end if;
           else
             cartesian_tvalid_nxt := '1';
           end if;
-          if cycles mod 3 = 0 then
-            phase_tvalid_nxt := '0';
-          else
-            phase_tvalid_nxt := '1';
+          if phase3_count >= phase3_cycles or s_axis_cartesian_tvalid = '0' or s_axis_cartesian_tready = '1' then
+            phase3_count := phase3_count + 1;
+            if phase3_count >= PHASE3_LIMIT then
+              phase3_count  := 0;
+              phase3_cycles := phase3_cycles + 1;
+            end if;
           end if;
         when others =>
           -- Test will stop imminently - do nothing
@@ -316,12 +337,14 @@ begin
       -- Drive handshake signals with local variable values
       s_axis_cartesian_tvalid <= cartesian_tvalid_nxt;
       s_axis_phase_tvalid     <= phase_tvalid_nxt;
+      m_axis_dout_tready      <= dout_tready_nxt;
 
       -- Drive AXI slave channel CARTESIAN payload
       -- Drive 'X's on payload signals when not valid
+      -- Payload only changes when TVALID goes high or when a transaction just occurred
       if cartesian_tvalid_nxt /= '1' then
         s_axis_cartesian_tdata <= (others => 'X');
-      else
+      elsif s_axis_cartesian_tvalid /= '1' or (s_axis_cartesian_tvalid = '1' and s_axis_cartesian_tready = '1') then
         -- TDATA: Real and imaginary components are each 24 bits wide and byte-aligned at their LSBs
         s_axis_cartesian_tdata(23 downto 0) <= IP_CARTESIAN_DATA(ip_cartesian_index).re;
         s_axis_cartesian_tdata(47 downto 24) <= IP_CARTESIAN_DATA(ip_cartesian_index).im;
@@ -330,21 +353,22 @@ begin
 
       -- Drive AXI slave channel PHASE payload
       -- Drive 'X's on payload signals when not valid
+      -- Payload only changes when TVALID goes high or when a transaction just occurred
       if phase_tvalid_nxt /= '1' then
         s_axis_phase_tdata <= (others => 'X');
-      else
+      elsif s_axis_phase_tvalid /= '1' or (s_axis_phase_tvalid = '1' and s_axis_phase_tready = '1') then
         -- TDATA: Real component is 24 bits wide and byte-aligned at its LSBs
         s_axis_phase_tdata(23 downto 0) <= IP_PHASE_DATA(ip_phase_index).re;
       end if;
 
       -- Increment input data indices
-      if cartesian_tvalid_nxt = '1' then
+      if cartesian_tvalid_nxt = '1' and s_axis_cartesian_tready = '1' then
         ip_cartesian_index := ip_cartesian_index + 1;
         if ip_cartesian_index = IP_CARTESIAN_DEPTH then
           ip_cartesian_index := 0;
         end if;
       end if;
-      if phase_tvalid_nxt = '1' then
+      if phase_tvalid_nxt = '1' and s_axis_phase_tready = '1' then
         ip_phase_index := ip_phase_index + 1;
         if ip_phase_index = IP_PHASE_DEPTH then
           ip_phase_index := 0;
@@ -361,6 +385,10 @@ begin
 
   check_outputs : process
     variable check_ok : boolean := true;
+    -- Previous values of DOUT channel signals
+    variable dout_tvalid_prev : std_logic := '0';
+    variable dout_tready_prev : std_logic := '0';
+    variable dout_tdata_prev  : std_logic_vector(15 downto 0) := (others => '0');
   begin
 
     -- Check outputs T_STROBE time after rising edge of clock
@@ -371,6 +399,7 @@ begin
     -- which would make this demonstration testbench unwieldy.
     -- Instead, check the protocol of the DOUT channel:
     -- check that the payload is valid (not X) when TVALID is high
+    -- and check that the payload does not change while TVALID is high until TREADY goes high
 
     if m_axis_dout_tvalid = '1' and aresetn = '1' then
       if is_x(m_axis_dout_tdata) then
@@ -378,10 +407,24 @@ begin
         check_ok := false;
       end if;
 
+      if dout_tvalid_prev = '1' and dout_tready_prev = '0' then  -- payload must be the same as last cycle
+        if m_axis_dout_tdata /= dout_tdata_prev then
+          report "ERROR: m_axis_dout_tdata changed while m_axis_dout_tvalid was high and m_axis_dout_tready was low" severity error;
+          check_ok := false;
+        end if;
+      end if;
+
     end if;
 
     assert check_ok
       report "ERROR: terminating test with failures." severity failure;
+
+    -- Record payload values for checking next clock cycle
+    if check_ok then
+      dout_tvalid_prev := m_axis_dout_tvalid;
+      dout_tready_prev := m_axis_dout_tready;
+      dout_tdata_prev  := m_axis_dout_tdata;
+    end if;
 
   end process check_outputs;
 

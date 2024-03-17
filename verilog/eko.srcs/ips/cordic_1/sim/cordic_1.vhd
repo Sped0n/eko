@@ -61,8 +61,10 @@ ENTITY cordic_1 IS
     aclk : IN STD_LOGIC;
     aresetn : IN STD_LOGIC;
     s_axis_phase_tvalid : IN STD_LOGIC;
+    s_axis_phase_tready : OUT STD_LOGIC;
     s_axis_phase_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     m_axis_dout_tvalid : OUT STD_LOGIC;
+    m_axis_dout_tready : IN STD_LOGIC;
     m_axis_dout_tdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END cordic_1;
@@ -131,10 +133,12 @@ ARCHITECTURE cordic_1_arch OF cordic_1 IS
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn_intf RST";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_dout_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TDATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_dout_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DOUT, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF m_axis_dout_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TREADY";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_dout_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DOUT, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_dout_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DOUT TVALID";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_phase_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TDATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_phase_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_PHASE, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_phase_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TREADY";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_phase_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_PHASE, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_phase_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_PHASE TVALID";
 BEGIN
   U0 : cordic_v6_0_18
@@ -157,7 +161,7 @@ BEGIN
       C_PRECISION => 0,
       C_ROUND_MODE => 0,
       C_SCALE_COMP => 0,
-      C_THROTTLE_SCHEME => 3,
+      C_THROTTLE_SCHEME => 2,
       C_TLAST_RESOLUTION => 0,
       C_HAS_S_AXIS_PHASE_TUSER => 0,
       C_HAS_S_AXIS_PHASE_TLAST => 0,
@@ -175,6 +179,7 @@ BEGIN
       aclken => '1',
       aresetn => aresetn,
       s_axis_phase_tvalid => s_axis_phase_tvalid,
+      s_axis_phase_tready => s_axis_phase_tready,
       s_axis_phase_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
       s_axis_phase_tlast => '0',
       s_axis_phase_tdata => s_axis_phase_tdata,
@@ -183,7 +188,7 @@ BEGIN
       s_axis_cartesian_tlast => '0',
       s_axis_cartesian_tdata => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 32)),
       m_axis_dout_tvalid => m_axis_dout_tvalid,
-      m_axis_dout_tready => '0',
+      m_axis_dout_tready => m_axis_dout_tready,
       m_axis_dout_tdata => m_axis_dout_tdata
     );
 END cordic_1_arch;
