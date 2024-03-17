@@ -58,10 +58,13 @@ module scale_0 (
     end
   endgenerate
 
+  // NOTE: For Xilinx CORDIC IP (arctan mode), the input vector (X_IN, Y_IN) 
+  //       is expressed as a pair of fixed-point twos complement numbers with 
+  //       an integer width of 2 bits (1QN format). 
   assign m_axis_tdata = {
-    {2{axis_shift_0_tdata[N][111]}},
+    {2{axis_shift_0_tdata[N][111]}},  // <-- integer part
     axis_shift_0_tdata[N][111:90],
-    {2{axis_shift_0_tdata[N][55]}},
+    {2{axis_shift_0_tdata[N][55]}},  // <-- integer part
     axis_shift_0_tdata[N][55:34]
   };
   assign m_axis_tvalid = axis_shift_0_tvalid[N];
