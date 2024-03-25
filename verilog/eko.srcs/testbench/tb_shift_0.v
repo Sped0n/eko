@@ -23,7 +23,7 @@
 module tb_shift_0;
 
   // shift_0 Parameters
-  parameter PERIOD = 10;
+  parameter PERIOD = 20;
   parameter N = 8;
 
   // shift_0 Inputs

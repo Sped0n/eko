@@ -23,7 +23,7 @@
 module tb_multiply_0;
 
   // multiply_0 Parameters
-  parameter PERIOD = 10;
+  parameter PERIOD = 20;
 
 
   // multiply_0 Inputs

@@ -23,7 +23,7 @@
 module tb_scale_0;
 
   // scale_0 Parameters
-  parameter PERIOD = 10;
+  parameter PERIOD = 20;
   parameter N = 6;
 
   // scale_0 Inputs

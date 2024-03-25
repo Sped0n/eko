@@ -23,7 +23,7 @@
 module tb_normalize_0;
 
   // normalize_0 Parameters
-  parameter PERIOD = 10;
+  parameter PERIOD = 20;
 
 
   // normalize_0 Inputs
