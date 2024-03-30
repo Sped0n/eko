@@ -31,12 +31,8 @@ module magnitude_0 (
     input         m_axis_tready
 );
   wire [31:0] axis_cordic_2_tdata;
-  wire        axis_cordic_2_tvalid;
-  wire        axis_cordic_2_tready;
 
-  assign m_axis_tdata  = axis_cordic_2_tdata[15:0];
-  assign m_axis_tvalid = axis_cordic_2_tvalid;
-  assign m_axis_tready = axis_cordic_2_tready;
+  assign m_axis_tdata = axis_cordic_2_tdata[15:0];
 
   cordic_2 cordic_2_inst0 (
       .aclk(aclk),
@@ -56,8 +52,8 @@ module magnitude_0 (
       .s_axis_cartesian_tvalid(s_axis_tvalid),
       .s_axis_cartesian_tready(s_axis_tready),
       .m_axis_dout_tdata(axis_cordic_2_tdata),
-      .m_axis_dout_tvalid(axis_cordic_2_tvalid),
-      .m_axis_dout_tready(axis_cordic_2_tready)
+      .m_axis_dout_tvalid(m_axis_tvalid),
+      .m_axis_dout_tready(m_axis_tready)
   );
 
 endmodule
