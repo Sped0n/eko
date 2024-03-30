@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: spedon wen
 // 
 // Create Date: 03/30/2024 09:27:34 PM
 // Design Name: 
@@ -25,7 +25,8 @@ module tb_gcc_phat ();
   parameter PERIOD = 20;
 
   // *** interger define ***
-  integer        sin_txt;
+  integer        sig_txt_1;
+  integer        sig_txt_2;
   integer        count;
 
 
@@ -33,7 +34,8 @@ module tb_gcc_phat ();
   reg            ready = 0;
   reg            clk = 0;
   reg            rst_n = 0;
-  reg     [15:0] sin_wave = 0;
+  reg     [15:0] sig_1 = 0;
+  reg     [15:0] sig_2 = 0;
   reg            s_axis_data_tvalid = 0;
   reg            s_axis_data_tlast = 0;
 
@@ -59,7 +61,7 @@ module tb_gcc_phat ();
   gcc_phat gcc_phat_inst0 (
       .aclk(clk),
       .aresetn(rst_n),
-      .s_axis_in_tdata({sin_wave, sin_wave}),
+      .s_axis_in_tdata({sig_2, sig_1}),
       .s_axis_in_tready(s_axis_data_tready),
       .s_axis_in_tvalid(s_axis_data_tvalid),
       .m_axis_out_tdata(axis_gcc_phat_tdata),
@@ -69,8 +71,9 @@ module tb_gcc_phat ();
 
   // *** initial block ***
   initial begin
-    count   = 0;
-    sin_txt = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sinwave.txt", "r");
+    count = 0;
+    sig_txt_1 = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sig1.txt", "r");
+    sig_txt_2 = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sig2.txt", "r");
     #10000 ready = 1;
   end
 
@@ -79,10 +82,10 @@ module tb_gcc_phat ();
     if (s_axis_data_tready == 1 && ready == 1) begin
       if (count < 1024) begin
         s_axis_data_tvalid <= 1;
-        $fscanf(sin_txt, "%d", sin_wave);
+        $fscanf(sig_txt_1, "%d", sig_1);
+        $fscanf(sig_txt_2, "%d", sig_2);
         count <= count + 1;
       end else if (count == 1024) begin
-        $fclose(sin_txt);
         s_axis_data_tvalid <= 0;
       end
     end
