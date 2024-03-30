@@ -55,13 +55,13 @@ module tb_magnitude_0;
       .m_axis_tready(m_axis_tready),
 
       .s_axis_tready(s_axis_tready),
-      .m_axis_tdata (m_axis_tdata[15:0]),
+      .m_axis_tdata (m_axis_tdata[15:0]), // expected: 0001011111111111 -> 00.01011111111111, around 0.375
       .m_axis_tvalid(m_axis_tvalid)
   );
 
   initial begin
     #300;
-    s_axis_tdata  = {10'b0010000000, 6'd0, 10'b0101101010, 6'd0};
+    s_axis_tdata  = {10'b0010000000, 6'd0, 10'b0101101010, 6'd0};  // 0.707 + 0.25i
     s_axis_tvalid = 1;
     #600;
     $finish;
