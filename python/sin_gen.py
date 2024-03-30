@@ -3,8 +3,11 @@ import numpy as np
 
 Fs = 1024
 t = np.arange(0, 1, 1 / Fs)
-y = np.sin(300 * t)
-y_16bit = np.floor(y * np.power(2, 15))
+y = np.sin(30 * t)
+noise = np.random.randn(len(t))
+noise_intensity = 0.2
+y_noisy = y + noise_intensity * noise
+y_16bit = np.floor(y_noisy * np.power(2, 14))
 
 plt.figure()
 
@@ -33,6 +36,6 @@ plt.plot(y2.real)
 print(y2.real)
 plt.xlabel("FFT after converting to unsigned number (Real part)")
 
-np.savetxt("sinwave.txt", y_16bit_a, fmt="%d")
+np.savetxt("sinwave_n2.txt", y_16bit_a, fmt="%d")
 
 plt.show()
