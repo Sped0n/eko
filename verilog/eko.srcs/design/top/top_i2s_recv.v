@@ -35,10 +35,11 @@ module top_i2s_recv (
   wire        rst_n;
   wire [31:0] i2s_data;
   wire        i2s_ready;
+  wire        m_axis_in_tvalid;
+  wire [31:0] m_axis_in_tdata;
 
   // main code
   assign rst_n = sys_rst_n & locked;
-  assign led0  = i2s_ready;
 
   // pll
   clk_wiz_0 pll_inst0 (
@@ -59,10 +60,22 @@ module top_i2s_recv (
       .i2s_data (i2s_data)
   );
 
+  upstream_hub upstream_hub_inst_0 (
+      .clk             (clk_50m),
+      .rst_n           (rst_n),
+      .i2s_ready       (i2s_ready),
+      .i2s_data        (i2s_data),
+      .m_axis_in_tready(1'b1),
+      .m_axis_in_tdata (m_axis_in_tdata),
+      .m_axis_in_tvalid(m_axis_in_tvalid),
+      .vad_result      (led0)
+  );
+
   // ila
   ila_i2s_0 ila_i2s_inst0 (
       .clk   (clk_50m),
-      .probe0(i2s_data),
-      .probe1(i2s_ready)
+      .probe0(m_axis_in_tdata[15:0]),
+      .probe1(m_axis_in_tdata[31:16]),
+      .probe2(m_axis_in_tvalid)
   );
 endmodule
