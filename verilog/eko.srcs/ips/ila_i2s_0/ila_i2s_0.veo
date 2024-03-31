@@ -57,8 +57,9 @@ ila_i2s_0 your_instance_name (
 	.clk(clk), // input wire clk
 
 
-	.probe0(probe0), // input wire [31:0]  probe0  
-	.probe1(probe1) // input wire [0:0]  probe1
+	.probe0(probe0), // input wire [15:0]  probe0  
+	.probe1(probe1), // input wire [15:0]  probe1 
+	.probe2(probe2) // input wire [0:0]  probe2
 );
 
 // INST_TAG_END ------ End INSTANTIATION Template ---------
