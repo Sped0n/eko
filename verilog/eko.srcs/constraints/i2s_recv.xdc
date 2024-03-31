@@ -15,4 +15,4 @@ set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN U7} [get_ports i2s_bclk]
 set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN Y9} [get_ports i2s_din]
 
 ## led
-set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN R2} [get_ports {led0}]
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN R2} [get_ports led0]
