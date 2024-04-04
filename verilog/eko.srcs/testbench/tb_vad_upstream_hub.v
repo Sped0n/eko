@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: spedon wen
+// Engineer: 
 // 
-// Create Date: 01/03/2024 09:21:17 PM
+// Create Date: 04/04/2024 08:52:39 PM
 // Design Name: 
-// Module Name: tb_upstream_hub
+// Module Name: tb_vad_upstream_hub
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module tb_upstream_hub ();
+module tb_vad_upstream_hub ();
 
   // *** parameter define ***
   parameter PERIOD = 20;
@@ -75,7 +75,10 @@ module tb_upstream_hub ();
       .i2s_data        (i2s_data),
       .m_axis_in_tready(m_axis_in_tready),
       .m_axis_in_tdata (m_axis_in_tdata[31:0]),
-      .m_axis_in_tvalid(m_axis_in_tvalid)
+      .m_axis_in_tvalid(m_axis_in_tvalid),
+      .vad_en          (1'b1),
+      .vad_ch_sel      (1'b1),
+      .vad_results     ()
   );
 
   // *** initial block ***

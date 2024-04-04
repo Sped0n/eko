@@ -44,7 +44,7 @@ module scale_0 (
   genvar i;
 
   generate
-    for (i = 0; i < N; i = i + 1) begin
+    for (i = 0; i < N; i = i + 1) begin : gen_shift
       shift_0 shift_0_inst0 (
           .aclk         (aclk),
           .aresetn      (aresetn),

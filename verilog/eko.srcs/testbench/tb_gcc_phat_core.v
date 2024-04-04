@@ -5,7 +5,7 @@
 // 
 // Create Date: 03/30/2024 09:27:34 PM
 // Design Name: 
-// Module Name: tb_gcc_phat
+// Module Name: tb_gcc_phat_core
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module tb_gcc_phat ();
+module tb_gcc_phat_core ();
   // *** parameter define ***
   parameter PERIOD = 20;
 
@@ -58,7 +58,7 @@ module tb_gcc_phat ();
   // *** main code ***
 
   // xfft instance
-  gcc_phat gcc_phat_inst0 (
+  gcc_phat_core gcc_phat_core_inst0 (
       .aclk(clk),
       .aresetn(rst_n),
       .s_axis_in_tdata({sig_2, sig_1}),

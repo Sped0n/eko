@@ -46,14 +46,14 @@ module shift_0 (
     //       00 or 11, then shift[i][j] is assigned a value of 1 (true), indicating that these two data 
     //        blocks need to be left-shifted at the current stage; otherwise, shift[i][j] is assigned a value 
     //        of 0 (false), indicating no left shift operation is needed.
-    for (i = 0; i < N; i = i + 1) begin
-      for (j = 0; j < 1; j = j + 1) begin
+    for (i = 0; i < N; i = i + 1) begin : gen_shift_rounds
+      for (j = 0; j < 1; j = j + 1) begin : gen_shift_flags
         assign shift[i][j] = (
             (data[i][j*2][55:54] == 2'b00 || data[i][j*2][55:54] == 2'b11) && 
             (data[i][j*2+1][55:54] == 2'b00 || data[i][j*2+1][55:54] == 2'b11)
         );
       end
-      for (j = 0; j < 2; j = j + 1) begin
+      for (j = 0; j < 2; j = j + 1) begin : gen_shift_data
         assign data[i+1][j] = shift[i][j/2] ? {data[i][j][54:0], 1'b0} : data[i][j];
       end
     end
@@ -69,4 +69,5 @@ module shift_0 (
       .m_axis_tvalid(m_axis_tvalid),
       .m_axis_tready(m_axis_tready)
   );
+
 endmodule

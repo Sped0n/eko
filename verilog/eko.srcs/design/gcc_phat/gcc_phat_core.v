@@ -5,7 +5,7 @@
 // 
 // Create Date: 03/30/2024 09:03:30 PM
 // Design Name: 
-// Module Name: gcc_phat
+// Module Name: gcc_phat_core
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module gcc_phat (
+module gcc_phat_core (
     input         aclk,
     input         aresetn,
     input  [31:0] s_axis_in_tdata,

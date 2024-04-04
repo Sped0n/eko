@@ -47,7 +47,7 @@ module tb_i2s_recv ();
 
   // i2s_din
   always @(negedge i2s_bclk) begin
-    i2s_din <= {$random} % 2;
+    i2s_din <= {$urandom} % 2;
   end
 
   // i2s_recv
