@@ -1,4 +1,5 @@
 parameter-name-style=localparam_style:ALL_CAPS
+-always-comb
 -no-trailing-spaces
 -unpacked-dimensions-range-ordering
 -explicit-parameter-storage-type
