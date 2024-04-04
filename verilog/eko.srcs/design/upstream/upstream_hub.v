@@ -138,14 +138,14 @@ module upstream_hub (
             end
             if (index == {10{1'b1}}) begin
               state <= LOAD;
-              if (!vad_result) begin
+              if (!vad_result) begin  // only update threshold when no voice detected
                 if (tmp_threshold > threshold) begin // if new threshold is higher, update threshold, but slowly
                   threshold <= ((threshold >>> 1) + (threshold >>> 2) + (threshold >>> 3) + (tmp_threshold >>> 3) > VAD_BASE_THS) 
                   ? (threshold >>> 1) + (threshold >>> 2) + (threshold >>> 3) + (tmp_threshold >>> 3)
                   : VAD_BASE_THS;
                 end else begin  // if new threshold is lower, update threshold, but quickly
-                  threshold <= ((threshold >>> 2) + (tmp_threshold >>> 2) + (tmp_threshold >>> 1) > VAD_BASE_THS)
-                  ? (threshold >>> 2) + (tmp_threshold >>> 2) + (tmp_threshold >>> 1)
+                  threshold <= ((threshold >>> 1) + (tmp_threshold >>> 1) > VAD_BASE_THS)
+                  ? (threshold >>> 1) + (tmp_threshold >>> 1)
                   : VAD_BASE_THS;
                 end
               end
