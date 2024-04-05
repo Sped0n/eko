@@ -22,7 +22,7 @@ def xcorr_freq(s1, s2, pad=False):
 
 
 sample_cnt = 1024
-shift = 200
+shift = 10
 one_ahead = False
 noise_intensity = 0.1
 
@@ -44,8 +44,8 @@ signed_y2_16bit = y2_16bit.copy()
 signed_y1_16bit[signed_y1_16bit < 0] += 2**16
 signed_y2_16bit[signed_y2_16bit < 0] += 2**16
 
-np.savetxt("sig1.txt", signed_y1_16bit, fmt="%d")
-np.savetxt("sig2.txt", signed_y2_16bit, fmt="%d")
+np.savetxt("sig3.txt", signed_y1_16bit, fmt="%d")
+np.savetxt("sig4.txt", signed_y2_16bit, fmt="%d")
 
 plt.figure()
 
