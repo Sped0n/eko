@@ -213,7 +213,7 @@ BEGIN
       C_TWIDDLE_MEM_TYPE => 1,
       C_BRAM_STAGES => 0,
       C_REORDER_MEM_TYPE => 1,
-      C_USE_HYBRID_RAM => 1,
+      C_USE_HYBRID_RAM => 0,
       C_OPTIMIZE_GOAL => 0,
       C_CMPY_TYPE => 1,
       C_BFLY_TYPE => 0

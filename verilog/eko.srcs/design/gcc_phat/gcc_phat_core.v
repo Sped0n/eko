@@ -105,7 +105,7 @@ module gcc_phat_core (
       .s_axis_data_tvalid  (axis_normalize_0_tvalid),
       .s_axis_data_tready  (axis_normalize_0_tready),
       .s_axis_data_tlast   (0),
-      .s_axis_config_tdata ({5'b0, {9{2'b01}}, 1'b0}),
+      .s_axis_config_tdata ({5'b0, {4{2'b10}}, 2'b11, 1'b0}),
       .s_axis_config_tvalid(1'b1),
       .m_axis_data_tdata   (axis_xfft_1_tdata),
       .m_axis_data_tvalid  (axis_xfft_1_tvalid),
