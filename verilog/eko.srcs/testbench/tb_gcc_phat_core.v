@@ -57,7 +57,7 @@ module tb_gcc_phat_core ();
 
   // *** main code ***
 
-  // xfft instance
+  // gcc phat core instance
   gcc_phat_core gcc_phat_core_inst0 (
       .aclk(clk),
       .aresetn(rst_n),
