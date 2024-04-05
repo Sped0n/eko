@@ -33,7 +33,7 @@ module i2s_recv_3pairs (
 );
 
   // *** parameter define ***
-  parameter DIVISOR = 16;
+  parameter DIVISOR = 13;
 
   // *** reg define ***
   reg  [4:0] clock_count;

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: spedon wen
 // 
-// Create Date: 03/30/2024 09:27:34 PM
+// Create Date: 04/05/2024 04:49:26 PM
 // Design Name: 
-// Module Name: tb_gcc_phat_core
+// Module Name: tb_downstream_hub
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module tb_gcc_phat_core ();
+module tb_downstream_hub ();
   // *** parameter define ***
   parameter PERIOD = 20;
 
@@ -37,12 +37,12 @@ module tb_gcc_phat_core ();
   reg     [15:0] sig_1 = 0;
   reg     [15:0] sig_2 = 0;
   reg            s_axis_data_tvalid = 0;
-  reg            s_axis_data_tlast = 0;
 
   // *** wire define ***
   wire           s_axis_data_tready;
   wire    [15:0] axis_gcc_phat_tdata;
   wire           axis_gcc_phat_tvalid;
+  wire           axis_gcc_phat_tready;
 
 
   // *** clock generator ***
@@ -65,15 +65,27 @@ module tb_gcc_phat_core ();
       .s_axis_in_tready(s_axis_data_tready),
       .s_axis_in_tvalid(s_axis_data_tvalid),
       .m_axis_out_tdata(axis_gcc_phat_tdata),
-      .m_axis_out_tready(1'd1),
+      .m_axis_out_tready(axis_gcc_phat_tready),
       .m_axis_out_tvalid(axis_gcc_phat_tvalid)
+  );
+
+  // downstream hub
+  downstream_hub downstream_hub_inst0 (
+      .aclk(clk),
+      .aresetn(rst_n),
+      .s_axis_tdata(axis_gcc_phat_tdata),
+      .s_axis_tvalid(axis_gcc_phat_tvalid),
+      .s_axis_tready(axis_gcc_phat_tready),
+      .m_axis_tdata(),
+      .m_axis_tvalid(),
+      .m_axis_tready(1'd1)
   );
 
   // *** initial block ***
   initial begin
     count = 0;
-    sig_txt_1 = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sig1.txt", "r");
-    sig_txt_2 = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sig2.txt", "r");
+    sig_txt_1 = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sig3.txt", "r");
+    sig_txt_2 = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sig4.txt", "r");
     #10000 ready = 1;
   end
 
