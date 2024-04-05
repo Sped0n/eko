@@ -21,36 +21,24 @@
 
 
 module top_basic (
-    input  sys_clk,
-    input  sys_rst_n,
-    input  i2s_din_0_1,
-    input  i2s_din_2_3,
-    input  i2s_din_4_5,
+    input sys_clk,
+    input sys_rst_n,
+    input i2s_din_0_1,
+    input i2s_din_2_3,
+    input i2s_din_4_5,
     output i2s_lrclk,
     output i2s_bclk,
-    output led0
+    output led0,
+    output [5:0] seg_sel,
+    output [7:0] seg_disp
 );
-
-  // wire define
-  wire        clk_50m;
-  wire        locked;
-  wire        rst_n;
-  wire [95:0] i2s_data;
-  wire        i2s_ready;
-
-  wire        m_axis_in_tready;
-  wire        m_axis_in_tvalid;
-  wire [31:0] m_axis_in_tdata;
-  wire        vad_result;
-
-  wire [15:0] axis_gcc_phat_tdata;
-  wire        axis_gcc_phat_tvalid;
-
-  // main code
-  assign rst_n = sys_rst_n & locked;
-  assign led0  = vad_result;
-
   // pll
+  wire clk_50m;
+  wire locked;
+  wire rst_n;
+
+  assign rst_n = sys_rst_n & locked;
+
   clk_wiz_0 pll_inst0 (
       .clk_in1(sys_clk),
       .clk_50m(clk_50m),
@@ -58,7 +46,10 @@ module top_basic (
       .reset  (~sys_rst_n)
   );
 
-  // i2s_recv
+  // i2s
+  wire [95:0] i2s_data;
+  wire        i2s_ready;
+
   i2s_recv_3pairs i2s_recv_3pairs_inst0 (
       .clk        (clk_50m),
       .rst_n      (rst_n),
@@ -71,37 +62,88 @@ module top_basic (
       .i2s_data   (i2s_data)
   );
 
+  // upstream
+  wire        axis_upstream_tready;
+  wire        axis_upstream_tvalid;
+  wire [31:0] axis_upstream_tdata;
+  wire        vad_result;
+
+  assign led0 = vad_result;
+
   vad_upstream_hub vad_upstream_hub_inst_0 (
       .clk             (clk_50m),
       .rst_n           (rst_n),
       .i2s_ready       (i2s_ready),
       .i2s_data        ({i2s_data[31:16], i2s_data[47:32]}),
-      .m_axis_in_tready(m_axis_in_tready),
-      .m_axis_in_tdata (m_axis_in_tdata),
-      .m_axis_in_tvalid(m_axis_in_tvalid),
+      .m_axis_in_tready(axis_upstream_tready),
+      .m_axis_in_tdata (axis_upstream_tdata),
+      .m_axis_in_tvalid(axis_upstream_tvalid),
       .vad_en          (1'b1),
       .vad_ch_sel      (1'b0),
       .vad_result      (vad_result)
   );
+
+  // gcc phat core
+  wire [15:0] axis_gcc_phat_tdata;
+  wire        axis_gcc_phat_tvalid;
+  wire        axis_gcc_phat_tready;
 
   gcc_phat_core gcc_phat_core_inst0 (
       .aclk(clk_50m),
       .aresetn(rst_n),
       .s_axis_in_tdata(m_axis_in_tdata),
       .s_axis_in_tready(m_axis_in_tready),
-      .s_axis_in_tvalid(m_axis_in_tvalid),
+      .s_axis_in_tvalid(m_axis_in_tvalid & vad_result),
       .m_axis_out_tdata(axis_gcc_phat_tdata),
-      .m_axis_out_tready(1'd1),
+      .m_axis_out_tready(axis_gcc_phat_tready),
       .m_axis_out_tvalid(axis_gcc_phat_tvalid)
   );
 
-  // ila
-  ila_i2s_0 ila_i2s_inst0 (
-      .clk   (clk_50m),
-      .probe0(axis_gcc_phat_tdata[15:0]),
-      .probe1(axis_gcc_phat_tvalid),
-      .probe2(m_axis_in_tdata[31:16]),
-      .probe3(m_axis_in_tdata[15:0]),
-      .probe4(m_axis_in_tvalid & vad_result)
+  // downstream
+  wire [7:0] axis_downstream_tdata;
+  wire       axis_downstream_tvalid;
+
+  downstream_hub downstream_hub_inst0 (
+      .aclk   (clk_50m),
+      .aresetn(rst_n),
+      .s_axis_tdata(axis_gcc_phat_tdata),
+      .s_axis_tvalid(axis_gcc_phat_tvalid),
+      .s_axis_tready(axis_gcc_phat_tready),
+      .m_axis_tdata(axis_downstream_tdata),
+      .m_axis_tvalid(axis_downstream_tvalid),
+      .m_axis_tready(1'b1)
   );
+
+  // seg
+  reg [35:0] seg_data;
+
+  seg seg_inst0 (
+      .aclk(clk_50m),
+      .aresetn(rst_n),
+      .data(seg_data),
+      .dots(6'b000000),
+      .en(1'b1),
+      .seg_sel(seg_sel),
+      .seg_disp(seg_disp)
+  );
+
+  wire [11:0] axis_downstream_tdata_bcd;
+
+  bin2bcd bin2bcd_inst0 (
+      .bin({3'b0, axis_downstream_tdata}),
+      .bcd(axis_downstream_tdata_bcd)
+  );
+
+  // main code
+  always @(posedge clk_50m or negedge rst_n) begin
+    if (!rst_n) begin
+      seg_data <= 36'b0;
+    end else begin
+      if (axis_downstream_tvalid) begin
+        seg_data[5:0]  <= {2'b0, axis_downstream_tdata_bcd[3:0]};  // one digit
+        seg_data[11:6] <= {2'b0, axis_downstream_tdata_bcd[7:4]};  // ten digit
+      end
+    end
+  end
+
 endmodule

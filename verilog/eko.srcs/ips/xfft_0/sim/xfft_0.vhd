@@ -193,7 +193,7 @@ BEGIN
       C_THROTTLE_SCHEME => 1,
       C_CHANNELS => 2,
       C_NFFT_MAX => 10,
-      C_ARCH => 2,
+      C_ARCH => 1,
       C_HAS_NFFT => 0,
       C_USE_FLT_PT => 0,
       C_INPUT_WIDTH => 16,
@@ -213,7 +213,7 @@ BEGIN
       C_TWIDDLE_MEM_TYPE => 1,
       C_BRAM_STAGES => 0,
       C_REORDER_MEM_TYPE => 1,
-      C_USE_HYBRID_RAM => 0,
+      C_USE_HYBRID_RAM => 1,
       C_OPTIMIZE_GOAL => 0,
       C_CMPY_TYPE => 1,
       C_BFLY_TYPE => 0

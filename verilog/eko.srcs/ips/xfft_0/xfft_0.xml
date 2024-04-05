@@ -1008,11 +1008,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:17 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b7c5056</spirit:value>
+            <spirit:value>9:4d569239</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1070,11 +1070,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:18 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b7c5056</spirit:value>
+            <spirit:value>9:4d569239</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1088,11 +1088,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:18 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b7c5056</spirit:value>
+            <spirit:value>9:4d569239</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1108,11 +1108,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:18 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b7c5056</spirit:value>
+            <spirit:value>9:4d569239</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1170,11 +1170,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:18 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1d0fbeb7</spirit:value>
+            <spirit:value>9:6777a10e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1190,11 +1190,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:18 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1d0fbeb7</spirit:value>
+            <spirit:value>9:6777a10e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1209,11 +1209,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:18 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b7c5056</spirit:value>
+            <spirit:value>9:4d569239</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1229,11 +1229,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:18 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b7c5056</spirit:value>
+            <spirit:value>9:4d569239</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1247,11 +1247,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:43:18 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:24:25 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b7c5056</spirit:value>
+            <spirit:value>9:4d569239</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1265,11 +1265,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Mar 05 13:45:06 UTC 2024</spirit:value>
+            <spirit:value>Fri Apr 05 15:26:20 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0b7c5056</spirit:value>
+            <spirit:value>9:4d569239</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1770,7 +1770,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_ARCH</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ARCH">2</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_ARCH">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_HAS_NFFT</spirit:name>
@@ -1850,7 +1850,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_USE_HYBRID_RAM</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_HYBRID_RAM">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_USE_HYBRID_RAM">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_OPTIMIZE_GOAL</spirit:name>
@@ -2553,7 +2553,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>implementation_options</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.implementation_options" spirit:choiceRef="choice_pairs_67c07e84" spirit:order="5">radix_2_burst_io</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.implementation_options" spirit:choiceRef="choice_pairs_67c07e84" spirit:order="5">radix_4_burst_io</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>target_data_throughput</spirit:name>
@@ -2629,7 +2629,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>memory_options_hybrid</spirit:name>
-      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.memory_options_hybrid" spirit:order="24">false</spirit:value>
+      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.memory_options_hybrid" spirit:order="24">true</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>complex_mult_type</spirit:name>
@@ -2683,6 +2683,7 @@
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.channels" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.data_format" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.implementation_options" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.memory_options_hybrid" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.number_of_stages_using_block_ram_for_data_and_phase_factors" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.output_ordering" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.scaling_options" xilinx:valueSource="user"/>

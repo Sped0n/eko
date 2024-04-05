@@ -94,7 +94,7 @@ architecture tb of tb_xfft_1 is
   -- Config slave channel signals
   signal s_axis_config_tvalid        : std_logic := '0';  -- payload is valid
   signal s_axis_config_tready        : std_logic := '1';  -- slave is ready
-  signal s_axis_config_tdata         : std_logic_vector(23 downto 0) := (others => '0');  -- data payload
+  signal s_axis_config_tdata         : std_logic_vector(15 downto 0) := (others => '0');  -- data payload
 
   -- Data slave channel signals
   signal s_axis_data_tvalid          : std_logic := '0';  -- payload is valid
@@ -125,7 +125,7 @@ architecture tb of tb_xfft_1 is
 
   -- Config slave channel alias signals
   signal s_axis_config_tdata_fwd_inv      : std_logic                    := '0';              -- forward or inverse
-  signal s_axis_config_tdata_scale_sch    : std_logic_vector(19 downto 0) := (others => '0');  -- scaling schedule
+  signal s_axis_config_tdata_scale_sch    : std_logic_vector(9 downto 0) := (others => '0');  -- scaling schedule
 
   -- Data slave channel alias signals
   signal s_axis_data_tdata_re             : std_logic_vector(15 downto 0) := (others => '0');  -- real data
@@ -455,7 +455,7 @@ begin
   -----------------------------------------------------------------------
 
   config_stimuli : process
-    variable scale_sch : std_logic_vector(19 downto 0);
+    variable scale_sch : std_logic_vector(9 downto 0);
   begin
 
     -- Drive a configuration when requested by data_stimuli process
@@ -485,12 +485,12 @@ begin
     if cfg_scale_sch = ZERO then  -- no scaling
       scale_sch := (others => '0');
     elsif cfg_scale_sch = DEFAULT then  -- default scaling, for largest magnitude output with no overflow guaranteed
-      scale_sch(1 downto 0) := "10";  -- largest scaling at first stage
-      for s in 2 to 10 loop
-        scale_sch(s*2-1 downto s*2-2) := "01";  -- less scaling at later stages
+      scale_sch(1 downto 0) := "11";  -- largest scaling at first stage
+      for s in 2 to 5 loop
+        scale_sch(s*2-1 downto s*2-2) := "10";  -- less scaling at later stages
       end loop;
     end if;
-    s_axis_config_tdata(20 downto 1) <= scale_sch;
+    s_axis_config_tdata(10 downto 1) <= scale_sch;
 
     -- Drive the transaction on the config slave channel
     s_axis_config_tvalid <= '1';
@@ -592,7 +592,7 @@ begin
 
   -- Config slave channel alias signals
   s_axis_config_tdata_fwd_inv    <= s_axis_config_tdata(0);
-  s_axis_config_tdata_scale_sch  <= s_axis_config_tdata(20 downto 1);
+  s_axis_config_tdata_scale_sch  <= s_axis_config_tdata(10 downto 1);
 
   -- Data slave channel alias signals
   s_axis_data_tdata_re           <= s_axis_data_tdata(15 downto 0);
