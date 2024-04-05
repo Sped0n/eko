@@ -59,6 +59,8 @@ plt.plot(y2_16bit)
 plt.xlabel("Sine wave 2 (16-bit)")
 
 gcc_phat = xcorr_freq(y1_16bit, y2_16bit)
+# print max value and its index
+print(np.max(gcc_phat), np.argmax(gcc_phat))
 
 plt.subplot(313)
 plt.plot(gcc_phat)
