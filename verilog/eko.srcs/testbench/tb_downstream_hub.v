@@ -84,8 +84,10 @@ module tb_downstream_hub ();
   // *** initial block ***
   initial begin
     count = 0;
-    sig_txt_1 = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sig3.txt", "r");
-    sig_txt_2 = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sig4.txt", "r");
+    sig_txt_1 =
+        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sig3.txt", "r");
+    sig_txt_2 =
+        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sig4.txt", "r");
     #10000 ready = 1;
   end
 

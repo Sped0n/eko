@@ -83,8 +83,9 @@ module tb_xfft_0 ();
 
   // *** initial block ***
   initial begin
-    count   = 0;
-    sin_txt = $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\python\\sinwave.txt", "r");
+    count = 0;
+    sin_txt =
+        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sinwave.txt", "r");
     #10000 ready = 1;
   end
 
