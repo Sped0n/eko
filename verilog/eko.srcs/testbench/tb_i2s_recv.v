@@ -57,8 +57,9 @@ module tb_i2s_recv ();
       .i2s_din(i2s_din),
       .i2s_lrclk(),
       .i2s_bclk(i2s_bclk),
-      .i2s_ready(),
-      .i2s_data()
+      .m_axis_i2s_tvalid(),
+      .m_axis_i2s_tdata(),
+      .m_axis_i2s_tready(1'b1)
   );
 
   // *** initial block ***

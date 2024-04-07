@@ -21,26 +21,28 @@
 
 
 module i2s_recv_3pairs (
-    input             clk,          // main clock
-    input             rst_n,        // reset
+    input             clk,                // main clock
+    input             rst_n,              // reset
     input             i2s_din_0_1,
     input             i2s_din_2_3,
     input             i2s_din_4_5,
     output            i2s_lrclk,
     output            i2s_bclk,
-    output reg        i2s_ready,    // main clock domain, high valid
-    output reg [95:0] i2s_data      // main clock domain, {3{left 16 bit, right 16 bit}}
+    output reg        m_axis_i2s_tvalid,
+    output reg [95:0] m_axis_i2s_tdata,   // {3{left 16 bit, right 16 bit}}
+    input             m_axis_i2s_tready
 );
 
   // *** parameter define ***
   parameter DIVISOR = 13;
 
   // *** reg define ***
-  reg  [4:0] clock_count;
-  reg  [6:0] bit_count;
+  reg  [ 4:0] clock_count;
+  reg  [ 6:0] bit_count;
+  reg  [95:0] i2s_data_tmp;
 
   // *** wire define ***
-  wire [5:0] half_bit_count;
+  wire [ 5:0] half_bit_count;
 
   // *** main code ***
   assign i2s_bclk       = bit_count[0];
@@ -49,35 +51,47 @@ module i2s_recv_3pairs (
 
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-      i2s_ready   <= 0;
-      clock_count <= 0;
-      bit_count   <= 0;
-      i2s_data    <= 0;
+      m_axis_i2s_tvalid <= 0;
+      m_axis_i2s_tdata  <= 0;
+      clock_count       <= 0;
+      bit_count         <= 0;
+      i2s_data_tmp      <= 0;
     end else begin
+      // axis
+      if (m_axis_i2s_tready == 1'b1 && m_axis_i2s_tvalid == 1'b1) begin
+        m_axis_i2s_tvalid <= 0;
+        m_axis_i2s_tdata  <= 0;
+      end
+      // i2s
       if (clock_count == DIVISOR - 1) begin
         clock_count <= 0;
         bit_count   <= bit_count + 1;
+        // data acquisition
         if (!i2s_bclk) begin
-          if (half_bit_count > 0 && half_bit_count < 17) begin  // left, cast to 16 bit
-            i2s_data[31:16] <= {i2s_data[30:16], i2s_din_0_1};  // shift
-            i2s_data[63:48] <= {i2s_data[62:48], i2s_din_2_3};  // shift
-            i2s_data[95:80] <= {i2s_data[94:80], i2s_din_4_5};  // shift
-          end else if (half_bit_count > 32 && half_bit_count < 49) begin  // right, cast to 16 bit
-            i2s_data[15:0]  <= {i2s_data[14:0], i2s_din_0_1};  // shift
-            i2s_data[47:32] <= {i2s_data[46:32], i2s_din_2_3};  // shift
-            i2s_data[79:64] <= {i2s_data[78:64], i2s_din_4_5};  // shift
+          // left, cast to 16 bit
+          if (half_bit_count > 6'd0 && half_bit_count < 6'd17) begin
+            i2s_data_tmp[31:16] <= {i2s_data_tmp[30:16], i2s_din_0_1};  // shift
+            i2s_data_tmp[63:48] <= {i2s_data_tmp[62:48], i2s_din_2_3};  // shift
+            i2s_data_tmp[95:80] <= {i2s_data_tmp[94:80], i2s_din_4_5};  // shift
+          end  // right, cast to 16 bit
+          else if (half_bit_count > 6'd32 && half_bit_count < 6'd49) begin
+            i2s_data_tmp[15:0]  <= {i2s_data_tmp[14:0], i2s_din_0_1};  // shift
+            i2s_data_tmp[47:32] <= {i2s_data_tmp[46:32], i2s_din_2_3};  // shift
+            i2s_data_tmp[79:64] <= {i2s_data_tmp[78:64], i2s_din_4_5};  // shift
           end
         end
-        if (bit_count == 98) begin  // 98 = 49 * 2
+        // acquisition complete
+        if (bit_count == 7'd98) begin  // 98 = 49 * 2
           // don't use half_bit_count here, because it contain 2 clock cycle, and will trigger i2s ready twice
-          i2s_ready <= 1;
-        end else if (bit_count == 99) begin
-          // same as above, don't clear the result twice
-          i2s_data <= 0;
+          m_axis_i2s_tvalid <= 1;
+          m_axis_i2s_tdata  <= i2s_data_tmp;
+        end  // if a new frame is coming and slave hasn't pick the result, drop it
+        else if (bit_count == 7'd127) begin
+          m_axis_i2s_tvalid <= 0;
+          m_axis_i2s_tdata  <= 0;
         end
       end else begin
         clock_count <= clock_count + 1;
-        i2s_ready   <= 0;
       end
     end
   end
