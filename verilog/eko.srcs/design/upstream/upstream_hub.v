@@ -60,7 +60,7 @@ module upstream_hub (
   // *** main code ***
   assign we               = (state == LOAD) && i2s_ready;
   assign re               = (state == UNLOAD) && m_axis_in_tready;
-  assign m_axis_in_tvalid = (state == UNLOAD) && re_d0;
+  assign m_axis_in_tvalid = re_d0;
 
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin

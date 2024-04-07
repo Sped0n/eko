@@ -74,7 +74,7 @@ module vad_upstream_hub (
   // *** main code ***
   assign we               = (state == LOAD) && i2s_ready;
   assign re               = (state == UNLOAD) && m_axis_in_tready;
-  assign m_axis_in_tvalid = (state == UNLOAD) && re_d0;
+  assign m_axis_in_tvalid = re_d0;
   assign vad_ch           = vad_ch_sel == 1'b1 ? i2s_data[31:16] : i2s_data[15:0];
   assign energy           = vad_ch * vad_ch;
   assign vad_result       = |vad_results;
