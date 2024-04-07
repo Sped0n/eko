@@ -113,7 +113,7 @@ module vad_upstream_hub_3pairs (
   assign mic5             = i2s_data[79:64];
   assign we               = (state == LOAD) && i2s_ready;
   assign re               = (state != LOAD) && m_axis_in_tready;
-  assign m_axis_in_tvalid = (state != LOAD) && re_d0;
+  assign m_axis_in_tvalid = re_d0;
   assign energy           = mic0 * mic0;  // one channel is enough
   assign vad_result       = |vad_results;
 
