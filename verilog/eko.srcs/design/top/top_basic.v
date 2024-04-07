@@ -47,8 +47,21 @@ module top_basic (
   );
 
   // i2s
-  wire [95:0] i2s_data;
-  wire        i2s_ready;
+  wire        [95:0] i2s_data;
+  wire               i2s_ready;
+  wire signed [15:0] mic0;
+  wire signed [15:0] mic1;
+  wire signed [15:0] mic2;
+  wire signed [15:0] mic3;
+  wire signed [15:0] mic4;
+  wire signed [15:0] mic5;
+
+  assign mic0 = i2s_data[31:16];
+  assign mic1 = i2s_data[15:0];
+  assign mic2 = i2s_data[63:48];
+  assign mic3 = i2s_data[47:32];
+  assign mic4 = i2s_data[95:80];
+  assign mic5 = i2s_data[79:64];
 
   i2s_recv_3pairs i2s_recv_3pairs_inst0 (
       .clk        (clk_50m),
@@ -74,7 +87,7 @@ module top_basic (
       .clk             (clk_50m),
       .rst_n           (rst_n),
       .i2s_ready       (i2s_ready),
-      .i2s_data        ({i2s_data[31:16], i2s_data[47:32]}),
+      .i2s_data        ({mic2, mic5}),
       .m_axis_in_tready(axis_upstream_tready),
       .m_axis_in_tdata (axis_upstream_tdata),
       .m_axis_in_tvalid(axis_upstream_tvalid),
@@ -91,9 +104,9 @@ module top_basic (
   gcc_phat_core gcc_phat_core_inst0 (
       .aclk(clk_50m),
       .aresetn(rst_n),
-      .s_axis_in_tdata(m_axis_in_tdata),
-      .s_axis_in_tready(m_axis_in_tready),
-      .s_axis_in_tvalid(m_axis_in_tvalid & vad_result),
+      .s_axis_in_tdata(axis_upstream_tdata),
+      .s_axis_in_tready(axis_upstream_tready),
+      .s_axis_in_tvalid(axis_upstream_tvalid),
       .m_axis_out_tdata(axis_gcc_phat_tdata),
       .m_axis_out_tready(axis_gcc_phat_tready),
       .m_axis_out_tvalid(axis_gcc_phat_tvalid)
