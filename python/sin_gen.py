@@ -36,6 +36,6 @@ plt.plot(y2.real)
 print(y2.real)
 plt.xlabel("FFT after converting to unsigned number (Real part)")
 
-np.savetxt("sinwave_n2.txt", y_16bit_a, fmt="%d")
+np.savetxt("../assets/txt/sinwave_n2.txt", y_16bit_a, fmt="%d")
 
 plt.show()

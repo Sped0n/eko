@@ -44,8 +44,8 @@ signed_y2_16bit = y2_16bit.copy()
 signed_y1_16bit[signed_y1_16bit < 0] += 2**16
 signed_y2_16bit[signed_y2_16bit < 0] += 2**16
 
-np.savetxt("sig3.txt", signed_y1_16bit, fmt="%d")
-np.savetxt("sig4.txt", signed_y2_16bit, fmt="%d")
+np.savetxt("../assets/txt/sig3.txt", signed_y1_16bit, fmt="%d")
+np.savetxt("../assets/txt/sig4.txt", signed_y2_16bit, fmt="%d")
 
 plt.figure()
 
