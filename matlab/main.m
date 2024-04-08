@@ -10,7 +10,7 @@ filterOutputs = [];
 for i = 1:numRows
   if t{i, "p_0_out"} == 1
     o = t{i, "axis_upstream_tdata_1_31_16_"};
-    fo = filter_simu(o);
+    fo = filter_simu_75(o);
     filterOutputs = [filterOutputs; fo]; %#ok<AGROW>
     outputs = [outputs; o]; %#ok<AGROW>
   end
