@@ -58,7 +58,6 @@ module i2s_recv (
       // axis
       if (m_axis_i2s_tready == 1'b1 && m_axis_i2s_tvalid == 1'b1) begin
         m_axis_i2s_tvalid <= 0;
-        m_axis_i2s_tdata  <= 0;
       end
       // i2s
       if (clock_count == DIVISOR - 1) begin
@@ -78,13 +77,11 @@ module i2s_recv (
           m_axis_i2s_tvalid <= 1;
           m_axis_i2s_tdata  <= i2s_data_tmp;
         end // if a new frame is coming and slave hasn't pick the result, drop it
-        else if (bit_count == 7'd127) begin
+        else if (bit_count == 7'd127 && m_axis_i2s_tready == 1'b0) begin
           m_axis_i2s_tvalid <= 0;
-          m_axis_i2s_tdata  <= 0;
         end
       end else begin
         clock_count <= clock_count + 1;
-        m_axis_i2s_tvalid <= 0;
       end
     end
   end
