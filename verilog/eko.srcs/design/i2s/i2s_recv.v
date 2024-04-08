@@ -21,9 +21,9 @@
 
 
 module i2s_recv (
-    input             clk,                // main clock
-    input             rst_n,              // reset
-    input             i2s_din,            // TODO: change from 1 channel to 6 channel matrix
+    input             aclk,
+    input             aresetn,
+    input             i2s_din,
     output            i2s_lrclk,
     output            i2s_bclk,
     output reg        m_axis_i2s_tvalid,
@@ -47,8 +47,8 @@ module i2s_recv (
   assign i2s_lrclk      = bit_count[6];
   assign half_bit_count = bit_count[6:1];
 
-  always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
+  always @(posedge aclk or negedge aresetn) begin
+    if (!aresetn) begin
       m_axis_i2s_tvalid <= 0;
       m_axis_i2s_tdata  <= 0;
       clock_count       <= 0;

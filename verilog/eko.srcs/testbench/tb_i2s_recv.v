@@ -52,8 +52,8 @@ module tb_i2s_recv ();
 
   // i2s_recv
   i2s_recv i2s_recv_0 (
-      .clk(clk),
-      .rst_n(rst_n),
+      .aclk(clk),
+      .aresetn(rst_n),
       .i2s_din(i2s_din),
       .i2s_lrclk(),
       .i2s_bclk(i2s_bclk),

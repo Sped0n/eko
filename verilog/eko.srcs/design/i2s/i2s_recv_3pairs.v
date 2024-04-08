@@ -21,8 +21,8 @@
 
 
 module i2s_recv_3pairs (
-    input             clk,                // main clock
-    input             rst_n,              // reset
+    input             aclk,
+    input             aresetn,
     input             i2s_din_0_1,
     input             i2s_din_2_3,
     input             i2s_din_4_5,
@@ -34,7 +34,7 @@ module i2s_recv_3pairs (
 );
 
   // *** parameter define ***
-  parameter DIVISOR = 13;
+  parameter DIVISOR = 13;  // 50MHz / 13 = 3.846MHz
 
   // *** reg define ***
   reg  [ 4:0] clock_count;
@@ -49,8 +49,8 @@ module i2s_recv_3pairs (
   assign i2s_lrclk      = bit_count[6];
   assign half_bit_count = bit_count[6:1];
 
-  always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
+  always @(posedge aclk or negedge aresetn) begin
+    if (!aresetn) begin
       m_axis_i2s_tvalid <= 0;
       m_axis_i2s_tdata  <= 0;
       clock_count       <= 0;
