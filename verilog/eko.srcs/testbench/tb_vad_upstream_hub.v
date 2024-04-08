@@ -29,15 +29,16 @@ module tb_vad_upstream_hub ();
   // *** reg define ***
   reg         clk = 0;
   reg         rst_n = 0;
-  reg         m_axis_in_tready = 0;
+  reg         m_axis_data_tready = 0;
   reg         i2s_din = 0;
 
   // *** wire define ***
-  wire [31:0] m_axis_in_tdata;
-  wire        m_axis_in_tvalid;
+  wire [31:0] m_axis_data_tdata;
+  wire        m_axis_data_tvalid;
   wire        i2s_bclk;
-  wire        i2s_ready;
-  wire [31:0] i2s_data;
+  wire        axis_i2s_tvalid;
+  wire [31:0] axis_i2s_tdata;
+  wire        axis_i2s_tready;
 
   // *** clock generator ***
   initial begin
@@ -58,32 +59,34 @@ module tb_vad_upstream_hub ();
 
   // i2s_recv
   i2s_recv i2s_recv_0 (
-      .clk(clk),
-      .rst_n(rst_n),
+      .aclk(clk),
+      .aresetn(rst_n),
       .i2s_din(i2s_din),
       .i2s_lrclk(),
       .i2s_bclk(i2s_bclk),
-      .i2s_ready(i2s_ready),
-      .i2s_data(i2s_data)
+      .m_axis_i2s_tvalid(axis_i2s_tvalid),
+      .m_axis_i2s_tdata(axis_i2s_tdata),
+      .m_axis_i2s_tready(axis_i2s_tready)
   );
 
   // upstream_hub
-  upstream_hub u_upstream_hub (
-      .clk             (clk),
-      .rst_n           (rst_n),
-      .i2s_ready       (i2s_ready),
-      .i2s_data        (i2s_data),
-      .m_axis_in_tready(m_axis_in_tready),
-      .m_axis_in_tdata (m_axis_in_tdata[31:0]),
-      .m_axis_in_tvalid(m_axis_in_tvalid),
-      .vad_en          (1'b1),
-      .vad_ch_sel      (1'b1),
-      .vad_results     ()
+  vad_upstream_hub vad_upstream_hub_0 (
+      .aclk              (clk),
+      .aresetn           (rst_n),
+      .s_axis_i2s_tdata  (axis_i2s_tdata),
+      .s_axis_i2s_tvalid (axis_i2s_tvalid),
+      .s_axis_i2s_tready (axis_i2s_tready),
+      .m_axis_data_tready(m_axis_data_tready),
+      .m_axis_data_tdata (m_axis_data_tdata[31:0]),
+      .m_axis_data_tvalid(m_axis_data_tvalid),
+      .vad_en            (1'b1),
+      .vad_ch_sel        (1'b1),
+      .vad_result        ()
   );
 
   // *** initial block ***
   initial begin
-    #42000000 m_axis_in_tready = 1;
+    #42000000 m_axis_data_tready = 1;
     $finish;
   end
 

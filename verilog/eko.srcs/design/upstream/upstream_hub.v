@@ -21,13 +21,14 @@
 
 
 module upstream_hub (
-    input         clk,
-    input         rst_n,
-    input         i2s_ready,
-    input  [31:0] i2s_data,          // 32 bit L + R
-    input         m_axis_in_tready,
-    output [31:0] m_axis_in_tdata,
-    output        m_axis_in_tvalid
+    input         aclk,
+    input         aresetn,
+    input         s_axis_i2s_tvalid,
+    input  [31:0] s_axis_i2s_tdata,    // 32 bit L + R
+    output        s_axis_i2s_tready,
+    input         m_axis_data_tready,
+    output [31:0] m_axis_data_tdata,
+    output        m_axis_data_tvalid
 );
 
   // *** paramter define ***
@@ -46,38 +47,39 @@ module upstream_hub (
 
   // *** modules ***
   upstream_bram_0 upstream_bram_inst0 (
-      .clka (clk),
+      .aclka(aclk),
       .ena  (we),
       .wea  (we),
       .addra(index),
-      .dina (i2s_data),
-      .clkb (clk),
+      .dina (s_axis_i2s_tdata),
+      .aclkb(aclk),
       .enb  (re),
       .addrb(index),
-      .doutb(m_axis_in_tdata)
+      .doutb(m_axis_data_tdata)
   );
 
   // *** main code ***
-  assign we               = (state == LOAD) && i2s_ready;
-  assign re               = (state == UNLOAD) && m_axis_in_tready;
-  assign m_axis_in_tvalid = re_d0;
+  assign we                 = (state == LOAD) && s_axis_i2s_tvalid;
+  assign re                 = (state == UNLOAD) && m_axis_data_tready;
+  assign m_axis_data_tvalid = re_d0;
+  assign s_axis_i2s_tready  = (state == LOAD);
 
-  always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
+  always @(posedge aclk or negedge aresetn) begin
+    if (!aresetn) begin
       re_d0 <= 0;
     end else begin
       re_d0 <= re;
     end
   end
 
-  always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
+  always @(posedge aclk or negedge aresetn) begin
+    if (!aresetn) begin
       state <= LOAD;
       index <= 0;
     end else begin
       case (state)
         LOAD: begin
-          if (i2s_ready) begin
+          if (s_axis_i2s_tvalid) begin
             index <= index + 1;
             if (index == {10{1'b1}}) begin
               state <= UNLOAD;
@@ -85,7 +87,7 @@ module upstream_hub (
           end
         end
         UNLOAD: begin
-          if (m_axis_in_tready) begin
+          if (m_axis_data_tready) begin
             index <= index + 1;
             if (index == {10{1'b1}}) begin
               state <= LOAD;
