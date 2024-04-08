@@ -111,7 +111,7 @@ architecture tb of tb_fir_0 is
   signal s_axis_data_tdata_data        : std_logic_vector(15 downto 0) := (others => '0');
 
   -- Data master channel alias signals
-  signal m_axis_data_tdata_data        : std_logic_vector(32 downto 0) := (others => '0');
+  signal m_axis_data_tdata_data        : std_logic_vector(33 downto 0) := (others => '0');
 
 
 begin
@@ -187,7 +187,7 @@ begin
 
     -- Procedure to drive an impulse and let the impulse response emerge on the data master channel
     -- samples is the number of input samples to drive; default is enough for impulse response output to emerge
-    procedure drive_impulse ( samples : natural := 57 ) is
+    procedure drive_impulse ( samples : natural := 81 ) is
       variable impulse : std_logic_vector(15 downto 0);
     begin
       impulse := (others => '0');  -- initialize unused bits to zero
@@ -218,11 +218,11 @@ begin
     m_axis_data_tready <= '0';
     drive_zeros(10);  -- stop accepting outputs for 10 input samples worth
     m_axis_data_tready <= '1';
-    drive_zeros(36);  -- back to normal operation
+    drive_zeros(60);  -- back to normal operation
 
     -- Drive another impulse, during which demonstrate:
     --   reset (aresetn)
-    drive_impulse(13);  -- to partway through impulse response
+    drive_impulse(19);  -- to partway through impulse response
     s_axis_data_tvalid <= '0';
     aresetn <= '0';  -- assert reset (active low)
     wait for CLOCK_PERIOD * 2;  -- hold reset active for 2 clock cycles, as recommended in FIR Compiler Datasheet
@@ -292,6 +292,6 @@ begin
   s_axis_data_tdata_data        <= s_axis_data_tdata(15 downto 0);
 
   -- Data master channel alias signals: update these only when they are valid
-  m_axis_data_tdata_data        <= m_axis_data_tdata(32 downto 0) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_data        <= m_axis_data_tdata(33 downto 0) when m_axis_data_tvalid = '1';
 
 end tb;
