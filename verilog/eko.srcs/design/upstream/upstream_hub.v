@@ -47,12 +47,12 @@ module upstream_hub (
 
   // *** modules ***
   upstream_bram_0 upstream_bram_inst0 (
-      .aclka(aclk),
+      .clka (aclk),
       .ena  (we),
       .wea  (we),
       .addra(index),
       .dina (s_axis_i2s_tdata),
-      .aclkb(aclk),
+      .clkb (aclk),
       .enb  (re),
       .addrb(index),
       .doutb(m_axis_data_tdata)
