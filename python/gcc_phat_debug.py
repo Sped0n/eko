@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 def csv_to_list(csv_file_name: str) -> tuple[np.ndarray, np.ndarray]:
-    csv_path: str = f"../assets/csv/{csv_file_name}.csv"
+    csv_path: str = f"./assets/csv/{csv_file_name}.csv"
 
     result_ch2 = []
     result_ch5 = []
@@ -17,7 +17,7 @@ def csv_to_list(csv_file_name: str) -> tuple[np.ndarray, np.ndarray]:
             if not first_row_read:
                 first_row_read = True
                 continue
-            if row["s_axis_data_tvalid0"] == "1":
+            if row["p_0_out"] == "1":
                 result_ch2.append(int(row["axis_upstream_tdata_1[31:16]"]))
                 result_ch5.append(int(row["axis_upstream_tdata[15:0]"]))
 
@@ -42,7 +42,7 @@ def xcorr_freq(s1, s2, pad=False):
     f_s2 = fft(s2)
     f_s2c = np.conj(f_s2)
     f_s = f_s1 * f_s2c
-    denom = abs(f_s)
+    # denom = abs(f_s)
     # print(np.min(denom))
     # f_s = f_s / (
     #     denom
@@ -53,8 +53,10 @@ def xcorr_freq(s1, s2, pad=False):
     # return f_s1
 
 
-csvs = ["x13_0", "x13_1", "x13_2", "x13_3"]
+# csvs = ["x13_0", "x13_1", "x13_2", "x13_3"]
 # csvs = ["x31_0", "x31_1", "x31_2", "x31_3"]
+csvs = ["cross02_0", "cross02_1", "cross02_2", "cross02_3"]
+# csvs = ["cross20_0", "cross20_1", "cross20_2", "cross20_3"]
 taus = []
 for csv_file in csvs:
     result_ch2, result_ch5 = csv_to_list(csv_file)
@@ -63,7 +65,7 @@ for csv_file in csvs:
 
 taus_len = len(taus[0])
 for index, tau in enumerate(taus):
-    plt_title = str(np.argmax(np.concatenate((tau[-12:], tau[:12]))) - 12)
+    plt_title = str(np.argmax(np.concatenate((tau[-33:], tau[:33]))) - 33)
     # plt_title = str(np.argmax(tau) - 1024)
     plt.subplot(len(taus), 1, index + 1)
     plt.plot(tau)
