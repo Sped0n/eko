@@ -29,15 +29,16 @@ module tb_bandpass_0 ();
   // *** reg define ***
   reg         clk = 0;
   reg         rst_n = 0;
-  reg         m_axis_in_tready = 0;
+  reg         axis_bandpass_0_tready = 0;
   reg         i2s_din_0_1 = 0;
   reg         i2s_din_2_3 = 0;
   reg         i2s_din_4_5 = 0;
 
   // *** wire define ***
   wire        i2s_bclk;
-  wire        i2s_ready;
-  wire [95:0] i2s_data;
+  wire [95:0] axis_i2s_tdata;
+  wire        axis_i2s_tvalid;
+  wire        axis_i2s_tready;
 
   // *** clock generator ***
   initial begin
@@ -60,15 +61,16 @@ module tb_bandpass_0 ();
 
   // i2s_recv
   i2s_recv_3pairs i2s_recv_3pairs_0 (
-      .clk(clk),
-      .rst_n(rst_n),
+      .aclk(clk),
+      .aresetn(rst_n),
       .i2s_din_0_1(i2s_din_0_1),
       .i2s_din_2_3(i2s_din_2_3),
       .i2s_din_4_5(i2s_din_4_5),
       .i2s_lrclk(),
       .i2s_bclk(i2s_bclk),
-      .i2s_ready(i2s_ready),
-      .i2s_data(i2s_data)
+      .m_axis_data_tvalid(axis_i2s_tvalid),
+      .m_axis_data_tdata(axis_i2s_tdata),
+      .m_axis_data_tready(axis_i2s_tready)
   );
 
   // bandpass
@@ -92,16 +94,17 @@ module tb_bandpass_0 ();
   bandpass_0 bandpass_0_inst0 (
       .aclk(clk),
       .aresetn(rst_n),
-      .i2s_data(i2s_data),
-      .i2s_ready(i2s_ready),
-      .m_axis_tdata(axis_bandpass_0_tdata),
-      .m_axis_tvalid(axis_bandpass_0_tvalid),
-      .m_axis_tready(1)
+      .s_axis_data_tdata(axis_i2s_tdata),
+      .s_axis_data_tvalid(axis_i2s_tvalid),
+      .s_axis_data_tready(axis_i2s_tready),
+      .m_axis_data_tdata(axis_bandpass_0_tdata),
+      .m_axis_data_tvalid(axis_bandpass_0_tvalid),
+      .m_axis_data_tready(axis_bandpass_0_tready)
   );
 
   // *** initial block ***
   initial begin
-    #42000000 m_axis_in_tready = 1;
+    #100000 axis_bandpass_0_tready = 1;
     $finish;
   end
 

@@ -23,9 +23,9 @@
 module upstream_hub (
     input         aclk,
     input         aresetn,
-    input         s_axis_i2s_tvalid,
-    input  [31:0] s_axis_i2s_tdata,    // 32 bit L + R
-    output        s_axis_i2s_tready,
+    input         s_axis_data_tvalid,
+    input  [31:0] s_axis_data_tdata,   // 32 bit L + R
+    output        s_axis_data_tready,
     input         m_axis_data_tready,
     output [31:0] m_axis_data_tdata,
     output        m_axis_data_tvalid
@@ -51,7 +51,7 @@ module upstream_hub (
       .ena  (we),
       .wea  (we),
       .addra(index),
-      .dina (s_axis_i2s_tdata),
+      .dina (s_axis_data_tdata),
       .clkb (aclk),
       .enb  (re),
       .addrb(index),
@@ -59,10 +59,10 @@ module upstream_hub (
   );
 
   // *** main code ***
-  assign we                 = (state == LOAD) && s_axis_i2s_tvalid;
+  assign we                 = (state == LOAD) && s_axis_data_tvalid;
   assign re                 = (state == UNLOAD) && m_axis_data_tready;
   assign m_axis_data_tvalid = re_d0;
-  assign s_axis_i2s_tready  = (state == LOAD);
+  assign s_axis_data_tready = (state == LOAD);
 
   always @(posedge aclk or negedge aresetn) begin
     if (!aresetn) begin
@@ -79,7 +79,7 @@ module upstream_hub (
     end else begin
       case (state)
         LOAD: begin
-          if (s_axis_i2s_tvalid) begin
+          if (s_axis_data_tvalid) begin
             index <= index + 1;
             if (index == {10{1'b1}}) begin
               state <= UNLOAD;
