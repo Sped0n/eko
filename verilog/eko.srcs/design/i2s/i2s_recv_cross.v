@@ -71,7 +71,7 @@ module i2s_recv_cross (
           if (half_bit_count > 6'd0 && half_bit_count < 6'd17) begin
             i2s_data_tmp[15:0]  <= {i2s_data_tmp[15:0], i2s_din_mic0};
             i2s_data_tmp[31:16] <= {i2s_data_tmp[31:16], i2s_din_mic1};
-            i2s_data_tmp[47:32] <= {i2s_data_tmp[47:32], i2s_din_mic3};
+            i2s_data_tmp[47:32] <= {i2s_data_tmp[47:32], i2s_din_mic2};
             i2s_data_tmp[63:48] <= {i2s_data_tmp[63:48], i2s_din_mic3};
           end
         end
