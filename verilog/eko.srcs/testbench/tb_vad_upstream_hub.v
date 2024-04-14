@@ -64,18 +64,18 @@ module tb_vad_upstream_hub ();
       .i2s_din(i2s_din),
       .i2s_lrclk(),
       .i2s_bclk(i2s_bclk),
-      .m_axis_i2s_tvalid(axis_i2s_tvalid),
-      .m_axis_i2s_tdata(axis_i2s_tdata),
-      .m_axis_i2s_tready(axis_i2s_tready)
+      .m_axis_data_tvalid(axis_i2s_tvalid),
+      .m_axis_data_tdata(axis_i2s_tdata),
+      .m_axis_data_tready(axis_i2s_tready)
   );
 
   // upstream_hub
   vad_upstream_hub vad_upstream_hub_0 (
       .aclk              (clk),
       .aresetn           (rst_n),
-      .s_axis_i2s_tdata  (axis_i2s_tdata),
-      .s_axis_i2s_tvalid (axis_i2s_tvalid),
-      .s_axis_i2s_tready (axis_i2s_tready),
+      .s_axis_data_tdata (axis_i2s_tdata),
+      .s_axis_data_tvalid(axis_i2s_tvalid),
+      .s_axis_data_tready(axis_i2s_tready),
       .m_axis_data_tready(m_axis_data_tready),
       .m_axis_data_tdata (m_axis_data_tdata[31:0]),
       .m_axis_data_tvalid(m_axis_data_tvalid),

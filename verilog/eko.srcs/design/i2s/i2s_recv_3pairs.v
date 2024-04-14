@@ -28,9 +28,9 @@ module i2s_recv_3pairs (
     input             i2s_din_4_5,
     output            i2s_lrclk,
     output            i2s_bclk,
-    output reg        m_axis_i2s_tvalid,
-    output reg [95:0] m_axis_i2s_tdata,   // {3{left 16 bit, right 16 bit}}
-    input             m_axis_i2s_tready
+    output reg        m_axis_data_tvalid,
+    output reg [95:0] m_axis_data_tdata,   // {3{left 16 bit, right 16 bit}}
+    input             m_axis_data_tready
 );
 
   // *** parameter define ***
@@ -51,15 +51,15 @@ module i2s_recv_3pairs (
 
   always @(posedge aclk or negedge aresetn) begin
     if (!aresetn) begin
-      m_axis_i2s_tvalid <= 0;
-      m_axis_i2s_tdata  <= 0;
-      clock_count       <= 0;
-      bit_count         <= 0;
-      i2s_data_tmp      <= 0;
+      m_axis_data_tvalid <= 0;
+      m_axis_data_tdata  <= 0;
+      clock_count        <= 0;
+      bit_count          <= 0;
+      i2s_data_tmp       <= 0;
     end else begin
       // axis
-      if (m_axis_i2s_tready == 1'b1 && m_axis_i2s_tvalid == 1'b1) begin
-        m_axis_i2s_tvalid <= 0;
+      if (m_axis_data_tready == 1'b1 && m_axis_data_tvalid == 1'b1) begin
+        m_axis_data_tvalid <= 0;
       end
       // i2s
       if (clock_count == DIVISOR - 1) begin
@@ -82,11 +82,11 @@ module i2s_recv_3pairs (
         // acquisition complete
         if (bit_count == 7'd98) begin  // 98 = 49 * 2
           // don't use half_bit_count here, because it contain 2 clock cycle, and will trigger i2s ready twice
-          m_axis_i2s_tvalid <= 1;
-          m_axis_i2s_tdata  <= i2s_data_tmp;
+          m_axis_data_tvalid <= 1;
+          m_axis_data_tdata  <= i2s_data_tmp;
         end  // if a new frame is coming and slave hasn't pick the result, drop it
-        else if (bit_count == 7'd127 && m_axis_i2s_tready == 1'b0) begin
-          m_axis_i2s_tvalid <= 0;
+        else if (bit_count == 7'd127 && m_axis_data_tready == 1'b0) begin
+          m_axis_data_tvalid <= 0;
         end
       end else begin
         clock_count <= clock_count + 1;
