@@ -66,6 +66,7 @@ module tb_gcc_phat_core ();
   gcc_phat_core gcc_phat_core_inst0 (
       .aclk(clk),
       .aresetn(rst_n),
+      .dither(4'd6),
       .s_axis_in_tdata({sig_2, sig_1}),
       .s_axis_in_tready(s_axis_data_tready),
       .s_axis_in_tvalid(s_axis_data_tvalid),

@@ -23,6 +23,7 @@
 module gcc_phat_core (
     input         aclk,
     input         aresetn,
+    input  [ 3:0] dither,
     input  [31:0] s_axis_in_tdata,
     input         s_axis_in_tvalid,
     output        s_axis_in_tready,
@@ -38,7 +39,7 @@ module gcc_phat_core (
   dither_0 dither_0_inst0 (
       .aclk              (aclk),
       .aresetn           (aresetn),
-      .dither            (4'd6),
+      .dither            (dither),
       .s_axis_data_tdata (s_axis_in_tdata),
       .s_axis_data_tvalid(s_axis_in_tvalid),
       .s_axis_data_tready(s_axis_in_tready),

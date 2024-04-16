@@ -84,6 +84,7 @@ module top_cross (
   // upstream hub
   wire        axis_upstream_tvalid;
   wire [63:0] axis_upstream_tdata;
+  wire        axis_upstream_tready;
   wire        vad_result;
 
   assign led0 = vad_result;
@@ -105,13 +106,28 @@ module top_cross (
       .vad_result(vad_result)
   );
 
+  // cross gcc phat
+  wire [31:0] axis_cross_gcc_phat_tdata;
+  wire        axis_cross_gcc_phat_tvalid;
+
+  cross_gcc_phat cross_gcc_phat_inst0 (
+      .aclk             (clk_50m),
+      .aresetn          (rst_n),
+      .s_axis_in_tdata  (axis_upstream_tdata),
+      .s_axis_in_tvalid (axis_upstream_tvalid),
+      .s_axis_in_tready (axis_upstream_tready),
+      .m_axis_out_tdata (axis_cross_gcc_phat_tdata),
+      .m_axis_out_tvalid(axis_cross_gcc_phat_tvalid),
+      .m_axis_out_tready(1'b1)
+  );
+
   // ila
   ila_i2s_0 ila_i2s_0_inst0 (
       .clk(clk_50m),
-      .probe0(axis_upstream_tdata[31:16]),
-      .probe1(axis_upstream_tdata[15:0]),
+      .probe0(axis_cross_gcc_phat_tdata[31:16]),
+      .probe1(axis_cross_gcc_phat_tdata[15:0]),
       .probe2(axis_upstream_tvalid & vad_result),
-      .probe3(vad_result)
+      .probe3(axis_cross_gcc_phat_tvalid)
   );
 
 endmodule
