@@ -37,12 +37,17 @@ module tb_gcc_phat_core ();
   reg     [15:0] sig_1 = 0;
   reg     [15:0] sig_2 = 0;
   reg            s_axis_data_tvalid = 0;
-  reg            s_axis_data_tlast = 0;
+  reg     [ 9:0] help_counter;
+
 
   // *** wire define ***
   wire           s_axis_data_tready;
+  wire           axis_gcc_phat_tready;
   wire    [15:0] axis_gcc_phat_tdata;
   wire           axis_gcc_phat_tvalid;
+
+  wire    [15:0] axis_roi_tdata;
+  wire           axis_roi_tvalid;
 
 
   // *** clock generator ***
@@ -69,13 +74,26 @@ module tb_gcc_phat_core ();
       .m_axis_out_tvalid(axis_gcc_phat_tvalid)
   );
 
+  // roi instance
+  roi roi_inst0 (
+      .aclk(clk),
+      .aresetn(rst_n),
+      .s_axis_data_tdata(axis_gcc_phat_tdata),
+      .s_axis_data_tvalid(axis_gcc_phat_tvalid),
+      .s_axis_data_tready(axis_gcc_phat_tready),
+      .m_axis_data_tdata(axis_roi_tdata),
+      .m_axis_data_tvalid(axis_roi_tvalid),
+      .m_axis_data_tready(1'b1)
+  );
+
   // *** initial block ***
   initial begin
     count = 0;
-    sig_txt_1 =
-        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sig1.txt", "r");
-    sig_txt_2 =
-        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sig2.txt", "r");
+    help_counter = 0;
+    sig_txt_1 = $fopen(
+        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\cross20_3_1.txt", "r");
+    sig_txt_2 = $fopen(
+        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\cross20_3_0.txt", "r");
     #10000 ready = 1;
   end
 
@@ -90,6 +108,9 @@ module tb_gcc_phat_core ();
       end else if (count == 1024) begin
         s_axis_data_tvalid <= 0;
       end
+    end
+    if (axis_roi_tvalid) begin
+      help_counter <= help_counter + 1;
     end
   end
 endmodule

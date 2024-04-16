@@ -38,7 +38,7 @@ module gcc_phat_core (
   dither_0 dither_0_inst0 (
       .aclk              (aclk),
       .aresetn           (aresetn),
-      .dither            (4'd7),
+      .dither            (4'd6),
       .s_axis_data_tdata (s_axis_in_tdata),
       .s_axis_data_tvalid(s_axis_in_tvalid),
       .s_axis_data_tready(s_axis_in_tready),

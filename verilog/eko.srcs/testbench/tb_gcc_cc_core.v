@@ -72,10 +72,10 @@ module tb_gcc_cc_core ();
   // *** initial block ***
   initial begin
     count = 0;
-    sig_txt_1 =
-        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sig1.txt", "r");
-    sig_txt_2 =
-        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sig2.txt", "r");
+    sig_txt_1 = $fopen(
+        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\cross02_0_1.txt", "r");
+    sig_txt_2 = $fopen(
+        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\cross02_0_0.txt", "r");
     #10000 ready = 1;
   end
 
