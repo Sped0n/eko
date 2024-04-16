@@ -193,7 +193,7 @@ BEGIN
       C_THROTTLE_SCHEME => 1,
       C_CHANNELS => 2,
       C_NFFT_MAX => 10,
-      C_ARCH => 1,
+      C_ARCH => 2,
       C_HAS_NFFT => 0,
       C_USE_FLT_PT => 0,
       C_INPUT_WIDTH => 16,
