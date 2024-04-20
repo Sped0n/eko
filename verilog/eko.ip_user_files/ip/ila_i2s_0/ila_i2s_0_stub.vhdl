@@ -1,13 +1,14 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
--- Date        : Wed Apr 10 22:40:05 2024
+-- Tool Version: Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+-- Date        : Thu Apr 18 22:14:35 2024
 -- Host        : Zen running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
 --               c:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko.srcs/ips/ila_i2s_0/ila_i2s_0_stub.vhdl
 -- Design      : ila_i2s_0
 -- Purpose     : Stub declaration of top-level module interface
--- Device      : xc7a35tfgg484-2
+-- Device      : xc7z020clg400-1
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -29,6 +30,6 @@ attribute black_box_pad_pin : string;
 attribute syn_black_box of stub : architecture is true;
 attribute black_box_pad_pin of stub : architecture is "clk,probe0[15:0],probe1[15:0],probe2[0:0],probe3[0:0]";
 attribute X_CORE_INFO : string;
-attribute X_CORE_INFO of stub : architecture is "ila,Vivado 2022.2";
+attribute X_CORE_INFO of stub : architecture is "ila,Vivado 2023.1";
 begin
 end;

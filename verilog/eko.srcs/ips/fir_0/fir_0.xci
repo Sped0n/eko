@@ -3,7 +3,7 @@
   "ip_inst": {
     "xci_name": "fir_0",
     "component_reference": "xilinx.com:ip:fir_compiler:7.2",
-    "ip_revision": "18",
+    "ip_revision": "20",
     "gen_directory": ".",
     "parameters": {
       "component_parameters": {
@@ -11,7 +11,7 @@
         "GUI_Behaviour": [ { "value": "Coregen", "resolve_type": "user", "usage": "all" } ],
         "CoefficientSource": [ { "value": "COE_File", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "CoefficientVector": [ { "value": "6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6", "resolve_type": "user", "usage": "all" } ],
-        "Coefficient_File": [ { "value": "../../../../matlab/hamming75_h.coe", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "Coefficient_File": [ { "value": "../../../../matlab/hamming75.coe", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "Coefficient_Sets": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Coefficient_Reload": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Filter_Type": [ { "value": "Single_Rate", "resolve_type": "user", "usage": "all" } ],
@@ -39,7 +39,7 @@
         "Data_Width": [ { "value": "16", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Data_Fractional_Bits": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Output_Rounding_Mode": [ { "value": "Full_Precision", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
-        "Output_Width": [ { "value": "35", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "Output_Width": [ { "value": "34", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Filter_Architecture": [ { "value": "Systolic_Multiply_Accumulate", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "Optimization_Goal": [ { "value": "Area", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "Optimization_Selection": [ { "value": "None", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
@@ -90,7 +90,7 @@
         "Filter_Selection": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ]
       },
       "model_parameters": {
-        "C_XDEVICEFAMILY": [ { "value": "artix7", "resolve_type": "generated", "usage": "all" } ],
+        "C_XDEVICEFAMILY": [ { "value": "zynq", "resolve_type": "generated", "usage": "all" } ],
         "C_ELABORATION_DIR": [ { "value": "./", "resolve_type": "generated", "usage": "all" } ],
         "C_COMPONENT_NAME": [ { "value": "fir_0", "resolve_type": "generated", "usage": "all" } ],
         "C_COEF_FILE": [ { "value": "fir_0.mif", "resolve_type": "generated", "usage": "all" } ],
@@ -122,10 +122,10 @@
         "C_PX_PATH_SRC": [ { "value": "0", "resolve_type": "generated", "usage": "all" } ],
         "C_DATA_PATH_SIGN": [ { "value": "0", "resolve_type": "generated", "usage": "all" } ],
         "C_COEF_PATH_SIGN": [ { "value": "0", "resolve_type": "generated", "usage": "all" } ],
-        "C_ACCUM_PATH_WIDTHS": [ { "value": "35", "resolve_type": "generated", "usage": "all" } ],
-        "C_OUTPUT_WIDTH": [ { "value": "35", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_OUTPUT_PATH_WIDTHS": [ { "value": "35", "resolve_type": "generated", "usage": "all" } ],
-        "C_ACCUM_OP_PATH_WIDTHS": [ { "value": "35", "resolve_type": "generated", "usage": "all" } ],
+        "C_ACCUM_PATH_WIDTHS": [ { "value": "34", "resolve_type": "generated", "usage": "all" } ],
+        "C_OUTPUT_WIDTH": [ { "value": "34", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_OUTPUT_PATH_WIDTHS": [ { "value": "34", "resolve_type": "generated", "usage": "all" } ],
+        "C_ACCUM_OP_PATH_WIDTHS": [ { "value": "34", "resolve_type": "generated", "usage": "all" } ],
         "C_EXT_MULT_CNFG": [ { "value": "none", "resolve_type": "generated", "usage": "all" } ],
         "C_DATA_PATH_PSAMP_SRC": [ { "value": "0", "resolve_type": "generated", "usage": "all" } ],
         "C_OP_PATH_PSAMP_SRC": [ { "value": "0", "resolve_type": "generated", "usage": "all" } ],
@@ -162,15 +162,15 @@
         "C_RELOAD_TDATA_WIDTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
-        "ARCHITECTURE": [ { "value": "artix7" } ],
+        "ARCHITECTURE": [ { "value": "zynq" } ],
         "BASE_BOARD_PART": [ { "value": "" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
-        "DEVICE": [ { "value": "xc7a35t" } ],
-        "PACKAGE": [ { "value": "fgg484" } ],
+        "DEVICE": [ { "value": "xc7z020" } ],
+        "PACKAGE": [ { "value": "clg400" } ],
         "PREFHDL": [ { "value": "VERILOG" } ],
         "SILICON_REVISION": [ { "value": "" } ],
         "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
-        "SPEEDGRADE": [ { "value": "-2" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
         "STATIC_POWER": [ { "value": "" } ],
         "TEMPERATURE_GRADE": [ { "value": "" } ],
         "USE_RDI_CUSTOMIZATION": [ { "value": "TRUE" } ],
@@ -178,12 +178,12 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
-        "IPREVISION": [ { "value": "18" } ],
+        "IPREVISION": [ { "value": "20" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "." } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2023.2" } ],
         "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
       }
     },

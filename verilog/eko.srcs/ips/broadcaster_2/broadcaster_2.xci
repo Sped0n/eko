@@ -3,7 +3,7 @@
   "ip_inst": {
     "xci_name": "broadcaster_2",
     "component_reference": "xilinx.com:ip:axis_broadcaster:1.1",
-    "ip_revision": "26",
+    "ip_revision": "28",
     "gen_directory": ".",
     "parameters": {
       "component_parameters": {
@@ -20,7 +20,7 @@
         "HAS_TKEEP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "HAS_TLAST": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "HAS_ACLKEN": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "M00_TDATA_REMAP": [ { "value": "tdata[31:0]", "resolve_type": "user", "usage": "all" } ],
+        "M00_TDATA_REMAP": [ { "value": "tdata[31:0]", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "M01_TDATA_REMAP": [ { "value": "tdata[63:32]", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "M02_TDATA_REMAP": [ { "value": "TDATA[7:0]", "resolve_type": "user", "usage": "all" } ],
         "M03_TDATA_REMAP": [ { "value": "TDATA[7:0]", "resolve_type": "user", "usage": "all" } ],
@@ -57,7 +57,7 @@
         "Component_Name": [ { "value": "broadcaster_2", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
-        "C_FAMILY": [ { "value": "artix7", "resolve_type": "generated", "usage": "all" } ],
+        "C_FAMILY": [ { "value": "zynq", "resolve_type": "generated", "usage": "all" } ],
         "C_NUM_MI_SLOTS": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_S_AXIS_TDATA_WIDTH": [ { "value": "64", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_M_AXIS_TDATA_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -68,15 +68,15 @@
         "C_AXIS_SIGNAL_SET": [ { "value": "0b00000000000000000000000000000011", "resolve_type": "generated", "format": "bitString", "usage": "all" } ]
       },
       "project_parameters": {
-        "ARCHITECTURE": [ { "value": "artix7" } ],
+        "ARCHITECTURE": [ { "value": "zynq" } ],
         "BASE_BOARD_PART": [ { "value": "" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
-        "DEVICE": [ { "value": "xc7a35t" } ],
-        "PACKAGE": [ { "value": "fgg484" } ],
+        "DEVICE": [ { "value": "xc7z020" } ],
+        "PACKAGE": [ { "value": "clg400" } ],
         "PREFHDL": [ { "value": "VERILOG" } ],
         "SILICON_REVISION": [ { "value": "" } ],
         "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
-        "SPEEDGRADE": [ { "value": "-2" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
         "STATIC_POWER": [ { "value": "" } ],
         "TEMPERATURE_GRADE": [ { "value": "" } ],
         "USE_RDI_CUSTOMIZATION": [ { "value": "TRUE" } ],
@@ -84,12 +84,12 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
-        "IPREVISION": [ { "value": "26" } ],
+        "IPREVISION": [ { "value": "28" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "." } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
-        "SWVERSION": [ { "value": "2022.2" } ],
+        "SWVERSION": [ { "value": "2023.2" } ],
         "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
       }
     },

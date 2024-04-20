@@ -38,8 +38,8 @@ module vad_upstream_hub_cross (
   localparam VAD_FRAME_SIZE = 256;
   localparam VAD_WINDOW_CNT = 7;
   localparam VAD_FRAME_SHIFT = 128;
-  localparam VAD_BASE_THS = 170;
-  localparam VAD_TRIG_INDEX = 5;
+  localparam VAD_BASE_THS = 200;
+  localparam VAD_TRIG_INDEX = 6;
 
   // *** reg define ***
   reg                              state;

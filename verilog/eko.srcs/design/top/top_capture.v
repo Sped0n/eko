@@ -103,7 +103,7 @@ module top_capture (
   vad_upstream_hub vad_upstream_hub_inst_0 (
       .aclk              (clk_50m),
       .aresetn           (rst_n),
-      .s_axis_data_tdata ({mic1, mic3}),            // mic3, mic1
+      .s_axis_data_tdata ({mic1, mic3}),            // mic1, mic3
       .s_axis_data_tvalid(axis_bandpass_0_tvalid),
       .s_axis_data_tready(axis_bandpass_0_tready),
       .m_axis_data_tready(axis_upstream_tready),

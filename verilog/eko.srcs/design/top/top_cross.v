@@ -107,27 +107,44 @@ module top_cross (
   );
 
   // cross gcc phat
-  wire [31:0] axis_cross_gcc_phat_tdata;
-  wire        axis_cross_gcc_phat_tvalid;
+  wire [15:0] axis_gcc_phat_tdata;
+  wire        axis_gcc_phat_tvalid;
+  wire        axis_gcc_phat_tready;
 
-  cross_gcc_phat cross_gcc_phat_inst0 (
+  gcc_phat_core gcc_phat_core_inst0 (
       .aclk             (clk_50m),
       .aresetn          (rst_n),
-      .s_axis_in_tdata  (axis_upstream_tdata),
-      .s_axis_in_tvalid (axis_upstream_tvalid),
+      .dither           (4'd6),
+      .s_axis_in_tdata  (axis_upstream_tdata[31:0]),
+      .s_axis_in_tvalid (axis_upstream_tvalid & vad_result),
       .s_axis_in_tready (axis_upstream_tready),
-      .m_axis_out_tdata (axis_cross_gcc_phat_tdata),
-      .m_axis_out_tvalid(axis_cross_gcc_phat_tvalid),
-      .m_axis_out_tready(1'b1)
+      .m_axis_out_tdata (axis_gcc_phat_tdata),
+      .m_axis_out_tvalid(axis_gcc_phat_tvalid),
+      .m_axis_out_tready(axis_gcc_phat_tready)
+  );
+
+  // roi
+  wire [15:0] axis_roi_tdata;
+  wire        axis_roi_tvalid;
+
+  roi roi_inst0 (
+      .aclk              (clk_50m),
+      .aresetn           (rst_n),
+      .s_axis_data_tdata (axis_gcc_phat_tdata),
+      .s_axis_data_tvalid(axis_gcc_phat_tvalid),
+      .s_axis_data_tready(axis_gcc_phat_tready),
+      .m_axis_data_tdata (axis_roi_tdata),
+      .m_axis_data_tvalid(axis_roi_tvalid),
+      .m_axis_data_tready(1'b1)
   );
 
   // ila
   ila_i2s_0 ila_i2s_0_inst0 (
       .clk(clk_50m),
-      .probe0(axis_cross_gcc_phat_tdata[31:16]),
-      .probe1(axis_cross_gcc_phat_tdata[15:0]),
-      .probe2(axis_upstream_tvalid & vad_result),
-      .probe3(axis_cross_gcc_phat_tvalid)
+      .probe0(axis_gcc_phat_tdata),
+      .probe1(axis_roi_tdata),
+      .probe2(axis_gcc_phat_tvalid),
+      .probe3(axis_roi_tvalid)
   );
 
 endmodule
