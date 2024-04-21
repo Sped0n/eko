@@ -57,7 +57,7 @@ module roi (
       index <= 0;
       m_axis_data_tdata <= 0;
       m_axis_data_tvalid <= 0;
-      for (i = 0; i < N_MAX + N_MAX - 1; i = i + 1) begin
+      for (i = 0; i < N_MAX + N_MAX; i = i + 1) begin
         cache[i] <= 0;
       end
     end else begin
@@ -75,6 +75,9 @@ module roi (
             // state jump
             if (index == {10{1'b1}}) begin
               state <= UNLOAD;
+              index <= 0;
+              m_axis_data_tvalid <= 1;
+              m_axis_data_tdata <= cache[0];
             end
           end
         end
@@ -82,16 +85,16 @@ module roi (
           if (m_axis_data_tready) begin
             // index increment
             index <= index + 1;
-            // send
-            if (index >= 0 && index <= N_MAX + N_MAX - 1) begin
-              m_axis_data_tvalid <= 1;
-              m_axis_data_tdata  <= cache[index];
-            end  // send complete, jump back to LOAD state
-            else begin
-              m_axis_data_tvalid <= 0;
-              index <= 0;
-              state <= LOAD;
-            end
+          end
+          // send
+          if (index < N_MAX + N_MAX - 1) begin
+            m_axis_data_tvalid <= 1;
+            m_axis_data_tdata  <= cache[index];
+          end  // send complete, jump back to LOAD state
+          else begin
+            m_axis_data_tvalid <= 0;
+            index <= 0;
+            state <= LOAD;
           end
         end
         default: begin

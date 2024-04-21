@@ -1,0 +1,48 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.09267",
+   "Default View_TopLeft":"-143,-66",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.5.8 2022-09-21 7111 VDI=41 GEI=38 GUI=JA:10.0
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 1450 -y 70 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1450 -y 100 -defaultsOSRD
+preplace port port-id_i2s_bclk_0 -pg 1 -lvl 6 -x 1450 -y 490 -defaultsOSRD
+preplace port port-id_i2s_din_mic0_0 -pg 1 -lvl 0 -x 0 -y 450 -defaultsOSRD
+preplace port port-id_i2s_din_mic1_0 -pg 1 -lvl 0 -x 0 -y 480 -defaultsOSRD
+preplace port port-id_i2s_din_mic2_0 -pg 1 -lvl 0 -x 0 -y 510 -defaultsOSRD
+preplace port port-id_i2s_din_mic3_0 -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
+preplace port port-id_i2s_lrclk_0 -pg 1 -lvl 6 -x 1450 -y 460 -defaultsOSRD
+preplace port port-id_led0_0 -pg 1 -lvl 6 -x 1450 -y 520 -defaultsOSRD
+preplace inst axi_bram_ctrl_0 -pg 1 -lvl 4 -x 1090 -y 190 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 3 -x 780 -y 170 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 5 -x 1330 -y 200 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -x 390 -y 110 -defaultsOSRD
+preplace inst rst_ps7_0_50M -pg 1 -lvl 3 -x 780 -y 360 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 1 -x 110 -y 120 -defaultsOSRD
+preplace inst pl_cross_0 -pg 1 -lvl 4 -x 1090 -y 470 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 3 200 10 600 260 950
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 2 1 580 150n
+preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 2 2 610 250 960
+preplace netloc xlconcat_0_dout 1 1 1 N 120
+preplace netloc pl_cross_0_i2s_lrclk 1 4 2 NJ 470 1430
+preplace netloc pl_cross_0_i2s_bclk 1 4 2 N 490 NJ
+preplace netloc pl_cross_0_led0 1 4 2 1230 520 NJ
+preplace netloc pl_cross_0_intr0 1 0 5 20 580 N 580 NJ 580 NJ 580 1220
+preplace netloc i2s_din_mic0_0_1 1 0 4 NJ 450 200 460 NJ 460 N
+preplace netloc i2s_din_mic1_0_1 1 0 4 NJ 480 N 480 NJ 480 N
+preplace netloc i2s_din_mic2_0_1 1 0 4 NJ 510 N 510 NJ 510 950
+preplace netloc i2s_din_mic3_0_1 1 0 4 NJ 540 N 540 NJ 540 960
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 4 1 N 190
+preplace netloc axi_smc_M00_AXI 1 3 1 N 170
+preplace netloc processing_system7_0_DDR 1 2 4 NJ 70 N 70 N 70 N
+preplace netloc processing_system7_0_FIXED_IO 1 2 4 NJ 90 N 90 N 90 1430
+preplace netloc processing_system7_0_M_AXI_GP0 1 2 1 590 110n
+preplace netloc pl_cross_0_bram_rtl 1 4 1 1220 210n
+levelinfo -pg 1 0 110 390 780 1090 1330 1450
+pagesize -pg 1 -db -bbox -sgen -150 0 1570 590
+"
+}
+{
+   "da_clkrst_cnt":"1"
+}

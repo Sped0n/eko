@@ -49,6 +49,7 @@ module vad_upstream_hub_cross (
   reg signed  [              31:0] threshold;
   reg         [VAD_WINDOW_CNT-1:0] vad_results;  // 1 bit per window
   reg                              re_d0;
+  reg                              read_flag;
 
 
   // *** wire define ***
@@ -72,8 +73,8 @@ module vad_upstream_hub_cross (
 
   // *** main code ***
   assign we                 = (state == LOAD) && s_axis_data_tvalid;
-  assign re                 = (state == UNLOAD) && m_axis_data_tready;
-  assign m_axis_data_tvalid = re_d0;
+  assign re                 = state == UNLOAD;
+  assign m_axis_data_tvalid = re_d0 && read_flag;  // ensure we transmit a full frame
   assign s_axis_data_tready = (state == LOAD);
   assign vad_ch             = s_axis_data_tdata[15:0];
   assign energy             = vad_ch * vad_ch;
@@ -119,6 +120,7 @@ module vad_upstream_hub_cross (
       index <= 0;
       tmp_threshold <= 0;
       threshold <= VAD_BASE_THS;
+      read_flag <= 0;
     end else begin
       case (state)
         LOAD: begin
@@ -126,27 +128,30 @@ module vad_upstream_hub_cross (
             index <= index + 1;
             if (index == {10{1'b1}}) begin
               state <= UNLOAD;
+              if (m_axis_data_tready) begin
+                read_flag <= 1;
+              end
             end
           end
         end
         UNLOAD: begin
-          if (m_axis_data_tready) begin
-            // index increment
-            index <= index + 1;
-            // vad threshold update
-            if (index >= 0 && index < VAD_WINDOW_CNT && !vad_result) begin
-              if (index == 0) begin
-                tmp_threshold <= avg_energy[index];
-              end else if ((avg_energy[index] >>> 1) < tmp_threshold) begin
-                // if energy is lower than 0.5 * previous(not too high), update threshold
-                tmp_threshold <= (tmp_threshold >>> 1) + (avg_energy[index] >>> 1);
-              end
+          // index increment
+          index <= index + 1;
+          // vad threshold update
+          if (index >= 0 && index < VAD_WINDOW_CNT && !vad_result) begin
+            if (index == 0) begin
+              tmp_threshold <= avg_energy[index];
+            end else if ((avg_energy[index] >>> 1) < tmp_threshold) begin
+              // if energy is lower than 0.5 * previous(not too high), update threshold
+              tmp_threshold <= (tmp_threshold >>> 1) + (avg_energy[index] >>> 1);
             end
-            if (index == {10{1'b1}}) begin
-              state <= LOAD;
-              if (!vad_result) begin  // only update threshold when no voice detected
-                if (tmp_threshold > threshold) begin
-                  threshold <= (
+          end
+          if (index == {10{1'b1}}) begin
+            state <= LOAD;
+            read_flag <= 0;
+            if (!vad_result) begin  // only update threshold when no voice detected
+              if (tmp_threshold > threshold) begin
+                threshold <= (
                     (threshold >>> 1) + (threshold >>> 2) + (threshold >>> 3) 
                     + (tmp_threshold >>> 3) 
                     > VAD_BASE_THS // if new threshold is higher, update threshold, but slowly
@@ -154,14 +159,13 @@ module vad_upstream_hub_cross (
                   ? (threshold >>> 1) + (threshold >>> 2) + (threshold >>> 3) 
                     + (tmp_threshold >>> 3)
                   : VAD_BASE_THS;
-                end else begin
-                  threshold <= (
+              end else begin
+                threshold <= (
                     (threshold >>> 1) + (threshold >>> 2) + (tmp_threshold >>> 2) 
                     > VAD_BASE_THS // if new threshold is lower, update threshold, but quickly
                   )
                   ? (threshold >>> 1) + (threshold >> 2) + (tmp_threshold >>> 2)
                   : VAD_BASE_THS;
-                end
               end
             end
           end
