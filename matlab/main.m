@@ -2,7 +2,7 @@ clear filter_simu
 clearvars
 clc
 
-t = readtable("../assets/csv/voice2.csv");
+t = readtable("../assets/csv/sna.csv");
 numRows = height(t);
 outputs = [];
 filterOutputs = [];
@@ -10,7 +10,7 @@ filterOutputs = [];
 for i = 1:numRows
   if t{i, "p_0_out"} == 1
     o = t{i, "axis_upstream_tdata_1_31_16_"};
-    fo = filter_simu_75(o);
+    fo = filter_simu_lpx(o);
     filterOutputs = [filterOutputs; fo]; %#ok<AGROW>
     outputs = [outputs; o]; %#ok<AGROW>
   end
