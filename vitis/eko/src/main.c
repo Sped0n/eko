@@ -9,7 +9,7 @@
 #define START XPAR_AXI_BRAM_CTRL_0_S_AXI_BASEADDR
 #define INTR0_ID XPAR_FABRIC_PL_CROSS_0_INTR0_INTR
 #define INTR_DEVICE_ID XPAR_PS7_SCUGIC_0_DEVICE_ID
-#define FRAME_LENGTH 64
+#define FRAME_LENGTH 208
 
 static int init_interrupt(XScuGic *intr_ins_ptr);
 static void cleanup_interrupt(XScuGic *intr_ins_ptr);
@@ -24,7 +24,7 @@ int main() {
   xil_printf("Init platform\n");
   init_interrupt(&intr);
   xil_printf("Init interrupt\n");
-  while (cnt < 1000)
+  while (cnt < 10000)
     ;
   cleanup_interrupt(&intr);
   cleanup_platform();
@@ -52,7 +52,7 @@ static void led_intr_handler(void *callback) {
       data_20_max_index = i;
     }
   }
-  xil_printf("For mic2 and mic0, peak index is %d\n", data_20_max_index - 32);
+  xil_printf("For mic2 and mic0, peak index is %d\n", data_20_max_index - 104);
   // xil_printf("For mic3 and mic1, peak index is %d\n", data_31_max_index -
   // 32);
   cnt++;

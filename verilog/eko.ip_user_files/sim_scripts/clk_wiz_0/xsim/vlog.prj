@@ -1,8 +1,0 @@
-verilog xil_defaultlib --include "C:/Xilinx/Vivado/2023.1/data/xilinx_vip/include" --include "../../../ipstatic" \
-"../../../../eko.srcs/ips/clk_wiz_0/clk_wiz_0_clk_wiz.v" \
-"../../../../eko.srcs/ips/clk_wiz_0/clk_wiz_0.v" \
-
-verilog xil_defaultlib "glbl.v"
-
-# Do not sort compile order
-nosort

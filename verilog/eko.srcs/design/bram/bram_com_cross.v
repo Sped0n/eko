@@ -51,7 +51,7 @@ module bram_com_cross (
     (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 IRQ INTERRUPT" *)
     output            intr0
 );
-  localparam RECV_LENGTH = 10'd64;
+  localparam RECV_LENGTH = 10'd208;
   localparam WRITE = 2'b01;
   localparam READ = 2'b10;
 

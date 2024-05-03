@@ -23,6 +23,7 @@
 module gcc_cc_core (
     input         aclk,
     input         aresetn,
+    input         dither,
     input  [31:0] s_axis_in_tdata,
     input         s_axis_in_tvalid,
     output        s_axis_in_tready,
@@ -30,55 +31,39 @@ module gcc_cc_core (
     output        m_axis_out_tvalid,
     input         m_axis_out_tready
 );
-  // xfft_0
-  wire [127:0] axis_xfft_0_tdata;
-  wire         axis_xfft_0_tvalid;
-  wire         axis_xfft_0_tready;
+  // xfft_2
+  wire [63:0] axis_xfft_2_tdata;
+  wire        axis_xfft_2_tvalid;
+  wire        axis_xfft_2_tready;
 
-  xfft_0 xfft_0_inst0 (
+  xfft_2 xfft_2_inst0 (
       .aclk                (aclk),
       .aresetn             (aresetn),
       .s_axis_data_tdata   ({16'd0, s_axis_in_tdata[31:16], 16'd0, s_axis_in_tdata[15:0]}),
       .s_axis_data_tready  (s_axis_in_tready),
       .s_axis_data_tvalid  (s_axis_in_tvalid),
       .s_axis_data_tlast   (0),
-      .s_axis_config_tdata ({6'd0, 1'b1, 1'b1}),
+      .s_axis_config_tdata ({6'b0, {8'b0, {8{2'b01}}}, {8'b0, {8{2'b01}}}, 1'b1, 1'b1}),
       .s_axis_config_tvalid(1'b1),
-      .m_axis_data_tdata   (axis_xfft_0_tdata),
-      .m_axis_data_tready  (axis_xfft_0_tready),
-      .m_axis_data_tvalid  (axis_xfft_0_tvalid)
+      .m_axis_data_tdata   (axis_xfft_2_tdata),
+      .m_axis_data_tready  (axis_xfft_2_tready),
+      .m_axis_data_tvalid  (axis_xfft_2_tvalid)
   );
 
-  // multiply_0
-  wire [111:0] axis_multiply_0_tdata;
-  wire         axis_multiply_0_tvalid;
-  wire         axis_multiply_0_tready;
+  // multiply_1
+  wire [47:0] axis_multiply_1_tdata;
+  wire        axis_multiply_1_tvalid;
+  wire        axis_multiply_1_tready;
 
-  multiply_0 multiply_0_inst0 (
+  multiply_1 multiply_1_inst0 (
       .aclk         (aclk),
       .aresetn      (aresetn),
-      .s_axis_tdata (axis_xfft_0_tdata),
-      .s_axis_tvalid(axis_xfft_0_tvalid),
-      .s_axis_tready(axis_xfft_0_tready),
-      .m_axis_tdata (axis_multiply_0_tdata),
-      .m_axis_tvalid(axis_multiply_0_tvalid),
-      .m_axis_tready(axis_multiply_0_tready)
-  );
-
-  // scale_0
-  wire [47:0] axis_scale_0_tdata;
-  wire        axis_scale_0_tvalid;
-  wire        axis_scale_0_tready;
-
-  scale_0 scale_0_inst0 (
-      .aclk         (aclk),
-      .aresetn      (aresetn),
-      .s_axis_tdata (axis_multiply_0_tdata),
-      .s_axis_tvalid(axis_multiply_0_tvalid),
-      .s_axis_tready(axis_multiply_0_tready),
-      .m_axis_tdata (axis_scale_0_tdata),
-      .m_axis_tvalid(axis_scale_0_tvalid),
-      .m_axis_tready(axis_scale_0_tready)
+      .s_axis_tdata (axis_xfft_2_tdata),
+      .s_axis_tvalid(axis_xfft_2_tvalid),
+      .s_axis_tready(axis_xfft_2_tready),
+      .m_axis_tdata (axis_multiply_1_tdata),
+      .m_axis_tvalid(axis_multiply_1_tvalid),
+      .m_axis_tready(axis_multiply_1_tready)
   );
 
   // xfft_1
@@ -89,11 +74,11 @@ module gcc_cc_core (
   xfft_1 xfft_1_inst0 (
       .aclk                (aclk),
       .aresetn             (aresetn),
-      .s_axis_data_tdata   ({axis_scale_0_tdata[47:32], axis_scale_0_tdata[23:8]}),
-      .s_axis_data_tvalid  (axis_scale_0_tvalid),
-      .s_axis_data_tready  (axis_scale_0_tready),
+      .s_axis_data_tdata   ({axis_multiply_1_tdata[47:32], axis_multiply_1_tdata[23:8]}),
+      .s_axis_data_tvalid  (axis_multiply_1_tvalid),
+      .s_axis_data_tready  (axis_multiply_1_tready),
       .s_axis_data_tlast   (0),
-      .s_axis_config_tdata ({5'b0, {9{2'b01}}, 1'b0}),
+      .s_axis_config_tdata ({17'b0, {7{2'b01}}, 1'b0}),
       .s_axis_config_tvalid(1'b1),
       .m_axis_data_tdata   (axis_xfft_1_tdata),
       .m_axis_data_tvalid  (axis_xfft_1_tvalid),

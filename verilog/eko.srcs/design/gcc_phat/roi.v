@@ -21,80 +21,92 @@
 
 
 module roi (
-    input             aclk,
-    input             aresetn,
-    input      [15:0] s_axis_data_tdata,
-    input             s_axis_data_tvalid,
-    output            s_axis_data_tready,
-    output reg [15:0] m_axis_data_tdata,
-    output reg        m_axis_data_tvalid,
-    input             m_axis_data_tready
+    input         aclk,
+    input         aresetn,
+    input  [15:0] s_axis_data_tdata,
+    input         s_axis_data_tvalid,
+    output        s_axis_data_tready,
+    output [15:0] m_axis_data_tdata,
+    output        m_axis_data_tvalid,
+    input         m_axis_data_tready
 );
   // *** parameter define ***
   // n_max = (distance between the two microphones) * (sampling frequency) / (speed of sound)
-  //       = 0.18m * 60KHz / 340m/s 
+  //       = 0.18m * 48KHz / 340m/s 
   //       = 32
-  localparam N_MAX = 32;
+  localparam N_MAX = 104;
+  localparam LENGTH = 4096;
 
   localparam LOAD = 0;
   localparam UNLOAD = 1;
 
   // *** reg define ***
-  reg            state;
-  reg     [ 9:0] index;
+  reg         state;
+  reg  [11:0] index;
+  reg  [ 7:0] addr;
 
-  (* ram_style = "block" *)reg     [15:0] cache [N_MAX+N_MAX - 1:0];
+  // *** wire define ***
+  wire        we;
+  wire        re;
+  wire        index_in_roi;
 
-  // ** interger define ***
-  integer        i;
+  // *** modules ***
+  roi_bram_0 roi_bram_0_inst0 (
+      .clka (aclk),
+      .ena  (we),
+      .wea  (we),
+      .addra(addr),
+      .dina (s_axis_data_tdata),
+      .clkb (aclk),
+      .enb  (re),
+      .addrb(addr),
+      .doutb(m_axis_data_tdata)
+  );
 
   // *** main code ***
   assign s_axis_data_tready = (state == LOAD);
+  assign index_in_roi = 
+    (index >= 0 && index <= N_MAX - 1) 
+    || (index >= (LENGTH - N_MAX) && index <= (LENGTH - 1));
+  assign we = (state == LOAD) && s_axis_data_tvalid && index_in_roi;
+  assign re = (state == UNLOAD) && m_axis_data_tready;
+  assign m_axis_data_tvalid = (state == UNLOAD);
 
   always @(posedge aclk or negedge aresetn) begin
     if (!aresetn) begin
       state <= LOAD;
       index <= 0;
-      m_axis_data_tdata <= 0;
-      m_axis_data_tvalid <= 0;
-      for (i = 0; i < N_MAX + N_MAX; i = i + 1) begin
-        cache[i] <= 0;
-      end
+      addr  <= N_MAX;
     end else begin
       case (state)
         LOAD: begin
           if (s_axis_data_tvalid) begin
             // index increment
             index <= index + 1;
-            // we only pick the first and last N_MAX samples
-            if (index >= 0 && index <= N_MAX - 1) begin
-              cache[index+N_MAX] <= s_axis_data_tdata;
-            end else if (index >= 1024 - N_MAX && index <= 1023) begin
-              cache[index-1024+N_MAX] <= s_axis_data_tdata;
+            // address increment
+            if (index_in_roi) begin
+              addr <= addr + 1;
+            end
+            if (index == N_MAX + 1) begin
+              addr <= 0;
             end
             // state jump
-            if (index == {10{1'b1}}) begin
+            if (index == (LENGTH - 1)) begin
               state <= UNLOAD;
+              addr  <= 0;
               index <= 0;
-              m_axis_data_tvalid <= 1;
-              m_axis_data_tdata <= cache[0];
             end
           end
         end
         UNLOAD: begin
           if (m_axis_data_tready) begin
-            // index increment
-            index <= index + 1;
-          end
-          // send
-          if (index < N_MAX + N_MAX - 1) begin
-            m_axis_data_tvalid <= 1;
-            m_axis_data_tdata  <= cache[index];
-          end  // send complete, jump back to LOAD state
-          else begin
-            m_axis_data_tvalid <= 0;
-            index <= 0;
-            state <= LOAD;
+            // address increment
+            addr <= addr + 1;
+            if (addr == N_MAX + N_MAX - 1) begin
+              state <= LOAD;
+              addr  <= N_MAX;
+              index <= 0;
+            end
           end
         end
         default: begin
@@ -103,7 +115,5 @@ module roi (
       endcase
     end
   end
-
-
 
 endmodule

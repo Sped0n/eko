@@ -72,20 +72,20 @@ module pl_cross (
       .m_axis_data_tready(axis_i2s_tready)
   );
 
-  // bandpass
-  wire        axis_bandpass_tvalid;
-  wire [63:0] axis_bandpass_tdata;
-  wire        axis_bandpass_tready;
+  // fir + cic
+  wire        axis_filterx_tvalid;
+  wire [63:0] axis_filterx_tdata;
+  wire        axis_filterx_tready;
 
-  bandpass_cross_0 bandpass_cross_0_inst0 (
+  filterx_0 filterx_0_inst0 (
       .aclk              (aclk),
       .aresetn           (aresetn),
       .s_axis_data_tdata (axis_i2s_tdata),
       .s_axis_data_tvalid(axis_i2s_tvalid),
       .s_axis_data_tready(axis_i2s_tready),
-      .m_axis_data_tdata (axis_bandpass_tdata),
-      .m_axis_data_tvalid(axis_bandpass_tvalid),
-      .m_axis_data_tready(axis_bandpass_tready)
+      .m_axis_data_tdata (axis_filterx_tdata),
+      .m_axis_data_tvalid(axis_filterx_tvalid),
+      .m_axis_data_tready(axis_filterx_tready)
   );
 
   // upstream hub
@@ -100,13 +100,13 @@ module pl_cross (
       .aclk(aclk),
       .aresetn(aresetn),
       .s_axis_data_tdata({
-        axis_bandpass_tdata[63:48],
-        axis_bandpass_tdata[31:16],
-        axis_bandpass_tdata[47:32],
-        axis_bandpass_tdata[15:0]
+        axis_filterx_tdata[63:48],
+        axis_filterx_tdata[31:16],
+        axis_filterx_tdata[47:32],
+        axis_filterx_tdata[15:0]
       }),  // {mic3, mic1, mic2, mic0}
-      .s_axis_data_tvalid(axis_bandpass_tvalid),
-      .s_axis_data_tready(axis_bandpass_tready),
+      .s_axis_data_tvalid(axis_filterx_tvalid),
+      .s_axis_data_tready(axis_filterx_tready),
       .m_axis_data_tready(axis_upstream_tready),
       .m_axis_data_tdata(axis_upstream_tdata),
       .m_axis_data_tvalid(axis_upstream_tvalid),
@@ -121,7 +121,6 @@ module pl_cross (
   cross_gcc_phat cross_gcc_phat_inst0 (
       .aclk             (aclk),
       .aresetn          (aresetn),
-      .dither           (4'd6),
       .s_axis_in_tdata  (axis_upstream_tdata),
       .s_axis_in_tvalid (axis_upstream_tvalid & vad_result),
       .s_axis_in_tready (axis_upstream_tready),
@@ -152,11 +151,11 @@ module pl_cross (
   // ila
   ila_i2s_0 ila_i2s_0_inst0 (
       .clk(aclk),
-      .probe0(axis_gcc_phat_tdata[31:16]),
-      .probe1(axis_gcc_phat_tdata[15:0]),
+      .probe0(axis_upstream_tdata[31:16]),
+      .probe1(axis_upstream_tdata[15:0]),
       .probe2(axis_gcc_phat_tvalid),
       .probe3(axis_gcc_phat_tready),
-      .probe4(axis_upstream_tvalid),
+      .probe4(axis_upstream_tvalid & vad_result),
       .probe5(axis_upstream_tready)
   );
 

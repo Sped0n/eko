@@ -2,7 +2,7 @@
 //Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-//Date        : Sun Apr 21 22:44:50 2024
+//Date        : Sat May  4 01:55:53 2024
 //Host        : Zen running 64-bit major release  (build 9200)
 //Command     : generate_target eko_bd.bd
 //Design      : eko_bd
@@ -323,7 +323,7 @@ module eko_bd
         .rstb(pl_cross_0_bram_rtl_RST),
         .wea(axi_bram_ctrl_0_BRAM_PORTA_WE),
         .web(pl_cross_0_bram_rtl_WE));
-  eko_bd_pl_cross_0_0 pl_cross_0
+  eko_bd_pl_cross_0_1 pl_cross_0
        (.aclk(processing_system7_0_FCLK_CLK0),
         .aresetn(rst_ps7_0_50M_peripheral_aresetn),
         .bram_addr(pl_cross_0_bram_rtl_ADDR),

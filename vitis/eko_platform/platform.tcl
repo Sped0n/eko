@@ -39,3 +39,18 @@ platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/ek
 platform generate -domains 
 platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
 platform generate -domains 
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+platform generate -domains 
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+platform generate -domains 
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+platform generate -domains 
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+platform generate -domains 
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+platform generate -domains 
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+platform generate -domains 
+platform active {eko_platform}
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+platform generate -domains 

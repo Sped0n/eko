@@ -66,7 +66,6 @@ module tb_gcc_phat_core ();
   gcc_phat_core gcc_phat_core_inst0 (
       .aclk(clk),
       .aresetn(rst_n),
-      .dither(4'd6),
       .s_axis_in_tdata({sig_2, sig_1}),
       .s_axis_in_tready(s_axis_data_tready),
       .s_axis_in_tvalid(s_axis_data_tvalid),
@@ -92,21 +91,21 @@ module tb_gcc_phat_core ();
     count = 0;
     help_counter = 0;
     sig_txt_1 = $fopen(
-        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\cross20_3_1.txt", "r");
+        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\iladata7_0.txt", "r");
     sig_txt_2 = $fopen(
-        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\cross20_3_0.txt", "r");
+        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\iladata7_1.txt", "r");
     #10000 ready = 1;
   end
 
   // *** always block ***
   always @(posedge clk) begin
     if (s_axis_data_tready == 1 && ready == 1) begin
-      if (count < 1024) begin
+      if (count < 4096) begin
         s_axis_data_tvalid <= 1;
         $fscanf(sig_txt_1, "%d", sig_1);
         $fscanf(sig_txt_2, "%d", sig_2);
         count <= count + 1;
-      end else if (count == 1024) begin
+      end else if (count == 4096) begin
         s_axis_data_tvalid <= 0;
       end
     end
@@ -114,4 +113,5 @@ module tb_gcc_phat_core ();
       help_counter <= help_counter + 1;
     end
   end
+
 endmodule

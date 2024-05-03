@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x1BBE52002C1B5CE2",
+      "boundary_crc": "0x1BBE52009C464E3C",
       "device": "xc7z020clg400-1",
       "name": "eko_bd",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -208,17 +208,7 @@
         "direction": "O"
       },
       "led0_0": {
-        "direction": "O",
-        "parameters": {
-          "PortWidth": {
-            "value": "1",
-            "value_src": "default_prop"
-          },
-          "SENSITIVITY": {
-            "value": "EDGE_RISING",
-            "value_src": "const_prop"
-          }
-        }
+        "direction": "O"
       }
     },
     "components": {
@@ -1591,8 +1581,8 @@
       "pl_cross_0": {
         "vlnv": "xilinx.com:module_ref:pl_cross:1.0",
         "ip_revision": "1",
-        "xci_name": "eko_bd_pl_cross_0_0",
-        "xci_path": "ip\\eko_bd_pl_cross_0_0\\eko_bd_pl_cross_0_0.xci",
+        "xci_name": "eko_bd_pl_cross_0_1",
+        "xci_path": "ip\\eko_bd_pl_cross_0_1\\eko_bd_pl_cross_0_1.xci",
         "inst_hier_path": "pl_cross_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -1736,17 +1726,7 @@
             "direction": "O"
           },
           "led0": {
-            "direction": "O",
-            "parameters": {
-              "SENSITIVITY": {
-                "value": "EDGE_RISING",
-                "value_src": "const_prop"
-              },
-              "PortWidth": {
-                "value": "1",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "O"
           }
         }
       }

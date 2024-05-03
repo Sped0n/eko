@@ -23,7 +23,6 @@
 module cross_gcc_phat (
     input         aclk,
     input         aresetn,
-    input  [ 3:0] dither,
     input  [63:0] s_axis_in_tdata,
     input         s_axis_in_tvalid,
     output        s_axis_in_tready,
@@ -32,9 +31,9 @@ module cross_gcc_phat (
     input         m_axis_out_tready
 );
   // broadcaster_2
-  wire signed [31:0] axis_broadcast_2_tdata  [1:0];
-  wire        [ 1:0] axis_broadcast_2_tvalid;
-  wire        [ 1:0] axis_broadcast_2_tready;
+  wire signed [31:0] axis_broadcaster_2_tdata  [1:0];
+  wire        [ 1:0] axis_broadcaster_2_tvalid;
+  wire        [ 1:0] axis_broadcaster_2_tready;
 
   broadcaster_2 broadcaster_2_inst0 (
       .aclk         (aclk),
@@ -42,9 +41,9 @@ module cross_gcc_phat (
       .s_axis_tdata (s_axis_in_tdata),
       .s_axis_tvalid(s_axis_in_tvalid),
       .s_axis_tready(s_axis_in_tready),
-      .m_axis_tdata ({axis_broadcast_2_tdata[1], axis_broadcast_2_tdata[0]}),
-      .m_axis_tvalid(axis_broadcast_2_tvalid),
-      .m_axis_tready(axis_broadcast_2_tready)
+      .m_axis_tdata ({axis_broadcaster_2_tdata[1], axis_broadcaster_2_tdata[0]}),
+      .m_axis_tvalid(axis_broadcaster_2_tvalid),
+      .m_axis_tready(axis_broadcaster_2_tready)
   );
 
   // gcc_phat_core
@@ -55,10 +54,9 @@ module cross_gcc_phat (
   gcc_phat_core gcc_phat_core_inst0 (
       .aclk             (aclk),
       .aresetn          (aresetn),
-      .dither           (dither),
-      .s_axis_in_tdata  (axis_broadcast_2_tdata[0]),
-      .s_axis_in_tvalid (axis_broadcast_2_tvalid[0]),
-      .s_axis_in_tready (axis_broadcast_2_tready[0]),
+      .s_axis_in_tdata  (axis_broadcaster_2_tdata[0]),
+      .s_axis_in_tvalid (axis_broadcaster_2_tvalid[0]),
+      .s_axis_in_tready (axis_broadcaster_2_tready[0]),
       .m_axis_out_tdata (axis_gcc_phat_core_tdata[0]),
       .m_axis_out_tvalid(axis_gcc_phat_core_tvalid[0]),
       .m_axis_out_tready(axis_gcc_phat_core_tready[0])
@@ -67,10 +65,9 @@ module cross_gcc_phat (
   gcc_phat_core gcc_phat_core_inst1 (
       .aclk             (aclk),
       .aresetn          (aresetn),
-      .dither           (dither),
-      .s_axis_in_tdata  (axis_broadcast_2_tdata[1]),
-      .s_axis_in_tvalid (axis_broadcast_2_tvalid[1]),
-      .s_axis_in_tready (axis_broadcast_2_tready[1]),
+      .s_axis_in_tdata  (axis_broadcaster_2_tdata[1]),
+      .s_axis_in_tvalid (axis_broadcaster_2_tvalid[1]),
+      .s_axis_in_tready (axis_broadcaster_2_tready[1]),
       .m_axis_out_tdata (axis_gcc_phat_core_tdata[1]),
       .m_axis_out_tvalid(axis_gcc_phat_core_tvalid[1]),
       .m_axis_out_tready(axis_gcc_phat_core_tready[1])
@@ -114,4 +111,5 @@ module cross_gcc_phat (
       .m_axis_tvalid(m_axis_out_tvalid),
       .m_axis_tready(m_axis_out_tready)
   );
+
 endmodule

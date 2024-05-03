@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="284,282.667 ns"></ZoomStartTime>
-      <ZoomEndTime time="288,046.668 ns"></ZoomEndTime>
-      <Cursor1Time time="286,248.667 ns"></Cursor1Time>
+      <ZoomStartTime time="1,328.166666 us"></ZoomStartTime>
+      <ZoomEndTime time="1,339.166667 us"></ZoomEndTime>
+      <Cursor1Time time="1,401.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="528"></NameColumnWidth>
-      <ValueColumnWidth column_width="209"></ValueColumnWidth>
+      <ValueColumnWidth column_width="137"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="24" />
    <wvobject fp_name="/tb_gcc_phat_core/sig_txt_1" type="array">
       <obj_property name="ElementShortName">sig_txt_1[31:0]</obj_property>
       <obj_property name="ObjectShortName">sig_txt_1[31:0]</obj_property>
@@ -92,6 +92,15 @@
    <wvobject fp_name="/tb_gcc_phat_core/axis_gcc_phat_tdata" type="array">
       <obj_property name="ElementShortName">axis_gcc_phat_tdata[15:0]</obj_property>
       <obj_property name="ObjectShortName">axis_gcc_phat_tdata[15:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">500.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_LINEAR</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_gcc_phat_core/axis_gcc_phat_tvalid" type="logic">
       <obj_property name="ElementShortName">axis_gcc_phat_tvalid</obj_property>
@@ -103,9 +112,9 @@
       <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
       <obj_property name="CellHeight">200</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_FIXED</obj_property>
       <obj_property name="AnalogYRangeMin">0.000000</obj_property>
-      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">200.000000</obj_property>
       <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_LINEAR</obj_property>
       <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
       <obj_property name="AnalogHorizLine">0.000000</obj_property>
@@ -117,5 +126,460 @@
    <wvobject fp_name="/tb_gcc_phat_core/PERIOD" type="array">
       <obj_property name="ElementShortName">PERIOD[31:0]</obj_property>
       <obj_property name="ObjectShortName">PERIOD[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata" type="array">
+      <obj_property name="ElementShortName">axis_weight_0_tdata[71:0]</obj_property>
+      <obj_property name="ObjectShortName">axis_weight_0_tdata[71:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus262" type="vbus">
+      <obj_property name="label">mag</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[23]" type="logic">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[22]" type="logic">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">[22]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[21]" type="logic">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[20]" type="logic">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[19]" type="logic">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">[19]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[18]" type="logic">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[17]" type="logic">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[16]" type="logic">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[15]" type="logic">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[14]" type="logic">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[13]" type="logic">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[12]" type="logic">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[11]" type="logic">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[10]" type="logic">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[9]" type="logic">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[8]" type="logic">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[7]" type="logic">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[6]" type="logic">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[5]" type="logic">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[4]" type="logic">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[3]" type="logic">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[2]" type="logic">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[1]" type="logic">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[0]" type="logic">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus237" type="vbus">
+      <obj_property name="label">re</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[47]" type="logic">
+         <obj_property name="ElementShortName">[47]</obj_property>
+         <obj_property name="ObjectShortName">[47]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[46]" type="logic">
+         <obj_property name="ElementShortName">[46]</obj_property>
+         <obj_property name="ObjectShortName">[46]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[45]" type="logic">
+         <obj_property name="ElementShortName">[45]</obj_property>
+         <obj_property name="ObjectShortName">[45]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[44]" type="logic">
+         <obj_property name="ElementShortName">[44]</obj_property>
+         <obj_property name="ObjectShortName">[44]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[43]" type="logic">
+         <obj_property name="ElementShortName">[43]</obj_property>
+         <obj_property name="ObjectShortName">[43]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[42]" type="logic">
+         <obj_property name="ElementShortName">[42]</obj_property>
+         <obj_property name="ObjectShortName">[42]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[41]" type="logic">
+         <obj_property name="ElementShortName">[41]</obj_property>
+         <obj_property name="ObjectShortName">[41]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[40]" type="logic">
+         <obj_property name="ElementShortName">[40]</obj_property>
+         <obj_property name="ObjectShortName">[40]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[39]" type="logic">
+         <obj_property name="ElementShortName">[39]</obj_property>
+         <obj_property name="ObjectShortName">[39]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[38]" type="logic">
+         <obj_property name="ElementShortName">[38]</obj_property>
+         <obj_property name="ObjectShortName">[38]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[37]" type="logic">
+         <obj_property name="ElementShortName">[37]</obj_property>
+         <obj_property name="ObjectShortName">[37]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[36]" type="logic">
+         <obj_property name="ElementShortName">[36]</obj_property>
+         <obj_property name="ObjectShortName">[36]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[35]" type="logic">
+         <obj_property name="ElementShortName">[35]</obj_property>
+         <obj_property name="ObjectShortName">[35]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[34]" type="logic">
+         <obj_property name="ElementShortName">[34]</obj_property>
+         <obj_property name="ObjectShortName">[34]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[33]" type="logic">
+         <obj_property name="ElementShortName">[33]</obj_property>
+         <obj_property name="ObjectShortName">[33]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[32]" type="logic">
+         <obj_property name="ElementShortName">[32]</obj_property>
+         <obj_property name="ObjectShortName">[32]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[31]" type="logic">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[30]" type="logic">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[29]" type="logic">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[28]" type="logic">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[27]" type="logic">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[26]" type="logic">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[25]" type="logic">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[24]" type="logic">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">[24]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus212" type="vbus">
+      <obj_property name="label">im</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[71]" type="logic">
+         <obj_property name="ElementShortName">[71]</obj_property>
+         <obj_property name="ObjectShortName">[71]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[70]" type="logic">
+         <obj_property name="ElementShortName">[70]</obj_property>
+         <obj_property name="ObjectShortName">[70]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[69]" type="logic">
+         <obj_property name="ElementShortName">[69]</obj_property>
+         <obj_property name="ObjectShortName">[69]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[68]" type="logic">
+         <obj_property name="ElementShortName">[68]</obj_property>
+         <obj_property name="ObjectShortName">[68]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[67]" type="logic">
+         <obj_property name="ElementShortName">[67]</obj_property>
+         <obj_property name="ObjectShortName">[67]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[66]" type="logic">
+         <obj_property name="ElementShortName">[66]</obj_property>
+         <obj_property name="ObjectShortName">[66]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[65]" type="logic">
+         <obj_property name="ElementShortName">[65]</obj_property>
+         <obj_property name="ObjectShortName">[65]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[64]" type="logic">
+         <obj_property name="ElementShortName">[64]</obj_property>
+         <obj_property name="ObjectShortName">[64]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[63]" type="logic">
+         <obj_property name="ElementShortName">[63]</obj_property>
+         <obj_property name="ObjectShortName">[63]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[62]" type="logic">
+         <obj_property name="ElementShortName">[62]</obj_property>
+         <obj_property name="ObjectShortName">[62]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[61]" type="logic">
+         <obj_property name="ElementShortName">[61]</obj_property>
+         <obj_property name="ObjectShortName">[61]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[60]" type="logic">
+         <obj_property name="ElementShortName">[60]</obj_property>
+         <obj_property name="ObjectShortName">[60]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[59]" type="logic">
+         <obj_property name="ElementShortName">[59]</obj_property>
+         <obj_property name="ObjectShortName">[59]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[58]" type="logic">
+         <obj_property name="ElementShortName">[58]</obj_property>
+         <obj_property name="ObjectShortName">[58]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[57]" type="logic">
+         <obj_property name="ElementShortName">[57]</obj_property>
+         <obj_property name="ObjectShortName">[57]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[56]" type="logic">
+         <obj_property name="ElementShortName">[56]</obj_property>
+         <obj_property name="ObjectShortName">[56]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[55]" type="logic">
+         <obj_property name="ElementShortName">[55]</obj_property>
+         <obj_property name="ObjectShortName">[55]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[54]" type="logic">
+         <obj_property name="ElementShortName">[54]</obj_property>
+         <obj_property name="ObjectShortName">[54]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[53]" type="logic">
+         <obj_property name="ElementShortName">[53]</obj_property>
+         <obj_property name="ObjectShortName">[53]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[52]" type="logic">
+         <obj_property name="ElementShortName">[52]</obj_property>
+         <obj_property name="ObjectShortName">[52]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[51]" type="logic">
+         <obj_property name="ElementShortName">[51]</obj_property>
+         <obj_property name="ObjectShortName">[51]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[50]" type="logic">
+         <obj_property name="ElementShortName">[50]</obj_property>
+         <obj_property name="ObjectShortName">[50]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[49]" type="logic">
+         <obj_property name="ElementShortName">[49]</obj_property>
+         <obj_property name="ObjectShortName">[49]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/axis_weight_0_tdata[48]" type="logic">
+         <obj_property name="ElementShortName">[48]</obj_property>
+         <obj_property name="ObjectShortName">[48]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata" type="array">
+      <obj_property name="ElementShortName">m_axis_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axis_tdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus336" type="vbus">
+      <obj_property name="label">w_re</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">16</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[15]" type="logic">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[14]" type="logic">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[13]" type="logic">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[12]" type="logic">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[11]" type="logic">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[10]" type="logic">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[9]" type="logic">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[8]" type="logic">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[7]" type="logic">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[6]" type="logic">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[5]" type="logic">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[4]" type="logic">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[3]" type="logic">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[2]" type="logic">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[1]" type="logic">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[0]" type="logic">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus319" type="vbus">
+      <obj_property name="label">w_im</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">16</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[31]" type="logic">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[30]" type="logic">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[29]" type="logic">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[28]" type="logic">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[27]" type="logic">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[26]" type="logic">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[25]" type="logic">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[24]" type="logic">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">[24]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[23]" type="logic">
+         <obj_property name="ElementShortName">[23]</obj_property>
+         <obj_property name="ObjectShortName">[23]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[22]" type="logic">
+         <obj_property name="ElementShortName">[22]</obj_property>
+         <obj_property name="ObjectShortName">[22]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[21]" type="logic">
+         <obj_property name="ElementShortName">[21]</obj_property>
+         <obj_property name="ObjectShortName">[21]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[20]" type="logic">
+         <obj_property name="ElementShortName">[20]</obj_property>
+         <obj_property name="ObjectShortName">[20]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[19]" type="logic">
+         <obj_property name="ElementShortName">[19]</obj_property>
+         <obj_property name="ObjectShortName">[19]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[18]" type="logic">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[17]" type="logic">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_gcc_phat_core/gcc_phat_core_inst0/normalize_2_inst0/m_axis_tdata[16]" type="logic">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">[16]</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

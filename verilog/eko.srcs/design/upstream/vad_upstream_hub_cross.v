@@ -35,28 +35,29 @@ module vad_upstream_hub_cross (
   // *** paramter define ***
   localparam LOAD = 0;
   localparam UNLOAD = 1;
-  localparam VAD_FRAME_SIZE = 256;
-  localparam VAD_WINDOW_CNT = 7;
-  localparam VAD_FRAME_SHIFT = 128;
-  localparam VAD_BASE_THS = 200;
+  localparam VAD_FRAME_SIZE = 512;
+  localparam VAD_START_INDEX = 5;
+  localparam VAD_WINDOW_CNT = 5;  // 4096 / 256 - 1 = 15, but we only need middle 5
+  localparam VAD_FRAME_SHIFT = 256;
+  localparam VAD_BASE_THS = 250;
   localparam VAD_TRIG_INDEX = 6;
 
   // *** reg define ***
-  reg                              state;
-  reg         [               9:0] index;
-  reg signed  [              31:0] avg_energy                       [VAD_WINDOW_CNT-1:0];
-  reg signed  [              31:0] tmp_threshold;
-  reg signed  [              31:0] threshold;
-  reg         [VAD_WINDOW_CNT-1:0] vad_results;  // 1 bit per window
-  reg                              re_d0;
-  reg                              read_flag;
+  reg                state;
+  reg         [11:0] index;  // 4096
+  reg signed  [31:0] avg_energy                       [VAD_WINDOW_CNT-1:0];
+  reg signed  [31:0] tmp_threshold;
+  reg signed  [31:0] threshold;
+  reg         [ 4:0] vad_results;  // 1 bit per window
+  reg                re_d0;
+  reg                read_flag;
 
 
   // *** wire define ***
-  wire                             we;
-  wire                             re;
-  wire signed [              31:0] energy;
-  wire signed [              15:0] vad_ch;
+  wire               we;
+  wire               re;
+  wire signed [31:0] energy;
+  wire signed [15:0] vad_ch;
 
   // *** modules ***
   upstream_bram_1 upstream_bram_1_inst0 (
@@ -91,13 +92,15 @@ module vad_upstream_hub_cross (
         end else begin
           // if energy in the window, add it into average energy
           if (
-          we 
-          && (index >= (i * VAD_FRAME_SHIFT)) 
-          && (index <= (VAD_FRAME_SIZE + i * VAD_FRAME_SHIFT - 1))
+            we 
+            && (index >= ((i + VAD_START_INDEX) * VAD_FRAME_SHIFT)) 
+            && (index <= (VAD_FRAME_SIZE + (i + VAD_START_INDEX) * VAD_FRAME_SHIFT - 1))
           ) begin
             // update average sound energy
             avg_energy[i] <= (avg_energy[i] >>> 1) + (energy >>> 1);
-          end else if (we && (index == (VAD_FRAME_SIZE + i * VAD_FRAME_SHIFT))) begin
+          end else if (
+            we && (index == (VAD_FRAME_SIZE + (i + VAD_START_INDEX) * VAD_FRAME_SHIFT))
+          ) begin
             // update vad result at the end of the window
             vad_results[i] <= ((avg_energy[i] >>> VAD_TRIG_INDEX) > threshold);
           end
@@ -126,7 +129,7 @@ module vad_upstream_hub_cross (
         LOAD: begin
           if (s_axis_data_tvalid) begin
             index <= index + 1;
-            if (index == {10{1'b1}}) begin
+            if (index == {12{1'b1}}) begin
               state <= UNLOAD;
               if (m_axis_data_tready) begin
                 read_flag <= 1;
@@ -146,7 +149,7 @@ module vad_upstream_hub_cross (
               tmp_threshold <= (tmp_threshold >>> 1) + (avg_energy[index] >>> 1);
             end
           end
-          if (index == {10{1'b1}}) begin
+          if (index == {12{1'b1}}) begin
             state <= LOAD;
             read_flag <= 0;
             if (!vad_result) begin  // only update threshold when no voice detected

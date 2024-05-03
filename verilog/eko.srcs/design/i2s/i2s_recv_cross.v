@@ -35,7 +35,7 @@ module i2s_recv_cross (
 );
 
   // *** parameter define ***
-  parameter DIVISOR = 13;
+  parameter DIVISOR = 16;
 
   // *** reg define ***
   reg  [ 4:0] clock_count;
