@@ -1,6 +1,6 @@
 import csv
 
-csv_file_name: str = "cross20_2"
+csv_file_name: str = "iladata7"
 csv_path: str = f"./assets/csv/{csv_file_name}.csv"
 txt_0_path: str = f"./assets/txt/{csv_file_name}_0.txt"
 txt_1_path: str = f"./assets/txt/{csv_file_name}_1.txt"
@@ -14,9 +14,13 @@ with open(csv_path, "r") as f:
                 if not first_row_read:
                     first_row_read = True
                     continue
-                if row["p_0_out"] == "1":
-                    signal_0 = int(row["axis_upstream_tdata_1[31:16]"])
-                    signal_1 = int(row["axis_upstream_tdata[15:0]"])
+                if row["eko_bd_i/pl_cross_0/inst/cross_gcc_phat_inst0_i_1_n_0"] == "1":
+                    signal_0 = int(
+                        row["eko_bd_i/pl_cross_0/inst/axis_upstream_tdata_1[31:16]"]
+                    )
+                    signal_1 = int(
+                        row["eko_bd_i/pl_cross_0/inst/axis_upstream_tdata[15:0]"]
+                    )
                     if signal_0 < 0:
                         signal_0 += 2**16
                     elif signal_0 > 2**16:

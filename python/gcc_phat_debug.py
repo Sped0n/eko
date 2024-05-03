@@ -15,20 +15,17 @@ def csv_to_list(csv_file_name: str) -> tuple[np.ndarray, np.ndarray]:
         first_row_read = False
         for row in reader:
             if not first_row_read:
+                print(row["eko_bd_i/pl_cross_0/inst/cross_gcc_phat_inst0_i_1_n_0"])
                 first_row_read = True
                 continue
-            if row["p_0_out"] == "1":
-                result_ch2.append(int(row["axis_upstream_tdata_1[31:16]"]))
-                result_ch5.append(int(row["axis_upstream_tdata[15:0]"]))
+            if row["eko_bd_i/pl_cross_0/inst/cross_gcc_phat_inst0_i_1_n_0"] == "1":
+                result_ch2.append(
+                    int(row["eko_bd_i/pl_cross_0/inst/axis_upstream_tdata_1[31:16]"])
+                )
+                result_ch5.append(
+                    int(row["eko_bd_i/pl_cross_0/inst/axis_upstream_tdata[15:0]"])
+                )
 
-    # add random noise to the signal
-
-    result_ch2 = np.array(result_ch2) + np.rint(
-        (np.random.rand(len(result_ch2)) - 0.5) * 0
-    )
-    result_ch5 = np.array(result_ch5) + np.rint(
-        (np.random.rand(len(result_ch5)) - 0.5) * 0
-    )
     return result_ch2, result_ch5
 
 
@@ -40,13 +37,12 @@ def xcorr_freq(s1, s2, pad=False):
         s2 = np.hstack([pad2, s2])
     f_s1 = fft(s1)
     f_s2 = fft(s2)
-    f_s2c = np.conj(f_s2)
-    f_s = f_s1 * f_s2c
-    # denom = abs(f_s)
-    # print(np.min(denom))
-    # f_s = f_s / (
-    #     denom
-    # )  # This line is the only difference between GCC-PHAT and normal cross correlation
+    f_s = f_s1 * np.conj(f_s2)
+    denom = abs(f_s)
+    print(np.average(denom))
+    f_s = f_s / (
+        denom + np.average(denom) * 0.1
+    )  # This line is the only difference between GCC-PHAT and normal cross correlation
 
     return np.abs(ifft(f_s))
     # return f_s
@@ -55,8 +51,9 @@ def xcorr_freq(s1, s2, pad=False):
 
 # csvs = ["x13_0", "x13_1", "x13_2", "x13_3"]
 # csvs = ["x31_0", "x31_1", "x31_2", "x31_3"]
-csvs = ["cross02_0", "cross02_1", "cross02_2", "cross02_3"]
+# csvs = ["cross02_0", "cross02_1", "cross02_2", "cross02_3"]
 # csvs = ["cross20_0", "cross20_1", "cross20_2", "cross20_3"]
+csvs = ["iladata7"]
 taus = []
 for csv_file in csvs:
     result_ch2, result_ch5 = csv_to_list(csv_file)
@@ -65,10 +62,11 @@ for csv_file in csvs:
 
 taus_len = len(taus[0])
 for index, tau in enumerate(taus):
-    plt_title = str(np.argmax(np.concatenate((tau[-33:], tau[:33]))) - 33)
+    tmp = np.concatenate((tau[-104:], tau[:104]))
+    plt_title = str(np.argmax(tmp) - 104)
     # plt_title = str(np.argmax(tau) - 1024)
     plt.subplot(len(taus), 1, index + 1)
-    plt.plot(tau)
+    plt.plot(tmp)
     plt.title(plt_title)
 
 
