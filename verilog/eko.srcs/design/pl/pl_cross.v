@@ -93,12 +93,14 @@ module pl_cross (
   wire [63:0] axis_upstream_tdata;
   wire        axis_upstream_tready;
   wire        vad_result;
+  wire [15:0] threshold_base;
 
   assign led0 = vad_result;
 
   vad_upstream_hub_cross vad_upstream_hub_cross_inst_0 (
       .aclk(aclk),
       .aresetn(aresetn),
+      .threshold_base(threshold_base),
       .s_axis_data_tdata({
         axis_filterx_tdata[63:48],
         axis_filterx_tdata[31:16],
@@ -130,14 +132,16 @@ module pl_cross (
   );
 
   // bram controller
+  wire debug_trigger;
+  assign debug_trigger = (bram_we == 4'b0000) && (bram_en == 1'b1);
+
   bram_com_cross bram_com_cross_inst0 (
       .aclk              (aclk),
       .aresetn           (aresetn),
       .s_axis_data_tvalid(axis_gcc_phat_tvalid),
       .s_axis_data_tdata (axis_gcc_phat_tdata),
       .s_axis_data_tready(axis_gcc_phat_tready),
-      .threshold         (),
-      .dither            (),
+      .threshold_base    (threshold_base),
       .bram_addr         (bram_addr),
       .bram_clk          (bram_clk),
       .bram_wrdata       (bram_wrdata),
@@ -150,13 +154,16 @@ module pl_cross (
 
   // ila
   ila_i2s_0 ila_i2s_0_inst0 (
-      .clk(aclk),
+      .clk   (aclk),
       .probe0(axis_upstream_tdata[31:16]),
       .probe1(axis_upstream_tdata[15:0]),
-      .probe2(axis_gcc_phat_tvalid),
-      .probe3(axis_gcc_phat_tready),
-      .probe4(axis_upstream_tvalid & vad_result),
-      .probe5(axis_upstream_tready)
+      .probe2(axis_upstream_tvalid & vad_result),
+      .probe3(axis_gcc_phat_tdata[31:16]),
+      .probe4(axis_gcc_phat_tdata[15:0]),
+      .probe5(axis_gcc_phat_tvalid),
+      .probe6(debug_trigger),
+      .probe7(bram_rddata),
+      .probe8(bram_addr)
   );
 
 endmodule

@@ -55,14 +55,14 @@ module gcc_phat_core (
   wire        axis_multiply_1_tready;
 
   multiply_1 multiply_1_inst0 (
-      .aclk         (aclk),
-      .aresetn      (aresetn),
-      .s_axis_tdata (axis_xfft_2_tdata),
-      .s_axis_tvalid(axis_xfft_2_tvalid),
-      .s_axis_tready(axis_xfft_2_tready),
-      .m_axis_tdata (axis_multiply_1_tdata),
-      .m_axis_tvalid(axis_multiply_1_tvalid),
-      .m_axis_tready(axis_multiply_1_tready)
+      .aclk              (aclk),
+      .aresetn           (aresetn),
+      .s_axis_data_tdata (axis_xfft_2_tdata),
+      .s_axis_data_tvalid(axis_xfft_2_tvalid),
+      .s_axis_data_tready(axis_xfft_2_tready),
+      .m_axis_data_tdata (axis_multiply_1_tdata),
+      .m_axis_data_tvalid(axis_multiply_1_tvalid),
+      .m_axis_data_tready(axis_multiply_1_tready)
   );
 
   // normalize_2
@@ -71,14 +71,14 @@ module gcc_phat_core (
   wire        axis_normalize_2_tready;
 
   normalize_2 normalize_2_inst0 (
-      .aclk         (aclk),
-      .aresetn      (aresetn),
-      .s_axis_tdata (axis_multiply_1_tdata),
-      .s_axis_tvalid(axis_multiply_1_tvalid),
-      .s_axis_tready(axis_multiply_1_tready),
-      .m_axis_tdata (axis_normalize_2_tdata),
-      .m_axis_tvalid(axis_normalize_2_tvalid),
-      .m_axis_tready(axis_normalize_2_tready)
+      .aclk              (aclk),
+      .aresetn           (aresetn),
+      .s_axis_data_tdata (axis_multiply_1_tdata),
+      .s_axis_data_tvalid(axis_multiply_1_tvalid),
+      .s_axis_data_tready(axis_multiply_1_tready),
+      .m_axis_data_tdata (axis_normalize_2_tdata),
+      .m_axis_data_tvalid(axis_normalize_2_tvalid),
+      .m_axis_data_tready(axis_normalize_2_tready)
   );
 
   // xfft_1
@@ -102,14 +102,14 @@ module gcc_phat_core (
 
   // magnitude_0
   magnitude_0 magnitude_0_inst0 (
-      .aclk         (aclk),
-      .aresetn      (aresetn),
-      .s_axis_tdata (axis_xfft_1_tdata),
-      .s_axis_tvalid(axis_xfft_1_tvalid),
-      .s_axis_tready(axis_xfft_1_tready),
-      .m_axis_tdata (m_axis_out_tdata),
-      .m_axis_tvalid(m_axis_out_tvalid),
-      .m_axis_tready(m_axis_out_tready)
+      .aclk              (aclk),
+      .aresetn           (aresetn),
+      .s_axis_data_tdata (axis_xfft_1_tdata),
+      .s_axis_data_tvalid(axis_xfft_1_tvalid),
+      .s_axis_data_tready(axis_xfft_1_tready),
+      .m_axis_data_tdata (m_axis_out_tdata),
+      .m_axis_data_tvalid(m_axis_out_tvalid),
+      .m_axis_data_tready(m_axis_out_tready)
   );
 
 endmodule

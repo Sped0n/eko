@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: spedon wen
 // 
 // Create Date: 05/03/2024 08:17:01 PM
 // Design Name: 
@@ -23,12 +23,12 @@
 module wapply_0 (
     input         aclk,
     input         aresetn,
-    input  [71:0] s_axis_tdata,
-    input         s_axis_tvalid,
-    output        s_axis_tready,
-    output [31:0] m_axis_tdata,
-    output        m_axis_tvalid,
-    input         m_axis_tready
+    input  [71:0] s_axis_data_tdata,   // {imag, real, weight}
+    input         s_axis_data_tvalid,
+    output        s_axis_data_tready,
+    output [31:0] m_axis_data_tdata,   // {weighted imag, weighted real}
+    output        m_axis_data_tvalid,
+    input         m_axis_data_tready
 );
 
   // broadcaster_3
@@ -39,9 +39,9 @@ module wapply_0 (
   broadcaster_3 broadcaster_3_inst0 (
       .aclk(aclk),
       .aresetn(aresetn),
-      .s_axis_tdata(s_axis_tdata),
-      .s_axis_tvalid(s_axis_tvalid),
-      .s_axis_tready(s_axis_tready),
+      .s_axis_tdata(s_axis_data_tdata),
+      .s_axis_tvalid(s_axis_data_tvalid),
+      .s_axis_tready(s_axis_data_tready),
       .m_axis_tdata({
         axis_broadcaster_3_tdata[3],
         axis_broadcaster_3_tdata[2],
@@ -53,7 +53,7 @@ module wapply_0 (
   );
 
   // divider
-  wire signed [39:0] axis_divider_0_tdata  [1:0];
+  wire signed [39:0] axis_divider_0_tdata  [1:0];  // {24bit integer, 16bit fractional}
   wire        [ 1:0] axis_divider_0_tvalid;
   wire        [ 1:0] axis_divider_0_tready;
 
@@ -89,11 +89,12 @@ module wapply_0 (
   combiner_3 combiner_3_inst0 (
       .aclk         (aclk),
       .aresetn      (aresetn),
+      // only take fractional part from divider
       .s_axis_tdata ({axis_divider_0_tdata[1][15:0], axis_divider_0_tdata[0][15:0]}),
       .s_axis_tvalid(axis_divider_0_tvalid),
       .s_axis_tready(axis_divider_0_tready),
-      .m_axis_tdata (m_axis_tdata),
-      .m_axis_tvalid(m_axis_tvalid),
-      .m_axis_tready(m_axis_tready)
+      .m_axis_tdata (m_axis_data_tdata),
+      .m_axis_tvalid(m_axis_data_tvalid),
+      .m_axis_tready(m_axis_data_tready)
   );
 endmodule

@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: spedon wen
 // 
 // Create Date: 04/22/2024 08:28:25 PM
 // Design Name: 
@@ -23,18 +23,15 @@
 module multiply_1 (
     input         aclk,
     input         aresetn,
-    input  [63:0] s_axis_tdata,
-    input         s_axis_tvalid,
-    output        s_axis_tready,
-    output [47:0] m_axis_tdata,
-    output        m_axis_tvalid,
-    input         m_axis_tready
+    input  [63:0] s_axis_data_tdata,   // {2{imag, real}}
+    input         s_axis_data_tvalid,
+    output        s_axis_data_tready,
+    output [47:0] m_axis_data_tdata,   // {imag, real}
+    output        m_axis_data_tvalid,
+    input         m_axis_data_tready
 );
   // *** reg define ***
   reg                random;
-
-  // *** wire define ***
-
 
   // *** modules ***
 
@@ -53,9 +50,9 @@ module multiply_1 (
   broadcaster_4 broadcaster_4_inst0 (
       .aclk         (aclk),
       .aresetn      (aresetn),
-      .s_axis_tdata (s_axis_tdata),
-      .s_axis_tvalid(s_axis_tvalid),
-      .s_axis_tready(s_axis_tready),
+      .s_axis_tdata (s_axis_data_tdata),
+      .s_axis_tvalid(s_axis_data_tvalid),
+      .s_axis_tready(s_axis_data_tready),
       .m_axis_tdata ({axis_broadcaster_4_tdata[1], axis_broadcaster_4_tdata[0]}),
       .m_axis_tvalid(axis_broadcaster_4_tvalid),
       .m_axis_tready(axis_broadcaster_4_tready)
@@ -63,20 +60,20 @@ module multiply_1 (
 
   // complex multiply
   cmpy_0 cmpy_0_inst0 (
-      .aclk(aclk),
-      .aresetn(aresetn),
-      .s_axis_a_tdata({freq_im[0], freq_re[0]}),
-      .s_axis_a_tvalid(axis_broadcaster_4_tvalid[0]),
-      .s_axis_a_tready(axis_broadcaster_4_tready[0]),
-      .s_axis_b_tdata({-freq_im[1], freq_re[1]}),
-      .s_axis_b_tvalid(axis_broadcaster_4_tvalid[1]),
-      .s_axis_b_tready(axis_broadcaster_4_tready[1]),
-      .s_axis_ctrl_tdata(random),
+      .aclk              (aclk),
+      .aresetn           (aresetn),
+      .s_axis_a_tdata    ({freq_im[0], freq_re[0]}),
+      .s_axis_a_tvalid   (axis_broadcaster_4_tvalid[0]),
+      .s_axis_a_tready   (axis_broadcaster_4_tready[0]),
+      .s_axis_b_tdata    ({-freq_im[1], freq_re[1]}),
+      .s_axis_b_tvalid   (axis_broadcaster_4_tvalid[1]),
+      .s_axis_b_tready   (axis_broadcaster_4_tready[1]),
+      .s_axis_ctrl_tdata (random),                        // cmpy random rounding
       .s_axis_ctrl_tvalid(1'b1),
       .s_axis_ctrl_tready(),
-      .m_axis_dout_tdata(m_axis_tdata),
-      .m_axis_dout_tvalid(m_axis_tvalid),
-      .m_axis_dout_tready(m_axis_tready)
+      .m_axis_dout_tdata (m_axis_data_tdata),
+      .m_axis_dout_tvalid(m_axis_data_tvalid),
+      .m_axis_dout_tready(m_axis_data_tready)
   );
 
   // *** main code ***

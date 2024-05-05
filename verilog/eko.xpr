@@ -59,20 +59,20 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="FeatureSet" Val="FeatureSet_Classic"/>
-    <Option Name="WTXSimLaunchSim" Val="803"/>
+    <Option Name="WTXSimLaunchSim" Val="807"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="130"/>
-    <Option Name="WTModelSimExportSim" Val="130"/>
-    <Option Name="WTQuestaExportSim" Val="130"/>
+    <Option Name="WTXSimExportSim" Val="133"/>
+    <Option Name="WTModelSimExportSim" Val="133"/>
+    <Option Name="WTQuestaExportSim" Val="133"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="130"/>
-    <Option Name="WTRivieraExportSim" Val="130"/>
-    <Option Name="WTActivehdlExportSim" Val="130"/>
+    <Option Name="WTVcsExportSim" Val="133"/>
+    <Option Name="WTRivieraExportSim" Val="133"/>
+    <Option Name="WTActivehdlExportSim" Val="133"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -218,14 +218,6 @@
       </File>
       <File Path="$PSRCDIR/design/bd/eko_bd/hdl/eko_bd_wrapper.v">
         <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/design/gcc_phat/dither_0.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -420,35 +412,22 @@
         <Option Name="TopModule" Val="eko_bd_wrapper"/>
       </Config>
     </FileSet>
-    <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
+    <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils" RelGenDir="$PGENDIR/utils">
       <Filter Type="Utils"/>
-      <File Path="$PSRCDIR/utils_1/imports/synth_1/top_i2s_recv.dcp">
+      <File Path="$PSRCDIR/utils/imports/synth_1/eko_bd_wrapper.dcp">
         <FileInfo>
+          <Attr Name="ImportPath" Val="$PRUNDIR/synth_1/eko_bd_wrapper.dcp"/>
+          <Attr Name="ImportTime" Val="1714838674"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedInSteps" Val="impl_1"/>
-          <Attr Name="AutoDcp" Val="1"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/utils_1/imports/impl_1/top_i2s_recv_routed.dcp">
+      <File Path="$PSRCDIR/utils/imports/impl_1/eko_bd_wrapper_routed.dcp">
         <FileInfo>
+          <Attr Name="ImportPath" Val="$PRUNDIR/impl_1/eko_bd_wrapper_routed.dcp"/>
+          <Attr Name="ImportTime" Val="1714839849"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="AutoDcp" Val="1"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/utils/imports/synth_1/synth_cache.dcp">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedInSteps" Val="synth_1"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/utils/imports/impl_1/impl_cache.dcp">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedInSteps" Val="impl_1"/>
         </FileInfo>
       </File>
       <Config>
@@ -982,7 +961,7 @@
     </Simulator>
   </Simulators>
   <Runs Version="1" Minor="21">
-    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z020clg400-1" ConstrsSet="constraints" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" IncrementalCheckpoint="$PSRCDIR/utils/imports/synth_1/synth_cache.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_1">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z020clg400-1" ConstrsSet="constraints" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" IncrementalCheckpoint="$PSRCDIR/utils/imports/synth_1/eko_bd_wrapper.dcp" WriteIncrSynthDcp="true" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PRUNDIR/synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022"/>
         <Step Id="synth_design"/>
@@ -1174,9 +1153,7 @@
     </Run>
     <Run Id="broadcaster_4_synth_1" Type="Ft3:Synth" SrcSet="broadcaster_4" Part="xc7z020clg400-1" ConstrsSet="broadcaster_4" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/broadcaster_4_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/broadcaster_4_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/broadcaster_4_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -1184,7 +1161,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="eko_bd_pl_cross_0_1_synth_1" Type="Ft3:Synth" SrcSet="eko_bd_pl_cross_0_1" Part="xc7z020clg400-1" ConstrsSet="eko_bd_pl_cross_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/eko_bd_pl_cross_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/eko_bd_pl_cross_0_1_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/eko_bd_pl_cross_0_1_synth_1">
+    <Run Id="eko_bd_pl_cross_0_1_synth_1" Type="Ft3:Synth" SrcSet="eko_bd_pl_cross_0_1" Part="xc7z020clg400-1" ConstrsSet="eko_bd_pl_cross_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/eko_bd_pl_cross_0_1_synth_1" IncludeInArchive="true" IsChild="false">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
           <Desc>Vivado Synthesis Defaults</Desc>
@@ -1196,7 +1173,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="constraints" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" IncrementalCheckpoint="$PSRCDIR/utils/imports/impl_1/impl_cache.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1" LaunchOptions="-jobs 12 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_1">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="constraints" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" IncrementalCheckpoint="$PSRCDIR/utils/imports/impl_1/eko_bd_wrapper_routed.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PRUNDIR/impl_1" LaunchOptions="-jobs 12 " AutoRQSDir="$PSRCDIR/utils_1/imports/impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022"/>
         <Step Id="init_design"/>
@@ -1522,9 +1499,7 @@
     </Run>
     <Run Id="broadcaster_4_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="broadcaster_4" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="broadcaster_4_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/broadcaster_4_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/broadcaster_4_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -1539,7 +1514,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="eko_bd_pl_cross_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="eko_bd_pl_cross_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="eko_bd_pl_cross_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/eko_bd_pl_cross_0_1_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/eko_bd_pl_cross_0_1_impl_1">
+    <Run Id="eko_bd_pl_cross_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="eko_bd_pl_cross_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="eko_bd_pl_cross_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
           <Desc>Default settings for Implementation.</Desc>

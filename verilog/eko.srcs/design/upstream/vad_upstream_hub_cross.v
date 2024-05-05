@@ -23,6 +23,7 @@
 module vad_upstream_hub_cross (
     input         aclk,
     input         aresetn,
+    input  [15:0] threshold_base,
     input         s_axis_data_tvalid,
     input  [63:0] s_axis_data_tdata,   // {mic3, mic1, mic2, mic0}
     output        s_axis_data_tready,
@@ -39,7 +40,6 @@ module vad_upstream_hub_cross (
   localparam VAD_START_INDEX = 5;
   localparam VAD_WINDOW_CNT = 5;  // 4096 / 256 - 1 = 15, but we only need middle 5
   localparam VAD_FRAME_SHIFT = 256;
-  localparam VAD_BASE_THS = 250;
   localparam VAD_TRIG_INDEX = 6;
 
   // *** reg define ***
@@ -122,7 +122,7 @@ module vad_upstream_hub_cross (
       state <= LOAD;
       index <= 0;
       tmp_threshold <= 0;
-      threshold <= VAD_BASE_THS;
+      threshold <= threshold_base;
       read_flag <= 0;
     end else begin
       case (state)
@@ -157,18 +157,18 @@ module vad_upstream_hub_cross (
                 threshold <= (
                     (threshold >>> 1) + (threshold >>> 2) + (threshold >>> 3) 
                     + (tmp_threshold >>> 3) 
-                    > VAD_BASE_THS // if new threshold is higher, update threshold, but slowly
+                    > threshold_base // if new threshold is higher, update threshold, but slowly
                   ) 
                   ? (threshold >>> 1) + (threshold >>> 2) + (threshold >>> 3) 
                     + (tmp_threshold >>> 3)
-                  : VAD_BASE_THS;
+                  : threshold_base;
               end else begin
                 threshold <= (
                     (threshold >>> 1) + (threshold >>> 2) + (tmp_threshold >>> 2) 
-                    > VAD_BASE_THS // if new threshold is lower, update threshold, but quickly
+                    > threshold_base // if new threshold is lower, update threshold, but quickly
                   )
                   ? (threshold >>> 1) + (threshold >> 2) + (tmp_threshold >>> 2)
-                  : VAD_BASE_THS;
+                  : threshold_base;
               end
             end
           end

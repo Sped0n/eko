@@ -27,9 +27,8 @@ module bram_com_cross (
     input      [31:0] s_axis_data_tdata,
     input             s_axis_data_tvalid,
     output            s_axis_data_tready,
-    // threshold and dither
-    output reg [15:0] threshold,
-    output reg [ 3:0] dither,
+    // threshold_base
+    output reg [15:0] threshold_base,
     // bram interface
     (* X_INTERFACE_PARAMETER = "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1" *)
     (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 bram_rtl ADDR" *)
@@ -52,14 +51,14 @@ module bram_com_cross (
     output            intr0
 );
   localparam RECV_LENGTH = 10'd208;
-  localparam WRITE = 2'b01;
-  localparam READ = 2'b10;
+  localparam WRITE = 1'b0;
+  localparam READ = 1'b1;
 
-  localparam CFG_DATA_ADDR = 32'd8000;
+  localparam CFG_DATA_ADDR = 32'd4000;
 
-  reg [1:0] state;
+  reg       state;
   reg       s_axis_data_tvalid_d0;
-  reg       bram_en_d0;
+  reg [1:0] read_counter;
   reg [9:0] write_counter;
 
   assign bram_clk = aclk;
@@ -73,10 +72,8 @@ module bram_com_cross (
   always @(posedge aclk or negedge aresetn) begin
     if (~aresetn) begin
       s_axis_data_tvalid_d0 <= 0;
-      bram_en_d0 <= 0;
     end else begin
       s_axis_data_tvalid_d0 <= s_axis_data_tvalid;
-      bram_en_d0 <= bram_en;
     end
   end
 
@@ -84,9 +81,9 @@ module bram_com_cross (
     if (~aresetn) begin
       state <= WRITE;
       bram_addr <= 0;
-      threshold <= 16'd170;
-      dither <= 4'd6;
+      threshold_base <= 16'd250;
       write_counter <= 0;
+      read_counter <= 0;
     end else begin
       case (state)
         WRITE: begin
@@ -96,15 +93,18 @@ module bram_com_cross (
             if (write_counter == (RECV_LENGTH - 1)) begin
               state <= READ;
               write_counter <= 0;
+              read_counter <= 0;
               bram_addr <= CFG_DATA_ADDR;
             end
           end
         end
         READ: begin
-          if (bram_en_d0 == 1) begin
+          read_counter <= read_counter + 1;
+          if (read_counter == 2'b11) begin
             state <= WRITE;
-            threshold <= bram_rddata[15:0];
-            dither <= bram_rddata[19:16];
+            threshold_base <= bram_rddata[15:0];
+            write_counter <= 0;
+            read_counter <= 0;
             bram_addr <= 0;
           end
         end
