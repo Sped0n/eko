@@ -170,67 +170,10 @@ static void led_intr_handler(void *callback) {
     }
   }
 
-  // limit
-  if (data_31_max_index > LIMIT || data_31_max_index < -LIMIT)
-    return;
-  if (data_20_max_index > LIMIT || data_20_max_index < -LIMIT)
-    return;
-
-  // calc
-  double tmp_31 = (double)data_31_max_index / LIMIT;
-  double tmp_20 = (double)data_20_max_index / LIMIT;
-
-  int angle_31 = acos(tmp_31) * 180 / 3.1415926;
-  int angle_20 = acos(tmp_20) * 180 / 3.1415926;
-
-  // 0    D    3
-  //      |
-  // A----|----C
-  //      |
-  // 1    B    2
-
-  int zone = -1;
-  if (angle_20 > 90 && angle_31 > 90) {
-    zone = ZONEA;
-  } else if (angle_20 <= 90 && angle_31 > 90) {
-    zone = ZONEB;
-  } else if (angle_20 <= 90 && angle_31 <= 90) {
-    zone = ZONEC;
-  } else if (angle_20 > 90 && angle_31 <= 90) {
-    zone = ZONED;
-  }
-
-  int d20 = -1;
-  int d31 = -1;
-
-  switch (zone) {
-  case ZONEA:
-    d20 = 180 - angle_20;
-    d31 = angle_31 - 90;
-    break;
-  case ZONEB:
-    d20 = 180 - angle_20;
-    d31 = 270 - angle_31;
-    break;
-  case ZONEC:
-    d20 = angle_20 + 180;
-    d31 = 270 - angle_31;
-    break;
-  case ZONED:
-    d20 = angle_20 + 180;
-    d31 = angle_31 + 270;
-    break;
-  default:
-    return; // error
-  }
-
-  if (abs(d20 - d31) > 25) {
-    xil_printf("Error -> diff: %d\n", abs(d20 - d31));
-    return;
-  }
-  int degree = (d20 + d31) / 2;
-  xil_printf("%d(%d|%d|%d)\n", degree, zone, data_31_max_index,
-             data_20_max_index);
+  int degree =
+      (int)(atan2(data_31_max_index, data_20_max_index) * 180.0 / 3.1415926 +
+            180);
+  xil_printf("%d(%d|%d)\n", degree, data_31_max_index, data_20_max_index);
 }
 
 static void key_intr_handler(void *callback) {
