@@ -78,3 +78,30 @@ platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/ek
 platform generate -domains 
 platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
 platform generate -domains 
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+domain active {zynq_fsbl}
+bsp reload
+domain active {standalone_domain}
+bsp reload
+bsp setlib -name xilffs -ver 5.1
+bsp write
+bsp reload
+catch {bsp regenerate}
+platform generate -domains standalone_domain 
+platform config -updatehw {C:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko_bd_wrapper.xsa}
+platform generate -domains 
+domain active {zynq_fsbl}
+bsp reload
+bsp reload
+domain active {standalone_domain}
+bsp reload
+bsp removelib -name xilffs
+bsp write
+bsp reload
+catch {bsp regenerate}
+platform generate -domains standalone_domain 
+platform config -remove-boot-bsp
+platform write
+platform config -create-boot-bsp
+platform write
+platform generate -domains zynq_fsbl 

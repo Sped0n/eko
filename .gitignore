@@ -332,3 +332,5 @@ local.properties
 
 .analytics
 Packages/.repos.xml
+*.bin
+*.bif

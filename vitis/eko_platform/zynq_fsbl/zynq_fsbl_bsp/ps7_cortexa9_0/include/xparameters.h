@@ -199,6 +199,11 @@
 #define XPAR_PS7_PMU_0_PMU1_S_AXI_HIGHADDR 0xF8893FFF
 
 
+/* Peripheral Definitions for peripheral PS7_QSPI_LINEAR_0 */
+#define XPAR_PS7_QSPI_LINEAR_0_S_AXI_BASEADDR 0xFC000000
+#define XPAR_PS7_QSPI_LINEAR_0_S_AXI_HIGHADDR 0xFCFFFFFF
+
+
 /* Peripheral Definitions for peripheral PS7_RAM_0 */
 #define XPAR_PS7_RAM_0_S_AXI_BASEADDR 0x00000000
 #define XPAR_PS7_RAM_0_S_AXI_HIGHADDR 0x0003FFFF
@@ -256,10 +261,56 @@
 
 
 
+
+
+/******************************************************************/
+
+/* Definitions for driver GPIOPS */
+#define XPAR_XGPIOPS_NUM_INSTANCES 1
+
+/* Definitions for peripheral PS7_GPIO_0 */
+#define XPAR_PS7_GPIO_0_DEVICE_ID 0
+#define XPAR_PS7_GPIO_0_BASEADDR 0xE000A000
+#define XPAR_PS7_GPIO_0_HIGHADDR 0xE000AFFF
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral PS7_GPIO_0 */
+#define XPAR_XGPIOPS_0_DEVICE_ID XPAR_PS7_GPIO_0_DEVICE_ID
+#define XPAR_XGPIOPS_0_BASEADDR 0xE000A000
+#define XPAR_XGPIOPS_0_HIGHADDR 0xE000AFFF
+
+
+/******************************************************************/
+
+/* Definitions for driver QSPIPS */
+#define XPAR_XQSPIPS_NUM_INSTANCES 1
+
+/* Definitions for peripheral PS7_QSPI_0 */
+#define XPAR_PS7_QSPI_0_DEVICE_ID 0
+#define XPAR_PS7_QSPI_0_BASEADDR 0xE000D000
+#define XPAR_PS7_QSPI_0_HIGHADDR 0xE000DFFF
+#define XPAR_PS7_QSPI_0_QSPI_CLK_FREQ_HZ 200000000
+#define XPAR_PS7_QSPI_0_QSPI_MODE 0
+#define XPAR_PS7_QSPI_0_QSPI_BUS_WIDTH 2
+
+
+/******************************************************************/
+
+/* Canonical definitions for peripheral PS7_QSPI_0 */
+#define XPAR_XQSPIPS_0_DEVICE_ID XPAR_PS7_QSPI_0_DEVICE_ID
+#define XPAR_XQSPIPS_0_BASEADDR 0xE000D000
+#define XPAR_XQSPIPS_0_HIGHADDR 0xE000DFFF
+#define XPAR_XQSPIPS_0_QSPI_CLK_FREQ_HZ 200000000
+#define XPAR_XQSPIPS_0_QSPI_MODE 0
+#define XPAR_XQSPIPS_0_QSPI_BUS_WIDTH 2
+
+
 /******************************************************************/
 
 /* Definitions for Fabric interrupts connected to ps7_scugic_0 */
-#define XPAR_FABRIC_PL_CROSS_STANDALONE_0_LED0_INTR 61U
+#define XPAR_FABRIC_PL_CROSS_0_INTR0_INTR 61U
 
 /******************************************************************/
 
