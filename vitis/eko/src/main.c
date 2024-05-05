@@ -21,11 +21,7 @@
 #define FRAME_LENGTH 208
 #define NORMAL 0
 #define SETTING 1
-#define ZONEA 1
-#define ZONEB 2
-#define ZONEC 3
-#define ZONED 4
-#define LIMIT 55
+#define LIMIT 102
 
 static int init_interrupt(XScuGic *intr_inst, XGpioPs *gpio);
 static void cleanup_interrupt(XScuGic *intr_inst, u32 id);
@@ -36,7 +32,6 @@ XScuGic intr;
 XGpioPs gpio;
 u8 key_pressed;
 u8 state;
-u32 threshold_base;
 
 int main() {
   // state
@@ -49,8 +44,7 @@ int main() {
   init_interrupt(&intr, &gpio);
   xil_printf("Interrupt initialized!\n");
   // threshold base
-  threshold_base = 250;
-  XBram_WriteReg(START, 4000, threshold_base & 0xFFFF);
+  XBram_WriteReg(START, 4000, 400 & 0xFFFF);
   while (1) {
     if (!key_pressed)
       continue;
@@ -74,8 +68,7 @@ int main() {
         if (get_result == 1 && input[0] == 'q')
           break;
         if (parse_result == 1 && num > 0) {
-          threshold_base = num & 0xFFFF;
-          XBram_WriteReg(START, 4000, threshold_base);
+          XBram_WriteReg(START, 4000, num & 0xFFFF);
           xil_printf("Theshold base has been set to: %d\n",
                      XBram_ReadReg(START, 4000));
           break;
@@ -168,6 +161,10 @@ static void led_intr_handler(void *callback) {
       data_20_max = tmp_l;
       data_20_max_index = i - half_frame;
     }
+  }
+
+  if (abs(data_31_max_index) >= LIMIT || abs(data_20_max_index) >= LIMIT) {
+    return;
   }
 
   int degree =
