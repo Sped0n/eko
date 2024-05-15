@@ -76,7 +76,7 @@ module tb_fir_0 ();
   initial begin
     count = 0;
     sig_txt =
-        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\voice3.txt", "r");
+        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\voice2.txt", "r");
     #10000 ready = 1;
   end
 

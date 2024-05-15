@@ -3,6 +3,7 @@ import numpy as np
 from scipy.fftpack import fft, ifft
 import matplotlib.pyplot as plt
 
+plt.rcParams["font.family"] = "SimSun"
 
 def csv_to_list(csv_file_name: str) -> tuple[list, list]:
     csv_path: str = f"./assets/csv/{csv_file_name}.csv"

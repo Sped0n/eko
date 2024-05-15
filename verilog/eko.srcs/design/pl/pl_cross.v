@@ -152,18 +152,4 @@ module pl_cross (
       .intr0             (intr0)
   );
 
-  // ila
-  ila_i2s_0 ila_i2s_0_inst0 (
-      .clk   (aclk),
-      .probe0(axis_upstream_tdata[31:16]),
-      .probe1(axis_upstream_tdata[15:0]),
-      .probe2(axis_upstream_tvalid & vad_result),
-      .probe3(axis_gcc_phat_tdata[31:16]),
-      .probe4(axis_gcc_phat_tdata[15:0]),
-      .probe5(axis_gcc_phat_tvalid),
-      .probe6(debug_trigger),
-      .probe7(bram_rddata),
-      .probe8(bram_addr)
-  );
-
 endmodule

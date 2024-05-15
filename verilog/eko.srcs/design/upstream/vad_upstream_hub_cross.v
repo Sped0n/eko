@@ -181,4 +181,10 @@ module vad_upstream_hub_cross (
     end
   end
 
+  ila_i2s_0 ila_i2s_0_inst0 (
+      .clk(aclk),
+      .probe0(m_axis_data_tdata[15:0]),
+      .probe1((state == UNLOAD))
+  );
+
 endmodule

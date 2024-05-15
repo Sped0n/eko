@@ -25,33 +25,33 @@ module tb_xfft_0 ();
   parameter PERIOD = 20;
 
   // *** interger define ***
-  integer         sin_txt;
-  integer         count;
+  integer            sin_txt;
+  integer            count;
 
 
   // *** reg define ***
-  reg             ready = 0;
-  reg             clk = 0;
-  reg             rst_n = 0;
-  reg     [ 15:0] sin_wave = 0;
-  reg             s_axis_data_tvalid = 0;
-  reg             s_axis_data_tlast = 0;
+  reg                ready = 0;
+  reg                clk = 0;
+  reg                rst_n = 0;
+  reg         [15:0] sin_wave = 0;
+  reg                s_axis_data_tvalid = 0;
+  reg                s_axis_data_tlast = 0;
 
   // *** wire define ***
-  wire            s_axis_data_tready;
-  wire    [127:0] axis_xfft_0_tdata;
-  wire            axis_xfft_0_tvalid;
+  wire               s_axis_data_tready;
+  wire        [63:0] axis_xfft_0_tdata;
+  wire               axis_xfft_0_tvalid;
 
-  wire    [ 26:0] axis_xfft_0_tdata_ch1_im;
-  wire    [ 26:0] axis_xfft_0_tdata_ch1_re;
-  wire    [ 26:0] axis_xfft_0_tdata_ch0_im;
-  wire    [ 26:0] axis_xfft_0_tdata_ch0_re;
+  wire signed [15:0] axis_xfft_0_tdata_ch1_im;
+  wire signed [15:0] axis_xfft_0_tdata_ch1_re;
+  wire signed [15:0] axis_xfft_0_tdata_ch0_im;
+  wire signed [15:0] axis_xfft_0_tdata_ch0_re;
 
   // *** assign ***
-  assign axis_xfft_0_tdata_ch1_im = axis_xfft_0_tdata[122:96];
-  assign axis_xfft_0_tdata_ch1_re = axis_xfft_0_tdata[90:64];
-  assign axis_xfft_0_tdata_ch0_im = axis_xfft_0_tdata[58:32];
-  assign axis_xfft_0_tdata_ch0_re = axis_xfft_0_tdata[26:0];
+  assign axis_xfft_0_tdata_ch1_im = axis_xfft_0_tdata[63:48];
+  assign axis_xfft_0_tdata_ch1_re = axis_xfft_0_tdata[47:32];
+  assign axis_xfft_0_tdata_ch0_im = axis_xfft_0_tdata[31:16];
+  assign axis_xfft_0_tdata_ch0_re = axis_xfft_0_tdata[15:0];
 
 
   // *** clock generator ***
@@ -67,14 +67,14 @@ module tb_xfft_0 ();
   // *** main code ***
 
   // xfft instance
-  xfft_0 xfft_0_inst0 (
+  xfft_2 xfft_2_inst0 (
       .aclk(clk),
       .aresetn(rst_n),
       .s_axis_data_tdata({16'd0, sin_wave, 16'd0, sin_wave}),
       .s_axis_data_tready(s_axis_data_tready),
       .s_axis_data_tvalid(s_axis_data_tvalid),
       .s_axis_data_tlast(0),
-      .s_axis_config_tdata({6'd0, 1'b1, 1'b1}),
+      .s_axis_config_tdata({6'b0, {12'b0, {6{2'b01}}}, {12'b0, {6{2'b01}}}, 1'b1, 1'b1}),
       .s_axis_config_tvalid(1'b1),
       .m_axis_data_tdata(axis_xfft_0_tdata),
       .m_axis_data_tready(1'd1),
@@ -84,19 +84,19 @@ module tb_xfft_0 ();
   // *** initial block ***
   initial begin
     count = 0;
-    sin_txt =
-        $fopen("C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sinwave.txt", "r");
+    sin_txt = $fopen(
+        "C:\\Users\\spedon\\Documents\\eeworks\\FPGA\\eko\\assets\\txt\\sinwave_n2.txt", "r");
     #10000 ready = 1;
   end
 
   // *** always block ***
   always @(posedge clk) begin
     if (s_axis_data_tready == 1 && ready == 1) begin
-      if (count < 1024) begin
+      if (count < 4096) begin
         s_axis_data_tvalid <= 1;
         $fscanf(sin_txt, "%d", sin_wave);
         count <= count + 1;
-      end else if (count == 1024) begin
+      end else if (count == 4096) begin
         $fclose(sin_txt);
         s_axis_data_tvalid <= 0;
       end

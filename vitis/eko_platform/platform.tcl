@@ -105,3 +105,4 @@ platform write
 platform config -create-boot-bsp
 platform write
 platform generate -domains zynq_fsbl 
+platform generate -domains standalone_domain,zynq_fsbl 

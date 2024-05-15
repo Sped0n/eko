@@ -2,7 +2,7 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
--- Date        : Sun May  5 14:21:46 2024
+-- Date        : Fri May 10 20:57:24 2024
 -- Host        : Zen running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/Users/spedon/Documents/eeworks/FPGA/eko/verilog/eko.srcs/design/bd/eko_bd/ip/eko_bd_pl_cross_0_1/eko_bd_pl_cross_0_1_sim_netlist.vhdl
@@ -17,37 +17,82 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity eko_bd_pl_cross_0_1_bram_com_cross is
   port (
+    bram_addr : out STD_LOGIC_VECTOR ( 29 downto 0 );
+    state_reg_0 : out STD_LOGIC;
+    m_axis_tready : out STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    m_axis_tvalid : in STD_LOGIC;
     aclk : in STD_LOGIC;
-    aresetn : in STD_LOGIC;
-    s_axis_data_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axis_data_tvalid : in STD_LOGIC;
-    s_axis_data_tready : out STD_LOGIC;
-    threshold_base : out STD_LOGIC_VECTOR ( 15 downto 0 );
-    bram_addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_clk : out STD_LOGIC;
-    bram_wrdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_rddata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    bram_en : out STD_LOGIC;
-    bram_rst : out STD_LOGIC;
-    bram_we : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    intr0 : out STD_LOGIC
+    \threshold_base_reg[15]_0\ : in STD_LOGIC;
+    bram_rddata : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
-  attribute CFG_DATA_ADDR : integer;
-  attribute CFG_DATA_ADDR of eko_bd_pl_cross_0_1_bram_com_cross : entity is 4000;
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of eko_bd_pl_cross_0_1_bram_com_cross : entity is "bram_com_cross";
-  attribute READ : string;
-  attribute READ of eko_bd_pl_cross_0_1_bram_com_cross : entity is "1'b1";
-  attribute RECV_LENGTH : string;
-  attribute RECV_LENGTH of eko_bd_pl_cross_0_1_bram_com_cross : entity is "10'b0011010000";
-  attribute WRITE : string;
-  attribute WRITE of eko_bd_pl_cross_0_1_bram_com_cross : entity is "1'b0";
 end eko_bd_pl_cross_0_1_bram_com_cross;
 
 architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
-  signal \<const0>\ : STD_LOGIC;
-  signal \^aclk\ : STD_LOGIC;
-  signal \^bram_addr\ : STD_LOGIC_VECTOR ( 31 downto 2 );
+  signal \^bram_addr\ : STD_LOGIC_VECTOR ( 29 downto 0 );
+  signal \bram_addr0_carry__0_n_0\ : STD_LOGIC;
+  signal \bram_addr0_carry__0_n_1\ : STD_LOGIC;
+  signal \bram_addr0_carry__0_n_2\ : STD_LOGIC;
+  signal \bram_addr0_carry__0_n_3\ : STD_LOGIC;
+  signal \bram_addr0_carry__0_n_4\ : STD_LOGIC;
+  signal \bram_addr0_carry__0_n_5\ : STD_LOGIC;
+  signal \bram_addr0_carry__0_n_6\ : STD_LOGIC;
+  signal \bram_addr0_carry__0_n_7\ : STD_LOGIC;
+  signal \bram_addr0_carry__1_n_0\ : STD_LOGIC;
+  signal \bram_addr0_carry__1_n_1\ : STD_LOGIC;
+  signal \bram_addr0_carry__1_n_2\ : STD_LOGIC;
+  signal \bram_addr0_carry__1_n_3\ : STD_LOGIC;
+  signal \bram_addr0_carry__1_n_4\ : STD_LOGIC;
+  signal \bram_addr0_carry__1_n_5\ : STD_LOGIC;
+  signal \bram_addr0_carry__1_n_6\ : STD_LOGIC;
+  signal \bram_addr0_carry__1_n_7\ : STD_LOGIC;
+  signal \bram_addr0_carry__2_n_0\ : STD_LOGIC;
+  signal \bram_addr0_carry__2_n_1\ : STD_LOGIC;
+  signal \bram_addr0_carry__2_n_2\ : STD_LOGIC;
+  signal \bram_addr0_carry__2_n_3\ : STD_LOGIC;
+  signal \bram_addr0_carry__2_n_4\ : STD_LOGIC;
+  signal \bram_addr0_carry__2_n_5\ : STD_LOGIC;
+  signal \bram_addr0_carry__2_n_6\ : STD_LOGIC;
+  signal \bram_addr0_carry__2_n_7\ : STD_LOGIC;
+  signal \bram_addr0_carry__3_n_0\ : STD_LOGIC;
+  signal \bram_addr0_carry__3_n_1\ : STD_LOGIC;
+  signal \bram_addr0_carry__3_n_2\ : STD_LOGIC;
+  signal \bram_addr0_carry__3_n_3\ : STD_LOGIC;
+  signal \bram_addr0_carry__3_n_4\ : STD_LOGIC;
+  signal \bram_addr0_carry__3_n_5\ : STD_LOGIC;
+  signal \bram_addr0_carry__3_n_6\ : STD_LOGIC;
+  signal \bram_addr0_carry__3_n_7\ : STD_LOGIC;
+  signal \bram_addr0_carry__4_n_0\ : STD_LOGIC;
+  signal \bram_addr0_carry__4_n_1\ : STD_LOGIC;
+  signal \bram_addr0_carry__4_n_2\ : STD_LOGIC;
+  signal \bram_addr0_carry__4_n_3\ : STD_LOGIC;
+  signal \bram_addr0_carry__4_n_4\ : STD_LOGIC;
+  signal \bram_addr0_carry__4_n_5\ : STD_LOGIC;
+  signal \bram_addr0_carry__4_n_6\ : STD_LOGIC;
+  signal \bram_addr0_carry__4_n_7\ : STD_LOGIC;
+  signal \bram_addr0_carry__5_n_0\ : STD_LOGIC;
+  signal \bram_addr0_carry__5_n_1\ : STD_LOGIC;
+  signal \bram_addr0_carry__5_n_2\ : STD_LOGIC;
+  signal \bram_addr0_carry__5_n_3\ : STD_LOGIC;
+  signal \bram_addr0_carry__5_n_4\ : STD_LOGIC;
+  signal \bram_addr0_carry__5_n_5\ : STD_LOGIC;
+  signal \bram_addr0_carry__5_n_6\ : STD_LOGIC;
+  signal \bram_addr0_carry__5_n_7\ : STD_LOGIC;
+  signal \bram_addr0_carry__6_n_2\ : STD_LOGIC;
+  signal \bram_addr0_carry__6_n_3\ : STD_LOGIC;
+  signal \bram_addr0_carry__6_n_5\ : STD_LOGIC;
+  signal \bram_addr0_carry__6_n_6\ : STD_LOGIC;
+  signal \bram_addr0_carry__6_n_7\ : STD_LOGIC;
+  signal bram_addr0_carry_i_1_n_0 : STD_LOGIC;
+  signal bram_addr0_carry_n_0 : STD_LOGIC;
+  signal bram_addr0_carry_n_1 : STD_LOGIC;
+  signal bram_addr0_carry_n_2 : STD_LOGIC;
+  signal bram_addr0_carry_n_3 : STD_LOGIC;
+  signal bram_addr0_carry_n_4 : STD_LOGIC;
+  signal bram_addr0_carry_n_5 : STD_LOGIC;
+  signal bram_addr0_carry_n_6 : STD_LOGIC;
   signal \bram_addr[10]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[11]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[11]_i_2_n_0\ : STD_LOGIC;
@@ -73,138 +118,78 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
   signal \bram_addr[30]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[31]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[31]_i_2_n_0\ : STD_LOGIC;
-  signal \bram_addr[31]_i_4_n_0\ : STD_LOGIC;
+  signal \bram_addr[31]_i_3_n_0\ : STD_LOGIC;
   signal \bram_addr[3]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[4]_i_1_n_0\ : STD_LOGIC;
-  signal \bram_addr[4]_i_3_n_0\ : STD_LOGIC;
   signal \bram_addr[5]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[6]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[7]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[8]_i_1_n_0\ : STD_LOGIC;
   signal \bram_addr[9]_i_1_n_0\ : STD_LOGIC;
-  signal \bram_addr_reg[12]_i_2_n_0\ : STD_LOGIC;
-  signal \bram_addr_reg[12]_i_2_n_1\ : STD_LOGIC;
-  signal \bram_addr_reg[12]_i_2_n_2\ : STD_LOGIC;
-  signal \bram_addr_reg[12]_i_2_n_3\ : STD_LOGIC;
-  signal \bram_addr_reg[12]_i_2_n_4\ : STD_LOGIC;
-  signal \bram_addr_reg[12]_i_2_n_5\ : STD_LOGIC;
-  signal \bram_addr_reg[12]_i_2_n_6\ : STD_LOGIC;
-  signal \bram_addr_reg[12]_i_2_n_7\ : STD_LOGIC;
-  signal \bram_addr_reg[16]_i_2_n_0\ : STD_LOGIC;
-  signal \bram_addr_reg[16]_i_2_n_1\ : STD_LOGIC;
-  signal \bram_addr_reg[16]_i_2_n_2\ : STD_LOGIC;
-  signal \bram_addr_reg[16]_i_2_n_3\ : STD_LOGIC;
-  signal \bram_addr_reg[16]_i_2_n_4\ : STD_LOGIC;
-  signal \bram_addr_reg[16]_i_2_n_5\ : STD_LOGIC;
-  signal \bram_addr_reg[16]_i_2_n_6\ : STD_LOGIC;
-  signal \bram_addr_reg[16]_i_2_n_7\ : STD_LOGIC;
-  signal \bram_addr_reg[20]_i_2_n_0\ : STD_LOGIC;
-  signal \bram_addr_reg[20]_i_2_n_1\ : STD_LOGIC;
-  signal \bram_addr_reg[20]_i_2_n_2\ : STD_LOGIC;
-  signal \bram_addr_reg[20]_i_2_n_3\ : STD_LOGIC;
-  signal \bram_addr_reg[20]_i_2_n_4\ : STD_LOGIC;
-  signal \bram_addr_reg[20]_i_2_n_5\ : STD_LOGIC;
-  signal \bram_addr_reg[20]_i_2_n_6\ : STD_LOGIC;
-  signal \bram_addr_reg[20]_i_2_n_7\ : STD_LOGIC;
-  signal \bram_addr_reg[24]_i_2_n_0\ : STD_LOGIC;
-  signal \bram_addr_reg[24]_i_2_n_1\ : STD_LOGIC;
-  signal \bram_addr_reg[24]_i_2_n_2\ : STD_LOGIC;
-  signal \bram_addr_reg[24]_i_2_n_3\ : STD_LOGIC;
-  signal \bram_addr_reg[24]_i_2_n_4\ : STD_LOGIC;
-  signal \bram_addr_reg[24]_i_2_n_5\ : STD_LOGIC;
-  signal \bram_addr_reg[24]_i_2_n_6\ : STD_LOGIC;
-  signal \bram_addr_reg[24]_i_2_n_7\ : STD_LOGIC;
-  signal \bram_addr_reg[28]_i_2_n_0\ : STD_LOGIC;
-  signal \bram_addr_reg[28]_i_2_n_1\ : STD_LOGIC;
-  signal \bram_addr_reg[28]_i_2_n_2\ : STD_LOGIC;
-  signal \bram_addr_reg[28]_i_2_n_3\ : STD_LOGIC;
-  signal \bram_addr_reg[28]_i_2_n_4\ : STD_LOGIC;
-  signal \bram_addr_reg[28]_i_2_n_5\ : STD_LOGIC;
-  signal \bram_addr_reg[28]_i_2_n_6\ : STD_LOGIC;
-  signal \bram_addr_reg[28]_i_2_n_7\ : STD_LOGIC;
-  signal \bram_addr_reg[31]_i_3_n_2\ : STD_LOGIC;
-  signal \bram_addr_reg[31]_i_3_n_3\ : STD_LOGIC;
-  signal \bram_addr_reg[31]_i_3_n_5\ : STD_LOGIC;
-  signal \bram_addr_reg[31]_i_3_n_6\ : STD_LOGIC;
-  signal \bram_addr_reg[31]_i_3_n_7\ : STD_LOGIC;
-  signal \bram_addr_reg[4]_i_2_n_0\ : STD_LOGIC;
-  signal \bram_addr_reg[4]_i_2_n_1\ : STD_LOGIC;
-  signal \bram_addr_reg[4]_i_2_n_2\ : STD_LOGIC;
-  signal \bram_addr_reg[4]_i_2_n_3\ : STD_LOGIC;
-  signal \bram_addr_reg[4]_i_2_n_4\ : STD_LOGIC;
-  signal \bram_addr_reg[4]_i_2_n_5\ : STD_LOGIC;
-  signal \bram_addr_reg[4]_i_2_n_6\ : STD_LOGIC;
-  signal \bram_addr_reg[8]_i_2_n_0\ : STD_LOGIC;
-  signal \bram_addr_reg[8]_i_2_n_1\ : STD_LOGIC;
-  signal \bram_addr_reg[8]_i_2_n_2\ : STD_LOGIC;
-  signal \bram_addr_reg[8]_i_2_n_3\ : STD_LOGIC;
-  signal \bram_addr_reg[8]_i_2_n_4\ : STD_LOGIC;
-  signal \bram_addr_reg[8]_i_2_n_5\ : STD_LOGIC;
-  signal \bram_addr_reg[8]_i_2_n_6\ : STD_LOGIC;
-  signal \bram_addr_reg[8]_i_2_n_7\ : STD_LOGIC;
-  signal \^bram_rst\ : STD_LOGIC;
-  signal \^bram_we\ : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal \^intr0\ : STD_LOGIC;
-  signal p_0_in : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal \read_counter[0]_i_1_n_0\ : STD_LOGIC;
   signal \read_counter[1]_i_1_n_0\ : STD_LOGIC;
+  signal \read_counter[1]_i_2_n_0\ : STD_LOGIC;
   signal \read_counter_reg_n_0_[0]\ : STD_LOGIC;
   signal \read_counter_reg_n_0_[1]\ : STD_LOGIC;
-  signal \^s_axis_data_tdata\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal state_i_1_n_0 : STD_LOGIC;
+  signal \^state_reg_0\ : STD_LOGIC;
   signal \threshold_base[15]_i_1_n_0\ : STD_LOGIC;
+  signal write_counter : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal \write_counter[0]_i_1_n_0\ : STD_LOGIC;
+  signal \write_counter[1]_i_1_n_0\ : STD_LOGIC;
+  signal \write_counter[2]_i_1_n_0\ : STD_LOGIC;
   signal \write_counter[3]_i_1_n_0\ : STD_LOGIC;
   signal \write_counter[4]_i_1_n_0\ : STD_LOGIC;
-  signal \write_counter[4]_i_2_n_0\ : STD_LOGIC;
-  signal \write_counter[4]_i_3_n_0\ : STD_LOGIC;
   signal \write_counter[5]_i_1_n_0\ : STD_LOGIC;
-  signal \write_counter[5]_i_2_n_0\ : STD_LOGIC;
+  signal \write_counter[6]_i_1_n_0\ : STD_LOGIC;
+  signal \write_counter[7]_i_1_n_0\ : STD_LOGIC;
+  signal \write_counter[7]_i_2_n_0\ : STD_LOGIC;
   signal \write_counter[8]_i_1_n_0\ : STD_LOGIC;
+  signal \write_counter[9]_i_1_n_0\ : STD_LOGIC;
   signal \write_counter[9]_i_2_n_0\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[0]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[1]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[2]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[3]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[4]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[5]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[6]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[7]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[8]\ : STD_LOGIC;
-  signal \write_counter_reg_n_0_[9]\ : STD_LOGIC;
-  signal \NLW_bram_addr_reg[31]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
-  signal \NLW_bram_addr_reg[31]_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal \NLW_bram_addr_reg[4]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_bram_addr0_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal \NLW_bram_addr0_carry__6_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
+  signal \NLW_bram_addr0_carry__6_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of bram_addr0_carry : label is 35;
+  attribute ADDER_THRESHOLD of \bram_addr0_carry__0\ : label is 35;
+  attribute ADDER_THRESHOLD of \bram_addr0_carry__1\ : label is 35;
+  attribute ADDER_THRESHOLD of \bram_addr0_carry__2\ : label is 35;
+  attribute ADDER_THRESHOLD of \bram_addr0_carry__3\ : label is 35;
+  attribute ADDER_THRESHOLD of \bram_addr0_carry__4\ : label is 35;
+  attribute ADDER_THRESHOLD of \bram_addr0_carry__5\ : label is 35;
+  attribute ADDER_THRESHOLD of \bram_addr0_carry__6\ : label is 35;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \bram_addr[10]_i_1\ : label is "soft_lutpair109";
-  attribute SOFT_HLUTNM of \bram_addr[11]_i_1\ : label is "soft_lutpair109";
-  attribute SOFT_HLUTNM of \bram_addr[12]_i_1\ : label is "soft_lutpair122";
-  attribute SOFT_HLUTNM of \bram_addr[13]_i_1\ : label is "soft_lutpair122";
-  attribute SOFT_HLUTNM of \bram_addr[14]_i_1\ : label is "soft_lutpair120";
-  attribute SOFT_HLUTNM of \bram_addr[15]_i_1\ : label is "soft_lutpair121";
-  attribute SOFT_HLUTNM of \bram_addr[16]_i_1\ : label is "soft_lutpair121";
-  attribute SOFT_HLUTNM of \bram_addr[17]_i_1\ : label is "soft_lutpair120";
-  attribute SOFT_HLUTNM of \bram_addr[18]_i_1\ : label is "soft_lutpair118";
-  attribute SOFT_HLUTNM of \bram_addr[19]_i_1\ : label is "soft_lutpair119";
-  attribute SOFT_HLUTNM of \bram_addr[20]_i_1\ : label is "soft_lutpair119";
-  attribute SOFT_HLUTNM of \bram_addr[21]_i_1\ : label is "soft_lutpair118";
-  attribute SOFT_HLUTNM of \bram_addr[22]_i_1\ : label is "soft_lutpair116";
-  attribute SOFT_HLUTNM of \bram_addr[23]_i_1\ : label is "soft_lutpair117";
-  attribute SOFT_HLUTNM of \bram_addr[24]_i_1\ : label is "soft_lutpair117";
-  attribute SOFT_HLUTNM of \bram_addr[25]_i_1\ : label is "soft_lutpair116";
-  attribute SOFT_HLUTNM of \bram_addr[26]_i_1\ : label is "soft_lutpair114";
-  attribute SOFT_HLUTNM of \bram_addr[27]_i_1\ : label is "soft_lutpair115";
-  attribute SOFT_HLUTNM of \bram_addr[28]_i_1\ : label is "soft_lutpair115";
-  attribute SOFT_HLUTNM of \bram_addr[29]_i_1\ : label is "soft_lutpair114";
-  attribute SOFT_HLUTNM of \bram_addr[2]_i_1\ : label is "soft_lutpair124";
-  attribute SOFT_HLUTNM of \bram_addr[30]_i_1\ : label is "soft_lutpair113";
-  attribute SOFT_HLUTNM of \bram_addr[31]_i_2\ : label is "soft_lutpair113";
-  attribute SOFT_HLUTNM of \bram_addr[3]_i_1\ : label is "soft_lutpair124";
-  attribute SOFT_HLUTNM of \bram_addr[4]_i_1\ : label is "soft_lutpair123";
-  attribute SOFT_HLUTNM of \bram_addr[5]_i_1\ : label is "soft_lutpair111";
-  attribute SOFT_HLUTNM of \bram_addr[6]_i_1\ : label is "soft_lutpair123";
-  attribute SOFT_HLUTNM of \bram_addr[7]_i_1\ : label is "soft_lutpair111";
-  attribute SOFT_HLUTNM of \bram_addr[8]_i_1\ : label is "soft_lutpair110";
-  attribute SOFT_HLUTNM of \bram_addr[9]_i_1\ : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \bram_addr[10]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \bram_addr[11]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \bram_addr[12]_i_1\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \bram_addr[13]_i_1\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \bram_addr[14]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \bram_addr[15]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \bram_addr[16]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \bram_addr[17]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \bram_addr[18]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \bram_addr[19]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \bram_addr[20]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \bram_addr[21]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \bram_addr[22]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \bram_addr[23]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \bram_addr[24]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \bram_addr[25]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \bram_addr[26]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \bram_addr[27]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \bram_addr[28]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \bram_addr[29]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \bram_addr[2]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \bram_addr[30]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \bram_addr[31]_i_2\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \bram_addr[3]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \bram_addr[4]_i_1\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \bram_addr[5]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \bram_addr[6]_i_1\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \bram_addr[7]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \bram_addr[8]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \bram_addr[9]_i_1\ : label is "soft_lutpair25";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of \bram_addr_reg[10]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER : string;
@@ -213,8 +198,6 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[11]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[12]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[12]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute ADDER_THRESHOLD : integer;
-  attribute ADDER_THRESHOLD of \bram_addr_reg[12]_i_2\ : label is 35;
   attribute X_INTERFACE_INFO of \bram_addr_reg[13]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[13]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[14]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
@@ -223,7 +206,6 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[15]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[16]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[16]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute ADDER_THRESHOLD of \bram_addr_reg[16]_i_2\ : label is 35;
   attribute X_INTERFACE_INFO of \bram_addr_reg[17]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[17]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[18]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
@@ -232,7 +214,6 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[19]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[20]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[20]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute ADDER_THRESHOLD of \bram_addr_reg[20]_i_2\ : label is 35;
   attribute X_INTERFACE_INFO of \bram_addr_reg[21]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[21]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[22]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
@@ -241,7 +222,6 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[23]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[24]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[24]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute ADDER_THRESHOLD of \bram_addr_reg[24]_i_2\ : label is 35;
   attribute X_INTERFACE_INFO of \bram_addr_reg[25]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[25]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[26]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
@@ -250,7 +230,6 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[27]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[28]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[28]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute ADDER_THRESHOLD of \bram_addr_reg[28]_i_2\ : label is 35;
   attribute X_INTERFACE_INFO of \bram_addr_reg[29]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[29]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[2]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
@@ -259,12 +238,10 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[30]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[31]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[31]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute ADDER_THRESHOLD of \bram_addr_reg[31]_i_3\ : label is 35;
   attribute X_INTERFACE_INFO of \bram_addr_reg[3]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[3]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[4]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[4]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute ADDER_THRESHOLD of \bram_addr_reg[4]_i_2\ : label is 35;
   attribute X_INTERFACE_INFO of \bram_addr_reg[5]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[5]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[6]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
@@ -273,265 +250,366 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_bram_com_cross is
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[7]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of \bram_addr_reg[8]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[8]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute ADDER_THRESHOLD of \bram_addr_reg[8]_i_2\ : label is 35;
   attribute X_INTERFACE_INFO of \bram_addr_reg[9]\ : label is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of \bram_addr_reg[9]\ : label is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute SOFT_HLUTNM of bram_en_INST_0 : label is "soft_lutpair125";
-  attribute SOFT_HLUTNM of \bram_we[0]_INST_0\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \read_counter[0]_i_1\ : label is "soft_lutpair107";
-  attribute SOFT_HLUTNM of \read_counter[1]_i_1\ : label is "soft_lutpair103";
-  attribute SOFT_HLUTNM of s_axis_data_tready_INST_0 : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of combiner_2_inst0_i_1 : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \read_counter[0]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \read_counter[1]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair21";
   attribute X_INTERFACE_INFO of state_reg : label is "xilinx.com:signal:interrupt:1.0 IRQ INTERRUPT";
   attribute X_INTERFACE_PARAMETER of state_reg : label is "XIL_INTERFACENAME IRQ, SENSITIVITY EDGE_RISING";
-  attribute SOFT_HLUTNM of \write_counter[0]_i_1\ : label is "soft_lutpair125";
-  attribute SOFT_HLUTNM of \write_counter[1]_i_1\ : label is "soft_lutpair112";
-  attribute SOFT_HLUTNM of \write_counter[2]_i_1\ : label is "soft_lutpair106";
-  attribute SOFT_HLUTNM of \write_counter[3]_i_1\ : label is "soft_lutpair106";
-  attribute SOFT_HLUTNM of \write_counter[4]_i_1\ : label is "soft_lutpair105";
-  attribute SOFT_HLUTNM of \write_counter[4]_i_3\ : label is "soft_lutpair104";
-  attribute SOFT_HLUTNM of \write_counter[5]_i_1\ : label is "soft_lutpair112";
-  attribute SOFT_HLUTNM of \write_counter[5]_i_2\ : label is "soft_lutpair104";
-  attribute SOFT_HLUTNM of \write_counter[6]_i_1\ : label is "soft_lutpair108";
-  attribute SOFT_HLUTNM of \write_counter[7]_i_1\ : label is "soft_lutpair108";
-  attribute X_INTERFACE_INFO of bram_clk : signal is "xilinx.com:interface:bram:1.0 bram_rtl CLK";
-  attribute X_INTERFACE_INFO of bram_en : signal is "xilinx.com:interface:bram:1.0 bram_rtl EN";
-  attribute X_INTERFACE_INFO of bram_rst : signal is "xilinx.com:interface:bram:1.0 bram_rtl RST";
-  attribute X_INTERFACE_INFO of intr0 : signal is "xilinx.com:signal:interrupt:1.0 IRQ INTERRUPT";
-  attribute X_INTERFACE_PARAMETER of intr0 : signal is "XIL_INTERFACENAME IRQ, SENSITIVITY EDGE_RISING";
-  attribute X_INTERFACE_INFO of bram_addr : signal is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
-  attribute X_INTERFACE_PARAMETER of bram_addr : signal is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  attribute X_INTERFACE_INFO of bram_rddata : signal is "xilinx.com:interface:bram:1.0 bram_rtl DOUT";
-  attribute X_INTERFACE_INFO of bram_we : signal is "xilinx.com:interface:bram:1.0 bram_rtl WE";
-  attribute X_INTERFACE_INFO of bram_wrdata : signal is "xilinx.com:interface:bram:1.0 bram_rtl DIN";
+  attribute SOFT_HLUTNM of \write_counter[1]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \write_counter[2]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \write_counter[3]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \write_counter[5]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \write_counter[6]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \write_counter[7]_i_2\ : label is "soft_lutpair23";
 begin
-  \^aclk\ <= aclk;
-  \^s_axis_data_tdata\(31 downto 0) <= s_axis_data_tdata(31 downto 0);
-  bram_addr(31 downto 2) <= \^bram_addr\(31 downto 2);
-  bram_addr(1) <= \<const0>\;
-  bram_addr(0) <= \<const0>\;
-  bram_clk <= \^aclk\;
-  bram_rst <= \^bram_rst\;
-  bram_we(3) <= \^bram_we\(0);
-  bram_we(2) <= \^bram_we\(0);
-  bram_we(1) <= \^bram_we\(0);
-  bram_we(0) <= \^bram_we\(0);
-  bram_wrdata(31 downto 0) <= \^s_axis_data_tdata\(31 downto 0);
-  intr0 <= \^intr0\;
-GND: unisim.vcomponents.GND
+  bram_addr(29 downto 0) <= \^bram_addr\(29 downto 0);
+  state_reg_0 <= \^state_reg_0\;
+bram_addr0_carry: unisim.vcomponents.CARRY4
      port map (
-      G => \<const0>\
+      CI => '0',
+      CO(3) => bram_addr0_carry_n_0,
+      CO(2) => bram_addr0_carry_n_1,
+      CO(1) => bram_addr0_carry_n_2,
+      CO(0) => bram_addr0_carry_n_3,
+      CYINIT => '0',
+      DI(3 downto 2) => B"00",
+      DI(1) => \^bram_addr\(0),
+      DI(0) => '0',
+      O(3) => bram_addr0_carry_n_4,
+      O(2) => bram_addr0_carry_n_5,
+      O(1) => bram_addr0_carry_n_6,
+      O(0) => NLW_bram_addr0_carry_O_UNCONNECTED(0),
+      S(3 downto 2) => \^bram_addr\(2 downto 1),
+      S(1) => bram_addr0_carry_i_1_n_0,
+      S(0) => '0'
+    );
+\bram_addr0_carry__0\: unisim.vcomponents.CARRY4
+     port map (
+      CI => bram_addr0_carry_n_0,
+      CO(3) => \bram_addr0_carry__0_n_0\,
+      CO(2) => \bram_addr0_carry__0_n_1\,
+      CO(1) => \bram_addr0_carry__0_n_2\,
+      CO(0) => \bram_addr0_carry__0_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \bram_addr0_carry__0_n_4\,
+      O(2) => \bram_addr0_carry__0_n_5\,
+      O(1) => \bram_addr0_carry__0_n_6\,
+      O(0) => \bram_addr0_carry__0_n_7\,
+      S(3 downto 0) => \^bram_addr\(6 downto 3)
+    );
+\bram_addr0_carry__1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \bram_addr0_carry__0_n_0\,
+      CO(3) => \bram_addr0_carry__1_n_0\,
+      CO(2) => \bram_addr0_carry__1_n_1\,
+      CO(1) => \bram_addr0_carry__1_n_2\,
+      CO(0) => \bram_addr0_carry__1_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \bram_addr0_carry__1_n_4\,
+      O(2) => \bram_addr0_carry__1_n_5\,
+      O(1) => \bram_addr0_carry__1_n_6\,
+      O(0) => \bram_addr0_carry__1_n_7\,
+      S(3 downto 0) => \^bram_addr\(10 downto 7)
+    );
+\bram_addr0_carry__2\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \bram_addr0_carry__1_n_0\,
+      CO(3) => \bram_addr0_carry__2_n_0\,
+      CO(2) => \bram_addr0_carry__2_n_1\,
+      CO(1) => \bram_addr0_carry__2_n_2\,
+      CO(0) => \bram_addr0_carry__2_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \bram_addr0_carry__2_n_4\,
+      O(2) => \bram_addr0_carry__2_n_5\,
+      O(1) => \bram_addr0_carry__2_n_6\,
+      O(0) => \bram_addr0_carry__2_n_7\,
+      S(3 downto 0) => \^bram_addr\(14 downto 11)
+    );
+\bram_addr0_carry__3\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \bram_addr0_carry__2_n_0\,
+      CO(3) => \bram_addr0_carry__3_n_0\,
+      CO(2) => \bram_addr0_carry__3_n_1\,
+      CO(1) => \bram_addr0_carry__3_n_2\,
+      CO(0) => \bram_addr0_carry__3_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \bram_addr0_carry__3_n_4\,
+      O(2) => \bram_addr0_carry__3_n_5\,
+      O(1) => \bram_addr0_carry__3_n_6\,
+      O(0) => \bram_addr0_carry__3_n_7\,
+      S(3 downto 0) => \^bram_addr\(18 downto 15)
+    );
+\bram_addr0_carry__4\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \bram_addr0_carry__3_n_0\,
+      CO(3) => \bram_addr0_carry__4_n_0\,
+      CO(2) => \bram_addr0_carry__4_n_1\,
+      CO(1) => \bram_addr0_carry__4_n_2\,
+      CO(0) => \bram_addr0_carry__4_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \bram_addr0_carry__4_n_4\,
+      O(2) => \bram_addr0_carry__4_n_5\,
+      O(1) => \bram_addr0_carry__4_n_6\,
+      O(0) => \bram_addr0_carry__4_n_7\,
+      S(3 downto 0) => \^bram_addr\(22 downto 19)
+    );
+\bram_addr0_carry__5\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \bram_addr0_carry__4_n_0\,
+      CO(3) => \bram_addr0_carry__5_n_0\,
+      CO(2) => \bram_addr0_carry__5_n_1\,
+      CO(1) => \bram_addr0_carry__5_n_2\,
+      CO(0) => \bram_addr0_carry__5_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \bram_addr0_carry__5_n_4\,
+      O(2) => \bram_addr0_carry__5_n_5\,
+      O(1) => \bram_addr0_carry__5_n_6\,
+      O(0) => \bram_addr0_carry__5_n_7\,
+      S(3 downto 0) => \^bram_addr\(26 downto 23)
+    );
+\bram_addr0_carry__6\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \bram_addr0_carry__5_n_0\,
+      CO(3 downto 2) => \NLW_bram_addr0_carry__6_CO_UNCONNECTED\(3 downto 2),
+      CO(1) => \bram_addr0_carry__6_n_2\,
+      CO(0) => \bram_addr0_carry__6_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \NLW_bram_addr0_carry__6_O_UNCONNECTED\(3),
+      O(2) => \bram_addr0_carry__6_n_5\,
+      O(1) => \bram_addr0_carry__6_n_6\,
+      O(0) => \bram_addr0_carry__6_n_7\,
+      S(3) => '0',
+      S(2 downto 0) => \^bram_addr\(29 downto 27)
+    );
+bram_addr0_carry_i_1: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \^bram_addr\(0),
+      O => bram_addr0_carry_i_1_n_0
     );
 \bram_addr[10]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"54"
+      INIT => X"F4"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \bram_addr[11]_i_2_n_0\,
-      I2 => \bram_addr_reg[12]_i_2_n_6\,
+      I0 => \^state_reg_0\,
+      I1 => \bram_addr0_carry__1_n_6\,
+      I2 => \bram_addr[11]_i_2_n_0\,
       O => \bram_addr[10]_i_1_n_0\
     );
 \bram_addr[11]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"54"
+      INIT => X"F4"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \bram_addr[11]_i_2_n_0\,
-      I2 => \bram_addr_reg[12]_i_2_n_5\,
+      I0 => \^state_reg_0\,
+      I1 => \bram_addr0_carry__1_n_5\,
+      I2 => \bram_addr[11]_i_2_n_0\,
       O => \bram_addr[11]_i_1_n_0\
     );
-\bram_addr[11]_i_2\: unisim.vcomponents.LUT5
+\bram_addr[11]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00008A88"
+      INIT => X"0000000000000001"
     )
         port map (
-      I0 => \write_counter[4]_i_2_n_0\,
-      I1 => \write_counter_reg_n_0_[5]\,
-      I2 => \write_counter_reg_n_0_[4]\,
-      I3 => \write_counter_reg_n_0_[3]\,
-      I4 => \write_counter[4]_i_3_n_0\,
+      I0 => \write_counter[9]_i_2_n_0\,
+      I1 => write_counter(5),
+      I2 => write_counter(4),
+      I3 => write_counter(9),
+      I4 => write_counter(8),
+      I5 => \^state_reg_0\,
       O => \bram_addr[11]_i_2_n_0\
     );
 \bram_addr[12]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[12]_i_2_n_4\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__1_n_4\,
       O => \bram_addr[12]_i_1_n_0\
     );
 \bram_addr[13]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[16]_i_2_n_7\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__2_n_7\,
       O => \bram_addr[13]_i_1_n_0\
     );
 \bram_addr[14]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[16]_i_2_n_6\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__2_n_6\,
       O => \bram_addr[14]_i_1_n_0\
     );
 \bram_addr[15]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[16]_i_2_n_5\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__2_n_5\,
       O => \bram_addr[15]_i_1_n_0\
     );
 \bram_addr[16]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[16]_i_2_n_4\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__2_n_4\,
       O => \bram_addr[16]_i_1_n_0\
     );
 \bram_addr[17]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[20]_i_2_n_7\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__3_n_7\,
       O => \bram_addr[17]_i_1_n_0\
     );
 \bram_addr[18]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[20]_i_2_n_6\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__3_n_6\,
       O => \bram_addr[18]_i_1_n_0\
     );
 \bram_addr[19]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[20]_i_2_n_5\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__3_n_5\,
       O => \bram_addr[19]_i_1_n_0\
     );
 \bram_addr[20]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[20]_i_2_n_4\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__3_n_4\,
       O => \bram_addr[20]_i_1_n_0\
     );
 \bram_addr[21]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[24]_i_2_n_7\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__4_n_7\,
       O => \bram_addr[21]_i_1_n_0\
     );
 \bram_addr[22]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[24]_i_2_n_6\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__4_n_6\,
       O => \bram_addr[22]_i_1_n_0\
     );
 \bram_addr[23]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[24]_i_2_n_5\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__4_n_5\,
       O => \bram_addr[23]_i_1_n_0\
     );
 \bram_addr[24]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[24]_i_2_n_4\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__4_n_4\,
       O => \bram_addr[24]_i_1_n_0\
     );
 \bram_addr[25]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[28]_i_2_n_7\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__5_n_7\,
       O => \bram_addr[25]_i_1_n_0\
     );
 \bram_addr[26]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[28]_i_2_n_6\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__5_n_6\,
       O => \bram_addr[26]_i_1_n_0\
     );
 \bram_addr[27]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[28]_i_2_n_5\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__5_n_5\,
       O => \bram_addr[27]_i_1_n_0\
     );
 \bram_addr[28]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[28]_i_2_n_4\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__5_n_4\,
       O => \bram_addr[28]_i_1_n_0\
     );
 \bram_addr[29]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[31]_i_3_n_7\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__6_n_7\,
       O => \bram_addr[29]_i_1_n_0\
     );
 \bram_addr[2]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[4]_i_2_n_6\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => bram_addr0_carry_n_6,
       O => \bram_addr[2]_i_1_n_0\
     );
 \bram_addr[30]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[31]_i_3_n_6\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__6_n_6\,
       O => \bram_addr[30]_i_1_n_0\
     );
 \bram_addr[31]_i_1\: unisim.vcomponents.LUT4
@@ -541,939 +619,775 @@ GND: unisim.vcomponents.GND
         port map (
       I0 => \read_counter_reg_n_0_[1]\,
       I1 => \read_counter_reg_n_0_[0]\,
-      I2 => \^intr0\,
-      I3 => s_axis_data_tvalid,
+      I2 => \^state_reg_0\,
+      I3 => m_axis_tvalid,
       O => \bram_addr[31]_i_1_n_0\
     );
 \bram_addr[31]_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[31]_i_3_n_5\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__6_n_5\,
       O => \bram_addr[31]_i_2_n_0\
     );
-\bram_addr[31]_i_4\: unisim.vcomponents.LUT6
+\bram_addr[31]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"BBBBAABAAAAAAAAA"
+      INIT => X"00000000FFFFFFFE"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \write_counter[4]_i_3_n_0\,
-      I2 => \write_counter_reg_n_0_[3]\,
-      I3 => \write_counter_reg_n_0_[4]\,
-      I4 => \write_counter_reg_n_0_[5]\,
-      I5 => \write_counter[4]_i_2_n_0\,
-      O => \bram_addr[31]_i_4_n_0\
+      I0 => \write_counter[9]_i_2_n_0\,
+      I1 => write_counter(5),
+      I2 => write_counter(4),
+      I3 => write_counter(9),
+      I4 => write_counter(8),
+      I5 => \^state_reg_0\,
+      O => \bram_addr[31]_i_3_n_0\
     );
 \bram_addr[3]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[4]_i_2_n_5\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => bram_addr0_carry_n_5,
       O => \bram_addr[3]_i_1_n_0\
     );
 \bram_addr[4]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[4]_i_2_n_4\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => bram_addr0_carry_n_4,
       O => \bram_addr[4]_i_1_n_0\
-    );
-\bram_addr[4]_i_3\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \^bram_addr\(2),
-      O => \bram_addr[4]_i_3_n_0\
     );
 \bram_addr[5]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"54"
+      INIT => X"F4"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \bram_addr[11]_i_2_n_0\,
-      I2 => \bram_addr_reg[8]_i_2_n_7\,
+      I0 => \^state_reg_0\,
+      I1 => \bram_addr0_carry__0_n_7\,
+      I2 => \bram_addr[11]_i_2_n_0\,
       O => \bram_addr[5]_i_1_n_0\
     );
 \bram_addr[6]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"2"
+      INIT => X"8"
     )
         port map (
-      I0 => \bram_addr_reg[8]_i_2_n_6\,
-      I1 => \bram_addr[31]_i_4_n_0\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => \bram_addr0_carry__0_n_6\,
       O => \bram_addr[6]_i_1_n_0\
     );
 \bram_addr[7]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"54"
+      INIT => X"F4"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \bram_addr[11]_i_2_n_0\,
-      I2 => \bram_addr_reg[8]_i_2_n_5\,
+      I0 => \^state_reg_0\,
+      I1 => \bram_addr0_carry__0_n_5\,
+      I2 => \bram_addr[11]_i_2_n_0\,
       O => \bram_addr[7]_i_1_n_0\
     );
 \bram_addr[8]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"54"
+      INIT => X"F4"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \bram_addr[11]_i_2_n_0\,
-      I2 => \bram_addr_reg[8]_i_2_n_4\,
+      I0 => \^state_reg_0\,
+      I1 => \bram_addr0_carry__0_n_4\,
+      I2 => \bram_addr[11]_i_2_n_0\,
       O => \bram_addr[8]_i_1_n_0\
     );
 \bram_addr[9]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"54"
+      INIT => X"F4"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \bram_addr[11]_i_2_n_0\,
-      I2 => \bram_addr_reg[12]_i_2_n_7\,
+      I0 => \^state_reg_0\,
+      I1 => \bram_addr0_carry__1_n_7\,
+      I2 => \bram_addr[11]_i_2_n_0\,
       O => \bram_addr[9]_i_1_n_0\
     );
 \bram_addr_reg[10]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[10]_i_1_n_0\,
-      Q => \^bram_addr\(10)
+      Q => \^bram_addr\(8)
     );
 \bram_addr_reg[11]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[11]_i_1_n_0\,
-      Q => \^bram_addr\(11)
+      Q => \^bram_addr\(9)
     );
 \bram_addr_reg[12]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[12]_i_1_n_0\,
-      Q => \^bram_addr\(12)
-    );
-\bram_addr_reg[12]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => \bram_addr_reg[8]_i_2_n_0\,
-      CO(3) => \bram_addr_reg[12]_i_2_n_0\,
-      CO(2) => \bram_addr_reg[12]_i_2_n_1\,
-      CO(1) => \bram_addr_reg[12]_i_2_n_2\,
-      CO(0) => \bram_addr_reg[12]_i_2_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3) => \bram_addr_reg[12]_i_2_n_4\,
-      O(2) => \bram_addr_reg[12]_i_2_n_5\,
-      O(1) => \bram_addr_reg[12]_i_2_n_6\,
-      O(0) => \bram_addr_reg[12]_i_2_n_7\,
-      S(3 downto 0) => \^bram_addr\(12 downto 9)
+      Q => \^bram_addr\(10)
     );
 \bram_addr_reg[13]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[13]_i_1_n_0\,
-      Q => \^bram_addr\(13)
+      Q => \^bram_addr\(11)
     );
 \bram_addr_reg[14]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[14]_i_1_n_0\,
-      Q => \^bram_addr\(14)
+      Q => \^bram_addr\(12)
     );
 \bram_addr_reg[15]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[15]_i_1_n_0\,
-      Q => \^bram_addr\(15)
+      Q => \^bram_addr\(13)
     );
 \bram_addr_reg[16]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[16]_i_1_n_0\,
-      Q => \^bram_addr\(16)
-    );
-\bram_addr_reg[16]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => \bram_addr_reg[12]_i_2_n_0\,
-      CO(3) => \bram_addr_reg[16]_i_2_n_0\,
-      CO(2) => \bram_addr_reg[16]_i_2_n_1\,
-      CO(1) => \bram_addr_reg[16]_i_2_n_2\,
-      CO(0) => \bram_addr_reg[16]_i_2_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3) => \bram_addr_reg[16]_i_2_n_4\,
-      O(2) => \bram_addr_reg[16]_i_2_n_5\,
-      O(1) => \bram_addr_reg[16]_i_2_n_6\,
-      O(0) => \bram_addr_reg[16]_i_2_n_7\,
-      S(3 downto 0) => \^bram_addr\(16 downto 13)
+      Q => \^bram_addr\(14)
     );
 \bram_addr_reg[17]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[17]_i_1_n_0\,
-      Q => \^bram_addr\(17)
+      Q => \^bram_addr\(15)
     );
 \bram_addr_reg[18]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[18]_i_1_n_0\,
-      Q => \^bram_addr\(18)
+      Q => \^bram_addr\(16)
     );
 \bram_addr_reg[19]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[19]_i_1_n_0\,
-      Q => \^bram_addr\(19)
+      Q => \^bram_addr\(17)
     );
 \bram_addr_reg[20]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[20]_i_1_n_0\,
-      Q => \^bram_addr\(20)
-    );
-\bram_addr_reg[20]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => \bram_addr_reg[16]_i_2_n_0\,
-      CO(3) => \bram_addr_reg[20]_i_2_n_0\,
-      CO(2) => \bram_addr_reg[20]_i_2_n_1\,
-      CO(1) => \bram_addr_reg[20]_i_2_n_2\,
-      CO(0) => \bram_addr_reg[20]_i_2_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3) => \bram_addr_reg[20]_i_2_n_4\,
-      O(2) => \bram_addr_reg[20]_i_2_n_5\,
-      O(1) => \bram_addr_reg[20]_i_2_n_6\,
-      O(0) => \bram_addr_reg[20]_i_2_n_7\,
-      S(3 downto 0) => \^bram_addr\(20 downto 17)
+      Q => \^bram_addr\(18)
     );
 \bram_addr_reg[21]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[21]_i_1_n_0\,
-      Q => \^bram_addr\(21)
+      Q => \^bram_addr\(19)
     );
 \bram_addr_reg[22]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[22]_i_1_n_0\,
-      Q => \^bram_addr\(22)
+      Q => \^bram_addr\(20)
     );
 \bram_addr_reg[23]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[23]_i_1_n_0\,
-      Q => \^bram_addr\(23)
+      Q => \^bram_addr\(21)
     );
 \bram_addr_reg[24]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[24]_i_1_n_0\,
-      Q => \^bram_addr\(24)
-    );
-\bram_addr_reg[24]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => \bram_addr_reg[20]_i_2_n_0\,
-      CO(3) => \bram_addr_reg[24]_i_2_n_0\,
-      CO(2) => \bram_addr_reg[24]_i_2_n_1\,
-      CO(1) => \bram_addr_reg[24]_i_2_n_2\,
-      CO(0) => \bram_addr_reg[24]_i_2_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3) => \bram_addr_reg[24]_i_2_n_4\,
-      O(2) => \bram_addr_reg[24]_i_2_n_5\,
-      O(1) => \bram_addr_reg[24]_i_2_n_6\,
-      O(0) => \bram_addr_reg[24]_i_2_n_7\,
-      S(3 downto 0) => \^bram_addr\(24 downto 21)
+      Q => \^bram_addr\(22)
     );
 \bram_addr_reg[25]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[25]_i_1_n_0\,
-      Q => \^bram_addr\(25)
+      Q => \^bram_addr\(23)
     );
 \bram_addr_reg[26]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[26]_i_1_n_0\,
-      Q => \^bram_addr\(26)
+      Q => \^bram_addr\(24)
     );
 \bram_addr_reg[27]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[27]_i_1_n_0\,
-      Q => \^bram_addr\(27)
+      Q => \^bram_addr\(25)
     );
 \bram_addr_reg[28]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[28]_i_1_n_0\,
-      Q => \^bram_addr\(28)
-    );
-\bram_addr_reg[28]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => \bram_addr_reg[24]_i_2_n_0\,
-      CO(3) => \bram_addr_reg[28]_i_2_n_0\,
-      CO(2) => \bram_addr_reg[28]_i_2_n_1\,
-      CO(1) => \bram_addr_reg[28]_i_2_n_2\,
-      CO(0) => \bram_addr_reg[28]_i_2_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3) => \bram_addr_reg[28]_i_2_n_4\,
-      O(2) => \bram_addr_reg[28]_i_2_n_5\,
-      O(1) => \bram_addr_reg[28]_i_2_n_6\,
-      O(0) => \bram_addr_reg[28]_i_2_n_7\,
-      S(3 downto 0) => \^bram_addr\(28 downto 25)
+      Q => \^bram_addr\(26)
     );
 \bram_addr_reg[29]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[29]_i_1_n_0\,
-      Q => \^bram_addr\(29)
+      Q => \^bram_addr\(27)
     );
 \bram_addr_reg[2]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[2]_i_1_n_0\,
-      Q => \^bram_addr\(2)
+      Q => \^bram_addr\(0)
     );
 \bram_addr_reg[30]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[30]_i_1_n_0\,
-      Q => \^bram_addr\(30)
+      Q => \^bram_addr\(28)
     );
 \bram_addr_reg[31]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[31]_i_2_n_0\,
-      Q => \^bram_addr\(31)
-    );
-\bram_addr_reg[31]_i_3\: unisim.vcomponents.CARRY4
-     port map (
-      CI => \bram_addr_reg[28]_i_2_n_0\,
-      CO(3 downto 2) => \NLW_bram_addr_reg[31]_i_3_CO_UNCONNECTED\(3 downto 2),
-      CO(1) => \bram_addr_reg[31]_i_3_n_2\,
-      CO(0) => \bram_addr_reg[31]_i_3_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3) => \NLW_bram_addr_reg[31]_i_3_O_UNCONNECTED\(3),
-      O(2) => \bram_addr_reg[31]_i_3_n_5\,
-      O(1) => \bram_addr_reg[31]_i_3_n_6\,
-      O(0) => \bram_addr_reg[31]_i_3_n_7\,
-      S(3) => '0',
-      S(2 downto 0) => \^bram_addr\(31 downto 29)
+      Q => \^bram_addr\(29)
     );
 \bram_addr_reg[3]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[3]_i_1_n_0\,
-      Q => \^bram_addr\(3)
+      Q => \^bram_addr\(1)
     );
 \bram_addr_reg[4]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[4]_i_1_n_0\,
-      Q => \^bram_addr\(4)
-    );
-\bram_addr_reg[4]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => '0',
-      CO(3) => \bram_addr_reg[4]_i_2_n_0\,
-      CO(2) => \bram_addr_reg[4]_i_2_n_1\,
-      CO(1) => \bram_addr_reg[4]_i_2_n_2\,
-      CO(0) => \bram_addr_reg[4]_i_2_n_3\,
-      CYINIT => '0',
-      DI(3 downto 2) => B"00",
-      DI(1) => \^bram_addr\(2),
-      DI(0) => '0',
-      O(3) => \bram_addr_reg[4]_i_2_n_4\,
-      O(2) => \bram_addr_reg[4]_i_2_n_5\,
-      O(1) => \bram_addr_reg[4]_i_2_n_6\,
-      O(0) => \NLW_bram_addr_reg[4]_i_2_O_UNCONNECTED\(0),
-      S(3 downto 2) => \^bram_addr\(4 downto 3),
-      S(1) => \bram_addr[4]_i_3_n_0\,
-      S(0) => '0'
+      Q => \^bram_addr\(2)
     );
 \bram_addr_reg[5]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[5]_i_1_n_0\,
-      Q => \^bram_addr\(5)
+      Q => \^bram_addr\(3)
     );
 \bram_addr_reg[6]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[6]_i_1_n_0\,
-      Q => \^bram_addr\(6)
+      Q => \^bram_addr\(4)
     );
 \bram_addr_reg[7]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[7]_i_1_n_0\,
-      Q => \^bram_addr\(7)
+      Q => \^bram_addr\(5)
     );
 \bram_addr_reg[8]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[8]_i_1_n_0\,
-      Q => \^bram_addr\(8)
-    );
-\bram_addr_reg[8]_i_2\: unisim.vcomponents.CARRY4
-     port map (
-      CI => \bram_addr_reg[4]_i_2_n_0\,
-      CO(3) => \bram_addr_reg[8]_i_2_n_0\,
-      CO(2) => \bram_addr_reg[8]_i_2_n_1\,
-      CO(1) => \bram_addr_reg[8]_i_2_n_2\,
-      CO(0) => \bram_addr_reg[8]_i_2_n_3\,
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3) => \bram_addr_reg[8]_i_2_n_4\,
-      O(2) => \bram_addr_reg[8]_i_2_n_5\,
-      O(1) => \bram_addr_reg[8]_i_2_n_6\,
-      O(0) => \bram_addr_reg[8]_i_2_n_7\,
-      S(3 downto 0) => \^bram_addr\(8 downto 5)
+      Q => \^bram_addr\(6)
     );
 \bram_addr_reg[9]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \bram_addr[9]_i_1_n_0\,
-      Q => \^bram_addr\(9)
+      Q => \^bram_addr\(7)
     );
-bram_en_INST_0: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"E"
-    )
-        port map (
-      I0 => s_axis_data_tvalid,
-      I1 => \^intr0\,
-      O => bram_en
-    );
-bram_rst_INST_0: unisim.vcomponents.LUT1
+combiner_2_inst0_i_1: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => aresetn,
-      O => \^bram_rst\
-    );
-\bram_we[0]_INST_0\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => s_axis_data_tvalid,
-      I1 => \^intr0\,
-      O => \^bram_we\(0)
+      I0 => \^state_reg_0\,
+      O => m_axis_tready
     );
 \read_counter[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"57A0"
+      INIT => X"0BF0"
     )
         port map (
-      I0 => \bram_addr[31]_i_4_n_0\,
-      I1 => s_axis_data_tvalid,
-      I2 => \^intr0\,
+      I0 => \read_counter[1]_i_2_n_0\,
+      I1 => m_axis_tvalid,
+      I2 => \^state_reg_0\,
       I3 => \read_counter_reg_n_0_[0]\,
       O => \read_counter[0]_i_1_n_0\
     );
 \read_counter[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"773F8800"
+      INIT => X"55CFAA00"
     )
         port map (
       I0 => \read_counter_reg_n_0_[0]\,
-      I1 => \bram_addr[31]_i_4_n_0\,
-      I2 => s_axis_data_tvalid,
-      I3 => \^intr0\,
+      I1 => \read_counter[1]_i_2_n_0\,
+      I2 => m_axis_tvalid,
+      I3 => \^state_reg_0\,
       I4 => \read_counter_reg_n_0_[1]\,
       O => \read_counter[1]_i_1_n_0\
     );
+\read_counter[1]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFFFFFE"
+    )
+        port map (
+      I0 => write_counter(8),
+      I1 => write_counter(9),
+      I2 => write_counter(4),
+      I3 => write_counter(5),
+      I4 => \write_counter[9]_i_2_n_0\,
+      O => \read_counter[1]_i_2_n_0\
+    );
 \read_counter_reg[0]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => '1',
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \read_counter[0]_i_1_n_0\,
       Q => \read_counter_reg_n_0_[0]\
     );
 \read_counter_reg[1]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => '1',
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \read_counter[1]_i_1_n_0\,
       Q => \read_counter_reg_n_0_[1]\
     );
-s_axis_data_tready_INST_0: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => \^intr0\,
-      O => s_axis_data_tready
-    );
 state_i_1: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"3FFF8888"
+      INIT => X"0F707070"
     )
         port map (
-      I0 => s_axis_data_tvalid,
-      I1 => \bram_addr[31]_i_4_n_0\,
-      I2 => \read_counter_reg_n_0_[1]\,
-      I3 => \read_counter_reg_n_0_[0]\,
-      I4 => \^intr0\,
+      I0 => \read_counter_reg_n_0_[0]\,
+      I1 => \read_counter_reg_n_0_[1]\,
+      I2 => \^state_reg_0\,
+      I3 => m_axis_tvalid,
+      I4 => \bram_addr[11]_i_2_n_0\,
       O => state_i_1_n_0
     );
 state_reg: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => '1',
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => state_i_1_n_0,
-      Q => \^intr0\
+      Q => \^state_reg_0\
     );
 \threshold_base[15]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"80"
     )
         port map (
-      I0 => \read_counter_reg_n_0_[0]\,
+      I0 => \^state_reg_0\,
       I1 => \read_counter_reg_n_0_[1]\,
-      I2 => \^intr0\,
+      I2 => \read_counter_reg_n_0_[0]\,
       O => \threshold_base[15]_i_1_n_0\
     );
 \threshold_base_reg[0]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(0),
-      Q => threshold_base(0)
+      Q => Q(0)
     );
 \threshold_base_reg[10]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(10),
-      Q => threshold_base(10)
+      Q => Q(10)
     );
 \threshold_base_reg[11]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(11),
-      Q => threshold_base(11)
+      Q => Q(11)
     );
 \threshold_base_reg[12]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(12),
-      Q => threshold_base(12)
+      Q => Q(12)
     );
 \threshold_base_reg[13]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(13),
-      Q => threshold_base(13)
+      Q => Q(13)
     );
 \threshold_base_reg[14]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(14),
-      Q => threshold_base(14)
+      Q => Q(14)
     );
 \threshold_base_reg[15]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(15),
-      Q => threshold_base(15)
+      Q => Q(15)
     );
 \threshold_base_reg[1]\: unisim.vcomponents.FDPE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
       D => bram_rddata(1),
-      PRE => \^bram_rst\,
-      Q => threshold_base(1)
+      PRE => \threshold_base_reg[15]_0\,
+      Q => Q(1)
     );
 \threshold_base_reg[2]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(2),
-      Q => threshold_base(2)
+      Q => Q(2)
     );
 \threshold_base_reg[3]\: unisim.vcomponents.FDPE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
       D => bram_rddata(3),
-      PRE => \^bram_rst\,
-      Q => threshold_base(3)
+      PRE => \threshold_base_reg[15]_0\,
+      Q => Q(3)
     );
 \threshold_base_reg[4]\: unisim.vcomponents.FDPE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
       D => bram_rddata(4),
-      PRE => \^bram_rst\,
-      Q => threshold_base(4)
+      PRE => \threshold_base_reg[15]_0\,
+      Q => Q(4)
     );
 \threshold_base_reg[5]\: unisim.vcomponents.FDPE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
       D => bram_rddata(5),
-      PRE => \^bram_rst\,
-      Q => threshold_base(5)
+      PRE => \threshold_base_reg[15]_0\,
+      Q => Q(5)
     );
 \threshold_base_reg[6]\: unisim.vcomponents.FDPE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
       D => bram_rddata(6),
-      PRE => \^bram_rst\,
-      Q => threshold_base(6)
+      PRE => \threshold_base_reg[15]_0\,
+      Q => Q(6)
     );
 \threshold_base_reg[7]\: unisim.vcomponents.FDPE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
       D => bram_rddata(7),
-      PRE => \^bram_rst\,
-      Q => threshold_base(7)
+      PRE => \threshold_base_reg[15]_0\,
+      Q => Q(7)
     );
 \threshold_base_reg[8]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(8),
-      Q => threshold_base(8)
+      Q => Q(8)
     );
 \threshold_base_reg[9]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \threshold_base[15]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => bram_rddata(9),
-      Q => threshold_base(9)
+      Q => Q(9)
     );
 \write_counter[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \write_counter_reg_n_0_[0]\,
-      O => p_0_in(0)
+      I0 => write_counter(0),
+      I1 => \^state_reg_0\,
+      O => \write_counter[0]_i_1_n_0\
     );
 \write_counter[1]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"06"
+      INIT => X"28"
     )
         port map (
-      I0 => \write_counter_reg_n_0_[0]\,
-      I1 => \write_counter_reg_n_0_[1]\,
-      I2 => \^intr0\,
-      O => p_0_in(1)
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => write_counter(1),
+      I2 => write_counter(0),
+      O => \write_counter[1]_i_1_n_0\
     );
 \write_counter[2]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0078"
+      INIT => X"2888"
     )
         port map (
-      I0 => \write_counter_reg_n_0_[1]\,
-      I1 => \write_counter_reg_n_0_[0]\,
-      I2 => \write_counter_reg_n_0_[2]\,
-      I3 => \^intr0\,
-      O => p_0_in(2)
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => write_counter(2),
+      I2 => write_counter(0),
+      I3 => write_counter(1),
+      O => \write_counter[2]_i_1_n_0\
     );
 \write_counter[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"15554000"
+      INIT => X"28888888"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \write_counter_reg_n_0_[2]\,
-      I2 => \write_counter_reg_n_0_[0]\,
-      I3 => \write_counter_reg_n_0_[1]\,
-      I4 => \write_counter_reg_n_0_[3]\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => write_counter(3),
+      I2 => write_counter(1),
+      I3 => write_counter(0),
+      I4 => write_counter(2),
       O => \write_counter[3]_i_1_n_0\
     );
-\write_counter[4]_i_1\: unisim.vcomponents.LUT5
+\write_counter[4]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"10011010"
+      INIT => X"2888888888888888"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \write_counter[4]_i_2_n_0\,
-      I2 => \write_counter_reg_n_0_[4]\,
-      I3 => \write_counter[4]_i_3_n_0\,
-      I4 => \write_counter_reg_n_0_[3]\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => write_counter(4),
+      I2 => write_counter(2),
+      I3 => write_counter(0),
+      I4 => write_counter(1),
+      I5 => write_counter(3),
       O => \write_counter[4]_i_1_n_0\
     );
-\write_counter[4]_i_2\: unisim.vcomponents.LUT6
+\write_counter[5]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000000000000008"
+      INIT => X"8828"
     )
         port map (
-      I0 => \write_counter_reg_n_0_[7]\,
-      I1 => \write_counter_reg_n_0_[6]\,
-      I2 => \write_counter_reg_n_0_[8]\,
-      I3 => \write_counter_reg_n_0_[4]\,
-      I4 => \write_counter_reg_n_0_[5]\,
-      I5 => \write_counter_reg_n_0_[9]\,
-      O => \write_counter[4]_i_2_n_0\
-    );
-\write_counter[4]_i_3\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"7F"
-    )
-        port map (
-      I0 => \write_counter_reg_n_0_[2]\,
-      I1 => \write_counter_reg_n_0_[0]\,
-      I2 => \write_counter_reg_n_0_[1]\,
-      O => \write_counter[4]_i_3_n_0\
-    );
-\write_counter[5]_i_1\: unisim.vcomponents.LUT3
-    generic map(
-      INIT => X"41"
-    )
-        port map (
-      I0 => \^intr0\,
-      I1 => \write_counter[5]_i_2_n_0\,
-      I2 => \write_counter_reg_n_0_[5]\,
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => write_counter(5),
+      I2 => write_counter(4),
+      I3 => \write_counter[7]_i_2_n_0\,
       O => \write_counter[5]_i_1_n_0\
     );
-\write_counter[5]_i_2\: unisim.vcomponents.LUT5
+\write_counter[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7FFFFFFF"
+      INIT => X"88882888"
     )
         port map (
-      I0 => \write_counter_reg_n_0_[3]\,
-      I1 => \write_counter_reg_n_0_[2]\,
-      I2 => \write_counter_reg_n_0_[0]\,
-      I3 => \write_counter_reg_n_0_[1]\,
-      I4 => \write_counter_reg_n_0_[4]\,
-      O => \write_counter[5]_i_2_n_0\
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => write_counter(6),
+      I2 => write_counter(5),
+      I3 => write_counter(4),
+      I4 => \write_counter[7]_i_2_n_0\,
+      O => \write_counter[6]_i_1_n_0\
     );
-\write_counter[6]_i_1\: unisim.vcomponents.LUT3
+\write_counter[7]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"06"
+      INIT => X"8888888828888888"
     )
         port map (
-      I0 => \write_counter_reg_n_0_[6]\,
-      I1 => \write_counter[9]_i_2_n_0\,
-      I2 => \bram_addr[31]_i_4_n_0\,
-      O => p_0_in(6)
+      I0 => \bram_addr[31]_i_3_n_0\,
+      I1 => write_counter(7),
+      I2 => write_counter(5),
+      I3 => write_counter(4),
+      I4 => write_counter(6),
+      I5 => \write_counter[7]_i_2_n_0\,
+      O => \write_counter[7]_i_1_n_0\
     );
-\write_counter[7]_i_1\: unisim.vcomponents.LUT4
+\write_counter[7]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0078"
+      INIT => X"7FFF"
     )
         port map (
-      I0 => \write_counter[9]_i_2_n_0\,
-      I1 => \write_counter_reg_n_0_[6]\,
-      I2 => \write_counter_reg_n_0_[7]\,
-      I3 => \bram_addr[31]_i_4_n_0\,
-      O => p_0_in(7)
+      I0 => write_counter(2),
+      I1 => write_counter(0),
+      I2 => write_counter(1),
+      I3 => write_counter(3),
+      O => \write_counter[7]_i_2_n_0\
     );
 \write_counter[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"15554000"
+      INIT => X"44441444"
     )
         port map (
-      I0 => \^intr0\,
-      I1 => \write_counter[9]_i_2_n_0\,
-      I2 => \write_counter_reg_n_0_[6]\,
-      I3 => \write_counter_reg_n_0_[7]\,
-      I4 => \write_counter_reg_n_0_[8]\,
+      I0 => \^state_reg_0\,
+      I1 => write_counter(8),
+      I2 => write_counter(5),
+      I3 => write_counter(4),
+      I4 => \write_counter[9]_i_2_n_0\,
       O => \write_counter[8]_i_1_n_0\
     );
 \write_counter[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"000000007FFF8000"
+      INIT => X"4444444414444444"
     )
         port map (
-      I0 => \write_counter_reg_n_0_[7]\,
-      I1 => \write_counter_reg_n_0_[6]\,
-      I2 => \write_counter[9]_i_2_n_0\,
-      I3 => \write_counter_reg_n_0_[8]\,
-      I4 => \write_counter_reg_n_0_[9]\,
-      I5 => \^intr0\,
-      O => p_0_in(9)
+      I0 => \^state_reg_0\,
+      I1 => write_counter(9),
+      I2 => write_counter(8),
+      I3 => write_counter(4),
+      I4 => write_counter(5),
+      I5 => \write_counter[9]_i_2_n_0\,
+      O => \write_counter[9]_i_1_n_0\
     );
 \write_counter[9]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"8000000000000000"
+      INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
-      I0 => \write_counter_reg_n_0_[5]\,
-      I1 => \write_counter_reg_n_0_[4]\,
-      I2 => \write_counter_reg_n_0_[1]\,
-      I3 => \write_counter_reg_n_0_[0]\,
-      I4 => \write_counter_reg_n_0_[2]\,
-      I5 => \write_counter_reg_n_0_[3]\,
+      I0 => write_counter(6),
+      I1 => write_counter(2),
+      I2 => write_counter(0),
+      I3 => write_counter(1),
+      I4 => write_counter(3),
+      I5 => write_counter(7),
       O => \write_counter[9]_i_2_n_0\
     );
 \write_counter_reg[0]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
-      D => p_0_in(0),
-      Q => \write_counter_reg_n_0_[0]\
+      CLR => \threshold_base_reg[15]_0\,
+      D => \write_counter[0]_i_1_n_0\,
+      Q => write_counter(0)
     );
 \write_counter_reg[1]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
-      D => p_0_in(1),
-      Q => \write_counter_reg_n_0_[1]\
+      CLR => \threshold_base_reg[15]_0\,
+      D => \write_counter[1]_i_1_n_0\,
+      Q => write_counter(1)
     );
 \write_counter_reg[2]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
-      D => p_0_in(2),
-      Q => \write_counter_reg_n_0_[2]\
+      CLR => \threshold_base_reg[15]_0\,
+      D => \write_counter[2]_i_1_n_0\,
+      Q => write_counter(2)
     );
 \write_counter_reg[3]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \write_counter[3]_i_1_n_0\,
-      Q => \write_counter_reg_n_0_[3]\
+      Q => write_counter(3)
     );
 \write_counter_reg[4]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \write_counter[4]_i_1_n_0\,
-      Q => \write_counter_reg_n_0_[4]\
+      Q => write_counter(4)
     );
 \write_counter_reg[5]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \write_counter[5]_i_1_n_0\,
-      Q => \write_counter_reg_n_0_[5]\
+      Q => write_counter(5)
     );
 \write_counter_reg[6]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
-      D => p_0_in(6),
-      Q => \write_counter_reg_n_0_[6]\
+      CLR => \threshold_base_reg[15]_0\,
+      D => \write_counter[6]_i_1_n_0\,
+      Q => write_counter(6)
     );
 \write_counter_reg[7]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
-      D => p_0_in(7),
-      Q => \write_counter_reg_n_0_[7]\
+      CLR => \threshold_base_reg[15]_0\,
+      D => \write_counter[7]_i_1_n_0\,
+      Q => write_counter(7)
     );
 \write_counter_reg[8]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
+      CLR => \threshold_base_reg[15]_0\,
       D => \write_counter[8]_i_1_n_0\,
-      Q => \write_counter_reg_n_0_[8]\
+      Q => write_counter(8)
     );
 \write_counter_reg[9]\: unisim.vcomponents.FDCE
      port map (
-      C => \^aclk\,
+      C => aclk,
       CE => \bram_addr[31]_i_1_n_0\,
-      CLR => \^bram_rst\,
-      D => p_0_in(9),
-      Q => \write_counter_reg_n_0_[9]\
+      CLR => \threshold_base_reg[15]_0\,
+      D => \write_counter[9]_i_1_n_0\,
+      Q => write_counter(9)
     );
 end STRUCTURE;
 library IEEE;
@@ -1486,97 +1400,97 @@ entity eko_bd_pl_cross_0_1_delay is
     m_axis_dout_tdata : in STD_LOGIC_VECTOR ( 41 downto 0 );
     aclk : in STD_LOGIC;
     \shift_reg_reg[33][3]_0\ : in STD_LOGIC;
-    \shift_reg_reg[33][3]_1\ : in STD_LOGIC
+    \shift_reg_reg[33][47]_0\ : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of eko_bd_pl_cross_0_1_delay : entity is "delay";
 end eko_bd_pl_cross_0_1_delay;
 
 architecture STRUCTURE of eko_bd_pl_cross_0_1_delay is
-  signal \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][10]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][11]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][12]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][13]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][14]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][15]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][16]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][17]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][18]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][19]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][20]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][21]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][22]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][23]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][27]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][28]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][29]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][30]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][31]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][32]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][33]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][34]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][35]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][36]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][37]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][38]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][39]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][3]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][40]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][41]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][42]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][43]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][44]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][45]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][46]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][47]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][4]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][5]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][6]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][7]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][8]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][9]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][10]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][11]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][12]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][13]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][14]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][15]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][16]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][17]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][18]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][19]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][20]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][21]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][22]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][23]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][27]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][28]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][29]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][30]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][31]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][32]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][33]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][34]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][35]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][36]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][37]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][38]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][39]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][3]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][40]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][41]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][42]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][43]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][44]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][45]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][46]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][47]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][4]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][5]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][6]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][7]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][8]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][9]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
   signal \shift_reg_reg_gate__0_n_0\ : STD_LOGIC;
   signal \shift_reg_reg_gate__10_n_0\ : STD_LOGIC;
   signal \shift_reg_reg_gate__11_n_0\ : STD_LOGIC;
@@ -1619,897 +1533,897 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_delay is
   signal \shift_reg_reg_gate__8_n_0\ : STD_LOGIC;
   signal \shift_reg_reg_gate__9_n_0\ : STD_LOGIC;
   signal shift_reg_reg_gate_n_0 : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
   attribute srl_bus_name : string;
-  attribute srl_bus_name of \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_bus_name of \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
   attribute srl_name : string;
-  attribute srl_name of \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_name of \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst1/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of shift_reg_reg_gate : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__0\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__1\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__10\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__11\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__12\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__13\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__14\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__15\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__16\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__17\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__18\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__19\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__2\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__20\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__21\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__22\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__23\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__24\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__25\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__26\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__27\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__28\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__29\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__3\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__30\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__31\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__32\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__33\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__34\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__35\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__36\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__37\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__38\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__39\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__4\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__40\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__5\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__6\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__7\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__8\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__9\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of shift_reg_reg_gate : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__0\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__10\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__11\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__12\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__13\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__14\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__15\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__16\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__17\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__18\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__19\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__2\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__20\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__21\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__22\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__23\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__24\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__25\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__26\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__27\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__28\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__29\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__3\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__30\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__31\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__32\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__33\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__34\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__35\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__36\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__37\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__38\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__39\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__4\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__40\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__5\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__6\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__7\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__8\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__9\ : label is "soft_lutpair78";
 begin
-\shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(7),
-      Q => \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(8),
-      Q => \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(9),
-      Q => \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(10),
-      Q => \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(11),
-      Q => \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(12),
-      Q => \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(13),
-      Q => \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(14),
-      Q => \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(15),
-      Q => \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(16),
-      Q => \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(17),
-      Q => \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(18),
-      Q => \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(19),
-      Q => \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(20),
-      Q => \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(21),
-      Q => \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(22),
-      Q => \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(23),
-      Q => \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(24),
-      Q => \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(25),
-      Q => \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(26),
-      Q => \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(27),
-      Q => \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(28),
-      Q => \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(29),
-      Q => \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(30),
-      Q => \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(31),
-      Q => \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(32),
-      Q => \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(33),
-      Q => \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(0),
-      Q => \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(34),
-      Q => \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(35),
-      Q => \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(36),
-      Q => \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(37),
-      Q => \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(38),
-      Q => \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(39),
-      Q => \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(40),
-      Q => \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(41),
-      Q => \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(1),
-      Q => \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(2),
-      Q => \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(3),
-      Q => \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(4),
-      Q => \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(5),
-      Q => \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(6),
-      Q => \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[32][10]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][10]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][10]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][10]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][11]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][11]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][11]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][11]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][12]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][12]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][12]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][12]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][13]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][13]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][13]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][13]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][14]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][14]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][14]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][14]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][15]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][15]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][15]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][15]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][16]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][16]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][16]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][16]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][17]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][17]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][17]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][17]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][18]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][18]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][18]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][18]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][19]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][19]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][19]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][19]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][20]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][20]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][20]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][20]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][21]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][21]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][21]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][21]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][22]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][22]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][22]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][22]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][23]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][23]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][23]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][23]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][27]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][27]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][27]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][27]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][28]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][28]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][28]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][28]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][29]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][29]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][29]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][29]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][30]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][30]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][30]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][30]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][31]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][31]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][31]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][31]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][32]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][32]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][32]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][32]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][33]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][33]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][33]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][33]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][34]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][34]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][34]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][34]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][35]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][35]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][35]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][35]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][36]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][36]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][36]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][36]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][37]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][37]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][37]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][37]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][38]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][38]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][38]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][38]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][39]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][39]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][39]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][39]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][3]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][3]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][3]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][3]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][40]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][40]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][40]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][40]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][41]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][41]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][41]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][41]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][42]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][42]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][42]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][42]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][43]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][43]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][43]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][43]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][44]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][44]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][44]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][44]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][45]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][45]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][45]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][45]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][46]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][46]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][46]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][46]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][47]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][47]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][47]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][47]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][4]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][4]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][4]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][4]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][5]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][5]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][5]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][5]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][6]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][6]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][6]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][6]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][7]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][7]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][7]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][7]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][8]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][8]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][8]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][8]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][9]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][9]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][9]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][9]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
 \shift_reg_reg[33][10]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__33_n_0\,
       Q => dina(7)
     );
@@ -2517,7 +2431,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__32_n_0\,
       Q => dina(8)
     );
@@ -2525,7 +2439,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__31_n_0\,
       Q => dina(9)
     );
@@ -2533,7 +2447,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__30_n_0\,
       Q => dina(10)
     );
@@ -2541,7 +2455,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__29_n_0\,
       Q => dina(11)
     );
@@ -2549,7 +2463,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__28_n_0\,
       Q => dina(12)
     );
@@ -2557,7 +2471,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__27_n_0\,
       Q => dina(13)
     );
@@ -2565,7 +2479,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__26_n_0\,
       Q => dina(14)
     );
@@ -2573,7 +2487,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__25_n_0\,
       Q => dina(15)
     );
@@ -2581,7 +2495,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__24_n_0\,
       Q => dina(16)
     );
@@ -2589,7 +2503,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__23_n_0\,
       Q => dina(17)
     );
@@ -2597,7 +2511,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__22_n_0\,
       Q => dina(18)
     );
@@ -2605,7 +2519,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__21_n_0\,
       Q => dina(19)
     );
@@ -2613,7 +2527,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__20_n_0\,
       Q => dina(20)
     );
@@ -2621,7 +2535,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__19_n_0\,
       Q => dina(21)
     );
@@ -2629,7 +2543,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__18_n_0\,
       Q => dina(22)
     );
@@ -2637,7 +2551,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__17_n_0\,
       Q => dina(23)
     );
@@ -2645,7 +2559,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__16_n_0\,
       Q => dina(24)
     );
@@ -2653,7 +2567,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__15_n_0\,
       Q => dina(25)
     );
@@ -2661,7 +2575,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__14_n_0\,
       Q => dina(26)
     );
@@ -2669,7 +2583,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__13_n_0\,
       Q => dina(27)
     );
@@ -2677,7 +2591,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__12_n_0\,
       Q => dina(28)
     );
@@ -2685,7 +2599,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__11_n_0\,
       Q => dina(29)
     );
@@ -2693,7 +2607,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__10_n_0\,
       Q => dina(30)
     );
@@ -2701,7 +2615,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__9_n_0\,
       Q => dina(31)
     );
@@ -2709,7 +2623,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__8_n_0\,
       Q => dina(32)
     );
@@ -2717,7 +2631,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__7_n_0\,
       Q => dina(33)
     );
@@ -2725,7 +2639,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__40_n_0\,
       Q => dina(0)
     );
@@ -2733,7 +2647,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__6_n_0\,
       Q => dina(34)
     );
@@ -2741,7 +2655,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__5_n_0\,
       Q => dina(35)
     );
@@ -2749,7 +2663,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__4_n_0\,
       Q => dina(36)
     );
@@ -2757,7 +2671,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__3_n_0\,
       Q => dina(37)
     );
@@ -2765,7 +2679,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__2_n_0\,
       Q => dina(38)
     );
@@ -2773,7 +2687,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__1_n_0\,
       Q => dina(39)
     );
@@ -2781,7 +2695,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__0_n_0\,
       Q => dina(40)
     );
@@ -2789,7 +2703,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => shift_reg_reg_gate_n_0,
       Q => dina(41)
     );
@@ -2797,7 +2711,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__39_n_0\,
       Q => dina(1)
     );
@@ -2805,7 +2719,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__38_n_0\,
       Q => dina(2)
     );
@@ -2813,7 +2727,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__37_n_0\,
       Q => dina(3)
     );
@@ -2821,7 +2735,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__36_n_0\,
       Q => dina(4)
     );
@@ -2829,7 +2743,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__35_n_0\,
       Q => dina(5)
     );
@@ -2837,7 +2751,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]_1\,
+      CLR => \shift_reg_reg[33][47]_0\,
       D => \shift_reg_reg_gate__34_n_0\,
       Q => dina(6)
     );
@@ -2846,7 +2760,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][47]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][47]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => shift_reg_reg_gate_n_0
     );
@@ -2855,7 +2769,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][46]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][46]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__0_n_0\
     );
@@ -2864,7 +2778,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][45]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][45]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__1_n_0\
     );
@@ -2873,7 +2787,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][36]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][36]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__10_n_0\
     );
@@ -2882,7 +2796,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][35]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][35]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__11_n_0\
     );
@@ -2891,7 +2805,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][34]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][34]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__12_n_0\
     );
@@ -2900,7 +2814,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][33]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][33]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__13_n_0\
     );
@@ -2909,7 +2823,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][32]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][32]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__14_n_0\
     );
@@ -2918,7 +2832,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][31]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][31]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__15_n_0\
     );
@@ -2927,7 +2841,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][30]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][30]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__16_n_0\
     );
@@ -2936,7 +2850,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][29]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][29]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__17_n_0\
     );
@@ -2945,7 +2859,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][28]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][28]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__18_n_0\
     );
@@ -2954,7 +2868,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][27]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][27]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__19_n_0\
     );
@@ -2963,7 +2877,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][44]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][44]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__2_n_0\
     );
@@ -2972,7 +2886,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][23]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][23]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__20_n_0\
     );
@@ -2981,7 +2895,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][22]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][22]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__21_n_0\
     );
@@ -2990,7 +2904,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][21]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][21]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__22_n_0\
     );
@@ -2999,7 +2913,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][20]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][20]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__23_n_0\
     );
@@ -3008,7 +2922,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][19]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][19]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__24_n_0\
     );
@@ -3017,7 +2931,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][18]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][18]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__25_n_0\
     );
@@ -3026,7 +2940,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][17]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][17]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__26_n_0\
     );
@@ -3035,7 +2949,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][16]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][16]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__27_n_0\
     );
@@ -3044,7 +2958,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][15]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][15]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__28_n_0\
     );
@@ -3053,7 +2967,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][14]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][14]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__29_n_0\
     );
@@ -3062,7 +2976,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][43]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][43]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__3_n_0\
     );
@@ -3071,7 +2985,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][13]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][13]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__30_n_0\
     );
@@ -3080,7 +2994,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][12]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][12]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__31_n_0\
     );
@@ -3089,7 +3003,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][11]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][11]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__32_n_0\
     );
@@ -3098,7 +3012,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][10]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][10]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__33_n_0\
     );
@@ -3107,7 +3021,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][9]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][9]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__34_n_0\
     );
@@ -3116,7 +3030,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][8]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][8]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__35_n_0\
     );
@@ -3125,7 +3039,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][7]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][7]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__36_n_0\
     );
@@ -3134,7 +3048,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][6]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][6]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__37_n_0\
     );
@@ -3143,7 +3057,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][5]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][5]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__38_n_0\
     );
@@ -3152,7 +3066,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][4]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][4]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__39_n_0\
     );
@@ -3161,7 +3075,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][42]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][42]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__4_n_0\
     );
@@ -3170,7 +3084,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][3]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][3]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__40_n_0\
     );
@@ -3179,7 +3093,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][41]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][41]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__5_n_0\
     );
@@ -3188,7 +3102,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][40]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][40]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__6_n_0\
     );
@@ -3197,7 +3111,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][39]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][39]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__7_n_0\
     );
@@ -3206,7 +3120,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][38]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][38]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__8_n_0\
     );
@@ -3215,7 +3129,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][37]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][37]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \shift_reg_reg[33][3]_0\,
       O => \shift_reg_reg_gate__9_n_0\
     );
@@ -3239,90 +3153,90 @@ end eko_bd_pl_cross_0_1_delay_0;
 
 architecture STRUCTURE of eko_bd_pl_cross_0_1_delay_0 is
   signal \^aresetn_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][10]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][11]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][12]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][13]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][14]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][15]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][16]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][17]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][18]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][19]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][20]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][21]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][22]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][23]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][27]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][28]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][29]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][30]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][31]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][32]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][33]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][34]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][35]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][36]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][37]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][38]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][39]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][3]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][40]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][41]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][42]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][43]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][44]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][45]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][46]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][47]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][4]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][5]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][6]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][7]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][8]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
-  signal \shift_reg_reg[32][9]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][10]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][11]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][12]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][13]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][14]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][15]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][16]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][17]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][18]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][19]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][20]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][21]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][22]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][23]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][27]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][28]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][29]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][30]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][31]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][32]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][33]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][34]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][35]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][36]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][37]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][38]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][39]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][3]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][40]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][41]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][42]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][43]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][44]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][45]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][46]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][47]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][4]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][5]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][6]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][7]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][8]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
+  signal \shift_reg_reg[32][9]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\ : STD_LOGIC;
   signal shift_reg_reg_c_0_n_0 : STD_LOGIC;
   signal shift_reg_reg_c_10_n_0 : STD_LOGIC;
   signal shift_reg_reg_c_11_n_0 : STD_LOGIC;
@@ -3398,181 +3312,181 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_delay_0 is
   signal \shift_reg_reg_gate__8_n_0\ : STD_LOGIC;
   signal \shift_reg_reg_gate__9_n_0\ : STD_LOGIC;
   signal shift_reg_reg_gate_n_0 : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\ : STD_LOGIC;
   attribute srl_bus_name : string;
-  attribute srl_bus_name of \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_bus_name of \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
   attribute srl_name : string;
-  attribute srl_name of \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
-  attribute srl_bus_name of \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
-  attribute srl_name of \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/cross_gcc_phat_inst0/\gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_name of \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
+  attribute srl_bus_name of \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31] ";
+  attribute srl_name of \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\ : label is "inst/\cross_gcc_phat_inst0/gcc_phat_core_inst0/normalize_2_inst0/weight_0_inst0/delay_inst0/shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30 ";
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of shift_reg_reg_gate : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__0\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__10\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__11\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__12\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__13\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__14\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__15\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__16\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__17\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__18\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__19\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__2\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__20\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__21\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__22\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__23\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__24\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__25\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__26\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__27\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__28\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__29\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__3\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__30\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__31\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__32\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__33\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__34\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__35\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__36\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__37\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__38\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__39\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__4\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__40\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__5\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__6\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__7\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__8\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \shift_reg_reg_gate__9\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of shift_reg_reg_gate : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__0\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__10\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__11\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__12\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__13\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__14\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__15\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__16\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__17\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__18\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__19\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__2\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__20\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__21\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__22\ : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__23\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__24\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__25\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__26\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__27\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__28\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__29\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__3\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__30\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__31\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__32\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__33\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__34\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__35\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__36\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__37\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__38\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__39\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__4\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__40\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__5\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__6\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__7\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__8\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \shift_reg_reg_gate__9\ : label is "soft_lutpair44";
 begin
   aresetn_0 <= \^aresetn_0\;
   shift_reg_reg_c_31_0 <= \^shift_reg_reg_c_31_0\;
-random_i_2: unisim.vcomponents.LUT1
+bram_rst_INST_0: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
@@ -3580,718 +3494,718 @@ random_i_2: unisim.vcomponents.LUT1
       I0 => aresetn,
       O => \^aresetn_0\
     );
-\shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(7),
-      Q => \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(8),
-      Q => \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(9),
-      Q => \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(10),
-      Q => \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(11),
-      Q => \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(12),
-      Q => \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(13),
-      Q => \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(14),
-      Q => \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(15),
-      Q => \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(16),
-      Q => \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(17),
-      Q => \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(18),
-      Q => \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(19),
-      Q => \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(20),
-      Q => \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(21),
-      Q => \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(22),
-      Q => \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(23),
-      Q => \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(24),
-      Q => \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(25),
-      Q => \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(26),
-      Q => \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(27),
-      Q => \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(28),
-      Q => \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(29),
-      Q => \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(30),
-      Q => \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(31),
-      Q => \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(32),
-      Q => \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(33),
-      Q => \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(0),
-      Q => \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(34),
-      Q => \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(35),
-      Q => \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(36),
-      Q => \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(37),
-      Q => \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(38),
-      Q => \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(39),
-      Q => \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(40),
-      Q => \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(41),
-      Q => \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(1),
-      Q => \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(2),
-      Q => \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(3),
-      Q => \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(4),
-      Q => \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(5),
-      Q => \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
+\shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30\: unisim.vcomponents.SRLC32E
      port map (
       A(4 downto 0) => B"11111",
       CE => '1',
       CLK => aclk,
       D => m_axis_dout_tdata(6),
-      Q => \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q31 => \NLW_shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
+      Q => \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q31 => \NLW_shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_Q31_UNCONNECTED\
     );
-\shift_reg_reg[32][10]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][10]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][10]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][10]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][10]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][10]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][11]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][11]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][11]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][11]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][11]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][11]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][12]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][12]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][12]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][12]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][12]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][12]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][13]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][13]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][13]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][13]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][13]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][13]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][14]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][14]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][14]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][14]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][14]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][14]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][15]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][15]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][15]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][15]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][15]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][15]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][16]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][16]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][16]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][16]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][16]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][16]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][17]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][17]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][17]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][17]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][17]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][17]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][18]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][18]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][18]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][18]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][18]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][18]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][19]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][19]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][19]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][19]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][19]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][19]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][20]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][20]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][20]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][20]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][20]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][20]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][21]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][21]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][21]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][21]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][21]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][21]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][22]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][22]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][22]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][22]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][22]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][22]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][23]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][23]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][23]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][23]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][23]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][23]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][27]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][27]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][27]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][27]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][27]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][27]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][28]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][28]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][28]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][28]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][28]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][28]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][29]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][29]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][29]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][29]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][29]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][29]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][30]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][30]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][30]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][30]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][30]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][30]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][31]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][31]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][31]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][31]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][31]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][31]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][32]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][32]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][32]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][32]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][32]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][32]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][33]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][33]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][33]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][33]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][33]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][33]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][34]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][34]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][34]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][34]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][34]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][34]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][35]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][35]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][35]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][35]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][35]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][35]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][36]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][36]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][36]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][36]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][36]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][36]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][37]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][37]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][37]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][37]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][37]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][37]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][38]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][38]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][38]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][38]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][38]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][38]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][39]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][39]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][39]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][39]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][39]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][39]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][3]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][3]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][3]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][3]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][3]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][3]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][40]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][40]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][40]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][40]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][40]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][40]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][41]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][41]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][41]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][41]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][41]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][41]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][42]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][42]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][42]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][42]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][42]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][42]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][43]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][43]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][43]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][43]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][43]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][43]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][44]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][44]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][44]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][44]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][44]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][44]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][45]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][45]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][45]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][45]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][45]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][45]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][46]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][46]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][46]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][46]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][46]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][46]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][47]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][47]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][47]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][47]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][47]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][47]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][4]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][4]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][4]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][4]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][4]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][4]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][5]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][5]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][5]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][5]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][5]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][5]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][6]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][6]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][6]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][6]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][6]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][6]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][7]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][7]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][7]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][7]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][7]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][7]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][8]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][8]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][8]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][8]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][8]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][8]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
-\shift_reg_reg[32][9]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
+\shift_reg_reg[32][9]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31\: unisim.vcomponents.FDRE
      port map (
       C => aclk,
       CE => '1',
-      D => \shift_reg_reg[31][9]_srl32_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
-      Q => \shift_reg_reg[32][9]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      D => \shift_reg_reg[31][9]_srl32_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_30_n_0\,
+      Q => \shift_reg_reg[32][9]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       R => '0'
     );
 \shift_reg_reg[33][10]\: unisim.vcomponents.FDCE
@@ -4899,7 +4813,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][47]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][47]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => shift_reg_reg_gate_n_0
     );
@@ -4908,7 +4822,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][46]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][46]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__0_n_0\
     );
@@ -4917,7 +4831,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][45]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][45]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__1_n_0\
     );
@@ -4926,7 +4840,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][36]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][36]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__10_n_0\
     );
@@ -4935,7 +4849,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][35]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][35]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__11_n_0\
     );
@@ -4944,7 +4858,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][34]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][34]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__12_n_0\
     );
@@ -4953,7 +4867,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][33]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][33]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__13_n_0\
     );
@@ -4962,7 +4876,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][32]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][32]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__14_n_0\
     );
@@ -4971,7 +4885,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][31]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][31]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__15_n_0\
     );
@@ -4980,7 +4894,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][30]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][30]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__16_n_0\
     );
@@ -4989,7 +4903,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][29]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][29]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__17_n_0\
     );
@@ -4998,7 +4912,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][28]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][28]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__18_n_0\
     );
@@ -5007,7 +4921,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][27]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][27]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__19_n_0\
     );
@@ -5016,7 +4930,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][44]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][44]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__2_n_0\
     );
@@ -5025,7 +4939,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][23]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][23]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__20_n_0\
     );
@@ -5034,7 +4948,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][22]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][22]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__21_n_0\
     );
@@ -5043,7 +4957,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][21]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][21]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__22_n_0\
     );
@@ -5052,7 +4966,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][20]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][20]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__23_n_0\
     );
@@ -5061,7 +4975,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][19]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][19]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__24_n_0\
     );
@@ -5070,7 +4984,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][18]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][18]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__25_n_0\
     );
@@ -5079,7 +4993,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][17]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][17]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__26_n_0\
     );
@@ -5088,7 +5002,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][16]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][16]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__27_n_0\
     );
@@ -5097,7 +5011,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][15]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][15]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__28_n_0\
     );
@@ -5106,7 +5020,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][14]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][14]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__29_n_0\
     );
@@ -5115,7 +5029,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][43]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][43]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__3_n_0\
     );
@@ -5124,7 +5038,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][13]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][13]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__30_n_0\
     );
@@ -5133,7 +5047,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][12]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][12]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__31_n_0\
     );
@@ -5142,7 +5056,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][11]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][11]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__32_n_0\
     );
@@ -5151,7 +5065,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][10]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][10]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__33_n_0\
     );
@@ -5160,7 +5074,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][9]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][9]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__34_n_0\
     );
@@ -5169,7 +5083,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][8]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][8]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__35_n_0\
     );
@@ -5178,7 +5092,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][7]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][7]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__36_n_0\
     );
@@ -5187,7 +5101,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][6]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][6]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__37_n_0\
     );
@@ -5196,7 +5110,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][5]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][5]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__38_n_0\
     );
@@ -5205,7 +5119,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][4]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][4]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__39_n_0\
     );
@@ -5214,7 +5128,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][42]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][42]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__4_n_0\
     );
@@ -5223,7 +5137,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][3]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][3]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__40_n_0\
     );
@@ -5232,7 +5146,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][41]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][41]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__5_n_0\
     );
@@ -5241,7 +5155,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][40]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][40]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__6_n_0\
     );
@@ -5250,7 +5164,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][39]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][39]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__7_n_0\
     );
@@ -5259,7 +5173,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][38]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][38]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__8_n_0\
     );
@@ -5268,7 +5182,7 @@ shift_reg_reg_gate: unisim.vcomponents.LUT2
       INIT => X"8"
     )
         port map (
-      I0 => \shift_reg_reg[32][37]_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
+      I0 => \shift_reg_reg[32][37]_cross_gcc_phat_inst0_gcc_phat_core_inst0_normalize_2_inst0_weight_0_inst0_delay_inst0_shift_reg_reg_c_31_n_0\,
       I1 => \^shift_reg_reg_c_31_0\,
       O => \shift_reg_reg_gate__9_n_0\
     );
@@ -5279,12 +5193,11 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity eko_bd_pl_cross_0_1_i2s_recv_cross is
   port (
-    aresetn_0 : out STD_LOGIC;
-    \out\ : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    Q : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axis_tvalid : out STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    aresetn : in STD_LOGIC;
+    \m_axis_data_tdata_reg[63]_0\ : out STD_LOGIC_VECTOR ( 63 downto 0 );
     aclk : in STD_LOGIC;
+    bram_rst : in STD_LOGIC;
     s_axis_tready : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
@@ -5293,9 +5206,9 @@ entity eko_bd_pl_cross_0_1_i2s_recv_cross is
 end eko_bd_pl_cross_0_1_i2s_recv_cross;
 
 architecture STRUCTURE of eko_bd_pl_cross_0_1_i2s_recv_cross is
-  signal \^aresetn_0\ : STD_LOGIC;
+  signal \^q\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal \bit_count[6]_i_1_n_0\ : STD_LOGIC;
-  signal \bit_count[6]_i_4_n_0\ : STD_LOGIC;
+  signal \bit_count[6]_i_3_n_0\ : STD_LOGIC;
   signal \clock_count[0]_i_1_n_0\ : STD_LOGIC;
   signal \clock_count[1]_i_1_n_0\ : STD_LOGIC;
   signal \clock_count[2]_i_1_n_0\ : STD_LOGIC;
@@ -5311,30 +5224,28 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_i2s_recv_cross is
   signal \m_axis_data_tdata[63]_i_1_n_0\ : STD_LOGIC;
   signal m_axis_data_tvalid_i_1_n_0 : STD_LOGIC;
   signal m_axis_data_tvalid_i_2_n_0 : STD_LOGIC;
-  signal \^out\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal p_0_in : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal \^s_axis_tvalid\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \bit_count[0]_i_1\ : label is "soft_lutpair130";
-  attribute SOFT_HLUTNM of \bit_count[1]_i_1\ : label is "soft_lutpair130";
-  attribute SOFT_HLUTNM of \bit_count[2]_i_1\ : label is "soft_lutpair128";
-  attribute SOFT_HLUTNM of \bit_count[3]_i_1\ : label is "soft_lutpair126";
-  attribute SOFT_HLUTNM of \bit_count[4]_i_1\ : label is "soft_lutpair126";
-  attribute SOFT_HLUTNM of \clock_count[1]_i_1\ : label is "soft_lutpair129";
-  attribute SOFT_HLUTNM of \clock_count[2]_i_1\ : label is "soft_lutpair129";
-  attribute SOFT_HLUTNM of \clock_count[3]_i_1\ : label is "soft_lutpair127";
-  attribute SOFT_HLUTNM of \i2s_data_tmp[63]_i_2\ : label is "soft_lutpair128";
-  attribute SOFT_HLUTNM of m_axis_data_tvalid_i_2 : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \bit_count[0]_i_1\ : label is "soft_lutpair128";
+  attribute SOFT_HLUTNM of \bit_count[1]_i_1\ : label is "soft_lutpair128";
+  attribute SOFT_HLUTNM of \bit_count[2]_i_1\ : label is "soft_lutpair126";
+  attribute SOFT_HLUTNM of \bit_count[3]_i_1\ : label is "soft_lutpair124";
+  attribute SOFT_HLUTNM of \bit_count[4]_i_1\ : label is "soft_lutpair124";
+  attribute SOFT_HLUTNM of \clock_count[1]_i_1\ : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \clock_count[2]_i_1\ : label is "soft_lutpair127";
+  attribute SOFT_HLUTNM of \clock_count[3]_i_1\ : label is "soft_lutpair125";
+  attribute SOFT_HLUTNM of \i2s_data_tmp[63]_i_2\ : label is "soft_lutpair126";
+  attribute SOFT_HLUTNM of m_axis_data_tvalid_i_2 : label is "soft_lutpair125";
 begin
-  aresetn_0 <= \^aresetn_0\;
-  \out\(1 downto 0) <= \^out\(1 downto 0);
+  Q(1 downto 0) <= \^q\(1 downto 0);
   s_axis_tvalid <= \^s_axis_tvalid\;
 \bit_count[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => \^out\(0),
+      I0 => \^q\(0),
       O => p_0_in(0)
     );
 \bit_count[1]_i_1\: unisim.vcomponents.LUT2
@@ -5342,7 +5253,7 @@ begin
       INIT => X"6"
     )
         port map (
-      I0 => \^out\(0),
+      I0 => \^q\(0),
       I1 => half_bit_count(0),
       O => p_0_in(1)
     );
@@ -5351,8 +5262,8 @@ begin
       INIT => X"78"
     )
         port map (
-      I0 => \^out\(0),
-      I1 => half_bit_count(0),
+      I0 => half_bit_count(0),
+      I1 => \^q\(0),
       I2 => half_bit_count(1),
       O => p_0_in(2)
     );
@@ -5362,8 +5273,8 @@ begin
     )
         port map (
       I0 => half_bit_count(1),
-      I1 => half_bit_count(0),
-      I2 => \^out\(0),
+      I1 => \^q\(0),
+      I2 => half_bit_count(0),
       I3 => half_bit_count(2),
       O => p_0_in(3)
     );
@@ -5373,8 +5284,8 @@ begin
     )
         port map (
       I0 => half_bit_count(2),
-      I1 => \^out\(0),
-      I2 => half_bit_count(0),
+      I1 => half_bit_count(0),
+      I2 => \^q\(0),
       I3 => half_bit_count(1),
       I4 => half_bit_count(3),
       O => p_0_in(4)
@@ -5386,8 +5297,8 @@ begin
         port map (
       I0 => half_bit_count(3),
       I1 => half_bit_count(1),
-      I2 => half_bit_count(0),
-      I3 => \^out\(0),
+      I2 => \^q\(0),
+      I3 => half_bit_count(0),
       I4 => half_bit_count(2),
       I5 => half_bit_count(4),
       O => p_0_in(5)
@@ -5408,44 +5319,36 @@ begin
       INIT => X"9"
     )
         port map (
-      I0 => \bit_count[6]_i_4_n_0\,
-      I1 => \^out\(1),
+      I0 => \bit_count[6]_i_3_n_0\,
+      I1 => \^q\(1),
       O => p_0_in(6)
     );
-\bit_count[6]_i_3\: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"1"
-    )
-        port map (
-      I0 => aresetn,
-      O => \^aresetn_0\
-    );
-\bit_count[6]_i_4\: unisim.vcomponents.LUT6
+\bit_count[6]_i_3\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"7FFFFFFFFFFFFFFF"
     )
         port map (
       I0 => half_bit_count(3),
       I1 => half_bit_count(1),
-      I2 => half_bit_count(0),
-      I3 => \^out\(0),
+      I2 => \^q\(0),
+      I3 => half_bit_count(0),
       I4 => half_bit_count(2),
       I5 => half_bit_count(4),
-      O => \bit_count[6]_i_4_n_0\
+      O => \bit_count[6]_i_3_n_0\
     );
 \bit_count_reg[0]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \bit_count[6]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => p_0_in(0),
-      Q => \^out\(0)
+      Q => \^q\(0)
     );
 \bit_count_reg[1]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \bit_count[6]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => p_0_in(1),
       Q => half_bit_count(0)
     );
@@ -5453,7 +5356,7 @@ begin
      port map (
       C => aclk,
       CE => \bit_count[6]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => p_0_in(2),
       Q => half_bit_count(1)
     );
@@ -5461,7 +5364,7 @@ begin
      port map (
       C => aclk,
       CE => \bit_count[6]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => p_0_in(3),
       Q => half_bit_count(2)
     );
@@ -5469,7 +5372,7 @@ begin
      port map (
       C => aclk,
       CE => \bit_count[6]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => p_0_in(4),
       Q => half_bit_count(3)
     );
@@ -5477,7 +5380,7 @@ begin
      port map (
       C => aclk,
       CE => \bit_count[6]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => p_0_in(5),
       Q => half_bit_count(4)
     );
@@ -5485,9 +5388,9 @@ begin
      port map (
       C => aclk,
       CE => \bit_count[6]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => p_0_in(6),
-      Q => \^out\(1)
+      Q => \^q\(1)
     );
 \clock_count[0]_i_1\: unisim.vcomponents.LUT1
     generic map(
@@ -5531,7 +5434,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => \clock_count[0]_i_1_n_0\,
       Q => \clock_count_reg_n_0_[0]\
     );
@@ -5539,7 +5442,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => \clock_count[1]_i_1_n_0\,
       Q => \clock_count_reg_n_0_[1]\
     );
@@ -5547,7 +5450,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => \clock_count[2]_i_1_n_0\,
       Q => \clock_count_reg_n_0_[2]\
     );
@@ -5555,7 +5458,7 @@ begin
      port map (
       C => aclk,
       CE => '1',
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => \clock_count[3]_i_1_n_0\,
       Q => \clock_count_reg_n_0_[3]\
     );
@@ -5565,8 +5468,8 @@ begin
     )
         port map (
       I0 => m_axis_data_tvalid_i_2_n_0,
-      I1 => \^out\(1),
-      I2 => \^out\(0),
+      I1 => \^q\(0),
+      I2 => \^q\(1),
       I3 => half_bit_count(4),
       I4 => \i2s_data_tmp[63]_i_2_n_0\,
       I5 => half_bit_count(0),
@@ -5586,7 +5489,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => D(0),
       Q => i2s_data_tmp(0)
     );
@@ -5594,7 +5497,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(9),
       Q => i2s_data_tmp(10)
     );
@@ -5602,7 +5505,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(10),
       Q => i2s_data_tmp(11)
     );
@@ -5610,7 +5513,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(11),
       Q => i2s_data_tmp(12)
     );
@@ -5618,7 +5521,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(12),
       Q => i2s_data_tmp(13)
     );
@@ -5626,7 +5529,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(13),
       Q => i2s_data_tmp(14)
     );
@@ -5634,7 +5537,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(14),
       Q => i2s_data_tmp(15)
     );
@@ -5642,7 +5545,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => D(1),
       Q => i2s_data_tmp(16)
     );
@@ -5650,7 +5553,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(16),
       Q => i2s_data_tmp(17)
     );
@@ -5658,7 +5561,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(17),
       Q => i2s_data_tmp(18)
     );
@@ -5666,7 +5569,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(18),
       Q => i2s_data_tmp(19)
     );
@@ -5674,7 +5577,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(0),
       Q => i2s_data_tmp(1)
     );
@@ -5682,7 +5585,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(19),
       Q => i2s_data_tmp(20)
     );
@@ -5690,7 +5593,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(20),
       Q => i2s_data_tmp(21)
     );
@@ -5698,7 +5601,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(21),
       Q => i2s_data_tmp(22)
     );
@@ -5706,7 +5609,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(22),
       Q => i2s_data_tmp(23)
     );
@@ -5714,7 +5617,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(23),
       Q => i2s_data_tmp(24)
     );
@@ -5722,7 +5625,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(24),
       Q => i2s_data_tmp(25)
     );
@@ -5730,7 +5633,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(25),
       Q => i2s_data_tmp(26)
     );
@@ -5738,7 +5641,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(26),
       Q => i2s_data_tmp(27)
     );
@@ -5746,7 +5649,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(27),
       Q => i2s_data_tmp(28)
     );
@@ -5754,7 +5657,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(28),
       Q => i2s_data_tmp(29)
     );
@@ -5762,7 +5665,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(1),
       Q => i2s_data_tmp(2)
     );
@@ -5770,7 +5673,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(29),
       Q => i2s_data_tmp(30)
     );
@@ -5778,7 +5681,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(30),
       Q => i2s_data_tmp(31)
     );
@@ -5786,7 +5689,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => D(2),
       Q => i2s_data_tmp(32)
     );
@@ -5794,7 +5697,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(32),
       Q => i2s_data_tmp(33)
     );
@@ -5802,7 +5705,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(33),
       Q => i2s_data_tmp(34)
     );
@@ -5810,7 +5713,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(34),
       Q => i2s_data_tmp(35)
     );
@@ -5818,7 +5721,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(35),
       Q => i2s_data_tmp(36)
     );
@@ -5826,7 +5729,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(36),
       Q => i2s_data_tmp(37)
     );
@@ -5834,7 +5737,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(37),
       Q => i2s_data_tmp(38)
     );
@@ -5842,7 +5745,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(38),
       Q => i2s_data_tmp(39)
     );
@@ -5850,7 +5753,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(2),
       Q => i2s_data_tmp(3)
     );
@@ -5858,7 +5761,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(39),
       Q => i2s_data_tmp(40)
     );
@@ -5866,7 +5769,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(40),
       Q => i2s_data_tmp(41)
     );
@@ -5874,7 +5777,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(41),
       Q => i2s_data_tmp(42)
     );
@@ -5882,7 +5785,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(42),
       Q => i2s_data_tmp(43)
     );
@@ -5890,7 +5793,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(43),
       Q => i2s_data_tmp(44)
     );
@@ -5898,7 +5801,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(44),
       Q => i2s_data_tmp(45)
     );
@@ -5906,7 +5809,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(45),
       Q => i2s_data_tmp(46)
     );
@@ -5914,7 +5817,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(46),
       Q => i2s_data_tmp(47)
     );
@@ -5922,7 +5825,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => D(3),
       Q => i2s_data_tmp(48)
     );
@@ -5930,7 +5833,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(48),
       Q => i2s_data_tmp(49)
     );
@@ -5938,7 +5841,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(3),
       Q => i2s_data_tmp(4)
     );
@@ -5946,7 +5849,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(49),
       Q => i2s_data_tmp(50)
     );
@@ -5954,7 +5857,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(50),
       Q => i2s_data_tmp(51)
     );
@@ -5962,7 +5865,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(51),
       Q => i2s_data_tmp(52)
     );
@@ -5970,7 +5873,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(52),
       Q => i2s_data_tmp(53)
     );
@@ -5978,7 +5881,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(53),
       Q => i2s_data_tmp(54)
     );
@@ -5986,7 +5889,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(54),
       Q => i2s_data_tmp(55)
     );
@@ -5994,7 +5897,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(55),
       Q => i2s_data_tmp(56)
     );
@@ -6002,7 +5905,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(56),
       Q => i2s_data_tmp(57)
     );
@@ -6010,7 +5913,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(57),
       Q => i2s_data_tmp(58)
     );
@@ -6018,7 +5921,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(58),
       Q => i2s_data_tmp(59)
     );
@@ -6026,7 +5929,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(4),
       Q => i2s_data_tmp(5)
     );
@@ -6034,7 +5937,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(59),
       Q => i2s_data_tmp(60)
     );
@@ -6042,7 +5945,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(60),
       Q => i2s_data_tmp(61)
     );
@@ -6050,7 +5953,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(61),
       Q => i2s_data_tmp(62)
     );
@@ -6058,7 +5961,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(62),
       Q => i2s_data_tmp(63)
     );
@@ -6066,7 +5969,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(5),
       Q => i2s_data_tmp(6)
     );
@@ -6074,7 +5977,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(6),
       Q => i2s_data_tmp(7)
     );
@@ -6082,7 +5985,7 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(7),
       Q => i2s_data_tmp(8)
     );
@@ -6090,20 +5993,20 @@ begin
      port map (
       C => aclk,
       CE => \i2s_data_tmp[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(8),
       Q => i2s_data_tmp(9)
     );
 \m_axis_data_tdata[63]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000400000"
+      INIT => X"0000000010000000"
     )
         port map (
       I0 => \i2s_data_tmp[63]_i_2_n_0\,
-      I1 => half_bit_count(4),
+      I1 => \^q\(0),
       I2 => half_bit_count(0),
-      I3 => \^out\(0),
-      I4 => \^out\(1),
+      I3 => \^q\(1),
+      I4 => half_bit_count(4),
       I5 => m_axis_data_tvalid_i_2_n_0,
       O => \m_axis_data_tdata[63]_i_1_n_0\
     );
@@ -6111,513 +6014,513 @@ begin
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(0),
-      Q => Q(0)
+      Q => \m_axis_data_tdata_reg[63]_0\(0)
     );
 \m_axis_data_tdata_reg[10]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(10),
-      Q => Q(10)
+      Q => \m_axis_data_tdata_reg[63]_0\(10)
     );
 \m_axis_data_tdata_reg[11]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(11),
-      Q => Q(11)
+      Q => \m_axis_data_tdata_reg[63]_0\(11)
     );
 \m_axis_data_tdata_reg[12]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(12),
-      Q => Q(12)
+      Q => \m_axis_data_tdata_reg[63]_0\(12)
     );
 \m_axis_data_tdata_reg[13]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(13),
-      Q => Q(13)
+      Q => \m_axis_data_tdata_reg[63]_0\(13)
     );
 \m_axis_data_tdata_reg[14]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(14),
-      Q => Q(14)
+      Q => \m_axis_data_tdata_reg[63]_0\(14)
     );
 \m_axis_data_tdata_reg[15]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(15),
-      Q => Q(15)
+      Q => \m_axis_data_tdata_reg[63]_0\(15)
     );
 \m_axis_data_tdata_reg[16]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(16),
-      Q => Q(16)
+      Q => \m_axis_data_tdata_reg[63]_0\(16)
     );
 \m_axis_data_tdata_reg[17]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(17),
-      Q => Q(17)
+      Q => \m_axis_data_tdata_reg[63]_0\(17)
     );
 \m_axis_data_tdata_reg[18]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(18),
-      Q => Q(18)
+      Q => \m_axis_data_tdata_reg[63]_0\(18)
     );
 \m_axis_data_tdata_reg[19]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(19),
-      Q => Q(19)
+      Q => \m_axis_data_tdata_reg[63]_0\(19)
     );
 \m_axis_data_tdata_reg[1]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(1),
-      Q => Q(1)
+      Q => \m_axis_data_tdata_reg[63]_0\(1)
     );
 \m_axis_data_tdata_reg[20]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(20),
-      Q => Q(20)
+      Q => \m_axis_data_tdata_reg[63]_0\(20)
     );
 \m_axis_data_tdata_reg[21]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(21),
-      Q => Q(21)
+      Q => \m_axis_data_tdata_reg[63]_0\(21)
     );
 \m_axis_data_tdata_reg[22]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(22),
-      Q => Q(22)
+      Q => \m_axis_data_tdata_reg[63]_0\(22)
     );
 \m_axis_data_tdata_reg[23]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(23),
-      Q => Q(23)
+      Q => \m_axis_data_tdata_reg[63]_0\(23)
     );
 \m_axis_data_tdata_reg[24]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(24),
-      Q => Q(24)
+      Q => \m_axis_data_tdata_reg[63]_0\(24)
     );
 \m_axis_data_tdata_reg[25]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(25),
-      Q => Q(25)
+      Q => \m_axis_data_tdata_reg[63]_0\(25)
     );
 \m_axis_data_tdata_reg[26]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(26),
-      Q => Q(26)
+      Q => \m_axis_data_tdata_reg[63]_0\(26)
     );
 \m_axis_data_tdata_reg[27]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(27),
-      Q => Q(27)
+      Q => \m_axis_data_tdata_reg[63]_0\(27)
     );
 \m_axis_data_tdata_reg[28]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(28),
-      Q => Q(28)
+      Q => \m_axis_data_tdata_reg[63]_0\(28)
     );
 \m_axis_data_tdata_reg[29]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(29),
-      Q => Q(29)
+      Q => \m_axis_data_tdata_reg[63]_0\(29)
     );
 \m_axis_data_tdata_reg[2]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(2),
-      Q => Q(2)
+      Q => \m_axis_data_tdata_reg[63]_0\(2)
     );
 \m_axis_data_tdata_reg[30]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(30),
-      Q => Q(30)
+      Q => \m_axis_data_tdata_reg[63]_0\(30)
     );
 \m_axis_data_tdata_reg[31]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(31),
-      Q => Q(31)
+      Q => \m_axis_data_tdata_reg[63]_0\(31)
     );
 \m_axis_data_tdata_reg[32]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(32),
-      Q => Q(32)
+      Q => \m_axis_data_tdata_reg[63]_0\(32)
     );
 \m_axis_data_tdata_reg[33]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(33),
-      Q => Q(33)
+      Q => \m_axis_data_tdata_reg[63]_0\(33)
     );
 \m_axis_data_tdata_reg[34]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(34),
-      Q => Q(34)
+      Q => \m_axis_data_tdata_reg[63]_0\(34)
     );
 \m_axis_data_tdata_reg[35]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(35),
-      Q => Q(35)
+      Q => \m_axis_data_tdata_reg[63]_0\(35)
     );
 \m_axis_data_tdata_reg[36]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(36),
-      Q => Q(36)
+      Q => \m_axis_data_tdata_reg[63]_0\(36)
     );
 \m_axis_data_tdata_reg[37]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(37),
-      Q => Q(37)
+      Q => \m_axis_data_tdata_reg[63]_0\(37)
     );
 \m_axis_data_tdata_reg[38]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(38),
-      Q => Q(38)
+      Q => \m_axis_data_tdata_reg[63]_0\(38)
     );
 \m_axis_data_tdata_reg[39]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(39),
-      Q => Q(39)
+      Q => \m_axis_data_tdata_reg[63]_0\(39)
     );
 \m_axis_data_tdata_reg[3]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(3),
-      Q => Q(3)
+      Q => \m_axis_data_tdata_reg[63]_0\(3)
     );
 \m_axis_data_tdata_reg[40]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(40),
-      Q => Q(40)
+      Q => \m_axis_data_tdata_reg[63]_0\(40)
     );
 \m_axis_data_tdata_reg[41]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(41),
-      Q => Q(41)
+      Q => \m_axis_data_tdata_reg[63]_0\(41)
     );
 \m_axis_data_tdata_reg[42]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(42),
-      Q => Q(42)
+      Q => \m_axis_data_tdata_reg[63]_0\(42)
     );
 \m_axis_data_tdata_reg[43]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(43),
-      Q => Q(43)
+      Q => \m_axis_data_tdata_reg[63]_0\(43)
     );
 \m_axis_data_tdata_reg[44]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(44),
-      Q => Q(44)
+      Q => \m_axis_data_tdata_reg[63]_0\(44)
     );
 \m_axis_data_tdata_reg[45]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(45),
-      Q => Q(45)
+      Q => \m_axis_data_tdata_reg[63]_0\(45)
     );
 \m_axis_data_tdata_reg[46]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(46),
-      Q => Q(46)
+      Q => \m_axis_data_tdata_reg[63]_0\(46)
     );
 \m_axis_data_tdata_reg[47]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(47),
-      Q => Q(47)
+      Q => \m_axis_data_tdata_reg[63]_0\(47)
     );
 \m_axis_data_tdata_reg[48]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(48),
-      Q => Q(48)
+      Q => \m_axis_data_tdata_reg[63]_0\(48)
     );
 \m_axis_data_tdata_reg[49]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(49),
-      Q => Q(49)
+      Q => \m_axis_data_tdata_reg[63]_0\(49)
     );
 \m_axis_data_tdata_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(4),
-      Q => Q(4)
+      Q => \m_axis_data_tdata_reg[63]_0\(4)
     );
 \m_axis_data_tdata_reg[50]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(50),
-      Q => Q(50)
+      Q => \m_axis_data_tdata_reg[63]_0\(50)
     );
 \m_axis_data_tdata_reg[51]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(51),
-      Q => Q(51)
+      Q => \m_axis_data_tdata_reg[63]_0\(51)
     );
 \m_axis_data_tdata_reg[52]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(52),
-      Q => Q(52)
+      Q => \m_axis_data_tdata_reg[63]_0\(52)
     );
 \m_axis_data_tdata_reg[53]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(53),
-      Q => Q(53)
+      Q => \m_axis_data_tdata_reg[63]_0\(53)
     );
 \m_axis_data_tdata_reg[54]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(54),
-      Q => Q(54)
+      Q => \m_axis_data_tdata_reg[63]_0\(54)
     );
 \m_axis_data_tdata_reg[55]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(55),
-      Q => Q(55)
+      Q => \m_axis_data_tdata_reg[63]_0\(55)
     );
 \m_axis_data_tdata_reg[56]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(56),
-      Q => Q(56)
+      Q => \m_axis_data_tdata_reg[63]_0\(56)
     );
 \m_axis_data_tdata_reg[57]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(57),
-      Q => Q(57)
+      Q => \m_axis_data_tdata_reg[63]_0\(57)
     );
 \m_axis_data_tdata_reg[58]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(58),
-      Q => Q(58)
+      Q => \m_axis_data_tdata_reg[63]_0\(58)
     );
 \m_axis_data_tdata_reg[59]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(59),
-      Q => Q(59)
+      Q => \m_axis_data_tdata_reg[63]_0\(59)
     );
 \m_axis_data_tdata_reg[5]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(5),
-      Q => Q(5)
+      Q => \m_axis_data_tdata_reg[63]_0\(5)
     );
 \m_axis_data_tdata_reg[60]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(60),
-      Q => Q(60)
+      Q => \m_axis_data_tdata_reg[63]_0\(60)
     );
 \m_axis_data_tdata_reg[61]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(61),
-      Q => Q(61)
+      Q => \m_axis_data_tdata_reg[63]_0\(61)
     );
 \m_axis_data_tdata_reg[62]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(62),
-      Q => Q(62)
+      Q => \m_axis_data_tdata_reg[63]_0\(62)
     );
 \m_axis_data_tdata_reg[63]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(63),
-      Q => Q(63)
+      Q => \m_axis_data_tdata_reg[63]_0\(63)
     );
 \m_axis_data_tdata_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(6),
-      Q => Q(6)
+      Q => \m_axis_data_tdata_reg[63]_0\(6)
     );
 \m_axis_data_tdata_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(7),
-      Q => Q(7)
+      Q => \m_axis_data_tdata_reg[63]_0\(7)
     );
 \m_axis_data_tdata_reg[8]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(8),
-      Q => Q(8)
+      Q => \m_axis_data_tdata_reg[63]_0\(8)
     );
 \m_axis_data_tdata_reg[9]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \m_axis_data_tdata[63]_i_1_n_0\,
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => i2s_data_tmp(9),
-      Q => Q(9)
+      Q => \m_axis_data_tdata_reg[63]_0\(9)
     );
 m_axis_data_tvalid_i_1: unisim.vcomponents.LUT6
     generic map(
@@ -6626,9 +6529,9 @@ m_axis_data_tvalid_i_1: unisim.vcomponents.LUT6
         port map (
       I0 => \m_axis_data_tdata[63]_i_1_n_0\,
       I1 => \^s_axis_tvalid\,
-      I2 => \bit_count[6]_i_4_n_0\,
+      I2 => \bit_count[6]_i_3_n_0\,
       I3 => s_axis_tready,
-      I4 => \^out\(1),
+      I4 => \^q\(1),
       I5 => m_axis_data_tvalid_i_2_n_0,
       O => m_axis_data_tvalid_i_1_n_0
     );
@@ -6647,7 +6550,7 @@ m_axis_data_tvalid_reg: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => \^aresetn_0\,
+      CLR => bram_rst,
       D => m_axis_data_tvalid_i_1_n_0,
       Q => \^s_axis_tvalid\
     );
@@ -6895,8 +6798,8 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_multiply_1 is
   signal cmpy_0_inst0_i_7_n_0 : STD_LOGIC;
   signal cmpy_0_inst0_i_8_n_0 : STD_LOGIC;
   signal cmpy_0_inst0_i_9_n_0 : STD_LOGIC;
-  signal \freq_im[0]_0\ : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \freq_im[1]_1\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \freq_im[0]_3\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \freq_im[1]_4\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal random : STD_LOGIC;
   signal \random_i_1__0_n_0\ : STD_LOGIC;
   signal NLW_cmpy_0_inst0_s_axis_ctrl_tready_UNCONNECTED : STD_LOGIC;
@@ -6914,7 +6817,7 @@ broadcaster_4_inst0: component broadcaster_4_HD22
      port map (
       aclk => aclk,
       aresetn => aresetn,
-      m_axis_tdata(63 downto 48) => \freq_im[1]_1\(15 downto 0),
+      m_axis_tdata(63 downto 48) => \freq_im[1]_4\(15 downto 0),
       m_axis_tdata(47) => broadcaster_4_inst0_n_19,
       m_axis_tdata(46) => broadcaster_4_inst0_n_20,
       m_axis_tdata(45) => broadcaster_4_inst0_n_21,
@@ -6931,7 +6834,7 @@ broadcaster_4_inst0: component broadcaster_4_HD22
       m_axis_tdata(34) => broadcaster_4_inst0_n_32,
       m_axis_tdata(33) => broadcaster_4_inst0_n_33,
       m_axis_tdata(32) => broadcaster_4_inst0_n_34,
-      m_axis_tdata(31 downto 16) => \freq_im[0]_0\(15 downto 0),
+      m_axis_tdata(31 downto 16) => \freq_im[0]_3\(15 downto 0),
       m_axis_tdata(15) => broadcaster_4_inst0_n_51,
       m_axis_tdata(14) => broadcaster_4_inst0_n_52,
       m_axis_tdata(13) => broadcaster_4_inst0_n_53,
@@ -6961,7 +6864,7 @@ cmpy_0_inst0: component cmpy_0_HD23
       m_axis_dout_tdata(47 downto 0) => m_axis_dout_tdata(47 downto 0),
       m_axis_dout_tready => s_axis_cartesian_tready,
       m_axis_dout_tvalid => m_axis_dout_tvalid,
-      s_axis_a_tdata(31 downto 16) => \freq_im[0]_0\(15 downto 0),
+      s_axis_a_tdata(31 downto 16) => \freq_im[0]_3\(15 downto 0),
       s_axis_a_tdata(15) => broadcaster_4_inst0_n_51,
       s_axis_a_tdata(14) => broadcaster_4_inst0_n_52,
       s_axis_a_tdata(13) => broadcaster_4_inst0_n_53,
@@ -7042,7 +6945,7 @@ cmpy_0_inst0_i_10: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(10),
+      I0 => \freq_im[1]_4\(10),
       O => cmpy_0_inst0_i_10_n_0
     );
 cmpy_0_inst0_i_11: unisim.vcomponents.LUT1
@@ -7050,7 +6953,7 @@ cmpy_0_inst0_i_11: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(9),
+      I0 => \freq_im[1]_4\(9),
       O => cmpy_0_inst0_i_11_n_0
     );
 cmpy_0_inst0_i_12: unisim.vcomponents.LUT1
@@ -7058,7 +6961,7 @@ cmpy_0_inst0_i_12: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(8),
+      I0 => \freq_im[1]_4\(8),
       O => cmpy_0_inst0_i_12_n_0
     );
 cmpy_0_inst0_i_13: unisim.vcomponents.LUT1
@@ -7066,7 +6969,7 @@ cmpy_0_inst0_i_13: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(7),
+      I0 => \freq_im[1]_4\(7),
       O => cmpy_0_inst0_i_13_n_0
     );
 cmpy_0_inst0_i_14: unisim.vcomponents.LUT1
@@ -7074,7 +6977,7 @@ cmpy_0_inst0_i_14: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(6),
+      I0 => \freq_im[1]_4\(6),
       O => cmpy_0_inst0_i_14_n_0
     );
 cmpy_0_inst0_i_15: unisim.vcomponents.LUT1
@@ -7082,7 +6985,7 @@ cmpy_0_inst0_i_15: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(5),
+      I0 => \freq_im[1]_4\(5),
       O => cmpy_0_inst0_i_15_n_0
     );
 cmpy_0_inst0_i_16: unisim.vcomponents.LUT1
@@ -7090,7 +6993,7 @@ cmpy_0_inst0_i_16: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(4),
+      I0 => \freq_im[1]_4\(4),
       O => cmpy_0_inst0_i_16_n_0
     );
 cmpy_0_inst0_i_17: unisim.vcomponents.LUT1
@@ -7098,7 +7001,7 @@ cmpy_0_inst0_i_17: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(3),
+      I0 => \freq_im[1]_4\(3),
       O => cmpy_0_inst0_i_17_n_0
     );
 cmpy_0_inst0_i_18: unisim.vcomponents.LUT1
@@ -7106,7 +7009,7 @@ cmpy_0_inst0_i_18: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(2),
+      I0 => \freq_im[1]_4\(2),
       O => cmpy_0_inst0_i_18_n_0
     );
 cmpy_0_inst0_i_19: unisim.vcomponents.LUT1
@@ -7114,7 +7017,7 @@ cmpy_0_inst0_i_19: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(1),
+      I0 => \freq_im[1]_4\(1),
       O => cmpy_0_inst0_i_19_n_0
     );
 cmpy_0_inst0_i_2: unisim.vcomponents.CARRY4
@@ -7169,14 +7072,14 @@ cmpy_0_inst0_i_4: unisim.vcomponents.CARRY4
       S(3) => cmpy_0_inst0_i_17_n_0,
       S(2) => cmpy_0_inst0_i_18_n_0,
       S(1) => cmpy_0_inst0_i_19_n_0,
-      S(0) => \freq_im[1]_1\(0)
+      S(0) => \freq_im[1]_4\(0)
     );
 cmpy_0_inst0_i_5: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(15),
+      I0 => \freq_im[1]_4\(15),
       O => cmpy_0_inst0_i_5_n_0
     );
 cmpy_0_inst0_i_6: unisim.vcomponents.LUT1
@@ -7184,7 +7087,7 @@ cmpy_0_inst0_i_6: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(14),
+      I0 => \freq_im[1]_4\(14),
       O => cmpy_0_inst0_i_6_n_0
     );
 cmpy_0_inst0_i_7: unisim.vcomponents.LUT1
@@ -7192,7 +7095,7 @@ cmpy_0_inst0_i_7: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(13),
+      I0 => \freq_im[1]_4\(13),
       O => cmpy_0_inst0_i_7_n_0
     );
 cmpy_0_inst0_i_8: unisim.vcomponents.LUT1
@@ -7200,7 +7103,7 @@ cmpy_0_inst0_i_8: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(12),
+      I0 => \freq_im[1]_4\(12),
       O => cmpy_0_inst0_i_8_n_0
     );
 cmpy_0_inst0_i_9: unisim.vcomponents.LUT1
@@ -7208,7 +7111,7 @@ cmpy_0_inst0_i_9: unisim.vcomponents.LUT1
       INIT => X"1"
     )
         port map (
-      I0 => \freq_im[1]_1\(11),
+      I0 => \freq_im[1]_4\(11),
       O => cmpy_0_inst0_i_9_n_0
     );
 \random_i_1__0\: unisim.vcomponents.LUT1
@@ -7705,7 +7608,7 @@ entity eko_bd_pl_cross_0_1_nonblock_fir_cic_0 is
     aclk : in STD_LOGIC;
     m_axis_tvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_data_tvalid_reg_0 : in STD_LOGIC;
+    bram_rst : in STD_LOGIC;
     s_axis_tready : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -7781,7 +7684,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(0),
       Q => Q(0)
     );
@@ -7789,7 +7692,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(10),
       Q => Q(10)
     );
@@ -7797,7 +7700,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(11),
       Q => Q(11)
     );
@@ -7805,7 +7708,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(12),
       Q => Q(12)
     );
@@ -7813,7 +7716,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(13),
       Q => Q(13)
     );
@@ -7821,7 +7724,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(14),
       Q => Q(14)
     );
@@ -7829,7 +7732,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(15),
       Q => Q(15)
     );
@@ -7837,7 +7740,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(1),
       Q => Q(1)
     );
@@ -7845,7 +7748,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(2),
       Q => Q(2)
     );
@@ -7853,7 +7756,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(3),
       Q => Q(3)
     );
@@ -7861,7 +7764,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(4),
       Q => Q(4)
     );
@@ -7869,7 +7772,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(5),
       Q => Q(5)
     );
@@ -7877,7 +7780,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(6),
       Q => Q(6)
     );
@@ -7885,7 +7788,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(7),
       Q => Q(7)
     );
@@ -7893,7 +7796,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(8),
       Q => Q(8)
     );
@@ -7901,7 +7804,7 @@ fir_0_inst0: component fir_0_HD13
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(9),
       Q => Q(9)
     );
@@ -7919,7 +7822,7 @@ m_axis_data_tvalid_reg: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => m_axis_data_tvalid_i_1_n_0,
       Q => \^s_axis_tvalid\(0)
     );
@@ -7937,7 +7840,7 @@ entity \eko_bd_pl_cross_0_1_nonblock_fir_cic_0__xdcDup__1\ is
     aclk : in STD_LOGIC;
     m_axis_tvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    \m_axis_data_tdata_reg[15]_0\ : in STD_LOGIC;
+    bram_rst : in STD_LOGIC;
     s_axis_tready : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -8013,7 +7916,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(0),
       Q => Q(0)
     );
@@ -8021,7 +7924,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(10),
       Q => Q(10)
     );
@@ -8029,7 +7932,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(11),
       Q => Q(11)
     );
@@ -8037,7 +7940,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(12),
       Q => Q(12)
     );
@@ -8045,7 +7948,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(13),
       Q => Q(13)
     );
@@ -8053,7 +7956,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(14),
       Q => Q(14)
     );
@@ -8061,7 +7964,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(15),
       Q => Q(15)
     );
@@ -8069,7 +7972,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(1),
       Q => Q(1)
     );
@@ -8077,7 +7980,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(2),
       Q => Q(2)
     );
@@ -8085,7 +7988,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(3),
       Q => Q(3)
     );
@@ -8093,7 +7996,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(4),
       Q => Q(4)
     );
@@ -8101,7 +8004,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(5),
       Q => Q(5)
     );
@@ -8109,7 +8012,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(6),
       Q => Q(6)
     );
@@ -8117,7 +8020,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(7),
       Q => Q(7)
     );
@@ -8125,7 +8028,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(8),
       Q => Q(8)
     );
@@ -8133,7 +8036,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(9),
       Q => Q(9)
     );
@@ -8151,7 +8054,7 @@ m_axis_data_tvalid_reg: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => m_axis_data_tvalid_i_1_n_0,
       Q => \^s_axis_tvalid\(0)
     );
@@ -8169,7 +8072,7 @@ entity \eko_bd_pl_cross_0_1_nonblock_fir_cic_0__xdcDup__2\ is
     aclk : in STD_LOGIC;
     m_axis_tvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    m_axis_data_tvalid_reg_0 : in STD_LOGIC;
+    bram_rst : in STD_LOGIC;
     s_axis_tready : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -8245,7 +8148,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(0),
       Q => Q(0)
     );
@@ -8253,7 +8156,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(10),
       Q => Q(10)
     );
@@ -8261,7 +8164,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(11),
       Q => Q(11)
     );
@@ -8269,7 +8172,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(12),
       Q => Q(12)
     );
@@ -8277,7 +8180,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(13),
       Q => Q(13)
     );
@@ -8285,7 +8188,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(14),
       Q => Q(14)
     );
@@ -8293,7 +8196,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(15),
       Q => Q(15)
     );
@@ -8301,7 +8204,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(1),
       Q => Q(1)
     );
@@ -8309,7 +8212,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(2),
       Q => Q(2)
     );
@@ -8317,7 +8220,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(3),
       Q => Q(3)
     );
@@ -8325,7 +8228,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(4),
       Q => Q(4)
     );
@@ -8333,7 +8236,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(5),
       Q => Q(5)
     );
@@ -8341,7 +8244,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(6),
       Q => Q(6)
     );
@@ -8349,7 +8252,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(7),
       Q => Q(7)
     );
@@ -8357,7 +8260,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(8),
       Q => Q(8)
     );
@@ -8365,7 +8268,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(9),
       Q => Q(9)
     );
@@ -8383,7 +8286,7 @@ m_axis_data_tvalid_reg: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => m_axis_data_tvalid_reg_0,
+      CLR => bram_rst,
       D => m_axis_data_tvalid_i_1_n_0,
       Q => \^s_axis_tvalid\(0)
     );
@@ -8401,7 +8304,7 @@ entity \eko_bd_pl_cross_0_1_nonblock_fir_cic_0__xdcDup__3\ is
     aclk : in STD_LOGIC;
     m_axis_tvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    \m_axis_data_tdata_reg[15]_0\ : in STD_LOGIC;
+    bram_rst : in STD_LOGIC;
     s_axis_tready : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -8477,7 +8380,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(0),
       Q => Q(0)
     );
@@ -8485,7 +8388,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(10),
       Q => Q(10)
     );
@@ -8493,7 +8396,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(11),
       Q => Q(11)
     );
@@ -8501,7 +8404,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(12),
       Q => Q(12)
     );
@@ -8509,7 +8412,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(13),
       Q => Q(13)
     );
@@ -8517,7 +8420,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(14),
       Q => Q(14)
     );
@@ -8525,7 +8428,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(15),
       Q => Q(15)
     );
@@ -8533,7 +8436,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(1),
       Q => Q(1)
     );
@@ -8541,7 +8444,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(2),
       Q => Q(2)
     );
@@ -8549,7 +8452,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(3),
       Q => Q(3)
     );
@@ -8557,7 +8460,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(4),
       Q => Q(4)
     );
@@ -8565,7 +8468,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(5),
       Q => Q(5)
     );
@@ -8573,7 +8476,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(6),
       Q => Q(6)
     );
@@ -8581,7 +8484,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(7),
       Q => Q(7)
     );
@@ -8589,7 +8492,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(8),
       Q => Q(8)
     );
@@ -8597,7 +8500,7 @@ fir_0_inst0: component eko_bd_pl_cross_0_1_fir_0
      port map (
       C => aclk,
       CE => axis_cic_0_tvalid,
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => axis_cic_0_tdata(9),
       Q => Q(9)
     );
@@ -8615,7 +8518,7 @@ m_axis_data_tvalid_reg: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => \m_axis_data_tdata_reg[15]_0\,
+      CLR => bram_rst,
       D => m_axis_data_tvalid_i_1_n_0,
       Q => \^s_axis_tvalid\(0)
     );
@@ -8741,28 +8644,28 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_roi is
   signal \NLW_index_reg[11]_i_5__0_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_index_reg[11]_i_5__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \addr[1]_i_1__0\ : label is "soft_lutpair101";
-  attribute SOFT_HLUTNM of \addr[2]_i_1__0\ : label is "soft_lutpair101";
-  attribute SOFT_HLUTNM of \addr[6]_i_2__0\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \addr[7]_i_11__0\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \addr[7]_i_12__0\ : label is "soft_lutpair100";
-  attribute SOFT_HLUTNM of \addr[7]_i_6__0\ : label is "soft_lutpair99";
-  attribute SOFT_HLUTNM of \addr[7]_i_9__0\ : label is "soft_lutpair100";
-  attribute SOFT_HLUTNM of \cordic_2_inst0_i_1__0\ : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of \index[0]_i_1__2\ : label is "soft_lutpair102";
-  attribute SOFT_HLUTNM of \index[10]_i_1__0\ : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of \index[11]_i_2__0\ : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of \index[11]_i_3__0\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \addr[1]_i_1__0\ : label is "soft_lutpair121";
+  attribute SOFT_HLUTNM of \addr[2]_i_1__0\ : label is "soft_lutpair121";
+  attribute SOFT_HLUTNM of \addr[6]_i_2__0\ : label is "soft_lutpair122";
+  attribute SOFT_HLUTNM of \addr[7]_i_11__0\ : label is "soft_lutpair119";
+  attribute SOFT_HLUTNM of \addr[7]_i_12__0\ : label is "soft_lutpair120";
+  attribute SOFT_HLUTNM of \addr[7]_i_6__0\ : label is "soft_lutpair119";
+  attribute SOFT_HLUTNM of \addr[7]_i_9__0\ : label is "soft_lutpair120";
+  attribute SOFT_HLUTNM of \cordic_2_inst0_i_1__0\ : label is "soft_lutpair117";
+  attribute SOFT_HLUTNM of \index[0]_i_1__2\ : label is "soft_lutpair122";
+  attribute SOFT_HLUTNM of \index[10]_i_1__0\ : label is "soft_lutpair115";
+  attribute SOFT_HLUTNM of \index[11]_i_2__0\ : label is "soft_lutpair117";
+  attribute SOFT_HLUTNM of \index[11]_i_3__0\ : label is "soft_lutpair116";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \index_reg[11]_i_5__0\ : label is 35;
   attribute ADDER_THRESHOLD of \index_reg[4]_i_2__0\ : label is 35;
   attribute ADDER_THRESHOLD of \index_reg[8]_i_2__0\ : label is 35;
   attribute x_core_info : string;
   attribute x_core_info of roi_bram_0_inst0 : label is "blk_mem_gen_v8_4_7,Vivado 2023.2";
-  attribute SOFT_HLUTNM of \roi_bram_0_inst0_i_2__0\ : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \roi_bram_0_inst0_i_4__0\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair98";
-  attribute SOFT_HLUTNM of \state_i_3__2\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \roi_bram_0_inst0_i_2__0\ : label is "soft_lutpair118";
+  attribute SOFT_HLUTNM of \roi_bram_0_inst0_i_4__0\ : label is "soft_lutpair116";
+  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair118";
+  attribute SOFT_HLUTNM of \state_i_3__2\ : label is "soft_lutpair115";
 begin
   state_reg_0 <= \^state_reg_0\;
 \addr[0]_i_1__0\: unisim.vcomponents.LUT2
@@ -9541,7 +9444,7 @@ entity \eko_bd_pl_cross_0_1_roi__xdcDup__1\ is
     m_axis_dout_tdata : in STD_LOGIC_VECTOR ( 15 downto 0 );
     s_axis_tready : in STD_LOGIC_VECTOR ( 0 to 0 );
     m_axis_dout_tvalid : in STD_LOGIC;
-    \addr_reg[0]_0\ : in STD_LOGIC
+    state_reg_1 : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of \eko_bd_pl_cross_0_1_roi__xdcDup__1\ : entity is "roi";
@@ -9593,9 +9496,20 @@ architecture STRUCTURE of \eko_bd_pl_cross_0_1_roi__xdcDup__1\ is
   signal data0 : STD_LOGIC_VECTOR ( 11 downto 1 );
   signal index : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal \index[0]_i_1__1_n_0\ : STD_LOGIC;
+  signal \index[10]_i_1_n_0\ : STD_LOGIC;
   signal \index[11]_i_1_n_0\ : STD_LOGIC;
+  signal \index[11]_i_2_n_0\ : STD_LOGIC;
   signal \index[11]_i_3_n_0\ : STD_LOGIC;
   signal \index[11]_i_4_n_0\ : STD_LOGIC;
+  signal \index[1]_i_1_n_0\ : STD_LOGIC;
+  signal \index[2]_i_1_n_0\ : STD_LOGIC;
+  signal \index[3]_i_1_n_0\ : STD_LOGIC;
+  signal \index[4]_i_1_n_0\ : STD_LOGIC;
+  signal \index[5]_i_1_n_0\ : STD_LOGIC;
+  signal \index[6]_i_1_n_0\ : STD_LOGIC;
+  signal \index[7]_i_1_n_0\ : STD_LOGIC;
+  signal \index[8]_i_1_n_0\ : STD_LOGIC;
+  signal \index[9]_i_1_n_0\ : STD_LOGIC;
   signal \index_reg[11]_i_5_n_2\ : STD_LOGIC;
   signal \index_reg[11]_i_5_n_3\ : STD_LOGIC;
   signal \index_reg[4]_i_2_n_0\ : STD_LOGIC;
@@ -9606,7 +9520,6 @@ architecture STRUCTURE of \eko_bd_pl_cross_0_1_roi__xdcDup__1\ is
   signal \index_reg[8]_i_2_n_1\ : STD_LOGIC;
   signal \index_reg[8]_i_2_n_2\ : STD_LOGIC;
   signal \index_reg[8]_i_2_n_3\ : STD_LOGIC;
-  signal p_1_in : STD_LOGIC_VECTOR ( 11 downto 1 );
   signal re : STD_LOGIC;
   signal roi_bram_0_inst0_i_3_n_0 : STD_LOGIC;
   signal roi_bram_0_inst0_i_4_n_0 : STD_LOGIC;
@@ -9618,28 +9531,28 @@ architecture STRUCTURE of \eko_bd_pl_cross_0_1_roi__xdcDup__1\ is
   signal \NLW_index_reg[11]_i_5_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_index_reg[11]_i_5_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \addr[1]_i_1\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \addr[2]_i_1\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \addr[6]_i_2\ : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of \addr[7]_i_11\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \addr[7]_i_12\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \addr[7]_i_6\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \addr[7]_i_9\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of cordic_2_inst0_i_1 : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \index[0]_i_1__1\ : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of \index[10]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \index[11]_i_2\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \index[11]_i_3\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \addr[1]_i_1\ : label is "soft_lutpair113";
+  attribute SOFT_HLUTNM of \addr[2]_i_1\ : label is "soft_lutpair113";
+  attribute SOFT_HLUTNM of \addr[6]_i_2\ : label is "soft_lutpair114";
+  attribute SOFT_HLUTNM of \addr[7]_i_11\ : label is "soft_lutpair111";
+  attribute SOFT_HLUTNM of \addr[7]_i_12\ : label is "soft_lutpair112";
+  attribute SOFT_HLUTNM of \addr[7]_i_6\ : label is "soft_lutpair111";
+  attribute SOFT_HLUTNM of \addr[7]_i_9\ : label is "soft_lutpair112";
+  attribute SOFT_HLUTNM of cordic_2_inst0_i_1 : label is "soft_lutpair109";
+  attribute SOFT_HLUTNM of \index[0]_i_1__1\ : label is "soft_lutpair114";
+  attribute SOFT_HLUTNM of \index[10]_i_1\ : label is "soft_lutpair107";
+  attribute SOFT_HLUTNM of \index[11]_i_2\ : label is "soft_lutpair109";
+  attribute SOFT_HLUTNM of \index[11]_i_3\ : label is "soft_lutpair108";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \index_reg[11]_i_5\ : label is 35;
   attribute ADDER_THRESHOLD of \index_reg[4]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \index_reg[8]_i_2\ : label is 35;
   attribute x_core_info : string;
   attribute x_core_info of roi_bram_0_inst0 : label is "blk_mem_gen_v8_4_7,Vivado 2023.2";
-  attribute SOFT_HLUTNM of roi_bram_0_inst0_i_2 : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of roi_bram_0_inst0_i_4 : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \state_i_3__1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of roi_bram_0_inst0_i_2 : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of roi_bram_0_inst0_i_4 : label is "soft_lutpair108";
+  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair110";
+  attribute SOFT_HLUTNM of \state_i_3__1\ : label is "soft_lutpair107";
 begin
   state_reg_0 <= \^state_reg_0\;
 \addr[0]_i_1\: unisim.vcomponents.LUT2
@@ -9897,7 +9810,7 @@ begin
      port map (
       C => aclk,
       CE => \addr[7]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
+      CLR => state_reg_1,
       D => \addr[0]_i_1_n_0\,
       Q => \addr_reg_n_0_[0]\
     );
@@ -9905,7 +9818,7 @@ begin
      port map (
       C => aclk,
       CE => \addr[7]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
+      CLR => state_reg_1,
       D => \addr[1]_i_1_n_0\,
       Q => \addr_reg_n_0_[1]\
     );
@@ -9913,7 +9826,7 @@ begin
      port map (
       C => aclk,
       CE => \addr[7]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
+      CLR => state_reg_1,
       D => \addr[2]_i_1_n_0\,
       Q => \addr_reg_n_0_[2]\
     );
@@ -9922,14 +9835,14 @@ begin
       C => aclk,
       CE => \addr[7]_i_1_n_0\,
       D => \addr[3]_i_1_n_0\,
-      PRE => \addr_reg[0]_0\,
+      PRE => state_reg_1,
       Q => \addr_reg_n_0_[3]\
     );
 \addr_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \addr[7]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
+      CLR => state_reg_1,
       D => \addr[4]_i_1_n_0\,
       Q => \addr_reg_n_0_[4]\
     );
@@ -9938,7 +9851,7 @@ begin
       C => aclk,
       CE => \addr[7]_i_1_n_0\,
       D => \addr[5]_i_1_n_0\,
-      PRE => \addr_reg[0]_0\,
+      PRE => state_reg_1,
       Q => \addr_reg_n_0_[5]\
     );
 \addr_reg[6]\: unisim.vcomponents.FDPE
@@ -9946,14 +9859,14 @@ begin
       C => aclk,
       CE => \addr[7]_i_1_n_0\,
       D => \addr[6]_i_1_n_0\,
-      PRE => \addr_reg[0]_0\,
+      PRE => state_reg_1,
       Q => \addr_reg_n_0_[6]\
     );
 \addr_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \addr[7]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
+      CLR => state_reg_1,
       D => \addr[7]_i_2_n_0\,
       Q => \addr_reg_n_0_[7]\
     );
@@ -9984,7 +9897,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(10),
-      O => p_1_in(10)
+      O => \index[10]_i_1_n_0\
     );
 \index[11]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -10007,7 +9920,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(11),
-      O => p_1_in(11)
+      O => \index[11]_i_2_n_0\
     );
 \index[11]_i_3\: unisim.vcomponents.LUT5
     generic map(
@@ -10044,7 +9957,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(1),
-      O => p_1_in(1)
+      O => \index[1]_i_1_n_0\
     );
 \index[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -10056,7 +9969,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(2),
-      O => p_1_in(2)
+      O => \index[2]_i_1_n_0\
     );
 \index[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -10068,7 +9981,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(3),
-      O => p_1_in(3)
+      O => \index[3]_i_1_n_0\
     );
 \index[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -10080,7 +9993,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(4),
-      O => p_1_in(4)
+      O => \index[4]_i_1_n_0\
     );
 \index[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -10092,7 +10005,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(5),
-      O => p_1_in(5)
+      O => \index[5]_i_1_n_0\
     );
 \index[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -10104,7 +10017,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(6),
-      O => p_1_in(6)
+      O => \index[6]_i_1_n_0\
     );
 \index[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -10116,7 +10029,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(7),
-      O => p_1_in(7)
+      O => \index[7]_i_1_n_0\
     );
 \index[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -10128,7 +10041,7 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(8),
-      O => p_1_in(8)
+      O => \index[8]_i_1_n_0\
     );
 \index[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -10140,13 +10053,13 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
       I2 => \index[11]_i_4_n_0\,
       I3 => \^state_reg_0\,
       I4 => data0(9),
-      O => p_1_in(9)
+      O => \index[9]_i_1_n_0\
     );
 \index_reg[0]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
+      CLR => state_reg_1,
       D => \index[0]_i_1__1_n_0\,
       Q => index(0)
     );
@@ -10154,16 +10067,16 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(10),
+      CLR => state_reg_1,
+      D => \index[10]_i_1_n_0\,
       Q => index(10)
     );
 \index_reg[11]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(11),
+      CLR => state_reg_1,
+      D => \index[11]_i_2_n_0\,
       Q => index(11)
     );
 \index_reg[11]_i_5\: unisim.vcomponents.CARRY4
@@ -10183,32 +10096,32 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(1),
+      CLR => state_reg_1,
+      D => \index[1]_i_1_n_0\,
       Q => index(1)
     );
 \index_reg[2]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(2),
+      CLR => state_reg_1,
+      D => \index[2]_i_1_n_0\,
       Q => index(2)
     );
 \index_reg[3]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(3),
+      CLR => state_reg_1,
+      D => \index[3]_i_1_n_0\,
       Q => index(3)
     );
 \index_reg[4]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(4),
+      CLR => state_reg_1,
+      D => \index[4]_i_1_n_0\,
       Q => index(4)
     );
 \index_reg[4]_i_2\: unisim.vcomponents.CARRY4
@@ -10227,32 +10140,32 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(5),
+      CLR => state_reg_1,
+      D => \index[5]_i_1_n_0\,
       Q => index(5)
     );
 \index_reg[6]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(6),
+      CLR => state_reg_1,
+      D => \index[6]_i_1_n_0\,
       Q => index(6)
     );
 \index_reg[7]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(7),
+      CLR => state_reg_1,
+      D => \index[7]_i_1_n_0\,
       Q => index(7)
     );
 \index_reg[8]\: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(8),
+      CLR => state_reg_1,
+      D => \index[8]_i_1_n_0\,
       Q => index(8)
     );
 \index_reg[8]_i_2\: unisim.vcomponents.CARRY4
@@ -10271,8 +10184,8 @@ cordic_2_inst0_i_1: unisim.vcomponents.LUT1
      port map (
       C => aclk,
       CE => \index[11]_i_1_n_0\,
-      CLR => \addr_reg[0]_0\,
-      D => p_1_in(9),
+      CLR => state_reg_1,
+      D => \index[9]_i_1_n_0\,
       Q => index(9)
     );
 roi_bram_0_inst0: component eko_bd_pl_cross_0_1_roi_bram_0
@@ -10384,7 +10297,7 @@ state_reg: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => \addr_reg[0]_0\,
+      CLR => state_reg_1,
       D => state_i_1_n_0,
       Q => \^state_reg_0\
     );
@@ -10422,9 +10335,18 @@ entity eko_bd_pl_cross_0_1_vad_upstream_hub_cross is
   attribute VAD_TRIG_INDEX of eko_bd_pl_cross_0_1_vad_upstream_hub_cross : entity is 6;
   attribute VAD_WINDOW_CNT : integer;
   attribute VAD_WINDOW_CNT of eko_bd_pl_cross_0_1_vad_upstream_hub_cross : entity is 5;
+  attribute keep_hierarchy : string;
+  attribute keep_hierarchy of eko_bd_pl_cross_0_1_vad_upstream_hub_cross : entity is "soft";
 end eko_bd_pl_cross_0_1_vad_upstream_hub_cross;
 
 architecture STRUCTURE of eko_bd_pl_cross_0_1_vad_upstream_hub_cross is
+  component eko_bd_pl_cross_0_1_ila_i2s_0 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component eko_bd_pl_cross_0_1_ila_i2s_0;
   component eko_bd_pl_cross_0_1_upstream_bram_1 is
   port (
     clka : in STD_LOGIC;
@@ -11348,6 +11270,9 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_vad_upstream_hub_cross is
   signal \index_reg[8]_i_1_n_5\ : STD_LOGIC;
   signal \index_reg[8]_i_1_n_6\ : STD_LOGIC;
   signal \index_reg[8]_i_1_n_7\ : STD_LOGIC;
+  signal \^m_axis_data_tdata\ : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of \^m_axis_data_tdata\ : signal is std.standard.true;
   signal p_0_in : STD_LOGIC_VECTOR ( 31 downto 1 );
   signal p_0_in0 : STD_LOGIC;
   signal p_3_in : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -12153,6 +12078,8 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_vad_upstream_hub_cross is
   attribute COMPARATOR_THRESHOLD of \gen_vad[4].vad_results_reg[4]_i_2\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \gen_vad[4].vad_results_reg[4]_i_21\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \gen_vad[4].vad_results_reg[4]_i_3\ : label is 11;
+  attribute x_core_info : string;
+  attribute x_core_info of ila_i2s_0_inst0 : label is "ila,Vivado 2023.2";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \index_reg[0]_i_2\ : label is 11;
   attribute ADDER_THRESHOLD of \index_reg[4]_i_1\ : label is 11;
@@ -12286,10 +12213,10 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_vad_upstream_hub_cross is
   attribute COMPARATOR_THRESHOLD of \tmp_threshold_reg[31]_i_39\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \tmp_threshold_reg[31]_i_4\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \tmp_threshold_reg[31]_i_9\ : label is 11;
-  attribute x_core_info : string;
   attribute x_core_info of upstream_bram_1_inst0 : label is "blk_mem_gen_v8_4_7,Vivado 2023.2";
   attribute SOFT_HLUTNM of upstream_bram_1_inst0_i_1 : label is "soft_lutpair2";
 begin
+  m_axis_data_tdata(63 downto 0) <= \^m_axis_data_tdata\(63 downto 0);
 energy: unisim.vcomponents.DSP48E1
     generic map(
       ACASCREG => 0,
@@ -18376,6 +18303,12 @@ energy: unisim.vcomponents.DSP48E1
       S(2) => \gen_vad[4].vad_results[4]_i_18_n_0\,
       S(1) => \gen_vad[4].vad_results[4]_i_19_n_0\,
       S(0) => \gen_vad[4].vad_results[4]_i_20_n_0\
+    );
+ila_i2s_0_inst0: component eko_bd_pl_cross_0_1_ila_i2s_0
+     port map (
+      clk => aclk,
+      probe0(15 downto 0) => \^m_axis_data_tdata\(15 downto 0),
+      probe1(0) => state_reg_n_0
     );
 \index[0]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -25452,7 +25385,7 @@ upstream_bram_1_inst0: component eko_bd_pl_cross_0_1_upstream_bram_1
       clka => aclk,
       clkb => aclk,
       dina(63 downto 0) => s_axis_data_tdata(63 downto 0),
-      doutb(63 downto 0) => m_axis_data_tdata(63 downto 0),
+      doutb(63 downto 0) => \^m_axis_data_tdata\(63 downto 0),
       ena => upstream_bram_1_inst0_i_1_n_0,
       enb => state_reg_n_0,
       wea(0) => upstream_bram_1_inst0_i_1_n_0
@@ -25553,14 +25486,14 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_wapply_0 is
     s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 )
   );
   end component eko_bd_pl_cross_0_1_divider_0_HD21;
-  signal \axis_broadcaster_3_tdata[0]_2\ : STD_LOGIC_VECTOR ( 23 downto 0 );
-  signal \axis_broadcaster_3_tdata[1]_3\ : STD_LOGIC_VECTOR ( 23 downto 0 );
-  signal \axis_broadcaster_3_tdata[2]_4\ : STD_LOGIC_VECTOR ( 23 downto 0 );
-  signal \axis_broadcaster_3_tdata[3]_5\ : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal \axis_broadcaster_3_tdata[0]_16\ : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal \axis_broadcaster_3_tdata[1]_17\ : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal \axis_broadcaster_3_tdata[2]_18\ : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal \axis_broadcaster_3_tdata[3]_19\ : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal axis_broadcaster_3_tready : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axis_broadcaster_3_tvalid : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \axis_divider_0_tdata[0]_6\ : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \axis_divider_0_tdata[1]_7\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \axis_divider_0_tdata[0]_20\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \axis_divider_0_tdata[1]_21\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal axis_divider_0_tready : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal axis_divider_0_tvalid : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_divider_0_inst0_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 16 );
@@ -25575,10 +25508,10 @@ broadcaster_3_inst0: component broadcaster_3_HD19
      port map (
       aclk => aclk,
       aresetn => aresetn,
-      m_axis_tdata(95 downto 72) => \axis_broadcaster_3_tdata[3]_5\(23 downto 0),
-      m_axis_tdata(71 downto 48) => \axis_broadcaster_3_tdata[2]_4\(23 downto 0),
-      m_axis_tdata(47 downto 24) => \axis_broadcaster_3_tdata[1]_3\(23 downto 0),
-      m_axis_tdata(23 downto 0) => \axis_broadcaster_3_tdata[0]_2\(23 downto 0),
+      m_axis_tdata(95 downto 72) => \axis_broadcaster_3_tdata[3]_19\(23 downto 0),
+      m_axis_tdata(71 downto 48) => \axis_broadcaster_3_tdata[2]_18\(23 downto 0),
+      m_axis_tdata(47 downto 24) => \axis_broadcaster_3_tdata[1]_17\(23 downto 0),
+      m_axis_tdata(23 downto 0) => \axis_broadcaster_3_tdata[0]_16\(23 downto 0),
       m_axis_tready(3 downto 0) => axis_broadcaster_3_tready(3 downto 0),
       m_axis_tvalid(3 downto 0) => axis_broadcaster_3_tvalid(3 downto 0),
       s_axis_tdata(71 downto 0) => s_axis_data_tdata(71 downto 0),
@@ -25592,8 +25525,8 @@ combiner_3_inst0: component combiner_3_HD20
       m_axis_tdata(31 downto 0) => m_axis_data_tdata(31 downto 0),
       m_axis_tready => m_axis_data_tready,
       m_axis_tvalid => m_axis_data_tvalid,
-      s_axis_tdata(31 downto 16) => \axis_divider_0_tdata[1]_7\(15 downto 0),
-      s_axis_tdata(15 downto 0) => \axis_divider_0_tdata[0]_6\(15 downto 0),
+      s_axis_tdata(31 downto 16) => \axis_divider_0_tdata[1]_21\(15 downto 0),
+      s_axis_tdata(15 downto 0) => \axis_divider_0_tdata[0]_20\(15 downto 0),
       s_axis_tready(1 downto 0) => axis_divider_0_tready(1 downto 0),
       s_axis_tvalid(1 downto 0) => axis_divider_0_tvalid(1 downto 0)
     );
@@ -25602,13 +25535,13 @@ divider_0_inst0: component eko_bd_pl_cross_0_1_divider_0
       aclk => aclk,
       aresetn => aresetn,
       m_axis_dout_tdata(39 downto 16) => NLW_divider_0_inst0_m_axis_dout_tdata_UNCONNECTED(39 downto 16),
-      m_axis_dout_tdata(15 downto 0) => \axis_divider_0_tdata[0]_6\(15 downto 0),
+      m_axis_dout_tdata(15 downto 0) => \axis_divider_0_tdata[0]_20\(15 downto 0),
       m_axis_dout_tready => axis_divider_0_tready(0),
       m_axis_dout_tvalid => axis_divider_0_tvalid(0),
-      s_axis_dividend_tdata(23 downto 0) => \axis_broadcaster_3_tdata[1]_3\(23 downto 0),
+      s_axis_dividend_tdata(23 downto 0) => \axis_broadcaster_3_tdata[1]_17\(23 downto 0),
       s_axis_dividend_tready => axis_broadcaster_3_tready(1),
       s_axis_dividend_tvalid => axis_broadcaster_3_tvalid(1),
-      s_axis_divisor_tdata(23 downto 0) => \axis_broadcaster_3_tdata[0]_2\(23 downto 0),
+      s_axis_divisor_tdata(23 downto 0) => \axis_broadcaster_3_tdata[0]_16\(23 downto 0),
       s_axis_divisor_tready => axis_broadcaster_3_tready(0),
       s_axis_divisor_tvalid => axis_broadcaster_3_tvalid(0)
     );
@@ -25617,13 +25550,13 @@ divider_0_inst1: component eko_bd_pl_cross_0_1_divider_0_HD21
       aclk => aclk,
       aresetn => aresetn,
       m_axis_dout_tdata(39 downto 16) => NLW_divider_0_inst1_m_axis_dout_tdata_UNCONNECTED(39 downto 16),
-      m_axis_dout_tdata(15 downto 0) => \axis_divider_0_tdata[1]_7\(15 downto 0),
+      m_axis_dout_tdata(15 downto 0) => \axis_divider_0_tdata[1]_21\(15 downto 0),
       m_axis_dout_tready => axis_divider_0_tready(1),
       m_axis_dout_tvalid => axis_divider_0_tvalid(1),
-      s_axis_dividend_tdata(23 downto 0) => \axis_broadcaster_3_tdata[3]_5\(23 downto 0),
+      s_axis_dividend_tdata(23 downto 0) => \axis_broadcaster_3_tdata[3]_19\(23 downto 0),
       s_axis_dividend_tready => axis_broadcaster_3_tready(3),
       s_axis_dividend_tvalid => axis_broadcaster_3_tvalid(3),
-      s_axis_divisor_tdata(23 downto 0) => \axis_broadcaster_3_tdata[2]_4\(23 downto 0),
+      s_axis_divisor_tdata(23 downto 0) => \axis_broadcaster_3_tdata[2]_18\(23 downto 0),
       s_axis_divisor_tready => axis_broadcaster_3_tready(2),
       s_axis_divisor_tvalid => axis_broadcaster_3_tvalid(2)
     );
@@ -25687,14 +25620,14 @@ architecture STRUCTURE of \eko_bd_pl_cross_0_1_wapply_0__xdcDup__1\ is
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 39 downto 0 )
   );
   end component eko_bd_pl_cross_0_1_divider_0;
-  signal \axis_broadcaster_3_tdata[0]_2\ : STD_LOGIC_VECTOR ( 23 downto 0 );
-  signal \axis_broadcaster_3_tdata[1]_3\ : STD_LOGIC_VECTOR ( 23 downto 0 );
-  signal \axis_broadcaster_3_tdata[2]_4\ : STD_LOGIC_VECTOR ( 23 downto 0 );
-  signal \axis_broadcaster_3_tdata[3]_5\ : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal \axis_broadcaster_3_tdata[0]_10\ : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal \axis_broadcaster_3_tdata[1]_11\ : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal \axis_broadcaster_3_tdata[2]_12\ : STD_LOGIC_VECTOR ( 23 downto 0 );
+  signal \axis_broadcaster_3_tdata[3]_13\ : STD_LOGIC_VECTOR ( 23 downto 0 );
   signal axis_broadcaster_3_tready : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axis_broadcaster_3_tvalid : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \axis_divider_0_tdata[0]_6\ : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \axis_divider_0_tdata[1]_7\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \axis_divider_0_tdata[0]_14\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \axis_divider_0_tdata[1]_15\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal axis_divider_0_tready : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal axis_divider_0_tvalid : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_divider_0_inst0_m_axis_dout_tdata_UNCONNECTED : STD_LOGIC_VECTOR ( 39 downto 16 );
@@ -25709,10 +25642,10 @@ broadcaster_3_inst0: component eko_bd_pl_cross_0_1_broadcaster_3
      port map (
       aclk => aclk,
       aresetn => aresetn,
-      m_axis_tdata(95 downto 72) => \axis_broadcaster_3_tdata[3]_5\(23 downto 0),
-      m_axis_tdata(71 downto 48) => \axis_broadcaster_3_tdata[2]_4\(23 downto 0),
-      m_axis_tdata(47 downto 24) => \axis_broadcaster_3_tdata[1]_3\(23 downto 0),
-      m_axis_tdata(23 downto 0) => \axis_broadcaster_3_tdata[0]_2\(23 downto 0),
+      m_axis_tdata(95 downto 72) => \axis_broadcaster_3_tdata[3]_13\(23 downto 0),
+      m_axis_tdata(71 downto 48) => \axis_broadcaster_3_tdata[2]_12\(23 downto 0),
+      m_axis_tdata(47 downto 24) => \axis_broadcaster_3_tdata[1]_11\(23 downto 0),
+      m_axis_tdata(23 downto 0) => \axis_broadcaster_3_tdata[0]_10\(23 downto 0),
       m_axis_tready(3 downto 0) => axis_broadcaster_3_tready(3 downto 0),
       m_axis_tvalid(3 downto 0) => axis_broadcaster_3_tvalid(3 downto 0),
       s_axis_tdata(71 downto 0) => s_axis_data_tdata(71 downto 0),
@@ -25726,8 +25659,8 @@ combiner_3_inst0: component eko_bd_pl_cross_0_1_combiner_3
       m_axis_tdata(31 downto 0) => m_axis_data_tdata(31 downto 0),
       m_axis_tready => m_axis_data_tready,
       m_axis_tvalid => m_axis_data_tvalid,
-      s_axis_tdata(31 downto 16) => \axis_divider_0_tdata[1]_7\(15 downto 0),
-      s_axis_tdata(15 downto 0) => \axis_divider_0_tdata[0]_6\(15 downto 0),
+      s_axis_tdata(31 downto 16) => \axis_divider_0_tdata[1]_15\(15 downto 0),
+      s_axis_tdata(15 downto 0) => \axis_divider_0_tdata[0]_14\(15 downto 0),
       s_axis_tready(1 downto 0) => axis_divider_0_tready(1 downto 0),
       s_axis_tvalid(1 downto 0) => axis_divider_0_tvalid(1 downto 0)
     );
@@ -25736,13 +25669,13 @@ divider_0_inst0: component eko_bd_pl_cross_0_1_divider_0
       aclk => aclk,
       aresetn => aresetn,
       m_axis_dout_tdata(39 downto 16) => NLW_divider_0_inst0_m_axis_dout_tdata_UNCONNECTED(39 downto 16),
-      m_axis_dout_tdata(15 downto 0) => \axis_divider_0_tdata[0]_6\(15 downto 0),
+      m_axis_dout_tdata(15 downto 0) => \axis_divider_0_tdata[0]_14\(15 downto 0),
       m_axis_dout_tready => axis_divider_0_tready(0),
       m_axis_dout_tvalid => axis_divider_0_tvalid(0),
-      s_axis_dividend_tdata(23 downto 0) => \axis_broadcaster_3_tdata[1]_3\(23 downto 0),
+      s_axis_dividend_tdata(23 downto 0) => \axis_broadcaster_3_tdata[1]_11\(23 downto 0),
       s_axis_dividend_tready => axis_broadcaster_3_tready(1),
       s_axis_dividend_tvalid => axis_broadcaster_3_tvalid(1),
-      s_axis_divisor_tdata(23 downto 0) => \axis_broadcaster_3_tdata[0]_2\(23 downto 0),
+      s_axis_divisor_tdata(23 downto 0) => \axis_broadcaster_3_tdata[0]_10\(23 downto 0),
       s_axis_divisor_tready => axis_broadcaster_3_tready(0),
       s_axis_divisor_tvalid => axis_broadcaster_3_tvalid(0)
     );
@@ -25751,13 +25684,13 @@ divider_0_inst1: component eko_bd_pl_cross_0_1_divider_0
       aclk => aclk,
       aresetn => aresetn,
       m_axis_dout_tdata(39 downto 16) => NLW_divider_0_inst1_m_axis_dout_tdata_UNCONNECTED(39 downto 16),
-      m_axis_dout_tdata(15 downto 0) => \axis_divider_0_tdata[1]_7\(15 downto 0),
+      m_axis_dout_tdata(15 downto 0) => \axis_divider_0_tdata[1]_15\(15 downto 0),
       m_axis_dout_tready => axis_divider_0_tready(1),
       m_axis_dout_tvalid => axis_divider_0_tvalid(1),
-      s_axis_dividend_tdata(23 downto 0) => \axis_broadcaster_3_tdata[3]_5\(23 downto 0),
+      s_axis_dividend_tdata(23 downto 0) => \axis_broadcaster_3_tdata[3]_13\(23 downto 0),
       s_axis_dividend_tready => axis_broadcaster_3_tready(3),
       s_axis_dividend_tvalid => axis_broadcaster_3_tvalid(3),
-      s_axis_divisor_tdata(23 downto 0) => \axis_broadcaster_3_tdata[2]_4\(23 downto 0),
+      s_axis_divisor_tdata(23 downto 0) => \axis_broadcaster_3_tdata[2]_12\(23 downto 0),
       s_axis_divisor_tready => axis_broadcaster_3_tready(2),
       s_axis_divisor_tvalid => axis_broadcaster_3_tvalid(2)
     );
@@ -25775,8 +25708,8 @@ entity eko_bd_pl_cross_0_1_weight_0 is
     aresetn : in STD_LOGIC;
     m_axis_dout_tvalid : in STD_LOGIC;
     m_axis_dout_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    \shift_reg_reg[33][47]\ : in STD_LOGIC;
     \shift_reg_reg[33][3]\ : in STD_LOGIC;
-    \shift_reg_reg[33][3]_0\ : in STD_LOGIC;
     s_axis_data_tready : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
@@ -25997,30 +25930,30 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_weight_0 is
   signal \NLW_custom_phat_weight_carry__4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal \NLW_index_reg[8]_i_1__0_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \avg_magnitude[0]_i_1__0\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \avg_magnitude[10]_i_1__0\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \avg_magnitude[11]_i_1__0\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \avg_magnitude[12]_i_1__0\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \avg_magnitude[13]_i_1__0\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \avg_magnitude[14]_i_1__0\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \avg_magnitude[15]_i_1__0\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \avg_magnitude[16]_i_1__0\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \avg_magnitude[17]_i_1__0\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \avg_magnitude[18]_i_1__0\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \avg_magnitude[19]_i_1__0\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \avg_magnitude[1]_i_1__0\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \avg_magnitude[20]_i_1__0\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \avg_magnitude[21]_i_1__0\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \avg_magnitude[22]_i_1__0\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \avg_magnitude[23]_i_1__0\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \avg_magnitude[2]_i_1__0\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \avg_magnitude[3]_i_1__0\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \avg_magnitude[4]_i_1__0\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \avg_magnitude[5]_i_1__0\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \avg_magnitude[6]_i_1__0\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \avg_magnitude[7]_i_1__0\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \avg_magnitude[8]_i_1__0\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \avg_magnitude[9]_i_1__0\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \avg_magnitude[0]_i_1__0\ : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of \avg_magnitude[10]_i_1__0\ : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of \avg_magnitude[11]_i_1__0\ : label is "soft_lutpair101";
+  attribute SOFT_HLUTNM of \avg_magnitude[12]_i_1__0\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \avg_magnitude[13]_i_1__0\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \avg_magnitude[14]_i_1__0\ : label is "soft_lutpair100";
+  attribute SOFT_HLUTNM of \avg_magnitude[15]_i_1__0\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \avg_magnitude[16]_i_1__0\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \avg_magnitude[17]_i_1__0\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \avg_magnitude[18]_i_1__0\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \avg_magnitude[19]_i_1__0\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \avg_magnitude[1]_i_1__0\ : label is "soft_lutpair106";
+  attribute SOFT_HLUTNM of \avg_magnitude[20]_i_1__0\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \avg_magnitude[21]_i_1__0\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \avg_magnitude[22]_i_1__0\ : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \avg_magnitude[23]_i_1__0\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \avg_magnitude[2]_i_1__0\ : label is "soft_lutpair105";
+  attribute SOFT_HLUTNM of \avg_magnitude[3]_i_1__0\ : label is "soft_lutpair105";
+  attribute SOFT_HLUTNM of \avg_magnitude[4]_i_1__0\ : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of \avg_magnitude[5]_i_1__0\ : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of \avg_magnitude[6]_i_1__0\ : label is "soft_lutpair104";
+  attribute SOFT_HLUTNM of \avg_magnitude[7]_i_1__0\ : label is "soft_lutpair103";
+  attribute SOFT_HLUTNM of \avg_magnitude[8]_i_1__0\ : label is "soft_lutpair102";
+  attribute SOFT_HLUTNM of \avg_magnitude[9]_i_1__0\ : label is "soft_lutpair101";
   attribute x_core_info : string;
   attribute x_core_info of cordic_5_inst0 : label is "cordic_v6_0_20,Vivado 2023.2";
   attribute ADDER_THRESHOLD : integer;
@@ -26033,9 +25966,9 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_weight_0 is
   attribute ADDER_THRESHOLD of \index_reg[0]_i_2__0\ : label is 11;
   attribute ADDER_THRESHOLD of \index_reg[4]_i_1__0\ : label is 11;
   attribute ADDER_THRESHOLD of \index_reg[8]_i_1__0\ : label is 11;
-  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair94";
   attribute x_core_info of weight_bram_inst0 : label is "blk_mem_gen_v8_4_7,Vivado 2023.2";
-  attribute SOFT_HLUTNM of \weight_bram_inst0_i_2__0\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \weight_bram_inst0_i_2__0\ : label is "soft_lutpair94";
 begin
 avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
@@ -26657,7 +26590,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(0),
       Q => \avg_magnitude_reg_n_0_[0]\
     );
@@ -26665,7 +26598,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(10),
       Q => \avg_magnitude_reg_n_0_[10]\
     );
@@ -26673,7 +26606,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(11),
       Q => \avg_magnitude_reg_n_0_[11]\
     );
@@ -26681,7 +26614,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(12),
       Q => \avg_magnitude_reg_n_0_[12]\
     );
@@ -26689,7 +26622,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(13),
       Q => \avg_magnitude_reg_n_0_[13]\
     );
@@ -26697,7 +26630,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(14),
       Q => \avg_magnitude_reg_n_0_[14]\
     );
@@ -26705,7 +26638,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(15),
       Q => \avg_magnitude_reg_n_0_[15]\
     );
@@ -26713,7 +26646,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(16),
       Q => \avg_magnitude_reg_n_0_[16]\
     );
@@ -26721,7 +26654,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(17),
       Q => \avg_magnitude_reg_n_0_[17]\
     );
@@ -26729,7 +26662,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(18),
       Q => \avg_magnitude_reg_n_0_[18]\
     );
@@ -26737,7 +26670,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(19),
       Q => \avg_magnitude_reg_n_0_[19]\
     );
@@ -26745,7 +26678,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(1),
       Q => \avg_magnitude_reg_n_0_[1]\
     );
@@ -26753,7 +26686,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(20),
       Q => \avg_magnitude_reg_n_0_[20]\
     );
@@ -26761,7 +26694,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(21),
       Q => \avg_magnitude_reg_n_0_[21]\
     );
@@ -26769,7 +26702,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(22),
       Q => \avg_magnitude_reg_n_0_[22]\
     );
@@ -26777,7 +26710,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(23),
       Q => \avg_magnitude_reg_n_0_[23]\
     );
@@ -26785,7 +26718,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(2),
       Q => \avg_magnitude_reg_n_0_[2]\
     );
@@ -26793,7 +26726,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(3),
       Q => \avg_magnitude_reg_n_0_[3]\
     );
@@ -26801,7 +26734,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(4),
       Q => \avg_magnitude_reg_n_0_[4]\
     );
@@ -26809,7 +26742,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(5),
       Q => \avg_magnitude_reg_n_0_[5]\
     );
@@ -26817,7 +26750,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(6),
       Q => \avg_magnitude_reg_n_0_[6]\
     );
@@ -26825,7 +26758,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(7),
       Q => \avg_magnitude_reg_n_0_[7]\
     );
@@ -26833,7 +26766,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(8),
       Q => \avg_magnitude_reg_n_0_[8]\
     );
@@ -26841,7 +26774,7 @@ avg_magnitude0_carry: unisim.vcomponents.CARRY4
      port map (
       C => aclk,
       CE => \weight_bram_inst0_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => avg_magnitude(9),
       Q => \avg_magnitude_reg_n_0_[9]\
     );
@@ -27186,8 +27119,8 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
       dina(20 downto 0) => delay_s_axis_data_tdata(23 downto 3),
       m_axis_dout_tdata(41 downto 21) => m_axis_dout_tdata(47 downto 27),
       m_axis_dout_tdata(20 downto 0) => m_axis_dout_tdata(23 downto 3),
-      \shift_reg_reg[33][3]_0\ => \shift_reg_reg[33][3]_0\,
-      \shift_reg_reg[33][3]_1\ => \shift_reg_reg[33][3]\
+      \shift_reg_reg[33][3]_0\ => \shift_reg_reg[33][3]\,
+      \shift_reg_reg[33][47]_0\ => \shift_reg_reg[33][47]\
     );
 \index[0]_i_1__0\: unisim.vcomponents.LUT3
     generic map(
@@ -27211,7 +27144,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[0]_i_2__0_n_7\,
       Q => index_reg(0)
     );
@@ -27235,7 +27168,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[8]_i_1__0_n_5\,
       Q => index_reg(10)
     );
@@ -27243,7 +27176,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[8]_i_1__0_n_4\,
       Q => index_reg(11)
     );
@@ -27251,7 +27184,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[0]_i_2__0_n_6\,
       Q => index_reg(1)
     );
@@ -27259,7 +27192,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[0]_i_2__0_n_5\,
       Q => index_reg(2)
     );
@@ -27267,7 +27200,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[0]_i_2__0_n_4\,
       Q => index_reg(3)
     );
@@ -27275,7 +27208,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[4]_i_1__0_n_7\,
       Q => index_reg(4)
     );
@@ -27298,7 +27231,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[4]_i_1__0_n_6\,
       Q => index_reg(5)
     );
@@ -27306,7 +27239,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[4]_i_1__0_n_5\,
       Q => index_reg(6)
     );
@@ -27314,7 +27247,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[4]_i_1__0_n_4\,
       Q => index_reg(7)
     );
@@ -27322,7 +27255,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[8]_i_1__0_n_7\,
       Q => index_reg(8)
     );
@@ -27345,7 +27278,7 @@ delay_inst0: entity work.eko_bd_pl_cross_0_1_delay
      port map (
       C => aclk,
       CE => \index[0]_i_1__0_n_0\,
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => \index_reg[8]_i_1__0_n_6\,
       Q => index_reg(9)
     );
@@ -27353,7 +27286,7 @@ re_d0_reg: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => re,
       Q => s_axis_data_tvalid
     );
@@ -27399,7 +27332,7 @@ state_reg: unisim.vcomponents.FDCE
      port map (
       C => aclk,
       CE => '1',
-      CLR => \shift_reg_reg[33][3]\,
+      CLR => \shift_reg_reg[33][47]\,
       D => state_i_1_n_0,
       Q => state_reg_n_0
     );
@@ -27634,30 +27567,30 @@ architecture STRUCTURE of \eko_bd_pl_cross_0_1_weight_0__xdcDup__1\ is
   signal \NLW_custom_phat_weight_carry__4_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal \NLW_index_reg[8]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \avg_magnitude[0]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \avg_magnitude[10]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \avg_magnitude[11]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \avg_magnitude[12]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \avg_magnitude[13]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \avg_magnitude[14]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \avg_magnitude[15]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \avg_magnitude[16]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \avg_magnitude[17]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \avg_magnitude[18]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \avg_magnitude[19]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \avg_magnitude[1]_i_1\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \avg_magnitude[20]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \avg_magnitude[21]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \avg_magnitude[22]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \avg_magnitude[23]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \avg_magnitude[2]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \avg_magnitude[3]_i_1\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \avg_magnitude[4]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \avg_magnitude[5]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \avg_magnitude[6]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \avg_magnitude[7]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \avg_magnitude[8]_i_1\ : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \avg_magnitude[9]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \avg_magnitude[0]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \avg_magnitude[10]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \avg_magnitude[11]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \avg_magnitude[12]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \avg_magnitude[13]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \avg_magnitude[14]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \avg_magnitude[15]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \avg_magnitude[16]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \avg_magnitude[17]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \avg_magnitude[18]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \avg_magnitude[19]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \avg_magnitude[1]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \avg_magnitude[20]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \avg_magnitude[21]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \avg_magnitude[22]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \avg_magnitude[23]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \avg_magnitude[2]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \avg_magnitude[3]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \avg_magnitude[4]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \avg_magnitude[5]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \avg_magnitude[6]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \avg_magnitude[7]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \avg_magnitude[8]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \avg_magnitude[9]_i_1\ : label is "soft_lutpair67";
   attribute x_core_info : string;
   attribute x_core_info of cordic_5_inst0 : label is "cordic_v6_0_20,Vivado 2023.2";
   attribute ADDER_THRESHOLD : integer;
@@ -27670,9 +27603,9 @@ architecture STRUCTURE of \eko_bd_pl_cross_0_1_weight_0__xdcDup__1\ is
   attribute ADDER_THRESHOLD of \index_reg[0]_i_2\ : label is 11;
   attribute ADDER_THRESHOLD of \index_reg[4]_i_1\ : label is 11;
   attribute ADDER_THRESHOLD of \index_reg[8]_i_1\ : label is 11;
-  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of state_i_1 : label is "soft_lutpair60";
   attribute x_core_info of weight_bram_inst0 : label is "blk_mem_gen_v8_4_7,Vivado 2023.2";
-  attribute SOFT_HLUTNM of weight_bram_inst0_i_2 : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of weight_bram_inst0_i_2 : label is "soft_lutpair60";
 begin
   aresetn_0 <= \^aresetn_0\;
 avg_magnitude0_carry: unisim.vcomponents.CARRY4
@@ -29063,7 +28996,7 @@ entity eko_bd_pl_cross_0_1_filterx_0 is
     s_axis_tvalid : in STD_LOGIC;
     Q : in STD_LOGIC_VECTOR ( 63 downto 0 );
     s_axis_data_tready : in STD_LOGIC;
-    m_axis_data_tvalid_reg : in STD_LOGIC
+    bram_rst : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of eko_bd_pl_cross_0_1_filterx_0 : entity is "filterx_0";
@@ -29143,7 +29076,7 @@ nonblock_fir_cic_0_inst0: entity work.\eko_bd_pl_cross_0_1_nonblock_fir_cic_0__x
       Q(15 downto 0) => \axis_fc_tdata[0]_4\(15 downto 0),
       aclk => aclk,
       aresetn => aresetn,
-      \m_axis_data_tdata_reg[15]_0\ => m_axis_data_tvalid_reg,
+      bram_rst => bram_rst,
       m_axis_tdata(15 downto 0) => \axis_broadcast_1_tdata[0]_0\(15 downto 0),
       m_axis_tvalid(0) => axis_broadcast_1_tvalid(0),
       s_axis_data_tready => axis_broadcast_1_tready(0),
@@ -29155,7 +29088,7 @@ nonblock_fir_cic_0_inst1: entity work.\eko_bd_pl_cross_0_1_nonblock_fir_cic_0__x
       Q(15 downto 0) => \axis_fc_tdata[1]_5\(15 downto 0),
       aclk => aclk,
       aresetn => aresetn,
-      m_axis_data_tvalid_reg_0 => m_axis_data_tvalid_reg,
+      bram_rst => bram_rst,
       m_axis_tdata(15 downto 0) => \axis_broadcast_1_tdata[1]_1\(15 downto 0),
       m_axis_tvalid(0) => axis_broadcast_1_tvalid(1),
       s_axis_data_tready => axis_broadcast_1_tready(1),
@@ -29167,7 +29100,7 @@ nonblock_fir_cic_0_inst2: entity work.\eko_bd_pl_cross_0_1_nonblock_fir_cic_0__x
       Q(15 downto 0) => \axis_fc_tdata[2]_6\(15 downto 0),
       aclk => aclk,
       aresetn => aresetn,
-      \m_axis_data_tdata_reg[15]_0\ => m_axis_data_tvalid_reg,
+      bram_rst => bram_rst,
       m_axis_tdata(15 downto 0) => \axis_broadcast_1_tdata[2]_2\(15 downto 0),
       m_axis_tvalid(0) => axis_broadcast_1_tvalid(2),
       s_axis_data_tready => axis_broadcast_1_tready(2),
@@ -29179,7 +29112,7 @@ nonblock_fir_cic_0_inst3: entity work.eko_bd_pl_cross_0_1_nonblock_fir_cic_0
       Q(15 downto 0) => \axis_fc_tdata[3]_7\(15 downto 0),
       aclk => aclk,
       aresetn => aresetn,
-      m_axis_data_tvalid_reg_0 => m_axis_data_tvalid_reg,
+      bram_rst => bram_rst,
       m_axis_tdata(15 downto 0) => \axis_broadcast_1_tdata[3]_3\(15 downto 0),
       m_axis_tvalid(0) => axis_broadcast_1_tvalid(3),
       s_axis_data_tready => axis_broadcast_1_tready(3),
@@ -29200,8 +29133,8 @@ entity eko_bd_pl_cross_0_1_normalize_2 is
     aresetn : in STD_LOGIC;
     m_axis_dout_tvalid : in STD_LOGIC;
     m_axis_dout_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    \shift_reg_reg[33][47]\ : in STD_LOGIC;
     \shift_reg_reg[33][3]\ : in STD_LOGIC;
-    \shift_reg_reg[33][3]_0\ : in STD_LOGIC;
     m_axis_data_tready : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
@@ -29235,7 +29168,7 @@ weight_0_inst0: entity work.eko_bd_pl_cross_0_1_weight_0
       s_axis_data_tready => axis_weight_0_tready,
       s_axis_data_tvalid => axis_weight_0_tvalid,
       \shift_reg_reg[33][3]\ => \shift_reg_reg[33][3]\,
-      \shift_reg_reg[33][3]_0\ => \shift_reg_reg[33][3]_0\
+      \shift_reg_reg[33][47]\ => \shift_reg_reg[33][47]\
     );
 end STRUCTURE;
 library IEEE;
@@ -29303,8 +29236,8 @@ entity eko_bd_pl_cross_0_1_gcc_phat_core is
     m_axis_dout_tready : in STD_LOGIC;
     m_axis_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axis_tvalid : in STD_LOGIC_VECTOR ( 0 to 0 );
-    \shift_reg_reg[33][3]\ : in STD_LOGIC;
-    \shift_reg_reg[33][3]_0\ : in STD_LOGIC
+    \shift_reg_reg[33][47]\ : in STD_LOGIC;
+    \shift_reg_reg[33][3]\ : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of eko_bd_pl_cross_0_1_gcc_phat_core : entity is "gcc_phat_core";
@@ -29408,7 +29341,7 @@ multiply_1_inst0: entity work.eko_bd_pl_cross_0_1_multiply_1
       m_axis_data_tvalid => axis_xfft_2_tvalid,
       m_axis_dout_tdata(47 downto 0) => axis_multiply_1_tdata(47 downto 0),
       m_axis_dout_tvalid => axis_multiply_1_tvalid,
-      random_reg_0 => \shift_reg_reg[33][3]\,
+      random_reg_0 => \shift_reg_reg[33][47]\,
       s_axis_cartesian_tready => axis_multiply_1_tready,
       s_axis_tready => axis_xfft_2_tready
     );
@@ -29423,7 +29356,7 @@ normalize_2_inst0: entity work.eko_bd_pl_cross_0_1_normalize_2
       m_axis_dout_tvalid => axis_multiply_1_tvalid,
       s_axis_cartesian_tready => axis_multiply_1_tready,
       \shift_reg_reg[33][3]\ => \shift_reg_reg[33][3]\,
-      \shift_reg_reg[33][3]_0\ => \shift_reg_reg[33][3]_0\
+      \shift_reg_reg[33][47]\ => \shift_reg_reg[33][47]\
     );
 xfft_1_inst0: component xfft_1_HD15
      port map (
@@ -29665,14 +29598,19 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity eko_bd_pl_cross_0_1_cross_gcc_phat is
   port (
+    s_axis_tready : out STD_LOGIC;
+    m_axis_tvalid : out STD_LOGIC;
+    bram_wrdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    aresetn_0 : out STD_LOGIC;
+    bram_we : out STD_LOGIC_VECTOR ( 0 to 0 );
+    bram_en : out STD_LOGIC;
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
-    s_axis_in_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    s_axis_in_tvalid : in STD_LOGIC;
-    s_axis_in_tready : out STD_LOGIC;
-    m_axis_out_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    m_axis_out_tvalid : out STD_LOGIC;
-    m_axis_out_tready : in STD_LOGIC
+    m_axis_data_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    m_axis_tready : in STD_LOGIC;
+    intr0 : in STD_LOGIC;
+    m_axis_data_tvalid : in STD_LOGIC;
+    led0 : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of eko_bd_pl_cross_0_1_cross_gcc_phat : entity is "cross_gcc_phat";
@@ -29703,48 +29641,82 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_cross_gcc_phat is
     m_axis_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component eko_bd_pl_cross_0_1_combiner_2;
-  signal \axis_broadcaster_2_tdata[0]\ : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal \axis_broadcaster_2_tdata[1]\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \^aresetn_0\ : STD_LOGIC;
+  signal \axis_broadcaster_2_tdata[0]_8\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \axis_broadcaster_2_tdata[1]_9\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axis_broadcaster_2_tready : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal axis_broadcaster_2_tvalid : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal \axis_gcc_phat_core_tdata[0]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \axis_gcc_phat_core_tdata[1]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \axis_gcc_phat_core_tdata[0]_2\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \axis_gcc_phat_core_tdata[1]_5\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal axis_gcc_phat_core_tready_0 : STD_LOGIC;
   signal axis_gcc_phat_core_tready_1 : STD_LOGIC;
   signal axis_gcc_phat_core_tvalid_0 : STD_LOGIC;
   signal axis_gcc_phat_core_tvalid_1 : STD_LOGIC;
-  signal \axis_roi_tdata[0]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal \axis_roi_tdata[1]\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \axis_roi_tdata[0]_6\ : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal \axis_roi_tdata[1]_7\ : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal axis_roi_tready : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal gcc_phat_core_inst0_n_18 : STD_LOGIC;
+  signal broadcaster_2_inst0_i_1_n_0 : STD_LOGIC;
   signal gcc_phat_core_inst0_n_19 : STD_LOGIC;
+  signal \^m_axis_tvalid\ : STD_LOGIC;
   signal roi_inst0_n_16 : STD_LOGIC;
   signal roi_inst1_n_16 : STD_LOGIC;
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of bram_en_INST_0 : label is "soft_lutpair123";
+  attribute SOFT_HLUTNM of \bram_we[0]_INST_0\ : label is "soft_lutpair123";
   attribute x_core_info : string;
   attribute x_core_info of broadcaster_2_inst0 : label is "top_broadcaster_2,Vivado 2023.2";
   attribute x_core_info of combiner_2_inst0 : label is "axis_combiner_v1_1_27_top,Vivado 2023.2";
 begin
+  aresetn_0 <= \^aresetn_0\;
+  m_axis_tvalid <= \^m_axis_tvalid\;
+bram_en_INST_0: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"E"
+    )
+        port map (
+      I0 => \^m_axis_tvalid\,
+      I1 => intr0,
+      O => bram_en
+    );
+\bram_we[0]_INST_0\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => \^m_axis_tvalid\,
+      I1 => intr0,
+      O => bram_we(0)
+    );
 broadcaster_2_inst0: component eko_bd_pl_cross_0_1_broadcaster_2
      port map (
       aclk => aclk,
       aresetn => aresetn,
-      m_axis_tdata(63 downto 32) => \axis_broadcaster_2_tdata[1]\(31 downto 0),
-      m_axis_tdata(31 downto 0) => \axis_broadcaster_2_tdata[0]\(31 downto 0),
+      m_axis_tdata(63 downto 32) => \axis_broadcaster_2_tdata[1]_9\(31 downto 0),
+      m_axis_tdata(31 downto 0) => \axis_broadcaster_2_tdata[0]_8\(31 downto 0),
       m_axis_tready(1 downto 0) => axis_broadcaster_2_tready(1 downto 0),
       m_axis_tvalid(1 downto 0) => axis_broadcaster_2_tvalid(1 downto 0),
-      s_axis_tdata(63 downto 0) => s_axis_in_tdata(63 downto 0),
-      s_axis_tready => s_axis_in_tready,
-      s_axis_tvalid => s_axis_in_tvalid
+      s_axis_tdata(63 downto 0) => m_axis_data_tdata(63 downto 0),
+      s_axis_tready => s_axis_tready,
+      s_axis_tvalid => broadcaster_2_inst0_i_1_n_0
+    );
+broadcaster_2_inst0_i_1: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => m_axis_data_tvalid,
+      I1 => led0,
+      O => broadcaster_2_inst0_i_1_n_0
     );
 combiner_2_inst0: component eko_bd_pl_cross_0_1_combiner_2
      port map (
       aclk => aclk,
       aresetn => aresetn,
-      m_axis_tdata(31 downto 0) => m_axis_out_tdata(31 downto 0),
-      m_axis_tready => m_axis_out_tready,
-      m_axis_tvalid => m_axis_out_tvalid,
-      s_axis_tdata(31 downto 16) => \axis_roi_tdata[1]\(15 downto 0),
-      s_axis_tdata(15 downto 0) => \axis_roi_tdata[0]\(15 downto 0),
+      m_axis_tdata(31 downto 0) => bram_wrdata(31 downto 0),
+      m_axis_tready => m_axis_tready,
+      m_axis_tvalid => \^m_axis_tvalid\,
+      s_axis_tdata(31 downto 16) => \axis_roi_tdata[1]_7\(15 downto 0),
+      s_axis_tdata(15 downto 0) => \axis_roi_tdata[0]_6\(15 downto 0),
       s_axis_tready(1 downto 0) => axis_roi_tready(1 downto 0),
       s_axis_tvalid(1) => roi_inst1_n_16,
       s_axis_tvalid(0) => roi_inst0_n_16
@@ -29753,11 +29725,11 @@ gcc_phat_core_inst0: entity work.\eko_bd_pl_cross_0_1_gcc_phat_core__xdcDup__1\
      port map (
       aclk => aclk,
       aresetn => aresetn,
-      aresetn_0 => gcc_phat_core_inst0_n_18,
-      m_axis_dout_tdata(15 downto 0) => \axis_gcc_phat_core_tdata[0]\(15 downto 0),
+      aresetn_0 => \^aresetn_0\,
+      m_axis_dout_tdata(15 downto 0) => \axis_gcc_phat_core_tdata[0]_2\(15 downto 0),
       m_axis_dout_tready => axis_gcc_phat_core_tready_0,
       m_axis_dout_tvalid => axis_gcc_phat_core_tvalid_0,
-      m_axis_tdata(31 downto 0) => \axis_broadcaster_2_tdata[0]\(31 downto 0),
+      m_axis_tdata(31 downto 0) => \axis_broadcaster_2_tdata[0]_8\(31 downto 0),
       m_axis_tvalid(0) => axis_broadcaster_2_tvalid(0),
       s_axis_data_tready => axis_broadcaster_2_tready(0),
       shift_reg_reg_c_31 => gcc_phat_core_inst0_n_19
@@ -29766,36 +29738,36 @@ gcc_phat_core_inst1: entity work.eko_bd_pl_cross_0_1_gcc_phat_core
      port map (
       aclk => aclk,
       aresetn => aresetn,
-      m_axis_dout_tdata(15 downto 0) => \axis_gcc_phat_core_tdata[1]\(15 downto 0),
+      m_axis_dout_tdata(15 downto 0) => \axis_gcc_phat_core_tdata[1]_5\(15 downto 0),
       m_axis_dout_tready => axis_gcc_phat_core_tready_1,
       m_axis_dout_tvalid => axis_gcc_phat_core_tvalid_1,
-      m_axis_tdata(31 downto 0) => \axis_broadcaster_2_tdata[1]\(31 downto 0),
+      m_axis_tdata(31 downto 0) => \axis_broadcaster_2_tdata[1]_9\(31 downto 0),
       m_axis_tvalid(0) => axis_broadcaster_2_tvalid(1),
       s_axis_data_tready => axis_broadcaster_2_tready(1),
-      \shift_reg_reg[33][3]\ => gcc_phat_core_inst0_n_18,
-      \shift_reg_reg[33][3]_0\ => gcc_phat_core_inst0_n_19
+      \shift_reg_reg[33][3]\ => gcc_phat_core_inst0_n_19,
+      \shift_reg_reg[33][47]\ => \^aresetn_0\
     );
 roi_inst0: entity work.\eko_bd_pl_cross_0_1_roi__xdcDup__1\
      port map (
       aclk => aclk,
-      \addr_reg[0]_0\ => gcc_phat_core_inst0_n_18,
-      doutb(15 downto 0) => \axis_roi_tdata[0]\(15 downto 0),
-      m_axis_dout_tdata(15 downto 0) => \axis_gcc_phat_core_tdata[0]\(15 downto 0),
+      doutb(15 downto 0) => \axis_roi_tdata[0]_6\(15 downto 0),
+      m_axis_dout_tdata(15 downto 0) => \axis_gcc_phat_core_tdata[0]_2\(15 downto 0),
       m_axis_dout_tready => axis_gcc_phat_core_tready_0,
       m_axis_dout_tvalid => axis_gcc_phat_core_tvalid_0,
       s_axis_tready(0) => axis_roi_tready(0),
-      state_reg_0 => roi_inst0_n_16
+      state_reg_0 => roi_inst0_n_16,
+      state_reg_1 => \^aresetn_0\
     );
 roi_inst1: entity work.eko_bd_pl_cross_0_1_roi
      port map (
       aclk => aclk,
-      doutb(15 downto 0) => \axis_roi_tdata[1]\(15 downto 0),
-      m_axis_dout_tdata(15 downto 0) => \axis_gcc_phat_core_tdata[1]\(15 downto 0),
+      doutb(15 downto 0) => \axis_roi_tdata[1]_7\(15 downto 0),
+      m_axis_dout_tdata(15 downto 0) => \axis_gcc_phat_core_tdata[1]_5\(15 downto 0),
       m_axis_dout_tready => axis_gcc_phat_core_tready_1,
       m_axis_dout_tvalid => axis_gcc_phat_core_tvalid_1,
       s_axis_tready(0) => axis_roi_tready(1),
       state_reg_0 => roi_inst1_n_16,
-      state_reg_1 => gcc_phat_core_inst0_n_18
+      state_reg_1 => \^aresetn_0\
     );
 end STRUCTURE;
 library IEEE;
@@ -29824,68 +29796,29 @@ entity eko_bd_pl_cross_0_1_pl_cross is
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of eko_bd_pl_cross_0_1_pl_cross : entity is "pl_cross";
-  attribute keep_hierarchy : string;
-  attribute keep_hierarchy of eko_bd_pl_cross_0_1_pl_cross : entity is "soft";
 end eko_bd_pl_cross_0_1_pl_cross;
 
 architecture STRUCTURE of eko_bd_pl_cross_0_1_pl_cross is
-  component eko_bd_pl_cross_0_1_ila_i2s_0 is
-  port (
-    clk : in STD_LOGIC;
-    probe0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe2 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe3 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    probe5 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe7 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe8 : in STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component eko_bd_pl_cross_0_1_ila_i2s_0;
+  signal \<const0>\ : STD_LOGIC;
+  signal \^aclk\ : STD_LOGIC;
   signal axis_filterx_tdata : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal axis_filterx_tready : STD_LOGIC;
   signal axis_filterx_tvalid : STD_LOGIC;
-  signal axis_gcc_phat_tdata : STD_LOGIC_VECTOR ( 31 downto 0 );
-  attribute MARK_DEBUG : boolean;
-  attribute MARK_DEBUG of axis_gcc_phat_tdata : signal is std.standard.true;
   signal axis_gcc_phat_tready : STD_LOGIC;
   signal axis_gcc_phat_tvalid : STD_LOGIC;
-  attribute MARK_DEBUG of axis_gcc_phat_tvalid : signal is std.standard.true;
   signal axis_i2s_tdata : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal axis_i2s_tready : STD_LOGIC;
   signal axis_i2s_tvalid : STD_LOGIC;
   signal axis_upstream_tdata : STD_LOGIC_VECTOR ( 63 downto 0 );
-  attribute MARK_DEBUG of axis_upstream_tdata : signal is std.standard.true;
   signal axis_upstream_tready : STD_LOGIC;
   signal axis_upstream_tvalid : STD_LOGIC;
-  signal \^bram_addr\ : STD_LOGIC_VECTOR ( 31 downto 0 );
-  attribute MARK_DEBUG of \^bram_addr\ : signal is std.standard.true;
-  attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of \^bram_addr\ : signal is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of \^bram_addr\ : signal is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
-  signal \^bram_en\ : STD_LOGIC;
-  signal \^bram_we\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal debug_trigger : STD_LOGIC;
-  attribute MARK_DEBUG of debug_trigger : signal is std.standard.true;
-  signal i2s_recv_cross_inst0_n_0 : STD_LOGIC;
+  signal \^bram_addr\ : STD_LOGIC_VECTOR ( 31 downto 2 );
+  signal \^bram_rst\ : STD_LOGIC;
+  signal \^bram_we\ : STD_LOGIC_VECTOR ( 3 to 3 );
+  signal \^intr0\ : STD_LOGIC;
   signal \^led0\ : STD_LOGIC;
-  signal s_axis_in_tvalid0 : STD_LOGIC;
   signal threshold_base : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_bram_com_cross_inst0_bram_addr_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  attribute CFG_DATA_ADDR : integer;
-  attribute CFG_DATA_ADDR of bram_com_cross_inst0 : label is 4000;
-  attribute KEEP_HIERARCHY of bram_com_cross_inst0 : label is "soft";
-  attribute READ : string;
-  attribute READ of bram_com_cross_inst0 : label is "1'b1";
-  attribute RECV_LENGTH : string;
-  attribute RECV_LENGTH of bram_com_cross_inst0 : label is "10'b0011010000";
-  attribute WRITE : string;
-  attribute WRITE of bram_com_cross_inst0 : label is "1'b0";
-  attribute KEEP_HIERARCHY of cross_gcc_phat_inst0 : label is "soft";
-  attribute x_core_info : string;
-  attribute x_core_info of ila_i2s_0_inst0 : label is "ila,Vivado 2023.2";
+  attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of vad_upstream_hub_cross_inst_0 : label is "soft";
   attribute LOAD : integer;
   attribute LOAD of vad_upstream_hub_cross_inst_0 : label is 0;
@@ -29901,10 +29834,12 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_pl_cross is
   attribute VAD_TRIG_INDEX of vad_upstream_hub_cross_inst_0 : label is 6;
   attribute VAD_WINDOW_CNT : integer;
   attribute VAD_WINDOW_CNT of vad_upstream_hub_cross_inst_0 : label is 5;
+  attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of bram_clk : signal is "xilinx.com:interface:bram:1.0 bram_rtl CLK";
   attribute X_INTERFACE_INFO of bram_en : signal is "xilinx.com:interface:bram:1.0 bram_rtl EN";
   attribute X_INTERFACE_INFO of bram_rst : signal is "xilinx.com:interface:bram:1.0 bram_rtl RST";
   attribute X_INTERFACE_INFO of intr0 : signal is "xilinx.com:signal:interrupt:1.0 IRQ INTERRUPT";
+  attribute X_INTERFACE_PARAMETER : string;
   attribute X_INTERFACE_PARAMETER of intr0 : signal is "XIL_INTERFACENAME IRQ, SENSITIVITY EDGE_RISING";
   attribute X_INTERFACE_INFO of bram_addr : signal is "xilinx.com:interface:bram:1.0 bram_rtl ADDR";
   attribute X_INTERFACE_PARAMETER of bram_addr : signal is "MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
@@ -29912,67 +29847,55 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1_pl_cross is
   attribute X_INTERFACE_INFO of bram_we : signal is "xilinx.com:interface:bram:1.0 bram_rtl WE";
   attribute X_INTERFACE_INFO of bram_wrdata : signal is "xilinx.com:interface:bram:1.0 bram_rtl DIN";
 begin
-  bram_addr(31 downto 0) <= \^bram_addr\(31 downto 0);
-  bram_en <= \^bram_en\;
-  bram_we(3 downto 0) <= \^bram_we\(3 downto 0);
+  \^aclk\ <= aclk;
+  bram_addr(31 downto 2) <= \^bram_addr\(31 downto 2);
+  bram_addr(1) <= \<const0>\;
+  bram_addr(0) <= \<const0>\;
+  bram_clk <= \^aclk\;
+  bram_rst <= \^bram_rst\;
+  bram_we(3) <= \^bram_we\(3);
+  bram_we(2) <= \^bram_we\(3);
+  bram_we(1) <= \^bram_we\(3);
+  bram_we(0) <= \^bram_we\(3);
+  intr0 <= \^intr0\;
   led0 <= \^led0\;
+GND: unisim.vcomponents.GND
+     port map (
+      G => \<const0>\
+    );
 bram_com_cross_inst0: entity work.eko_bd_pl_cross_0_1_bram_com_cross
      port map (
-      aclk => aclk,
-      aresetn => aresetn,
-      bram_addr(31 downto 2) => \^bram_addr\(31 downto 2),
-      bram_addr(1 downto 0) => NLW_bram_com_cross_inst0_bram_addr_UNCONNECTED(1 downto 0),
-      bram_clk => bram_clk,
-      bram_en => \^bram_en\,
-      bram_rddata(31 downto 16) => B"0000000000000000",
+      Q(15 downto 0) => threshold_base(15 downto 0),
+      aclk => \^aclk\,
+      bram_addr(29 downto 0) => \^bram_addr\(31 downto 2),
       bram_rddata(15 downto 0) => bram_rddata(15 downto 0),
-      bram_rst => bram_rst,
-      bram_we(3 downto 0) => \^bram_we\(3 downto 0),
-      bram_wrdata(31 downto 0) => bram_wrdata(31 downto 0),
-      intr0 => intr0,
-      s_axis_data_tdata(31 downto 0) => axis_gcc_phat_tdata(31 downto 0),
-      s_axis_data_tready => axis_gcc_phat_tready,
-      s_axis_data_tvalid => axis_gcc_phat_tvalid,
-      threshold_base(15 downto 0) => threshold_base(15 downto 0)
+      m_axis_tready => axis_gcc_phat_tready,
+      m_axis_tvalid => axis_gcc_phat_tvalid,
+      state_reg_0 => \^intr0\,
+      \threshold_base_reg[15]_0\ => \^bram_rst\
     );
 cross_gcc_phat_inst0: entity work.eko_bd_pl_cross_0_1_cross_gcc_phat
      port map (
-      aclk => aclk,
+      aclk => \^aclk\,
       aresetn => aresetn,
-      m_axis_out_tdata(31 downto 0) => axis_gcc_phat_tdata(31 downto 0),
-      m_axis_out_tready => axis_gcc_phat_tready,
-      m_axis_out_tvalid => axis_gcc_phat_tvalid,
-      s_axis_in_tdata(63 downto 0) => axis_upstream_tdata(63 downto 0),
-      s_axis_in_tready => axis_upstream_tready,
-      s_axis_in_tvalid => s_axis_in_tvalid0
-    );
-cross_gcc_phat_inst0_i_1: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => axis_upstream_tvalid,
-      I1 => \^led0\,
-      O => s_axis_in_tvalid0
-    );
-debug_trigger_inferred_i_1: unisim.vcomponents.LUT5
-    generic map(
-      INIT => X"00010000"
-    )
-        port map (
-      I0 => \^bram_we\(1),
-      I1 => \^bram_we\(0),
-      I2 => \^bram_we\(2),
-      I3 => \^bram_we\(3),
-      I4 => \^bram_en\,
-      O => debug_trigger
+      aresetn_0 => \^bram_rst\,
+      bram_en => bram_en,
+      bram_we(0) => \^bram_we\(3),
+      bram_wrdata(31 downto 0) => bram_wrdata(31 downto 0),
+      intr0 => \^intr0\,
+      led0 => \^led0\,
+      m_axis_data_tdata(63 downto 0) => axis_upstream_tdata(63 downto 0),
+      m_axis_data_tvalid => axis_upstream_tvalid,
+      m_axis_tready => axis_gcc_phat_tready,
+      m_axis_tvalid => axis_gcc_phat_tvalid,
+      s_axis_tready => axis_upstream_tready
     );
 filterx_0_inst0: entity work.eko_bd_pl_cross_0_1_filterx_0
      port map (
       Q(63 downto 0) => axis_i2s_tdata(63 downto 0),
-      aclk => aclk,
+      aclk => \^aclk\,
       aresetn => aresetn,
-      m_axis_data_tvalid_reg => i2s_recv_cross_inst0_n_0,
+      bram_rst => \^bram_rst\,
       m_axis_tdata(63 downto 0) => axis_filterx_tdata(63 downto 0),
       m_axis_tvalid => axis_filterx_tvalid,
       s_axis_data_tready => axis_filterx_tready,
@@ -29985,47 +29908,17 @@ i2s_recv_cross_inst0: entity work.eko_bd_pl_cross_0_1_i2s_recv_cross
       D(2) => i2s_din_mic2,
       D(1) => i2s_din_mic1,
       D(0) => i2s_din_mic0,
-      Q(63 downto 0) => axis_i2s_tdata(63 downto 0),
-      aclk => aclk,
-      aresetn => aresetn,
-      aresetn_0 => i2s_recv_cross_inst0_n_0,
-      \out\(1) => i2s_lrclk,
-      \out\(0) => i2s_bclk,
+      Q(1) => i2s_lrclk,
+      Q(0) => i2s_bclk,
+      aclk => \^aclk\,
+      bram_rst => \^bram_rst\,
+      \m_axis_data_tdata_reg[63]_0\(63 downto 0) => axis_i2s_tdata(63 downto 0),
       s_axis_tready => axis_i2s_tready,
       s_axis_tvalid => axis_i2s_tvalid
     );
-i_0: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => \^bram_addr\(1)
-    );
-i_1: unisim.vcomponents.LUT1
-    generic map(
-      INIT => X"2"
-    )
-        port map (
-      I0 => '0',
-      O => \^bram_addr\(0)
-    );
-ila_i2s_0_inst0: component eko_bd_pl_cross_0_1_ila_i2s_0
-     port map (
-      clk => aclk,
-      probe0(15 downto 0) => axis_upstream_tdata(31 downto 16),
-      probe1(15 downto 0) => axis_upstream_tdata(15 downto 0),
-      probe2(0) => s_axis_in_tvalid0,
-      probe3(15 downto 0) => axis_gcc_phat_tdata(31 downto 16),
-      probe4(15 downto 0) => axis_gcc_phat_tdata(15 downto 0),
-      probe5(0) => axis_gcc_phat_tvalid,
-      probe6(0) => debug_trigger,
-      probe7(31 downto 0) => bram_rddata(31 downto 0),
-      probe8(31 downto 0) => \^bram_addr\(31 downto 0)
-    );
 vad_upstream_hub_cross_inst_0: entity work.eko_bd_pl_cross_0_1_vad_upstream_hub_cross
      port map (
-      aclk => aclk,
+      aclk => \^aclk\,
       aresetn => aresetn,
       m_axis_data_tdata(63 downto 0) => axis_upstream_tdata(63 downto 0),
       m_axis_data_tready => axis_upstream_tready,
@@ -30077,6 +29970,9 @@ entity eko_bd_pl_cross_0_1 is
 end eko_bd_pl_cross_0_1;
 
 architecture STRUCTURE of eko_bd_pl_cross_0_1 is
+  signal \<const0>\ : STD_LOGIC;
+  signal \^bram_addr\ : STD_LOGIC_VECTOR ( 31 downto 2 );
+  signal NLW_inst_bram_addr_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of aclk : signal is "xilinx.com:signal:clock:1.0 aclk CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -30094,14 +29990,23 @@ architecture STRUCTURE of eko_bd_pl_cross_0_1 is
   attribute X_INTERFACE_PARAMETER of bram_we : signal is "XIL_INTERFACENAME bram_rtl, MODE Master, MASTER_TYPE BRAM_CTRL, MEM_SIZE 8192, MEM_WIDTH 32, MEM_ECC NONE, READ_WRITE_MODE READ_WRITE, READ_LATENCY 1";
   attribute X_INTERFACE_INFO of bram_wrdata : signal is "xilinx.com:interface:bram:1.0 bram_rtl DIN";
 begin
+  bram_addr(31 downto 2) <= \^bram_addr\(31 downto 2);
+  bram_addr(1) <= \<const0>\;
+  bram_addr(0) <= \<const0>\;
+GND: unisim.vcomponents.GND
+     port map (
+      G => \<const0>\
+    );
 inst: entity work.eko_bd_pl_cross_0_1_pl_cross
      port map (
       aclk => aclk,
       aresetn => aresetn,
-      bram_addr(31 downto 0) => bram_addr(31 downto 0),
+      bram_addr(31 downto 2) => \^bram_addr\(31 downto 2),
+      bram_addr(1 downto 0) => NLW_inst_bram_addr_UNCONNECTED(1 downto 0),
       bram_clk => bram_clk,
       bram_en => bram_en,
-      bram_rddata(31 downto 0) => bram_rddata(31 downto 0),
+      bram_rddata(31 downto 16) => B"0000000000000000",
+      bram_rddata(15 downto 0) => bram_rddata(15 downto 0),
       bram_rst => bram_rst,
       bram_we(3 downto 0) => bram_we(3 downto 0),
       bram_wrdata(31 downto 0) => bram_wrdata(31 downto 0),
