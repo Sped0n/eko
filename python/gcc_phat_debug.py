@@ -4,7 +4,7 @@ from scipy.fftpack import fft, ifft
 import matplotlib.pyplot as plt
 
 
-def csv_to_list(csv_file_name: str) -> tuple[np.ndarray, np.ndarray]:
+def csv_to_list(csv_file_name: str) -> tuple[list, list]:
     csv_path: str = f"./assets/csv/{csv_file_name}.csv"
 
     result_ch2 = []
@@ -29,45 +29,97 @@ def csv_to_list(csv_file_name: str) -> tuple[np.ndarray, np.ndarray]:
     return result_ch2, result_ch5
 
 
-def xcorr_freq(s1, s2, pad=False):
-    if pad:
-        pad1 = np.zeros(len(s1))
-        pad2 = np.zeros(len(s2))
-        s1 = np.hstack([s1, pad1])
-        s2 = np.hstack([pad2, s2])
+def gcc_phat_neo(s1, s2):
     f_s1 = fft(s1)
     f_s2 = fft(s2)
     f_s = f_s1 * np.conj(f_s2)
     denom = abs(f_s)
-    print(np.average(denom))
     f_s = f_s / (
         denom + np.average(denom) * 0.1
     )  # This line is the only difference between GCC-PHAT and normal cross correlation
-
     return np.abs(ifft(f_s))
-    # return f_s
-    # return f_s1
+
+
+def gcc_phat(s1, s2):
+    f_s1 = fft(s1)
+    f_s2 = fft(s2)
+    f_s = f_s1 * np.conj(f_s2)
+    denom = abs(f_s)
+    f_s = f_s / (
+        denom
+    )  # This line is the only difference between GCC-PHAT and normal cross correlation
+    return np.abs(ifft(f_s))
+
+
+def gcc_cc(s1, s2):
+    f_s1 = fft(s1)
+    f_s2 = fft(s2)
+    f_s = f_s1 * np.conj(f_s2)
+    return np.abs(ifft(f_s))
 
 
 # csvs = ["x13_0", "x13_1", "x13_2", "x13_3"]
 # csvs = ["x31_0", "x31_1", "x31_2", "x31_3"]
 # csvs = ["cross02_0", "cross02_1", "cross02_2", "cross02_3"]
 # csvs = ["cross20_0", "cross20_1", "cross20_2", "cross20_3"]
-csvs = ["iladata7"]
-taus = []
-for csv_file in csvs:
-    result_ch2, result_ch5 = csv_to_list(csv_file)
-    tau = xcorr_freq(result_ch2, result_ch5, False)
-    taus.append(tau)
+csv_file = "iladata7"
+result_ch2, result_ch5 = csv_to_list(csv_file)
+gpn = gcc_phat_neo(result_ch2, result_ch5)
+gpn = np.concatenate((gpn[-104:], gpn[:104]))
+gpn = gpn / np.max(gpn)
+gp = gcc_phat(result_ch2, result_ch5)
+gp = np.concatenate((gp[-104:], gp[:104]))
+gc = gcc_cc(result_ch2, result_ch5)
+gc = np.concatenate((gc[-104:], gc[:104]))
+gc = gc / np.max(gc)
 
-taus_len = len(taus[0])
-for index, tau in enumerate(taus):
-    tmp = np.concatenate((tau[-104:], tau[:104]))
-    plt_title = str(np.argmax(tmp) - 104)
-    # plt_title = str(np.argmax(tau) - 1024)
-    plt.subplot(len(taus), 1, index + 1)
-    plt.plot(tmp)
-    plt.title(plt_title)
+plt.rcParams["font.family"] = "SimSong"
 
 
+plt.subplot(2, 1, 1)
+plt.ylim(-0.1, 1.2)
+plt.plot(gc, linewidth=1.6, zorder=1)
+vx0 = float(np.argmax(gc))
+plt.axvline(vx0, color="red", linestyle="--", zorder=0, linewidth=1.2)
+# highlight = (float(np.argmax(gc)), float(np.max(gc)))
+# plt.annotate(
+#     "无加权得到了正确的峰值位置",
+#     xy=(vx0 + 2.0, np.max(gc)),
+#     xytext=(vx0 + 25.0, 0.8),
+#     arrowprops=dict(arrowstyle="->", connectionstyle="angle,angleA=90,angleB=0,rad=10"),
+#     bbox=dict(boxstyle="round", fc="#2dfe54"),
+# )
+plt.title("无加权", fontsize=12)
+
+# plt.subplot(2, 1, 2)
+# plt.ylim(-0.1, 1.2)
+# plt.plot(gp, linewidth=1.6, zorder=1)
+# vx1 = float(np.argmax(gp))
+# plt.axvline(vx0, color="red", linestyle="--", zorder=0, linewidth=1.2)
+# highlight = (float(np.argmax(gc)), float(np.max(gc)))
+# plt.annotate(
+#     "PHAT加权没有得到正确的峰值位置",
+#     xy=(vx1, np.max(gp)),
+#     xytext=(vx1 + 16.0, 0.5),
+#     arrowprops=dict(arrowstyle="->", connectionstyle="angle,angleA=90,angleB=0,rad=10"),
+#     bbox=dict(boxstyle="round", fc="#ff999c"),
+# )
+# plt.title("PHAT加权（结果错误）", fontsize=12)
+
+plt.subplot(2, 1, 2)
+plt.ylim(-0.1, 1.2)
+plt.plot(gpn, linewidth=1.6, zorder=1)
+vx1 = float(np.argmax(gpn))
+plt.axvline(vx0, color="red", linestyle="--", zorder=0, linewidth=1.2)
+# highlight = (float(np.argmax(gc)), float(np.max(gc)))
+# plt.annotate(
+#     "PHAT加权没有得到正确的峰值位置",
+#     xy=(vx1, np.max(gp)),
+#     xytext=(vx1 + 16.0, 0.5),
+#     arrowprops=dict(arrowstyle="->", connectionstyle="angle,angleA=90,angleB=0,rad=10"),
+#     bbox=dict(boxstyle="round", fc="#ff999c"),
+# )
+plt.title("改进的PHAT加权（结果正确）", fontsize=12)
+
+plt.tight_layout()
 plt.show()
