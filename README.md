@@ -33,27 +33,27 @@ The entire system consists primarily of three components:
 
 The angle is determined by analyzing the time difference of arrival (TDOA) of acoustic signals between consecutive microphone pairs. Using this data, the sound's position relative to the device's center can be computed.
 
-<img src="README.assets/image-20240808133140816.png" alt="image-20240808133140816" style="zoom:33%;" />
+<img src="README.assets/image-20240808133140816.png" alt="image-20240808133140816" width="600" />
 
 ### Top-level Diagram
 
 #### Hardware
 
-![硬件系统框图](README.assets/hw.jpg)
+<img src="README.assets/hw.jpg" alt="硬件系统框图" width="700" />
 
 #### Software
 
-<img src="README.assets/sw.jpg" alt="sw" style="zoom:40%;" />
+<img src="README.assets/sw.jpg" alt="sw" width="500" />
 
 ### Sampling
 
-<img src="README.assets/image-20240812164454451.png" alt="image-20240812164454451" style="zoom:30%;" />
+<img src="README.assets/image-20240812164454451.png" alt="image-20240812164454451" width="350" />
 
 The sampling of this system is based on the I2S interface, with a sampling precision of 16 bits and a sampling frequency of 48.8 kHz, and a frame of consisting of 1024 16 bits audio data. The timing can be referenced from Philips' official documentation. The system's four microphones are uniformly collected on the left frame of the I2S to ensure consistency in collection.
 
 ### Preprocessing
 
-<img src="README.assets/preprocessing.jpg" alt="preprocessing" style="zoom:33%;" />
+<img src="README.assets/preprocessing.jpg" alt="preprocessing" width="500" />
 
 The preprocessing section includes two parts (in order):
 
@@ -97,7 +97,7 @@ The practice of this system involves taking the average of the modulus of the au
 
 ### DSP chain
 
-<img src="README.assets/dspchain.drawio.png" alt="dspchain.drawio" style="zoom:40%;" />
+<img src="README.assets/dspchain.drawio.png" alt="dspchain.drawio" width="700" />
 
 The entire DSP chain(_responsible for TDOA_) runs on the **programmable logic** of the Zynq, and is entirely based on the standard [AMBA AXI4-Stream](https://documentation-service.arm.com/static/642583d7314e245d086bc8c9?token=). The connection diagram is shown above, with the numbers on the arrows representing the precision of the input data(how many bits). A brief description of the IP core configuration is as follows：
 
@@ -109,7 +109,7 @@ The entire DSP chain(_responsible for TDOA_) runs on the **programmable logic** 
 
 ### Communication between PL and PS
 
-<img src="README.assets/comm.jpg" alt="comm" style="zoom:30%;" />
+<img src="README.assets/comm.jpg" alt="comm" width="350" />
 
 The communication between PL and PS is based on the AXI GP (General Purpose) bus, with the main modules located on the PL side. The transmission content includes：
 
@@ -135,7 +135,7 @@ The specific calculation uses the atan2 function (for details, refer to [Matlab'
 
 #### Block Design
 
-<img src="README.assets/image-20240812170847434.png" alt="image-20240812170847434" style="zoom:50%;" />
+<img src="README.assets/image-20240812170847434.png" alt="image-20240812170847434" width="750" />
 
 #### Resourse Uasge
 
@@ -147,15 +147,15 @@ The specific calculation uses the atan2 function (for details, refer to [Matlab'
 
 #### Power
 
-<img src="README.assets/image-20240812170954047.png" alt="image-20240812170954047" style="zoom:50%;" />
+<img src="README.assets/image-20240812170954047.png" alt="image-20240812170954047" width="550" />
 
 #### Timing
 
-<img src="README.assets/image-20240812171017492.png" alt="image-20240812171017492" style="zoom:50%;" />
+<img src="README.assets/image-20240812171017492.png" alt="image-20240812171017492" width="650" />
 
 #### Processing Speed
 
-<img src="README.assets/image-20240812171210117.png" alt="image-20240812171210117" style="zoom:30%;" />
+<img src="README.assets/image-20240812171210117.png" alt="image-20240812171210117" width="600" />
 
 The time to process one frame is approximately 1239us(microseconds), and it takes about 20.9ms(milliseconds) to collect 1024 data points at a sampling rate of 48.8 kHz, so it does not cause a processing bottleneck.
 
